@@ -312,6 +312,75 @@ select {
   font-weight: 800;
 }
 
+.action-side {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.text-button.subtle {
+  opacity: .72;
+  font-size: .92rem;
+}
+
+.text-button.subtle:hover {
+  opacity: 1;
+}
+
+.report-context {
+  font-size: .92rem;
+  margin-bottom: 16px;
+}
+
+.report-context code {
+  font-size: .85em;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--warning-soft);
+}
+
+.report-statement {
+  display: block;
+  margin-top: 6px;
+  padding-left: 12px;
+  border-left: 3px solid var(--line);
+}
+
+.report-field {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.report-field > span {
+  display: block;
+  font-size: .85rem;
+  margin-bottom: 4px;
+}
+
+.report-field select,
+.report-field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  font: inherit;
+  background: #fff;
+  color: inherit;
+}
+
+.report-field textarea {
+  resize: vertical;
+}
+
+.report-status {
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--warning-soft);
+  font-size: .9rem;
+  white-space: pre-wrap;
+}
+
 .question-actions {
   display: flex;
   justify-content: space-between;

@@ -14,6 +14,7 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <script defer src="questions.js"></script>
+  <script defer src="report-config.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -123,7 +124,10 @@
 
         <div class="question-actions">
           <button id="nextButton" class="primary-button hidden" type="button">Next question</button>
-          <button id="endSessionButton" class="text-button" type="button">End session</button>
+          <span class="action-side">
+            <button id="reportButton" class="text-button subtle hidden" type="button">Report a problem</button>
+            <button id="endSessionButton" class="text-button" type="button">End session</button>
+          </span>
         </div>
       </article>
     </section>
@@ -138,6 +142,46 @@
       </div>
     </section>
   </main>
+
+  <dialog id="reportDialog">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Close" value="close">×</button>
+      <p class="eyebrow">Flag a question</p>
+      <h2>Report a problem</h2>
+      <p class="report-context">
+        Reporting <code id="reportQid"></code>:
+        <span id="reportStatement" class="report-statement"></span>
+      </p>
+
+      <label class="report-field">
+        <span>What's wrong?</span>
+        <select id="reportReason">
+          <option value="wrong-answer">The marked answer looks wrong</option>
+          <option value="explanation">The explanation is wrong or unconvincing</option>
+          <option value="ambiguous">The statement could be read two ways</option>
+          <option value="counterexample">The example or counterexample doesn't work</option>
+          <option value="rendering">Something didn't display properly</option>
+          <option value="other">Something else</option>
+        </select>
+      </label>
+
+      <label class="report-field">
+        <span>Tell us more (optional, but it helps a lot)</span>
+        <textarea id="reportDetail" rows="4" placeholder="What did you expect, and why?"></textarea>
+      </label>
+
+      <p class="privacy-note">
+        Only the question id, your answer, and what you write here are sent.
+        Your practice history stays in this browser.
+      </p>
+
+      <div class="setup-actions">
+        <button id="reportSend" class="primary-button" type="button">Send report</button>
+        <button class="secondary-button" value="cancel">Cancel</button>
+      </div>
+      <p id="reportStatus" class="report-status hidden" aria-live="polite"></p>
+    </form>
+  </dialog>
 
   <dialog id="aboutDialog">
     <form method="dialog">

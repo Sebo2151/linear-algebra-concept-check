@@ -369,7 +369,33 @@ Progress is stored in `localStorage` under:
 
 `linear-algebra-concept-check-v1`
 
+Unsent question reports are stored separately under:
+
+`linear-algebra-concept-check-reports-v1`
+
+The two are deliberately separate keys, so that resetting practice history does
+not discard reports and vice versa.
+
 No account or backend exists.
+
+### The bank is public; plan around it
+
+Everything the site serves is readable. `questions.js` is a plain script, so any
+student can read every statement, answer, and explanation. This is not a leak to
+be patched — it is what a static site with no backend means.
+
+Two consequences worth holding on to:
+
+- `viewer.html` is **unlisted, not private**. It adds no exposure. Do not add a
+  passphrase and describe it as protection.
+- Anything that must stay unseen cannot live in this repository at all. Reserved
+  homework lives in `instructor/`, which is gitignored in full, and is never
+  loaded by the app or the viewer. A public GitHub repository is readable even
+  before Pages publishes it, so "committed but not deployed" is not a safe state.
+
+Reports are sent only when a student presses send, and carry only the question
+id, their answer, the category, and their text. Do not extend them to include
+stored progress: that would quietly turn a no-tracking tool into a tracking one.
 
 If the storage schema changes incompatibly, migrate it or deliberately increment the versioned key.
 

@@ -2,6 +2,9 @@
 (() => {
   const BANK = window.QUESTION_BANK || [];
   const STORAGE_KEY = "linear-algebra-concept-check-v1";
+  // Kept separate from progress so that resetting practice history does not
+  // discard reports the student has not sent yet, and vice versa.
+  const REPORTS_KEY = "linear-algebra-concept-check-reports-v1";
 
   const el = id => document.getElementById(id);
   const state = {
@@ -14,7 +17,8 @@
     whyAnswered: 0,
     whyCorrect: 0,
     sessionConcepts: {},
-    awaitingWhy: false
+    awaitingWhy: false,
+    lastAnswer: null
   };
 
   function blankProgress() {
@@ -95,6 +99,7 @@
     state.askedIds.add(q.id);
     state.questionNumber += 1;
     state.awaitingWhy = false;
+    state.lastAnswer = null;
     if (q.answer) state._seenTrue = (state._seenTrue || 0) + 1;
     else state._seenFalse = (state._seenFalse || 0) + 1;
     renderQuestion(q);
@@ -122,6 +127,7 @@
     el("counterexampleBox").classList.add("hidden");
     el("counterexampleBox").innerHTML = "";
     el("nextButton").classList.add("hidden");
+    el("reportButton").classList.add("hidden");
     typeset(el("statement"));
   }
 
@@ -151,6 +157,7 @@
     if (!q) return;
     const chosenBool = chosen === "true";
     const correct = chosenBool === q.answer;
+    state.lastAnswer = chosenBool;
 
     document.querySelectorAll(".answer-button").forEach(btn => {
       btn.disabled = true;
@@ -219,6 +226,10 @@
     }
     el("explanationArea").classList.remove("hidden");
     el("nextButton").classList.remove("hidden");
+    // Only offered once the explanation is visible: before that the student has
+    // no basis for judging the item, and a report would mostly mean "I got it
+    // wrong" rather than "this question is broken".
+    el("reportButton").classList.remove("hidden");
     el("progressFill").style.width = `${(state.questionNumber / state.targetLength) * 100}%`;
     typeset(el("explanationArea"));
   }
@@ -315,6 +326,80 @@
   document.querySelectorAll(".answer-button").forEach(btn => {
     btn.addEventListener("click", () => handleTF(btn.dataset.answer));
   });
+
+  // ---------------------------------------------------------------- reporting
+  // Reports are written to localStorage first and only then handed off, so a
+  // closed tab or a misconfigured form cannot silently lose one.
+  function saveReport(entry) {
+    let log = [];
+    try { log = JSON.parse(localStorage.getItem(REPORTS_KEY)) || []; } catch { log = []; }
+    log.push(entry);
+    try { localStorage.setItem(REPORTS_KEY, JSON.stringify(log.slice(-50))); } catch {}
+  }
+
+  function reportText(entry) {
+    return [
+      `Question: ${entry.questionId}`,
+      `Student answered: ${entry.answered}`,
+      `Problem: ${entry.reason}`,
+      `Details: ${entry.detail || "(none)"}`,
+      `When: ${entry.when}`
+    ].join("\n");
+  }
+
+  function prefilledFormUrl(entry) {
+    const cfg = window.REPORT_CONFIG;
+    if (!cfg || !cfg.formUrl) return null;
+    const url = new URL(cfg.formUrl);
+    for (const [key, param] of Object.entries(cfg.fields || {})) {
+      if (param && entry[key] != null) url.searchParams.set(param, entry[key]);
+    }
+    return url.toString();
+  }
+
+  function openReportDialog() {
+    const q = state.current;
+    if (!q) return;
+    el("reportQid").textContent = q.id;
+    el("reportStatement").innerHTML = q.statement;
+    el("reportDetail").value = "";
+    el("reportReason").value = "wrong-answer";
+    el("reportStatus").classList.add("hidden");
+    el("reportDialog").showModal();
+    typeset(el("reportStatement"));
+  }
+
+  async function sendReport() {
+    const q = state.current;
+    if (!q) return;
+    const entry = {
+      questionId: q.id,
+      answered: state.lastAnswer == null ? "unanswered" : String(state.lastAnswer),
+      reason: el("reportReason").value,
+      detail: el("reportDetail").value.trim(),
+      when: new Date().toISOString()
+    };
+    saveReport(entry);
+
+    const status = el("reportStatus");
+    status.classList.remove("hidden");
+    const url = prefilledFormUrl(entry);
+    if (url) {
+      window.open(url, "_blank", "noopener");
+      status.textContent = "Thank you. The report form should have opened in a new tab — press submit there to finish.";
+      return;
+    }
+    const body = `${window.REPORT_CONFIG?.fallbackInstructions || ""}\n\n${reportText(entry)}`;
+    try {
+      await navigator.clipboard.writeText(body);
+      status.textContent = "Report copied to your clipboard. Paste it into an email to your instructor.";
+    } catch {
+      status.textContent = reportText(entry);
+    }
+  }
+
+  el("reportButton").addEventListener("click", openReportDialog);
+  el("reportSend").addEventListener("click", sendReport);
 
   el("nextButton").addEventListener("click", goNext);
   el("startButton").addEventListener("click", startSession);

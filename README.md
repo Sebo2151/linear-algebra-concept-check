@@ -40,12 +40,30 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
 
 - `index.html` — application shell.
 - `viewer.html` — instructor question browser (see below).
+- `report-config.js` — where question reports are sent; empty until configured.
+- `tools/` — reserved-homework cross-check and assignment builder.
 - `styles.css` — layout and visual design.
 - `app.js` — quiz state, local progress, adaptive sampling.
 - `questions.js` — the question bank; intentionally separated from app logic.
 - `AI_HANDOFF.md` — pedagogical vision, design constraints, content standards, and roadmap.
 - `tests/validate-questions.mjs` — lightweight validation for question-bank edits.
 - `package.json` — exposes `npm test` for the validator.
+
+## Collecting reports about questions
+
+Once the explanation is on screen, each question offers **Report a problem**: a
+category, an optional description, and a send button. The report carries the
+question id, the student's answer, the category, and their text — nothing else.
+Practice history is never transmitted.
+
+Every report is written to `localStorage` before it is handed off, so a closed tab
+or a broken form cannot silently swallow one.
+
+Reporting is off by default in the sense that no destination is configured yet.
+Open `report-config.js` and paste in a form URL plus the prefill parameter names;
+instructions for finding those in Microsoft Forms and Google Forms are in the file.
+Until you do, pressing send copies a formatted report to the clipboard for the
+student to email instead, so nothing is broken in the meantime.
 
 ## Instructor question browser
 
