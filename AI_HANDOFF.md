@@ -130,7 +130,18 @@ questions by reading the badge instead of the statement — precisely the meta-s
 section 5 warns about, reinforced by the interface rather than merely tolerated by it.
 
 `npm test` now warns on skew within each variant and each difficulty. Keep those
-groups mixed, or remove the badge.
+groups mixed, or remove the badge. The tolerance tightens as a group grows, since
+a lopsided 5-item group means little and a lopsided 40-item group means a lot.
+
+There is a standing authoring bias behind this. Easy items tend to be "state the
+definition correctly," which reads as true; harder items tend to be "spot the
+subtle error," which reads as false. Left alone this pushes difficulty 1 toward
+true and difficulty 2 toward false in every section. It is worth deliberately
+writing easy false items and harder true ones.
+
+Known residue: §1.1 and §1.2 still sit at 65% and 59% true among their
+difficulty-1 items. Fixing that means rewriting reviewed questions, so it is
+left as an instructor decision rather than done silently.
 
 ## 7. Course organization and textbook independence
 
@@ -204,6 +215,35 @@ This distinction prevents training an inaccurate theorem.
 - existence and uniqueness theorem;
 - REF for consistency;
 - RREF as the convenient form for explicit solution descriptions.
+
+### §1.3
+- column vectors as \(n\times1\) matrices;
+- equality, addition, scalar multiplication;
+- the zero vector, and the scalar/vector distinction;
+- geometric picture in the plane and space, parallelogram rule;
+- algebraic properties of \(\mathbb{R}^n\), and the \(-v\) / \(v-w\) notation;
+- linear combinations and weights;
+- the vector equation and its equivalence with an augmented-matrix system;
+- span;
+- span of one nonzero vector as a line, of two non-parallel vectors as a plane.
+
+### §1.4
+- the product \(Ax\) as a linear combination of the columns of \(A\);
+- matrix equations;
+- the equivalence of \(Ax=b\), the vector equation, and the augmented-matrix system;
+- solvability of \(Ax=b\) as membership of \(b\) in the span of the columns;
+- what it means for a set of vectors to span \(\mathbb{R}^m\);
+- the four equivalent conditions, including a pivot position in every row;
+- the row-vector rule;
+- distributivity of \(Ax\) over addition and scalar multiplication.
+
+### Scalars are real
+
+The course does not treat complex vector spaces. Keep every statement, example,
+and explanation over the real numbers. An earlier item about complex coefficients
+was removed for this reason. Where a claim genuinely depends on the field — a
+system having exactly two solutions, or a free variable forcing infinitely many —
+say "real" rather than leaving the scalars unspecified.
 
 ## 10. Data model
 
@@ -285,13 +325,14 @@ Recommended order:
 1. ~~Instructor review of the existing §1.1–1.2 bank.~~ Done; the bank grew from 53 to 74 items in response.
 2. ~~Add or revise questions where coverage is thin.~~ Done for singleton concepts; every concept now has at least two questions.
 3. Add course presets (“Homework 1: §§1.1–1.2”).
-4. Improve second-stage “Why?” coverage. Partly done: every difficulty-3 item now has one, but overall coverage is still only 12/74.
+4. Improve second-stage “Why?” coverage. Partly done: every difficulty-3 item now has one, but overall coverage is still only 24/146.
 5. Add a developer-only question browser / filter page for reviewing the bank.
 6. Add lightweight within-session resurfacing of missed concepts.
-7. Only after the pedagogy feels right, expand to §§1.3+.
+7. ~~Only after the pedagogy feels right, expand to §§1.3+.~~ §§1.3–1.4 added.
 
-Difficulty is still bottom-heavy (45 / 24 / 5 across levels 1–3). A session drawn
-from this bank is mostly recall. Worth addressing before expanding the scope.
+Difficulty is bottom-heavy (76 / 61 / 9 across levels 1–3). This is deliberate for
+§1.1, which is genuinely easy material, and has been accepted for now. Revisit it
+if later sections inherit the same shape without the same excuse.
 
 A developer question browser would be especially useful: show every item with filters for section, concept, truth value, difficulty, and variant, plus counts. This would make editorial review much easier.
 

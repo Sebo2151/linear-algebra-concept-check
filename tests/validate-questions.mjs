@@ -25,13 +25,16 @@ function scanStrings(value, path, visit) {
 
 // Truth-value skew inside a group the student can *see* before answering is worse
 // than overall skew: it turns an on-screen badge into an answer key. Small groups
-// swing naturally, so only check once a group is big enough to mean something.
-function checkGroupBalance(label, questions, { minSize = 5, low = 0.25, high = 0.75 } = {}) {
+// swing naturally, so the tolerance tightens as a group grows: a 5-item group has
+// to be badly lopsided to mean anything, but a 40-item group at 65% true is a real
+// signal that authoring habits are leaking into the answers.
+function checkGroupBalance(label, questions) {
   if (questions.length >= 3 && questions.every(q => q.answer === questions[0].answer)) {
     warnings.push(`${label} has ${questions.length} questions and every one of them is ${questions[0].answer}.`);
     return;
   }
-  if (questions.length < minSize) return;
+  if (questions.length < 5) return;
+  const [low, high] = questions.length >= 40 ? [0.4, 0.6] : [0.25, 0.75];
   const trues = questions.filter(q => q.answer).length;
   const ratio = trues / questions.length;
   if (ratio < low || ratio > high) {
@@ -44,7 +47,7 @@ if (!Array.isArray(bank) || bank.length === 0) {
 } else {
   const ids = new Set();
   const statements = new Set();
-  const validSections = new Set(["1.1", "1.2"]);
+  const validSections = new Set(["1.1", "1.2", "1.3", "1.4"]);
   let trueCount = 0;
 
   for (const [i, q] of bank.entries()) {

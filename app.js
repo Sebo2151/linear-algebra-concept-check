@@ -44,7 +44,7 @@
   function eligibleQuestions() {
     const { section, mix } = state.settings;
     return BANK.filter(q => {
-      if (section !== "both" && q.section !== section) return false;
+      if (section !== "all" && q.section !== section) return false;
       if (mix === "core" && q.variant !== "core") return false;
       return true;
     });
