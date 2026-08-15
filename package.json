@@ -1,0 +1,9 @@
+{
+  "name": "linear-algebra-concept-check",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Static conceptual practice app for introductory linear algebra",
+  "scripts": {
+    "test": "node tests/validate-questions.mjs"
+  }
+}

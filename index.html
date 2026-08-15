@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Low-stakes true/false conceptual practice for introductory linear algebra.">
+  <title>Linear Algebra Concept Check</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="questions.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <p class="eyebrow">Low-stakes conceptual practice</p>
+        <h1>Linear Algebra Concept Check</h1>
+      </div>
+      <button id="aboutButton" class="text-button" type="button">About this tool</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="setupView" class="panel setup-panel">
+      <div class="intro">
+        <h2>Practice the ideas, not just the algorithms.</h2>
+        <p>
+          These questions are designed to make you decide what definitions and theorems actually say:
+          what the hypotheses are, what conclusions follow, and where common look-alike statements fail.
+          There is no grade attached.
+        </p>
+      </div>
+
+      <div class="setup-grid">
+        <label>
+          <span>Material</span>
+          <select id="sectionSelect">
+            <option value="both">Sections 1.1–1.2</option>
+            <option value="1.1">Section 1.1 only</option>
+            <option value="1.2">Section 1.2 only</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Session length</span>
+          <select id="lengthSelect">
+            <option value="8">8 questions</option>
+            <option value="12" selected>12 questions</option>
+            <option value="20">20 questions</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Question mix</span>
+          <select id="mixSelect">
+            <option value="standard" selected>Mostly core</option>
+            <option value="core">Core only</option>
+            <option value="challenge">More hypothesis checks</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="weaknessNote" class="weakness-note hidden" aria-live="polite"></div>
+
+      <div class="setup-actions">
+        <button id="startButton" class="primary-button" type="button">Start practice</button>
+        <button id="resetProgressButton" class="secondary-button" type="button">Reset local progress</button>
+      </div>
+
+      <p class="privacy-note">
+        Practice history stays in this browser. There is no account, grade, or server-side tracking.
+      </p>
+    </section>
+
+    <section id="quizView" class="panel quiz-panel hidden" aria-live="polite">
+      <div class="quiz-topline">
+        <div>
+          <span id="sectionBadge" class="badge"></span>
+          <span id="topicBadge" class="badge muted"></span>
+        </div>
+        <div id="progressText" class="progress-text"></div>
+      </div>
+
+      <div class="progress-track" aria-hidden="true">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+
+      <article class="question-card">
+        <div class="question-meta">
+          <span id="questionKind"></span>
+          <span id="difficultyText"></span>
+        </div>
+        <h2 id="statement"></h2>
+
+        <div id="tfControls" class="tf-controls">
+          <button class="answer-button true-button" data-answer="true" type="button">True</button>
+          <button class="answer-button false-button" data-answer="false" type="button">False</button>
+        </div>
+
+        <div id="verdictBox" class="verdict hidden"></div>
+
+        <div id="whyArea" class="why-area hidden">
+          <h3 id="whyPrompt"></h3>
+          <div id="whyChoices" class="why-choices"></div>
+        </div>
+
+        <div id="explanationArea" class="explanation hidden">
+          <h3>Explanation</h3>
+          <div id="explanationText"></div>
+          <div id="counterexampleBox" class="counterexample hidden"></div>
+        </div>
+
+        <div class="question-actions">
+          <button id="nextButton" class="primary-button hidden" type="button">Next question</button>
+          <button id="endSessionButton" class="text-button" type="button">End session</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="resultsView" class="panel results-panel hidden">
+      <p class="eyebrow">Session complete</p>
+      <h2>What to revisit</h2>
+      <div id="scoreSummary" class="score-summary"></div>
+      <div id="conceptSummary" class="concept-summary"></div>
+      <div class="setup-actions">
+        <button id="practiceAgainButton" class="primary-button" type="button">Practice again</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="aboutDialog">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Close" value="close">×</button>
+      <p class="eyebrow">Design intent</p>
+      <h2>What this tool is for</h2>
+      <p>
+        Introductory linear algebra can feel like a collection of computational procedures. This tool
+        emphasizes a different habit: read a mathematical claim carefully, identify the relevant
+        definition or theorem, and decide whether the claim really follows.
+      </p>
+      <p>
+        The app deliberately uses mostly straightforward conceptual questions, with a smaller number
+        of questions that test awareness of missing hypotheses. Explanations and counterexamples are
+        part of the practice, not just answer keys.
+      </p>
+      <p>
+        It remembers broad areas of difficulty in your browser and gently favors those ideas in later
+        practice. It is not intended to replace a full spaced-repetition system.
+      </p>
+    </form>
+  </dialog>
+</body>
+</html>
