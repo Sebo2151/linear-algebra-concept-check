@@ -2530,12 +2530,12 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "Linear independence of \\(v_1,\\dots,v_p\\) means that no two of the vectors are equal to each other.",
+    "statement": "If no two of the vectors \\(v_1,\\dots,v_p\\) are equal to each other, then the list is linearly independent.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Independence is the same as the vectors being distinct.",
-    "explanation": "Distinctness is necessary but far from sufficient. Three distinct vectors can easily be dependent.",
+    "explanation": "Distinctness is necessary for independence but nowhere near sufficient. Three distinct vectors can easily be dependent. The implication holds only in the other direction: an independent list cannot repeat a vector.",
     "counterexample": "\\(\\begin{bmatrix}1\\\\0\\end{bmatrix},\\begin{bmatrix}0\\\\1\\end{bmatrix},\\begin{bmatrix}1\\\\1\\end{bmatrix}\\) are pairwise different but dependent, since the third is the sum of the first two."
   },
   {
