@@ -141,7 +141,9 @@ writing easy false items and harder true ones.
 
 Known residue: §1.1 and §1.2 still sit at 65% and 59% true among their
 difficulty-1 items. Fixing that means rewriting reviewed questions, so it is
-left as an instructor decision rather than done silently.
+left as an instructor decision rather than done silently. Every section written
+since is close to even, which has pulled the global difficulty-1 figure down
+from 66% to 57%.
 
 ## 7. Course organization and textbook independence
 
@@ -237,6 +239,31 @@ This distinction prevents training an inaccurate theorem.
 - the row-vector rule;
 - distributivity of \(Ax\) over addition and scalar multiplication.
 
+### §1.5
+- homogeneous systems, and why they are always consistent;
+- trivial and nontrivial solutions;
+- a nontrivial solution exists exactly when there is a free variable;
+- the solution set of \(Ax=0\) as a span, including the \(\operatorname{Span}\{0\}\) case;
+- parametric vector form;
+- the \(p+v_h\) description of the solutions of a consistent \(Ax=b\);
+- the consistency hypothesis that description requires;
+- translation as the geometric picture, and why a solution set with \(b\ne0\) is not a span.
+
+### §1.7
+- the definitions of linear independence and dependence;
+- linear dependence relations, and the force of "not all zero";
+- independence of the columns of \(A\) versus \(Ax=0\) having only the trivial solution;
+- one-vector and two-vector cases;
+- dependence as some vector being a linear combination of the others, including the indexed form;
+- more than \(n\) vectors in \(\mathbb{R}^n\) are dependent;
+- a list containing the zero vector is dependent.
+
+### §1.6 is deliberately absent
+
+Section numbering skips from 1.5 to 1.7 because the course does not cover §1.6.
+Nothing is broken. Do not "fix" it by renumbering, and remember that a label such
+as "Sections 1.1–1.7" would misdescribe the bank.
+
 ### Scalars are real
 
 The course does not treat complex vector spaces. Keep every statement, example,
@@ -325,14 +352,15 @@ Recommended order:
 1. ~~Instructor review of the existing §1.1–1.2 bank.~~ Done; the bank grew from 53 to 74 items in response.
 2. ~~Add or revise questions where coverage is thin.~~ Done for singleton concepts; every concept now has at least two questions.
 3. Add course presets (“Homework 1: §§1.1–1.2”).
-4. Improve second-stage “Why?” coverage. Partly done: every difficulty-3 item now has one, but overall coverage is still only 24/146.
+4. Improve second-stage “Why?” coverage. Partly done: every difficulty-3 item written so far has one, and coverage is now 41/215.
 5. Add a developer-only question browser / filter page for reviewing the bank.
 6. Add lightweight within-session resurfacing of missed concepts.
-7. ~~Only after the pedagogy feels right, expand to §§1.3+.~~ §§1.3–1.4 added.
+7. ~~Only after the pedagogy feels right, expand to §§1.3+.~~ §§1.3–1.5 and §1.7 added.
 
-Difficulty is bottom-heavy (76 / 61 / 9 across levels 1–3). This is deliberate for
-§1.1, which is genuinely easy material, and has been accepted for now. Revisit it
-if later sections inherit the same shape without the same excuse.
+Difficulty is bottom-heavy (97 / 99 / 19 across levels 1–3), though far less so
+than it was. This is deliberate for §1.1, which is genuinely easy material, and
+has been accepted. Revisit it if later sections inherit the same shape without
+the same excuse.
 
 A developer question browser would be especially useful: show every item with filters for section, concept, truth value, difficulty, and variant, plus counts. This would make editorial review much easier.
 

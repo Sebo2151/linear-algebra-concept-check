@@ -47,7 +47,7 @@ if (!Array.isArray(bank) || bank.length === 0) {
 } else {
   const ids = new Set();
   const statements = new Set();
-  const validSections = new Set(["1.1", "1.2", "1.3", "1.4"]);
+  const validSections = new Set(["1.1", "1.2", "1.3", "1.4", "1.5", "1.7"]);
   let trueCount = 0;
 
   for (const [i, q] of bank.entries()) {

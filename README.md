@@ -7,7 +7,7 @@ A lightweight, static practice app for introductory linear algebra. It is intend
 - True/false questions with immediate feedback.
 - Some questions add a second-stage **Why?** prompt before revealing the explanation.
 - Explanations and counterexamples are treated as part of the practice.
-- Filters for §§1.1–1.4 together or any single section.
+- Filters for all sections together or any single section.
 - Mostly-core / core-only / more-hypothesis-check question mixes.
 - Lightweight weakness-aware sampling using browser-local history.
 - Approximate balancing of true and false statements within a session.
@@ -15,7 +15,7 @@ A lightweight, static practice app for introductory linear algebra. It is intend
 - Responsive layout for desktop and mobile.
 - Math rendering through MathJax.
 
-The bank contains independently written questions covering the main definitions and ideas from §§1.1–1.4.
+The bank contains independently written questions covering the main definitions and ideas from §§1.1–1.5 and §1.7.
 
 ## Run locally
 
