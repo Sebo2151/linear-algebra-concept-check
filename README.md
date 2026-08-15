@@ -60,6 +60,41 @@ so it exposes nothing new. Treat the whole bank as public: a student who opens t
 app's source can read every question, answer, and explanation. Anything that must
 stay unseen cannot live in this repository at all — see the homework bank below.
 
+## Reserved homework questions
+
+Questions you intend to assign must not be readable by students, and **nothing in
+this repository can meet that bar** — the site serves every file it contains, and a
+public repository is readable even before publication. So the reserved bank lives
+in `instructor/`, which is gitignored in full:
+
+- `instructor/homework-bank.js` — the reserved questions. Never committed, never
+  deployed, never loaded by the app or the viewer.
+- `instructor/out/` — generated assignments and keys.
+
+Each reserved item is true/false **plus a required written justification**, so that
+recognizing the truth value is not enough to earn the credit.
+
+```bash
+npm run check:homework
+```
+
+Cross-checks the reserved bank against the public one: it fails on id collisions
+and near-verbatim statements, and warns when a reserved question shares wording, or
+shares a concept/answer/misconception, with a public one. Treat the warnings as a
+review queue rather than a verdict — lexical overlap cannot tell "the same question
+reworded" apart from "the same topic making a different point," and both occur.
+`npm test` runs this too, and skips it silently when `instructor/` is absent.
+
+```bash
+npm run build:assignment -- --title "Homework 5" --sections 1.5,1.7 --count 6 --seed wfu
+```
+
+Writes `instructor/out/homework-5.html` and `instructor/out/homework-5-key.html`.
+Open either in a browser and print to PDF. Pass `--ids hw-1.3-02,hw-1.7-04` to pick
+questions explicitly, and `--seed` to make a random selection reproducible so a
+rebuild does not reshuffle an assignment you have already handed out. The key is a
+separate file so that distributing one cannot distribute the other.
+
 ## Validate the question bank
 
 If Node is installed:

@@ -1,3 +1,9 @@
+# Reserved homework questions and anything generated from them.
+# These must never be committed or deployed: every file in this repository is
+# readable by students once the site is published, and a public repository is
+# readable even before that. See README, "Reserved homework questions".
+instructor/
+
 # Node
 node_modules/
 npm-debug.log*
