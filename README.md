@@ -39,12 +39,26 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
 ## Files
 
 - `index.html` — application shell.
+- `viewer.html` — instructor question browser (see below).
 - `styles.css` — layout and visual design.
 - `app.js` — quiz state, local progress, adaptive sampling.
 - `questions.js` — the question bank; intentionally separated from app logic.
 - `AI_HANDOFF.md` — pedagogical vision, design constraints, content standards, and roadmap.
 - `tests/validate-questions.mjs` — lightweight validation for question-bank edits.
 - `package.json` — exposes `npm test` for the validator.
+
+## Instructor question browser
+
+`viewer.html` lists the whole bank with filters for section, concept, topic, truth
+value, difficulty, variant, presence of a “Why?” prompt, and presence of a
+counterexample, plus a free-text search and a bank-health panel that mirrors the
+warnings `npm test` produces.
+
+It is **unlisted, not private**. Nothing links to it from the student app, but it
+reads the same `questions.js` the app already downloads to every visitor's browser,
+so it exposes nothing new. Treat the whole bank as public: a student who opens the
+app's source can read every question, answer, and explanation. Anything that must
+stay unseen cannot live in this repository at all — see the homework bank below.
 
 ## Validate the question bank
 

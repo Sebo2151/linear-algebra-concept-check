@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Question Browser — Linear Algebra Concept Check</title>
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="questions.js"></script>
+  <style>
+    :root {
+      --ink: #1d2330;
+      --muted: #5d6779;
+      --line: #dfe4ec;
+      --bg: #f4f6fa;
+      --card: #ffffff;
+      --accent: #2f5bd7;
+      --true: #17734b;
+      --true-soft: #e3f4ec;
+      --false: #a12c44;
+      --false-soft: #fce8ec;
+      --warn-soft: #fdf3d8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    header.top {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    header.top h1 { margin: 0; font-size: 1.1rem; }
+    header.top .sub { color: var(--muted); font-size: .85rem; margin-top: 2px; }
+    .warnbar {
+      background: var(--warn-soft);
+      border-bottom: 1px solid #e6d08a;
+      padding: 8px 20px;
+      font-size: .85rem;
+    }
+    .layout { display: grid; grid-template-columns: 280px 1fr; gap: 20px; padding: 20px; align-items: start; }
+    @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    aside.panel { position: sticky; top: 78px; max-height: calc(100vh - 100px); overflow-y: auto; }
+    aside h2, .health h2 { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 8px; }
+    .field { margin-bottom: 12px; }
+    .field label { display: block; font-size: .78rem; color: var(--muted); margin-bottom: 3px; }
+    .field select, .field input[type=text] {
+      width: 100%; padding: 6px 8px; border: 1px solid var(--line);
+      border-radius: 6px; font: inherit; background: #fff; color: inherit;
+    }
+    .field select[multiple] { height: 116px; }
+    .checks { display: flex; flex-wrap: wrap; gap: 10px; }
+    .checks label { font-size: .82rem; color: var(--ink); display: flex; align-items: center; gap: 4px; }
+    button {
+      font: inherit; padding: 6px 12px; border-radius: 6px; cursor: pointer;
+      border: 1px solid var(--line); background: #fff; color: var(--ink);
+    }
+    button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .resultbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 12px; flex-wrap: wrap; }
+    .count { font-weight: 600; }
+    .q {
+      background: var(--card); border: 1px solid var(--line); border-left-width: 4px;
+      border-radius: 10px; padding: 14px; margin-bottom: 12px;
+    }
+    .q.true { border-left-color: var(--true); }
+    .q.false { border-left-color: #a12c44; }
+    .q .idline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+    code.qid { font: 600 .8rem ui-monospace, Menlo, Consolas, monospace; color: var(--accent); cursor: pointer; }
+    .tag {
+      font-size: .72rem; padding: 2px 7px; border-radius: 20px;
+      background: var(--bg); border: 1px solid var(--line); color: var(--muted);
+    }
+    .tag.ans { font-weight: 700; }
+    .tag.ans.t { background: var(--true-soft); color: var(--true); border-color: #b8e0cc; }
+    .tag.ans.f { background: var(--false-soft); color: #a12c44; border-color: #f3c2cd; }
+    .stmt { font-size: 1.02rem; margin: 6px 0 10px; }
+    .row { margin: 6px 0; font-size: .9rem; }
+    .row .k { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; display: block; }
+    .why { background: var(--bg); border-radius: 8px; padding: 10px; margin-top: 10px; }
+    .why ol { margin: 6px 0 0; padding-left: 22px; }
+    .why li.correct { font-weight: 700; color: var(--true); }
+    .why li.correct::after { content: " ✓"; }
+    .health table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+    .health th, .health td { text-align: left; padding: 3px 10px 3px 0; }
+    .health th { color: var(--muted); font-weight: 600; }
+    .health .flag { color: #a12c44; font-weight: 600; }
+    details.health { margin-bottom: 16px; }
+    details.health summary { cursor: pointer; font-weight: 600; }
+    .empty { color: var(--muted); padding: 30px; text-align: center; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <h1>Question Browser</h1>
+    <div class="sub">Instructor review tool — not linked from the student app.</div>
+  </header>
+  <div class="warnbar">
+    This page reads the same public <code>questions.js</code> the app uses. It is unlisted, not private.
+    Anything visible here is already visible to anyone who opens the app's source.
+  </div>
+
+  <div class="layout">
+    <aside class="panel">
+      <h2>Filters</h2>
+      <div class="field">
+        <label for="fSearch">Search text</label>
+        <input type="text" id="fSearch" placeholder="statement, explanation, misconception…">
+      </div>
+      <div class="field">
+        <label for="fSection">Section</label>
+        <select id="fSection" multiple></select>
+      </div>
+      <div class="field">
+        <label for="fConcept">Concept</label>
+        <select id="fConcept"><option value="">All concepts</option></select>
+      </div>
+      <div class="field">
+        <label for="fTopic">Topic</label>
+        <select id="fTopic"><option value="">All topics</option></select>
+      </div>
+      <div class="field">
+        <label for="fAnswer">Truth value</label>
+        <select id="fAnswer">
+          <option value="">Either</option>
+          <option value="true">True only</option>
+          <option value="false">False only</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Difficulty</label>
+        <div class="checks">
+          <label><input type="checkbox" class="fDiff" value="1" checked> 1</label>
+          <label><input type="checkbox" class="fDiff" value="2" checked> 2</label>
+          <label><input type="checkbox" class="fDiff" value="3" checked> 3</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Variant</label>
+        <div class="checks">
+          <label><input type="checkbox" class="fVar" value="core" checked> core</label>
+          <label><input type="checkbox" class="fVar" value="hypothesis" checked> hypothesis</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Has</label>
+        <div class="checks">
+          <label><input type="checkbox" id="fWhy"> Why? prompt</label>
+          <label><input type="checkbox" id="fCounter"> counterexample</label>
+        </div>
+      </div>
+      <button id="reset">Reset filters</button>
+    </aside>
+
+    <main>
+      <details class="health panel">
+        <summary>Bank health</summary>
+        <div id="healthBody"></div>
+      </details>
+
+      <div class="resultbar">
+        <span class="count" id="count"></span>
+        <span>
+          <label for="sortBy" style="font-size:.8rem;color:var(--muted)">Sort</label>
+          <select id="sortBy" style="padding:5px;border-radius:6px;border:1px solid var(--line)">
+            <option value="id">by id</option>
+            <option value="difficulty">by difficulty</option>
+            <option value="concept">by concept</option>
+            <option value="answer">by truth value</option>
+          </select>
+          <button id="copyIds">Copy visible ids</button>
+        </span>
+      </div>
+      <div id="list"></div>
+    </main>
+  </div>
+
+  <script>
+  // questions.js is loaded with defer, so it has not run yet while this inline
+  // script is being parsed. Deferred scripts all execute before DOMContentLoaded.
+  document.addEventListener("DOMContentLoaded", () => {
+    const BANK = window.QUESTION_BANK || [];
+    const el = id => document.getElementById(id);
+    const uniq = arr => [...new Set(arr)].sort();
+
+    // ---- populate the dynamic filter options from the bank itself, so new
+    // sections and concepts appear here without editing this file.
+    for (const s of uniq(BANK.map(q => q.section))) {
+      el("fSection").insertAdjacentHTML("beforeend", `<option value="${s}" selected>Section ${s}</option>`);
+    }
+    for (const c of uniq(BANK.map(q => q.concept))) {
+      el("fConcept").insertAdjacentHTML("beforeend", `<option value="${c}">${c}</option>`);
+    }
+    for (const t of uniq(BANK.map(q => q.topic))) {
+      el("fTopic").insertAdjacentHTML("beforeend", `<option value="${t}">${t}</option>`);
+    }
+
+    const checked = cls => [...document.querySelectorAll("." + cls)].filter(c => c.checked).map(c => c.value);
+
+    function currentFilters() {
+      return {
+        search: el("fSearch").value.trim().toLowerCase(),
+        sections: [...el("fSection").selectedOptions].map(o => o.value),
+        concept: el("fConcept").value,
+        topic: el("fTopic").value,
+        answer: el("fAnswer").value,
+        diffs: checked("fDiff").map(Number),
+        variants: checked("fVar"),
+        why: el("fWhy").checked,
+        counter: el("fCounter").checked
+      };
+    }
+
+    function matches(q, f) {
+      if (f.sections.length && !f.sections.includes(q.section)) return false;
+      if (f.concept && q.concept !== f.concept) return false;
+      if (f.topic && q.topic !== f.topic) return false;
+      if (f.answer && String(q.answer) !== f.answer) return false;
+      if (!f.diffs.includes(q.difficulty)) return false;
+      if (!f.variants.includes(q.variant)) return false;
+      if (f.why && !q.why) return false;
+      if (f.counter && !q.counterexample) return false;
+      if (f.search) {
+        const hay = [q.id, q.statement, q.explanation, q.misconception, q.counterexample || "",
+                     q.concept, q.topic, q.why ? q.why.prompt + q.why.choices.join(" ") : ""]
+                    .join(" ").toLowerCase();
+        if (!hay.includes(f.search)) return false;
+      }
+      return true;
+    }
+
+    // Question text is authored HTML+TeX from our own questions.js, and MathJax
+    // needs it unescaped to typeset. Deliberately a pass-through, not an escaper:
+    // never point this at text a student supplied.
+    const raw = s => String(s);
+
+    function card(q) {
+      const why = q.why ? `
+        <div class="why">
+          <span class="k">Why? — ${raw(q.why.prompt)}</span>
+          <ol>${q.why.choices.map((c, i) =>
+            `<li class="${i === q.why.correct ? "correct" : ""}">${raw(c)}</li>`).join("")}</ol>
+        </div>` : "";
+      const ce = q.counterexample
+        ? `<div class="row"><span class="k">Example / counterexample</span>${raw(q.counterexample)}</div>` : "";
+      return `
+        <article class="q ${q.answer}">
+          <div class="idline">
+            <code class="qid" data-id="${q.id}" title="click to copy">${q.id}</code>
+            <span class="tag ans ${q.answer ? "t" : "f"}">${q.answer ? "TRUE" : "FALSE"}</span>
+            <span class="tag">§${q.section}</span>
+            <span class="tag">${q.topic}</span>
+            <span class="tag">${q.concept}</span>
+            <span class="tag">d${q.difficulty}</span>
+            <span class="tag">${q.variant}</span>
+          </div>
+          <div class="stmt">${raw(q.statement)}</div>
+          <div class="row"><span class="k">Explanation</span>${raw(q.explanation)}</div>
+          ${ce}
+          <div class="row"><span class="k">Misconception probed</span>${raw(q.misconception)}</div>
+          ${why}
+        </article>`;
+    }
+
+    let visible = [];
+
+    function render() {
+      const f = currentFilters();
+      visible = BANK.filter(q => matches(q, f));
+      const by = el("sortBy").value;
+      visible.sort((a, b) =>
+        by === "difficulty" ? a.difficulty - b.difficulty || a.id.localeCompare(b.id)
+        : by === "concept" ? a.concept.localeCompare(b.concept) || a.id.localeCompare(b.id)
+        : by === "answer" ? Number(a.answer) - Number(b.answer) || a.id.localeCompare(b.id)
+        : a.id.localeCompare(b.id));
+
+      const t = visible.filter(q => q.answer).length;
+      el("count").textContent = visible.length
+        ? `${visible.length} of ${BANK.length} shown — ${t} true, ${visible.length - t} false`
+        : "No questions match these filters";
+      el("list").innerHTML = visible.length ? visible.map(card).join("") : `<div class="empty">Nothing matches. Try widening the filters.</div>`;
+      if (window.MathJax?.typesetPromise) MathJax.typesetPromise([el("list")]).catch(() => {});
+    }
+
+    // ---- Bank health: mirrors the groupings npm test warns about, so editorial
+    // review and the validator agree about what counts as a problem.
+    function health() {
+      const pct = qs => {
+        const t = qs.filter(q => q.answer).length;
+        return { t, n: qs.length, r: qs.length ? t / qs.length : 0 };
+      };
+      const rows = (label, groups) => groups.map(([name, qs]) => {
+        const { t, n, r } = pct(qs);
+        const lo = n >= 40 ? 0.4 : 0.25, hi = n >= 40 ? 0.6 : 0.75;
+        const bad = n >= 5 && (r < lo || r > hi);
+        return `<tr><td>${name}</td><td>${n}</td>
+                <td class="${bad ? "flag" : ""}">${t} true (${Math.round(r * 100)}%)${bad ? " ⚠" : ""}</td></tr>`;
+      }).join("");
+
+      const bySec = uniq(BANK.map(q => q.section)).map(s => [`§${s}`, BANK.filter(q => q.section === s)]);
+      const byVar = ["core", "hypothesis"].map(v => [v, BANK.filter(q => q.variant === v)]);
+      const byDiff = [1, 2, 3].map(d => [`difficulty ${d}`, BANK.filter(q => q.difficulty === d)]);
+
+      const conceptMap = new Map();
+      for (const q of BANK) {
+        if (!conceptMap.has(q.concept)) conceptMap.set(q.concept, []);
+        conceptMap.get(q.concept).push(q);
+      }
+      const singles = [...conceptMap].filter(([, v]) => v.length < 2).map(([k]) => k);
+      const skewed = [...conceptMap]
+        .filter(([, v]) => v.length >= 3 && v.every(q => q.answer === v[0].answer))
+        .map(([k, v]) => `${k} (all ${v[0].answer})`);
+
+      el("healthBody").innerHTML = `
+        <table>
+          <tr><th>Group</th><th>n</th><th>Balance</th></tr>
+          ${rows("all", [["whole bank", BANK]])}
+          ${rows("sec", bySec)}
+          ${rows("var", byVar)}
+          ${rows("diff", byDiff)}
+        </table>
+        <p style="font-size:.85rem;margin:10px 0 0">
+          Concepts: ${conceptMap.size} ·
+          Why? prompts: ${BANK.filter(q => q.why).length}/${BANK.length} ·
+          counterexamples: ${BANK.filter(q => q.counterexample).length}/${BANK.length}
+        </p>
+        <p style="font-size:.85rem;margin:6px 0 0" class="${singles.length ? "flag" : ""}">
+          Single-question concepts: ${singles.length ? singles.join(", ") : "none"}
+        </p>
+        <p style="font-size:.85rem;margin:6px 0 0" class="${skewed.length ? "flag" : ""}">
+          Concepts with one truth value only: ${skewed.length ? skewed.join(", ") : "none"}
+        </p>`;
+    }
+
+    document.addEventListener("input", e => {
+      if (e.target.closest("aside") || e.target.id === "sortBy") render();
+    });
+    document.addEventListener("change", e => {
+      if (e.target.closest("aside") || e.target.id === "sortBy") render();
+    });
+    el("reset").addEventListener("click", () => {
+      el("fSearch").value = "";
+      [...el("fSection").options].forEach(o => o.selected = true);
+      el("fConcept").value = ""; el("fTopic").value = ""; el("fAnswer").value = "";
+      document.querySelectorAll(".fDiff, .fVar").forEach(c => c.checked = true);
+      el("fWhy").checked = false; el("fCounter").checked = false;
+      render();
+    });
+    el("copyIds").addEventListener("click", async () => {
+      await navigator.clipboard.writeText(visible.map(q => q.id).join("\n"));
+      el("copyIds").textContent = `Copied ${visible.length}`;
+      setTimeout(() => el("copyIds").textContent = "Copy visible ids", 1200);
+    });
+    el("list").addEventListener("click", async e => {
+      const c = e.target.closest(".qid");
+      if (!c) return;
+      await navigator.clipboard.writeText(c.dataset.id);
+      const old = c.textContent;
+      c.textContent = "copied";
+      setTimeout(() => c.textContent = old, 800);
+    });
+
+    health();
+    render();
+  });
+  </script>
+</body>
+</html>
