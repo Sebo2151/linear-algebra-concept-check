@@ -93,6 +93,34 @@ Before accepting a question, verify:
 
 Favor clean sentences. Avoid double negatives and lawyerly wording.
 
+### Words that quietly create two truth values
+
+Standard 1 is the one most often broken by accident, and usually by a single word
+rather than by the mathematics.
+
+**“means”** slides between *is defined as* and *implies*, and the two readings can
+disagree. “Linear independence of \(v_1,\dots,v_p\) means that no two of the vectors
+are equal” is false as a definition and true as an implication, so the item had no
+single answer. It was rewritten as “If no two of the vectors are equal, then the
+list is linearly independent,” which is unambiguously false. Prefer **“if … then”**
+for one direction and **“exactly when”** or **“if and only if”** for both. Use
+“means” only where both readings agree, as in 1.4-spansrm-05.
+
+Watch the same way for:
+
+- **“can”** and **“must”** — “can be inconsistent” asks about existence of an
+  example, “must be inconsistent” asks about every case. Decide which you want.
+- **“any”** — “any three vectors span \(\mathbb{R}^3\)” reads as *every* to most
+  students and as *some* to a few. Write “every” or “some”.
+- **“only”** — placement changes the claim: “only pivot columns give free
+  variables” is not “pivot columns give only free variables”.
+- **bare plurals** — “vectors in a dependent list are combinations of the others”
+  hides whether that is *some* or *all*. Quantify explicitly.
+
+When a statement turns on a quantifier or on one direction of an implication, that
+is often the point of the item. Make it the point in the wording too, rather than
+leaving the reader to guess which reading was intended.
+
 ## 5. Core vs. hypothesis-awareness questions
 
 The app deliberately distinguishes:
