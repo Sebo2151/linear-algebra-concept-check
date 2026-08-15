@@ -117,6 +117,21 @@ The session sampler also downweights whichever truth value is already overrepres
 
 Do not force exact alternation; that would itself become predictable.
 
+### Balance within anything the student can see before answering
+
+The quiz card displays the variant ("Core concept" / "Hypothesis awareness") and the
+difficulty before the student commits to True or False. Any truth-value skew inside
+one of those visible groups is worse than overall skew, because it converts an
+on-screen label into a partial answer key.
+
+This was a real defect in the first version of the bank: every difficulty-3 item was
+false, and hypothesis items were 4/5 false. A student could clear the hardest
+questions by reading the badge instead of the statement — precisely the meta-strategy
+section 5 warns about, reinforced by the interface rather than merely tolerated by it.
+
+`npm test` now warns on skew within each variant and each difficulty. Keep those
+groups mixed, or remove the badge.
+
 ## 7. Course organization and textbook independence
 
 The course is based on Lay, so the section labels track that course organization. This is useful for choosing material students have already encountered.
@@ -219,6 +234,22 @@ Current schema:
 
 Use stable IDs. Once students may have stored local history, changing an ID makes the app treat the question as new.
 
+### TeX inside JavaScript strings
+
+Every backslash in a TeX macro must be doubled, because these are JavaScript string
+literals. Writing `\ne` instead of `\\ne` does not raise an error: JavaScript consumes
+it as a newline, and MathJax then silently renders `be0` where `b \ne 0` was intended.
+Unrecognized escapes such as `\c` are worse — the backslash is simply dropped, leaving
+no trace at all. `npm test` catches the control-character half of this; the rest is
+caught only by reading the rendered page.
+
+### Concept tags are load-bearing
+
+`concept` drives the adaptive resurfacing, so it is not a free-text label. A concept
+carried by a single question can never be revisited through a different item, which is
+the whole promise of section 2. Two questions that are the two directions of one
+implication should share a concept, or the engine cannot connect them.
+
 ## 11. Local adaptivity
 
 `app.js` currently uses:
@@ -251,13 +282,16 @@ If the storage schema changes incompatibly, migrate it or deliberately increment
 
 Recommended order:
 
-1. Instructor review of the existing §1.1–1.2 bank.
-2. Add or revise questions where coverage is thin.
+1. ~~Instructor review of the existing §1.1–1.2 bank.~~ Done; the bank grew from 53 to 74 items in response.
+2. ~~Add or revise questions where coverage is thin.~~ Done for singleton concepts; every concept now has at least two questions.
 3. Add course presets (“Homework 1: §§1.1–1.2”).
-4. Improve second-stage “Why?” coverage.
+4. Improve second-stage “Why?” coverage. Partly done: every difficulty-3 item now has one, but overall coverage is still only 12/74.
 5. Add a developer-only question browser / filter page for reviewing the bank.
 6. Add lightweight within-session resurfacing of missed concepts.
 7. Only after the pedagogy feels right, expand to §§1.3+.
+
+Difficulty is still bottom-heavy (45 / 24 / 5 across levels 1–3). A session drawn
+from this bank is mostly recall. Worth addressing before expanding the scope.
 
 A developer question browser would be especially useful: show every item with filters for section, concept, truth value, difficulty, and variant, plus counts. This would make editorial review much easier.
 

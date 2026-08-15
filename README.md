@@ -54,7 +54,7 @@ If Node is installed:
 npm test
 ```
 
-The validator checks required fields, IDs, answer types, `why` answer keys, section labels, duplicate statements, and truth-value balance.
+The validator checks required fields, IDs, answer types, `why` answer keys, section labels, and duplicate statements. It also reports on content health: stray control characters (the signature of a TeX macro that lost a backslash), truth-value balance overall and within each section, variant, and difficulty, and concepts that are carried by a single question or whose questions all share one answer.
 
 ## Copyright / authorship policy
 

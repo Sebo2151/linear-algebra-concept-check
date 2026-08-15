@@ -166,6 +166,43 @@ window.QUESTION_BANK = [
     "explanation": "By definition, an inconsistent system has no solution, so its solution set is empty."
   },
   {
+    "id": "1.1-system-08",
+    "section": "1.1",
+    "topic": "Linear systems",
+    "concept": "solution",
+    "statement": "If \\((x_1,x_2)=(1,2)\\) satisfies the first equation of a system but not the second, it is still a solution of the system.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Satisfying some of the equations makes a list of values a partial solution.",
+    "explanation": "A solution must satisfy every equation at once. Failing even one equation disqualifies it completely."
+  },
+  {
+    "id": "1.1-system-09",
+    "section": "1.1",
+    "topic": "Linear systems",
+    "concept": "solution-count",
+    "statement": "A linear system with real coefficients has no solution, exactly one solution, or infinitely many solutions.",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "A linear system can have any number of solutions.",
+    "explanation": "These three cases are exhaustive. In particular, no such system has exactly two or exactly seventeen solutions."
+  },
+  {
+    "id": "1.1-system-10",
+    "section": "1.1",
+    "topic": "Linear systems",
+    "concept": "solution-set",
+    "statement": "The solution set of a system of two equations consists of everything solving the first equation together with everything solving the second.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The solution set is the union of the individual equations' solution sets.",
+    "explanation": "A solution has to satisfy both equations, so the solution set is the intersection of the two individual solution sets, not their union.",
+    "counterexample": "The system \\(x=0,\\;x=1\\) has an equation solved by \\(x=0\\) and an equation solved by \\(x=1\\), yet nothing satisfies both, so the solution set is empty."
+  },
+  {
     "id": "1.1-matrix-01",
     "section": "1.1",
     "topic": "Matrices and systems",
@@ -225,6 +262,54 @@ window.QUESTION_BANK = [
     "counterexample": "The same array of numbers can be studied simply as a matrix without assigning any right-hand-side column."
   },
   {
+    "id": "1.1-matrix-05",
+    "section": "1.1",
+    "topic": "Matrices and systems",
+    "concept": "augmented-matrix",
+    "statement": "When forming an augmented matrix, each row may list its coefficients in whatever variable order is convenient for that equation.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The matrix is only a bookkeeping table, so the order within a row does not matter.",
+    "explanation": "Every column must correspond to one fixed variable across all rows. If rows used different orderings, a column would no longer represent a single variable and row operations would lose their meaning."
+  },
+  {
+    "id": "1.1-matrix-06",
+    "section": "1.1",
+    "topic": "Matrices and systems",
+    "concept": "coefficient-matrix",
+    "statement": "If a variable is absent from one of the equations, that equation's row still has an entry in that variable's column, namely \\(0\\).",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Variables missing from an equation are simply skipped when building the matrix.",
+    "explanation": "An absent variable has coefficient \\(0\\). Recording that zero is what keeps each column aligned with a single variable."
+  },
+  {
+    "id": "1.1-matrix-07",
+    "section": "1.1",
+    "topic": "Matrices and systems",
+    "concept": "matrix-dimensions",
+    "statement": "A matrix with \\(4\\) rows and \\(7\\) columns is a \\(7\\times4\\) matrix.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Dimensions are listed as columns by rows.",
+    "explanation": "Dimensions are always listed rows first, so this matrix is \\(4\\times7\\)."
+  },
+  {
+    "id": "1.1-matrix-08",
+    "section": "1.1",
+    "topic": "Matrices and systems",
+    "concept": "matrix-vs-system",
+    "statement": "Elementary row operations can be applied to any matrix, whether or not it came from a system of equations.",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Row operations only make sense for augmented matrices.",
+    "explanation": "Row operations are defined on rectangular arrays of numbers. Reading the result back as a system is an extra step, available only when the matrix represents one."
+  },
+  {
     "id": "1.1-rowops-01",
     "section": "1.1",
     "topic": "Elementary row operations",
@@ -264,7 +349,7 @@ window.QUESTION_BANK = [
     "id": "1.1-rowops-04",
     "section": "1.1",
     "topic": "Elementary row operations",
-    "concept": "row-equivalence",
+    "concept": "equivalent-systems",
     "statement": "If the augmented matrices of two systems are row equivalent, then the systems are equivalent.",
     "answer": true,
     "difficulty": 1,
@@ -317,7 +402,100 @@ window.QUESTION_BANK = [
     "variant": "hypothesis",
     "misconception": "The implication between row equivalence and equivalent systems automatically works both ways.",
     "explanation": "Row-equivalent augmented matrices always give equivalent systems, but the converse can fail. In particular, all inconsistent systems have the same empty solution set, while their augmented matrices need not have the same RREF.",
-    "counterexample": "The systems \\(x=0,\\;0=1\\) and \\(y=0,\\;0=1\\) (in variables \\(x,y\\)) are both inconsistent, hence equivalent as systems, but their augmented matrices have different RREFs."
+    "counterexample": "The systems \\(x=0,\\;0=1\\) and \\(y=0,\\;0=1\\) (in variables \\(x,y\\)) are both inconsistent, hence equivalent as systems, but their augmented matrices have different RREFs.",
+    "why": {
+      "prompt": "Why does the converse fail?",
+      "choices": [
+        "Every inconsistent system has the empty solution set, so systems with quite different augmented matrices can still be equivalent.",
+        "Elementary row operations can change a system's solution set.",
+        "Equivalent systems must have different numbers of equations.",
+        "The augmented matrices of equivalent systems always have different sizes."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.1-rowops-08",
+    "section": "1.1",
+    "topic": "Elementary row operations",
+    "concept": "equivalent-systems",
+    "statement": "Suppose two systems, each consisting of \\(m\\) equations in the variables \\(x_1,\\dots,x_n\\), are both consistent and have the same solution set. Then their augmented matrices are row equivalent.",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "hypothesis",
+    "misconception": "Because the converse fails in general, it must fail for consistent systems too.",
+    "explanation": "For a consistent system, the solution set determines the reduced row echelon form of the augmented matrix. Two such systems of the same size therefore share an RREF, which makes their augmented matrices row equivalent. Consistency is exactly the hypothesis that was missing when the converse failed.",
+    "why": {
+      "prompt": "Why does assuming consistency repair the converse?",
+      "choices": [
+        "All inconsistent systems share the empty solution set, so that solution set carries no information about the augmented matrix.",
+        "Consistent systems always have exactly one solution.",
+        "Consistent systems always have square augmented matrices.",
+        "Row operations behave differently on consistent systems."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.1-rowops-09",
+    "section": "1.1",
+    "topic": "Elementary row operations",
+    "concept": "row-equivalence",
+    "statement": "Any two matrices of the same size are row equivalent.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Row operations are powerful enough to turn any matrix into any other matrix of the same size.",
+    "explanation": "Row operations preserve the reduced row echelon form, so two matrices with different reduced row echelon forms are never row equivalent.",
+    "counterexample": "\\(\\begin{bmatrix}0&0\\\\0&0\\end{bmatrix}\\) and \\(\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\) are both \\(2\\times2\\), but no row operation can produce a nonzero entry from an all-zero matrix."
+  },
+  {
+    "id": "1.1-rowops-10",
+    "section": "1.1",
+    "topic": "Elementary row operations",
+    "concept": "row-equivalence",
+    "statement": "A matrix is row equivalent only to those matrices obtained from it by a single elementary row operation.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Row equivalence describes one step rather than a sequence of steps.",
+    "explanation": "Row equivalence allows any finite sequence of elementary row operations. A matrix is row equivalent to everything reachable in any number of steps, not just one."
+  },
+  {
+    "id": "1.1-rowops-11",
+    "section": "1.1",
+    "topic": "Elementary row operations",
+    "concept": "row-interchange",
+    "statement": "Interchanging two rows is an elementary row operation, and performing the same interchange a second time restores the original matrix.",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Undoing a row interchange requires some different operation.",
+    "explanation": "Interchange is its own inverse. Swapping the same two rows again returns every entry to its original position."
+  },
+  {
+    "id": "1.1-rowops-12",
+    "section": "1.1",
+    "topic": "Elementary row operations",
+    "concept": "row-replacement",
+    "statement": "In a matrix with three rows, replacing the first row by the sum of the second and third rows is an elementary row operation.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Any operation that builds a new row out of existing rows counts as row replacement.",
+    "explanation": "Row replacement changes \\(R_i\\) into \\(R_i+cR_j\\), keeping the row being modified. Discarding the original first row destroys information and cannot be undone."
+  },
+  {
+    "id": "1.1-rowops-13",
+    "section": "1.1",
+    "topic": "Elementary row operations",
+    "concept": "row-scaling",
+    "statement": "Multiplying every entry of a single row by \\(-3\\) is an elementary row operation.",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "A scaling factor has to be positive.",
+    "explanation": "Row scaling permits any nonzero scalar, and \\(-3\\) is nonzero. The operation is undone by multiplying the same row by \\(-1/3\\)."
   },
   {
     "id": "1.2-ref-01",
@@ -378,6 +556,18 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "REF already has zeros both above and below pivots.",
     "explanation": "Zeros above pivot locations are required for reduced echelon form, not ordinary echelon form."
+  },
+  {
+    "id": "1.2-ref-06",
+    "section": "1.2",
+    "topic": "Echelon form",
+    "concept": "ref-vs-rref",
+    "statement": "Every matrix in reduced row echelon form is also in row echelon form.",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "The two forms are separate categories rather than one being a strengthening of the other.",
+    "explanation": "Reduced echelon form imposes all of the echelon conditions and then adds two more: each leading entry equals \\(1\\), and each leading \\(1\\) is the only nonzero entry in its column."
   },
   {
     "id": "1.2-rref-01",
@@ -453,6 +643,18 @@ window.QUESTION_BANK = [
     "explanation": "Each matrix is row equivalent to that common RREF, so reversing one sequence and composing the operations shows the two matrices are row equivalent."
   },
   {
+    "id": "1.2-rref-07",
+    "section": "1.2",
+    "topic": "Reduced echelon form",
+    "concept": "rref",
+    "statement": "A matrix all of whose entries are \\(0\\) is in reduced row echelon form.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "hypothesis",
+    "misconception": "Reduced row echelon form requires at least one leading \\(1\\).",
+    "explanation": "Every defining condition concerns nonzero rows and their leading entries. A zero matrix has no nonzero rows, so all of the conditions hold vacuously and the matrix is already in reduced row echelon form."
+  },
+  {
     "id": "1.2-pivot-01",
     "section": "1.2",
     "topic": "Pivot positions",
@@ -489,6 +691,18 @@ window.QUESTION_BANK = [
     "explanation": "The RREF is unique, so the locations of its leading \\(1\\)s—and therefore the pivot positions—are fixed."
   },
   {
+    "id": "1.2-pivot-04",
+    "section": "1.2",
+    "topic": "Pivot positions",
+    "concept": "pivot-column",
+    "statement": "A matrix cannot have more pivot columns than it has rows.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The number of pivot columns is limited only by the number of columns.",
+    "explanation": "Leading entries in an echelon form move strictly down and to the right, so each pivot position occupies a row of its own. The number of pivots is therefore at most the number of rows."
+  },
+  {
     "id": "1.2-gauss-01",
     "section": "1.2",
     "topic": "Gaussian elimination",
@@ -499,6 +713,18 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "Gaussian elimination requires going all the way to RREF.",
     "explanation": "The forward phase of Gaussian elimination produces an echelon form. Further reduction can be used when RREF is desired."
+  },
+  {
+    "id": "1.2-gauss-02",
+    "section": "1.2",
+    "topic": "Gaussian elimination",
+    "concept": "gaussian-elimination",
+    "statement": "Two people who each row reduce the same matrix correctly must have used the same sequence of elementary row operations.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "There is only one correct path through row reduction.",
+    "explanation": "Many different sequences of operations reach an echelon form, and many different sequences reach the reduced echelon form. The final reduced echelon form is unique; the route to it is not."
   },
   {
     "id": "1.2-variables-01",
@@ -516,7 +742,7 @@ window.QUESTION_BANK = [
     "id": "1.2-variables-02",
     "section": "1.2",
     "topic": "Basic and free variables",
-    "concept": "free-variable",
+    "concept": "basic-variable",
     "statement": "Every variable whose coefficient column contains at least one nonzero entry is a basic variable.",
     "answer": false,
     "difficulty": 1,
@@ -557,6 +783,18 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "The augmented column can add a basic variable.",
     "explanation": "There is one variable for each coefficient column, and exactly the variables in pivot columns are basic."
+  },
+  {
+    "id": "1.2-variables-05",
+    "section": "1.2",
+    "topic": "Basic and free variables",
+    "concept": "free-variable",
+    "statement": "When writing the solution set of a consistent system, each free variable must be assigned the value \\(0\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Setting free variables to zero is part of the procedure rather than one choice among many.",
+    "explanation": "A free variable may take any value; that is what makes it free. Setting them all to \\(0\\) produces one particular solution, but describing the whole solution set requires keeping them as parameters."
   },
   {
     "id": "1.2-existence-01",
@@ -652,7 +890,17 @@ window.QUESTION_BANK = [
     "variant": "hypothesis",
     "misconception": "Pivots in all variable columns guarantee both existence and uniqueness.",
     "explanation": "Pivots in all coefficient columns mean there are no free variables, but the system may still be inconsistent if the augmented column is also a pivot column.",
-    "counterexample": "\\(x=0,\\;y=0,\\;0=1\\) has pivots in both coefficient columns and is inconsistent."
+    "counterexample": "\\(x=0,\\;y=0,\\;0=1\\) has pivots in both coefficient columns and is inconsistent.",
+    "why": {
+      "prompt": "Which half of existence and uniqueness does the statement leave unsettled?",
+      "choices": [
+        "Existence: the augmented column may itself be a pivot column, making the system inconsistent.",
+        "Uniqueness: free variables may still remain.",
+        "Neither; the statement is correct for square systems.",
+        "Existence: a system with no free variables cannot be written in parametric form."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.2-existence-08",
@@ -665,6 +913,40 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "Consistency requires a pivot in every row or every coefficient column.",
     "explanation": "The absence of a pivot in the augmented column means row reduction never produces an impossible equation \\(0=b\\) with \\(b\\ne0\\)."
+  },
+  {
+    "id": "1.2-existence-09",
+    "section": "1.2",
+    "topic": "Existence and uniqueness",
+    "concept": "unique-solution",
+    "statement": "If a system is consistent and every column of its coefficient matrix is a pivot column, then the system has exactly one solution.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "hypothesis",
+    "misconception": "Adding the consistency hypothesis is still not enough to guarantee uniqueness.",
+    "explanation": "Pivots in every coefficient column mean there are no free variables, which settles uniqueness once existence is known. Consistency supplies precisely that missing piece."
+  },
+  {
+    "id": "1.2-existence-10",
+    "section": "1.2",
+    "topic": "Existence and uniqueness",
+    "concept": "infinite-solutions",
+    "statement": "If a consistent system has more variables than equations, then it has infinitely many solutions.",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "hypothesis",
+    "misconception": "Having more variables than equations by itself tells you nothing about the number of solutions.",
+    "explanation": "Each pivot position occupies a row of its own, so a system of \\(m\\) equations has at most \\(m\\) pivots. With \\(n>m\\) variables, some coefficient column has no pivot and its variable is free. A consistent system with a free variable has infinitely many solutions.",
+    "why": {
+      "prompt": "Where does the hypothesis of consistency do its work?",
+      "choices": [
+        "Without it the system could instead have no solutions at all.",
+        "Without it there would be no free variables.",
+        "Without it the coefficient matrix would not be defined.",
+        "Without it the system would have exactly one solution."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.2-parametric-01",
@@ -710,6 +992,28 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "RREF is logically necessary rather than a convenient canonical form.",
-    "explanation": "RREF makes the parametric form easy to read off, but REF together with back-substitution can also produce a parametric description. In this course, reducing to RREF is often the cleanest standard procedure."
+    "explanation": "RREF makes the parametric form easy to read off, but REF together with back-substitution can also produce a parametric description. In this course, reducing to RREF is often the cleanest standard procedure.",
+    "why": {
+      "prompt": "What makes the statement too strong?",
+      "choices": [
+        "Back-substitution turns an echelon form into a parametric description without computing RREF.",
+        "Echelon forms never have free variables.",
+        "Echelon form and reduced echelon form are the same thing.",
+        "Parametric descriptions do not exist for systems with free variables."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.2-parametric-04",
+    "section": "1.2",
+    "topic": "Parametric solution sets",
+    "concept": "ref-suffices",
+    "statement": "Echelon form is enough to decide whether a system is consistent, but you cannot tell from echelon form whether the solution is unique.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Uniqueness can only be read off from the reduced echelon form.",
+    "explanation": "Pivot positions are already visible in any echelon form, so you can see whether every coefficient column has a pivot. That decides whether free variables exist, and therefore whether a consistent system has one solution or infinitely many."
   }
 ];
