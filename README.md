@@ -7,7 +7,8 @@ A lightweight, static practice app for introductory linear algebra. It is intend
 - True/false questions with immediate feedback.
 - Some questions add a second-stage **Why?** prompt before revealing the explanation.
 - Explanations and counterexamples are treated as part of the practice.
-- Filters for all sections together or any single section.
+- Material presets (“Everything so far”, “Exam 1 review”) plus any single section.
+- Keyboard control: `T`/`F` to answer, number keys to pick a reason, `Enter` to continue.
 - Question mixes: standard, main ideas only, or more hypothesis-awareness items.
   The student-facing labels avoid the internal `core` / `hypothesis` vocabulary.
 - Lightweight weakness-aware sampling using browser-local history.
@@ -43,6 +44,8 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
 - `viewer.html` — instructor question browser (see below).
 - `concept-labels.js` — student-facing names for the internal concept tags; shared
   by the app and the viewer so the two cannot drift apart.
+- `course-presets.js` — the groupings in the Material menu. Edit this when a new
+  exam's coverage is settled; the per-section entries are generated from the bank.
 - `report-config.js` — where question reports are sent.
 - `tools/` — reserved-homework cross-check and assignment builder.
 - `styles.css` — layout and visual design.
@@ -73,11 +76,12 @@ is a promise about what leaves the browser, so it has to stay true.
 The question id and answer are written to `localStorage` before the hand-off, so an
 abandoned or blocked form still leaves a trace that the question drew a complaint.
 
-Reporting is off by default in the sense that no destination is configured yet.
-Open `report-config.js` and paste in a form URL plus the prefill parameter names;
-instructions for finding those in Microsoft Forms and Google Forms are in the file.
-Until you do, pressing send copies a formatted report to the clipboard for the
-student to email instead, so nothing is broken in the meantime.
+The destination is set in `report-config.js`, which currently points at a Google
+Form and prefills the question id and the student's answer. To move it elsewhere,
+replace the URL and the prefill parameter names there; the file explains how to
+find them in Google Forms and Microsoft Forms. If the URL is blank, pressing send
+copies a formatted report to the clipboard for the student to email instead, so
+the app still works with no form at all.
 
 ## Instructor question browser
 

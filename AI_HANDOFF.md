@@ -52,6 +52,17 @@ A typical interaction is:
 
 The second-stage “Why?” is especially valuable. Correct T/F recognition can coexist with a wrong reason, and the app should be able to expose that.
 
+Two implementation rules follow from that, and both were learned the hard way:
+
+- **The verdict is withheld until the “Why?” is answered.** Telling a student the
+  truth value first hands them most of the reasoning question. The truth value,
+  the button colouring, and the reason result are all revealed together, and the
+  verdict distinguishes “right answer, wrong reason” explicitly.
+- **Choices are shuffled at display.** The stored lists put the correct choice
+  first in 62 of the first 64 items, which would have been learnable in a couple
+  of sessions. Because display order is randomised per view, the stored index
+  carries no meaning and does not need balancing.
+
 Potential future interactions, if pedagogically justified:
 - choose which hypothesis fails;
 - choose a valid counterexample;
@@ -397,6 +408,16 @@ implication should share a concept, or the engine cannot connect them.
 
 This is intentionally simple and interpretable.
 
+**A non-finite weight is silently catastrophic.** `weightedPick` walks a running
+total and returns the first item where the remainder drops to zero. If any weight
+is `NaN`, every comparison is false, the loop falls through, and the sampler
+returns the *last question in the bank* on every call. That happened once, from a
+`whyMissed` field that is only written on a wrong answer and so read as
+`undefined` for a concept whose reasons had all been right: 300 consecutive
+sessions opened with the same §1.9 question. Weights are now clamped, but the
+lesson generalises — the failure produces plausible-looking questions rather than
+an error, so it is invisible without checking the distribution.
+
 Potential next improvement:
 - separate T/F correctness from “Why?” correctness at the concept level;
 - distinguish a student who knows the truth value but repeatedly chooses the wrong justification;
@@ -467,7 +488,38 @@ Recommended order:
    items. It had quietly lapsed for six items across §§1.4–1.7 before being caught
    and fixed; a claim in this document that it held was wrong at the time.
 5. ~~Add a developer-only question browser / filter page for reviewing the bank.~~ `viewer.html`.
-6. Add lightweight within-session resurfacing of missed concepts.
+6. Add lightweight within-session resurfacing of missed concepts. This is now
+   bundled with the sampler rewrite below, since one change delivers both.
+
+### Deferred deliberately, in rough priority order
+
+These were identified in review before the first public release and held back to
+keep it shippable. None is a defect; each is a real improvement.
+
+- **More second-stage prompts.** Coverage is 64/292, so a twelve-question session
+  meets about two and a half. Several exam-central concepts have none at all:
+  `linear-transformation` 0/6, `onto` 0/5, `one-to-one` 0/5, `linear-independence`
+  0/5, `function-vocabulary` 0/7, `standard-matrix` 1/8. Strengthen those first
+  rather than chasing a uniform percentage.
+- **Ask the student to pick a counterexample.** Section 1 lists producing a
+  counterexample as a target habit, and the app never exercises it — students only
+  ever read one. Sanctioned by section 3; needs a new interaction type.
+- **Review-your-misses on the results screen.** Explanations are described as part
+  of the practice but vanish on Next, and the results screen shows concept bars
+  rather than the questions themselves.
+- **A concept-first sampler.** The current sampler weights *questions*, so a
+  concept with eight questions gets four times the exposure of one with two, and
+  weakness weighting multiplies that rather than correcting it. Choosing a concept
+  first, then a question within it, matches the model section 2 describes and
+  makes within-session resurfacing natural. Reasoning performance is already
+  recorded per concept (`whySeen` / `whyMissed`) and feeds `conceptWeakness`.
+- **Concrete items in §§1.1–1.2.** Only 13 of 292 statements display an actual
+  matrix, and §1.1, §1.2, §1.7 and §1.8 have none. §1.2 is the worst case: it is
+  about echelon forms and pivots, and a student never sees one. Section 3 already
+  sanctions small displayed matrices for identifying a pivot or a free variable.
+- **Bundle MathJax locally.** It loads from a CDN; if that is blocked the app is
+  unusable. There is now a warning banner when it fails to arrive, which is the
+  cheap half of the fix.
 7. ~~Only after the pedagogy feels right, expand to §§1.3+.~~ §§1.3–1.5 and §§1.7–1.9 added.
 
 Difficulty is bottom-heavy (118 / 145 / 29 across levels 1–3), though far less so

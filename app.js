@@ -18,7 +18,13 @@
     whyCorrect: 0,
     sessionConcepts: {},
     awaitingWhy: false,
-    lastAnswer: null
+    lastAnswer: null,
+    lastCorrect: null,
+    lastWhyCorrect: null,
+    whyOrder: [],
+    // Counts questions actually answered, not questions displayed. Ending a
+    // session on an unanswered question must not put it in the denominator.
+    answered: 0
   };
 
   function blankProgress() {
@@ -45,10 +51,20 @@
     }
   }
 
+  const PRESETS = window.COURSE_PRESETS || [];
+
+  // A Material choice is either a preset id or a bare section label.
+  function sectionsFor(choice) {
+    const preset = PRESETS.find(p => p.id === choice);
+    if (preset) return preset.sections;   // null means every section
+    return [choice];
+  }
+
   function eligibleQuestions() {
     const { section, mix } = state.settings;
+    const allowed = sectionsFor(section);
     return BANK.filter(q => {
-      if (section !== "all" && q.section !== section) return false;
+      if (allowed && !allowed.includes(q.section)) return false;
       if (mix === "core" && q.variant !== "core") return false;
       return true;
     });
@@ -57,7 +73,16 @@
   function conceptWeakness(concept) {
     const c = progress.concepts[concept];
     if (!c || c.seen === 0) return 0.35;
-    return c.missed / c.seen;
+    const tfRate = c.missed / c.seen;
+    if (!c.whySeen) return tfRate;
+    // Knowing the truth value while choosing the wrong reason is not mastery, so
+    // reasoning failures raise the weight. They never lower it below what the
+    // true/false record alone would give.
+    // whyMissed is only written on a wrong answer, so it is absent for a concept
+    // whose reasons have all been right; read it as 0 rather than dividing by
+    // undefined.
+    const whyRate = (c.whyMissed || 0) / c.whySeen;
+    return Math.max(tfRate, (tfRate + whyRate) / 2);
   }
 
   function weightedPick(items) {
@@ -77,6 +102,12 @@
       if (q.answer && seenTrue > seenFalse + 1) weight *= 0.45;
       if (!q.answer && seenFalse > seenTrue + 1) weight *= 0.45;
 
+      // A non-finite weight is silently catastrophic here: every `r <= 0` test
+      // below becomes false, the loop falls through, and the sampler returns the
+      // last question in the bank on every single call. A stray NaN from stored
+      // progress once made 300 consecutive sessions open with the same section,
+      // so clamp rather than trusting the arithmetic upstream.
+      if (!Number.isFinite(weight) || weight <= 0) weight = 1;
       return { q, weight };
     });
 
@@ -145,6 +176,16 @@
     state.sessionConcepts[q.concept] = s;
   }
 
+  // Stored beside the true/false counts rather than replacing them, and read with
+  // `|| 0` so history written before these fields existed still loads.
+  function recordWhy(q, wasCorrect) {
+    const c = progress.concepts[q.concept] || { seen: 0, missed: 0 };
+    c.whySeen = (c.whySeen || 0) + 1;
+    if (!wasCorrect) c.whyMissed = (c.whyMissed || 0) + 1;
+    progress.concepts[q.concept] = c;
+    saveProgress();
+  }
+
   function recordQuestion(q, wasCorrect) {
     const s = progress.questions[q.id] || { seen: 0, missed: 0 };
     s.seen += 1;
@@ -160,63 +201,111 @@
     const chosenBool = chosen === "true";
     const correct = chosenBool === q.answer;
     state.lastAnswer = chosenBool;
+    state.lastCorrect = correct;
+    state.lastWhyCorrect = null;
+    state.answered += 1;
 
+    // Mark the choice but withhold whether it was right. Telling a student the
+    // truth value here would hand them most of the reasoning question that
+    // follows, and "right answer, wrong reason" is exactly what the second stage
+    // is meant to expose.
     document.querySelectorAll(".answer-button").forEach(btn => {
       btn.disabled = true;
-      const btnBool = btn.dataset.answer === "true";
-      if (btnBool === chosenBool) {
-        btn.classList.add("selected", correct ? "correct" : "incorrect");
-      }
+      if ((btn.dataset.answer === "true") === chosenBool) btn.classList.add("selected");
     });
 
     if (correct) state.tfCorrect += 1;
     recordConcept(q, correct);
     recordQuestion(q, correct);
 
-    const verdict = el("verdictBox");
-    verdict.textContent = correct
-      ? "Correct."
-      : `Not quite — the statement is ${q.answer ? "true" : "false"}.`;
-    verdict.className = `verdict ${correct ? "good" : "bad"}`;
-
     if (q.why) {
       state.awaitingWhy = true;
       renderWhy(q);
     } else {
+      revealVerdict(q);
       revealExplanation(q);
     }
+  }
+
+  // Called once both commitments are in, so the two results appear together.
+  function revealVerdict(q) {
+    const tf = state.lastCorrect;
+    const why = state.lastWhyCorrect;
+
+    document.querySelectorAll(".answer-button.selected").forEach(btn => {
+      btn.classList.add(tf ? "correct" : "incorrect");
+    });
+
+    let text, tone;
+    if (tf && why === false) {
+      text = "Right answer, but not the reason we were after.";
+      tone = "mixed";
+    } else if (tf && why === true) {
+      text = "Correct, and for the right reason.";
+      tone = "good";
+    } else if (tf) {
+      text = "Correct.";
+      tone = "good";
+    } else {
+      const truth = q.answer ? "true" : "false";
+      text = why === true
+        ? `Not quite — the statement is ${truth}. Your reasoning was on the right track.`
+        : `Not quite — the statement is ${truth}.`;
+      tone = "bad";
+    }
+
+    const verdict = el("verdictBox");
+    verdict.textContent = text;
+    verdict.className = `verdict ${tone}`;
   }
 
   function renderWhy(q) {
     el("whyPrompt").innerHTML = q.why.prompt;
     const container = el("whyChoices");
     container.innerHTML = "";
-    q.why.choices.forEach((choice, index) => {
+
+    // Shuffle on every view. The stored lists put the correct choice first almost
+    // everywhere, which would otherwise be learnable in a couple of sessions, and
+    // reshuffling per view also stops a student memorising the position of a
+    // question they have seen before.
+    const order = q.why.choices.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    state.whyOrder = order;
+
+    order.forEach((original, position) => {
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "why-choice";
-      btn.innerHTML = choice;
-      btn.addEventListener("click", () => handleWhy(index));
+      btn.innerHTML = `<span class="why-key">${position + 1}</span>${q.why.choices[original]}`;
+      btn.addEventListener("click", () => handleWhy(original));
       container.appendChild(btn);
     });
     el("whyArea").classList.remove("hidden");
     typeset(el("whyArea"));
   }
 
-  function handleWhy(index) {
+  function handleWhy(original) {
     if (!state.awaitingWhy) return;
     state.awaitingWhy = false;
     const q = state.current;
-    const correct = index === q.why.correct;
+    const correct = original === q.why.correct;
+    state.lastWhyCorrect = correct;
     state.whyAnswered += 1;
     if (correct) state.whyCorrect += 1;
+    recordWhy(q, correct);
 
-    [...el("whyChoices").children].forEach((btn, i) => {
+    // Buttons are in shuffled order, so map each position back before marking it.
+    [...el("whyChoices").children].forEach((btn, position) => {
       btn.disabled = true;
-      if (i === q.why.correct) btn.classList.add("correct");
-      else if (i === index) btn.classList.add("incorrect");
+      const source = state.whyOrder[position];
+      if (source === q.why.correct) btn.classList.add("correct");
+      else if (source === original) btn.classList.add("incorrect");
     });
 
+    revealVerdict(q);
     revealExplanation(q);
   }
 
@@ -246,11 +335,14 @@
     el("quizView").classList.add("hidden");
     el("resultsView").classList.remove("hidden");
 
-    const tfPct = state.questionNumber ? Math.round((state.tfCorrect / state.questionNumber) * 100) : 0;
+    // Denominator is questions answered, not questions shown. Ending a session on
+    // a question the student never answered used to count it as a miss.
+    const answered = state.answered;
+    const tfPct = answered ? Math.round((state.tfCorrect / answered) * 100) : 0;
     const whyPct = state.whyAnswered ? Math.round((state.whyCorrect / state.whyAnswered) * 100) : null;
 
     el("scoreSummary").innerHTML = `
-      <div class="score-box"><strong>${state.tfCorrect}/${state.questionNumber}</strong><span>True/false judgments (${tfPct}%)</span></div>
+      <div class="score-box"><strong>${state.tfCorrect}/${answered}</strong><span>True/false judgments (${tfPct}%)</span></div>
       <div class="score-box"><strong>${state.whyAnswered ? `${state.whyCorrect}/${state.whyAnswered}` : "—"}</strong><span>${state.whyAnswered ? `Why questions (${whyPct}%)` : "No why questions this session"}</span></div>
     `;
 
@@ -313,6 +405,9 @@
     state.whyAnswered = 0;
     state.whyCorrect = 0;
     state.sessionConcepts = {};
+    state.answered = 0;
+    state.lastCorrect = null;
+    state.lastWhyCorrect = null;
     state._seenTrue = 0;
     state._seenFalse = 0;
 
@@ -329,9 +424,68 @@
     updateWeaknessNote();
   }
 
+  // ------------------------------------------------------- material menu setup
+  // Presets first, then one entry per section actually present in the bank, so a
+  // new section needs no edit here.
+  function buildSectionMenu() {
+    const select = el("sectionSelect");
+    for (const p of PRESETS) {
+      select.insertAdjacentHTML("beforeend", `<option value="${p.id}">${p.label}</option>`);
+    }
+    const sections = [...new Set(BANK.map(q => q.section))].sort();
+    for (const s of sections) {
+      select.insertAdjacentHTML("beforeend", `<option value="${s}">Section ${s} only</option>`);
+    }
+    select.selectedIndex = 0;
+  }
+
+  // ------------------------------------------------------------------ keyboard
+  // Practice is rapid, and reaching for the mouse for every judgement is friction.
+  function handleKey(e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    // A real keypress targets an element, but not every event does; `document`
+    // itself has no closest(), so guard before asking.
+    const target = e.target instanceof Element ? e.target : null;
+    if (target && target.closest("input, textarea, select, dialog")) return;
+    if (document.querySelector("dialog[open]")) return;
+    if (el("quizView").classList.contains("hidden")) return;
+
+    const key = e.key.toLowerCase();
+    const next = el("nextButton");
+
+    if (state.awaitingWhy) {
+      const n = Number(e.key);
+      const buttons = [...el("whyChoices").children];
+      if (n >= 1 && n <= buttons.length) {
+        e.preventDefault();
+        buttons[n - 1].click();
+      }
+      return;
+    }
+    if (!next.classList.contains("hidden") && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      next.click();
+      return;
+    }
+    const tf = document.querySelector(".answer-button:not([disabled])");
+    if (!tf) return;
+    if (key === "t") { e.preventDefault(); handleTF("true"); }
+    else if (key === "f") { e.preventDefault(); handleTF("false"); }
+  }
+
+  // ----------------------------------------------------------------- rendering
+  // MathJax comes from a CDN. If it never arrives, every statement stays as raw
+  // TeX and the app is unusable, so say so rather than leaving backslashes on the
+  // screen for a student to puzzle over.
+  function checkMathLoaded() {
+    if (window.MathJax?.typesetPromise) return;
+    el("mathWarning").classList.remove("hidden");
+  }
+
   document.querySelectorAll(".answer-button").forEach(btn => {
     btn.addEventListener("click", () => handleTF(btn.dataset.answer));
   });
+  document.addEventListener("keydown", handleKey);
 
   // ---------------------------------------------------------------- reporting
   // Reports are written to localStorage first and only then handed off, so a
@@ -422,5 +576,7 @@
     updateWeaknessNote();
   });
 
+  buildSectionMenu();
   updateWeaknessNote();
+  setTimeout(checkMathLoaded, 6000);
 })();
