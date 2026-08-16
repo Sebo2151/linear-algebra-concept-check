@@ -292,6 +292,25 @@ This distinction prevents training an inaccurate theorem.
 - more than \(n\) vectors in \(\mathbb{R}^n\) are dependent;
 - a list containing the zero vector is dependent.
 
+### §1.8
+- matrix transformations \(x\mapsto Ax\), and which space is the domain;
+- domain, codomain, image, range, and why range is not codomain;
+- the definition of a linear transformation, and that it has two requirements;
+- every matrix transformation is linear;
+- \(T(\mathbf{0})=\mathbf{0}\), and that its converse fails;
+- the single criterion \(T(cu+dv)=cT(u)+dT(v)\);
+- linear transformations preserve linear combinations, but not independence;
+- contractions and dilations.
+
+### §1.9
+- the standard matrix, its columns \(T(e_j)\), and its uniqueness;
+- a linear transformation is determined by the images of \(e_1,\dots,e_n\);
+- onto and one-to-one, kept carefully apart;
+- one-to-one exactly when \(T(x)=\mathbf{0}\) has only the trivial solution;
+- onto exactly when the columns span, one-to-one exactly when they are independent;
+- reflections, shears, projections and expansions as linear transformations;
+- the square case, where onto and one-to-one imply each other.
+
 ### §1.6 is deliberately absent
 
 Section numbering skips from 1.5 to 1.7 because the course does not cover §1.6.
@@ -435,15 +454,18 @@ Recommended order:
 1. ~~Instructor review of the existing §1.1–1.2 bank.~~ Done; the bank grew from 53 to 74 items in response.
 2. ~~Add or revise questions where coverage is thin.~~ Done for singleton concepts; every concept now has at least two questions.
 3. Add course presets (“Homework 1: §§1.1–1.2”).
-4. Improve second-stage “Why?” coverage. Partly done: every difficulty-3 item written so far has one, and coverage is now 41/215.
-5. Add a developer-only question browser / filter page for reviewing the bank.
+4. Improve second-stage “Why?” coverage. Coverage is 58/289 overall, and **every
+   difficulty-3 item has one** — treat that as the standing rule when adding hard
+   items. It had quietly lapsed for six items across §§1.4–1.7 before being caught
+   and fixed; a claim in this document that it held was wrong at the time.
+5. ~~Add a developer-only question browser / filter page for reviewing the bank.~~ `viewer.html`.
 6. Add lightweight within-session resurfacing of missed concepts.
-7. ~~Only after the pedagogy feels right, expand to §§1.3+.~~ §§1.3–1.5 and §1.7 added.
+7. ~~Only after the pedagogy feels right, expand to §§1.3+.~~ §§1.3–1.5 and §§1.7–1.9 added.
 
-Difficulty is bottom-heavy (97 / 99 / 19 across levels 1–3), though far less so
-than it was. This is deliberate for §1.1, which is genuinely easy material, and
-has been accepted. Revisit it if later sections inherit the same shape without
-the same excuse.
+Difficulty is bottom-heavy (116 / 143 / 30 across levels 1–3), though far less so
+than it was, and level 2 is now the largest group. This is deliberate for §1.1,
+which is genuinely easy material, and has been accepted. Revisit it if later
+sections inherit the same shape without the same excuse.
 
 A developer question browser would be especially useful: show every item with filters for section, concept, truth value, difficulty, and variant, plus counts. This would make editorial review much easier.
 

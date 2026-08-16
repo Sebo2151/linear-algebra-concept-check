@@ -16,7 +16,7 @@ A lightweight, static practice app for introductory linear algebra. It is intend
 - Responsive layout for desktop and mobile.
 - Math rendering through MathJax.
 
-The bank contains independently written questions covering the main definitions and ideas from §§1.1–1.5 and §1.7.
+The bank contains independently written questions covering the main definitions and ideas from §§1.1–1.5 and §§1.7–1.9.
 
 ## Run locally
 

@@ -1922,7 +1922,17 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "A matrix with five columns should have five pivots.",
-    "explanation": "Spanning \\(\\mathbb{R}^3\\) means a pivot in every row, and \\(A\\) has three rows. Since each pivot occupies its own row, there are exactly three. The remaining two columns are not pivot columns, so the system has free variables."
+    "explanation": "Spanning \\(\\mathbb{R}^3\\) means a pivot in every row, and \\(A\\) has three rows. Since each pivot occupies its own row, there are exactly three. The remaining two columns are not pivot columns, so the system has free variables.",
+    "why": {
+      "prompt": "Why exactly three, rather than five?",
+      "choices": [
+        "Spanning needs a pivot in every row, and there are three rows, each holding at most one pivot.",
+        "Because \\(A\\) has five columns, and every column is a pivot column.",
+        "Because a matrix always has as many pivots as it has columns.",
+        "Because \\(A\\) is not square, so its pivots cannot be counted."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.4-tfae-05",
@@ -2414,7 +2424,17 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "core",
     "misconception": "The translation vector is canonical rather than an arbitrary choice.",
-    "explanation": "Any solution may be used as \\(p\\). If \\(p\\) and \\(p'\\) both solve \\(Ax=b\\), then \\(p-p'\\) solves \\(Ax=\\mathbf{0}\\), and translating by either one sweeps out the same set."
+    "explanation": "Any solution may be used as \\(p\\). If \\(p\\) and \\(p'\\) both solve \\(Ax=b\\), then \\(p-p'\\) solves \\(Ax=\\mathbf{0}\\), and translating by either one sweeps out the same set.",
+    "why": {
+      "prompt": "Why does any particular solution serve equally well?",
+      "choices": [
+        "Two particular solutions differ by a solution of \\(Ax=\\mathbf{0}\\), so the two translates cover the same set.",
+        "Because row reduction always produces the same particular solution.",
+        "Because the solution set of \\(Ax=b\\) is a span.",
+        "Because a consistent equation has only one solution."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.5-particular-04",
@@ -2508,7 +2528,17 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "core",
     "misconception": "A solution set that misses the origin means the homogeneous equation is as small as possible.",
-    "explanation": "The solution set of \\(Ax=b\\) is a translate of the solution set of \\(Ax=\\mathbf{0}\\), so the two have the same shape. A line of solutions for \\(Ax=b\\) means \\(Ax=\\mathbf{0}\\) is also a line, namely the parallel one through the origin, which contains nontrivial solutions."
+    "explanation": "The solution set of \\(Ax=b\\) is a translate of the solution set of \\(Ax=\\mathbf{0}\\), so the two have the same shape. A line of solutions for \\(Ax=b\\) means \\(Ax=\\mathbf{0}\\) is also a line, namely the parallel one through the origin, which contains nontrivial solutions.",
+    "why": {
+      "prompt": "What does the shape of the solution set of \\(Ax=b\\) tell you?",
+      "choices": [
+        "It is a translate of the solution set of \\(Ax=\\mathbf{0}\\), so that set is a line through the origin.",
+        "Nothing at all, since the two equations are unrelated.",
+        "That \\(Ax=\\mathbf{0}\\) is inconsistent.",
+        "That \\(Ax=b\\) has exactly one solution."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.7-indep-01",
@@ -2851,7 +2881,17 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "The two-vector test generalizes directly to longer lists.",
     "explanation": "For longer lists the correct statement uses linear combinations of the others, not scalar multiples of a single one. Pairwise comparisons are not enough.",
-    "counterexample": "\\(\\begin{bmatrix}1\\\\0\\end{bmatrix},\\begin{bmatrix}0\\\\1\\end{bmatrix},\\begin{bmatrix}1\\\\1\\end{bmatrix}\\): no one of these is a multiple of another, yet the third is the sum of the first two, so the list is dependent."
+    "counterexample": "\\(\\begin{bmatrix}1\\\\0\\end{bmatrix},\\begin{bmatrix}0\\\\1\\end{bmatrix},\\begin{bmatrix}1\\\\1\\end{bmatrix}\\): no one of these is a multiple of another, yet the third is the sum of the first two, so the list is dependent.",
+    "why": {
+      "prompt": "What is the correct statement for a list of three or more?",
+      "choices": [
+        "At least one vector is a linear combination of the others, which is a weaker demand than being a multiple of a single one.",
+        "At least one vector is a scalar multiple of the sum of the others.",
+        "Every vector is a scalar multiple of some other vector in the list.",
+        "The list is dependent only when two of the vectors are equal."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.7-two-03",
@@ -2921,7 +2961,17 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "Restricting attention to preceding vectors weakens the characterization.",
-    "explanation": "Take a dependence relation and let \\(j\\) be the largest index with \\(c_j\\ne0\\). If \\(j=1\\) the relation reads \\(c_1v_1=\\mathbf{0}\\) with \\(c_1\\ne0\\), forcing \\(v_1=\\mathbf{0}\\). Otherwise solve for \\(v_j\\) in terms of \\(v_1,\\dots,v_{j-1}\\)."
+    "explanation": "Take a dependence relation and let \\(j\\) be the largest index with \\(c_j\\ne0\\). If \\(j=1\\) the relation reads \\(c_1v_1=\\mathbf{0}\\) with \\(c_1\\ne0\\), forcing \\(v_1=\\mathbf{0}\\). Otherwise solve for \\(v_j\\) in terms of \\(v_1,\\dots,v_{j-1}\\).",
+    "why": {
+      "prompt": "Which index \\(j\\) makes the argument work?",
+      "choices": [
+        "The largest index whose weight is nonzero, so that everything after it drops out.",
+        "The smallest index whose weight is nonzero.",
+        "Any index at all, since the weights play no role.",
+        "The index carrying the largest weight."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.7-many-01",
@@ -3005,7 +3055,17 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "core",
     "misconception": "The shape of a matrix says nothing about independence of its columns.",
-    "explanation": "If \\(A\\) is \\(m\\times n\\) with \\(n>m\\), its columns are \\(n\\) vectors in \\(\\mathbb{R}^m\\) with \\(n>m\\), so the counting theorem applies directly. Equivalently, some column has no pivot, giving a free variable."
+    "explanation": "If \\(A\\) is \\(m\\times n\\) with \\(n>m\\), its columns are \\(n\\) vectors in \\(\\mathbb{R}^m\\) with \\(n>m\\), so the counting theorem applies directly. Equivalently, some column has no pivot, giving a free variable.",
+    "why": {
+      "prompt": "Which counting fact does the argument rest on?",
+      "choices": [
+        "There are at most as many pivots as rows, so with more columns than rows some column has none.",
+        "There are at most as many pivots as columns, so some row has none.",
+        "Every column of a matrix must be a pivot column.",
+        "A matrix with more columns than rows must contain a zero column."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.7-zero-01",
@@ -3053,5 +3113,1040 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "A zero column is merely wasted space in the matrix.",
     "explanation": "The columns then form a list containing the zero vector \\(\\mathbf{0}\\), which is always dependent. Equivalently, that column is not a pivot column, so \\(Ax=\\mathbf{0}\\) has a free variable."
+  },
+  {
+    "id": "1.8-mattrans-01",
+    "section": "1.8",
+    "topic": "Transformations",
+    "concept": "matrix-transformation",
+    "statement": "If \\(A\\) is an \\(m\\times n\\) matrix, then the rule \\(x\\mapsto Ax\\) defines a function from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\).",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Matrix multiplication is a computation rather than a function.",
+    "explanation": "The product \\(Ax\\) is defined for \\(x\\) in \\(\\mathbb{R}^n\\) and produces a vector in \\(\\mathbb{R}^m\\). Assigning each input its output is exactly what a function does, and this one is called a matrix transformation."
+  },
+  {
+    "id": "1.8-mattrans-02",
+    "section": "1.8",
+    "topic": "Transformations",
+    "concept": "matrix-transformation",
+    "statement": "If \\(A\\) is \\(m\\times n\\), the matrix transformation \\(x\\mapsto Ax\\) takes vectors in \\(\\mathbb{R}^m\\) and produces vectors in \\(\\mathbb{R}^n\\).",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "The first number in the size of \\(A\\) tells you the input space.",
+    "explanation": "It is the other way around. The entries of \\(x\\) weight the \\(n\\) columns, so inputs come from \\(\\mathbb{R}^n\\); each column has \\(m\\) entries, so outputs land in \\(\\mathbb{R}^m\\)."
+  },
+  {
+    "id": "1.8-mattrans-03",
+    "section": "1.8",
+    "topic": "Transformations",
+    "concept": "matrix-transformation",
+    "statement": "For the matrix transformation \\(x\\mapsto Ax\\) with \\(A\\) of size \\(2\\times3\\), the domain is \\(\\mathbb{R}^2\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The domain is read off the number of rows.",
+    "explanation": "The domain is \\(\\mathbb{R}^3\\), one entry for each of the three columns. The codomain is \\(\\mathbb{R}^2\\), one entry for each of the two rows."
+  },
+  {
+    "id": "1.8-mattrans-04",
+    "section": "1.8",
+    "topic": "Transformations",
+    "concept": "matrix-transformation",
+    "statement": "Computing \\(T(u)\\) for the matrix transformation \\(T(x)=Ax\\) means forming the linear combination of the columns of \\(A\\) whose weights are the entries of \\(u\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Transformations require a new rule of computation.",
+    "explanation": "Nothing new is happening. \\(T(u)\\) is just the product \\(Au\\) from section 1.4, viewed as the output of a function."
+  },
+  {
+    "id": "1.8-mattrans-05",
+    "section": "1.8",
+    "topic": "Transformations",
+    "concept": "matrix-transformation",
+    "statement": "The transformation \\(x\\mapsto Ax\\) is defined for every vector \\(x\\), whatever the size of \\(A\\).",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Turning a product into a function removes the size requirement.",
+    "explanation": "The product is defined only when \\(x\\) has one entry for each column of \\(A\\). That requirement is what fixes the domain of the transformation."
+  },
+  {
+    "id": "1.8-vocab-01",
+    "section": "1.8",
+    "topic": "Function vocabulary",
+    "concept": "function-vocabulary",
+    "statement": "For a transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\), the domain is \\(\\mathbb{R}^n\\) and the codomain is \\(\\mathbb{R}^m\\).",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "The arrow notation is decoration rather than information.",
+    "explanation": "The notation records both spaces: inputs are taken from the domain on the left, and outputs are guaranteed to lie in the codomain on the right."
+  },
+  {
+    "id": "1.8-vocab-02",
+    "section": "1.8",
+    "topic": "Function vocabulary",
+    "concept": "function-vocabulary",
+    "statement": "The range of \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is always all of \\(\\mathbb{R}^m\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Range and codomain are the same thing.",
+    "explanation": "The range is the set of vectors that actually occur as outputs, and it may be a small part of the codomain.",
+    "counterexample": "The transformation of \\(\\mathbb{R}^2\\) that sends every vector to \\(\\mathbf{0}\\) has codomain \\(\\mathbb{R}^2\\) but range \\(\\{\\mathbf{0}\\}\\)."
+  },
+  {
+    "id": "1.8-vocab-03",
+    "section": "1.8",
+    "topic": "Function vocabulary",
+    "concept": "function-vocabulary",
+    "statement": "The range of \\(T\\) is the collection of all images \\(T(x)\\) as \\(x\\) runs over the domain.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The range is declared in advance rather than produced by the transformation.",
+    "explanation": "The codomain is announced when you write \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\). The range has to be worked out, by asking which vectors are actually hit."
+  },
+  {
+    "id": "1.8-vocab-04",
+    "section": "1.8",
+    "topic": "Function vocabulary",
+    "concept": "function-vocabulary",
+    "statement": "If \\(T(u)=b\\), then \\(u\\) is called the image of \\(b\\) under \\(T\\).",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Image can be read in either direction.",
+    "explanation": "The image is the output: \\(b\\) is the image of \\(u\\). Going the other way, \\(u\\) would be called a preimage of \\(b\\)."
+  },
+  {
+    "id": "1.8-vocab-05",
+    "section": "1.8",
+    "topic": "Function vocabulary",
+    "concept": "function-vocabulary",
+    "statement": "The range of \\(T\\) is contained in the codomain of \\(T\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Range and codomain are unrelated sets.",
+    "explanation": "Every output lies in the codomain by definition, so the range sits inside it. The two are equal exactly when \\(T\\) is onto."
+  },
+  {
+    "id": "1.8-vocab-06",
+    "section": "1.8",
+    "topic": "Function vocabulary",
+    "concept": "function-vocabulary",
+    "statement": "If \\(T:\\mathbb{R}^3\\to\\mathbb{R}^2\\), then \\(T(x)\\) has three entries.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "The output has as many entries as the input.",
+    "explanation": "\\(T(x)\\) lies in the codomain \\(\\mathbb{R}^2\\), so it has two entries. It is the input \\(x\\) that has three."
+  },
+  {
+    "id": "1.8-vocab-07",
+    "section": "1.8",
+    "topic": "Function vocabulary",
+    "concept": "function-vocabulary",
+    "statement": "Every vector in the codomain of \\(T\\) is the image of some vector in the domain.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "A transformation must reach everything in its codomain.",
+    "explanation": "That property has a name, onto, and it is a condition to be checked rather than something guaranteed. Many transformations miss most of their codomain."
+  },
+  {
+    "id": "1.8-mtl-01",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "matrix-transformations-are-linear",
+    "statement": "Every matrix transformation is a linear transformation.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Linearity has to be rechecked for each matrix.",
+    "explanation": "It follows from the two algebraic properties of the matrix-vector product: \\(A(u+v)=Au+Av\\) and \\(A(cu)=c(Au)\\). Those are exactly the two requirements in the definition of linear."
+  },
+  {
+    "id": "1.8-mtl-02",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "matrix-transformations-are-linear",
+    "statement": "To know that \\(x\\mapsto Ax\\) is linear, you must verify the two linearity conditions separately for each particular matrix \\(A\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A general theorem still has to be re-proved in each instance.",
+    "explanation": "The verification was done once, for an arbitrary \\(m\\times n\\) matrix. Every matrix transformation inherits the conclusion without further work."
+  },
+  {
+    "id": "1.8-mtl-03",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "matrix-transformations-are-linear",
+    "statement": "Because \\(x\\mapsto Ax\\) is linear, \\(A(3u-2v)=3Au-2Av\\) holds whenever the products are defined.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Linearity of a transformation says nothing about the matrix it came from.",
+    "explanation": "Linearity is precisely the statement that the transformation respects linear combinations, and for a matrix transformation that is a fact about \\(A\\)."
+  },
+  {
+    "id": "1.8-lintrans-01",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation",
+    "statement": "A transformation \\(T\\) is linear when \\(T(u+v)=T(u)+T(v)\\) for all \\(u,v\\) in the domain and \\(T(cu)=cT(u)\\) for every scalar \\(c\\) and every \\(u\\) in the domain.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Linear means the graph is a straight line.",
+    "explanation": "This is the definition. Linearity is about preserving the two operations of \\(\\mathbb{R}^n\\), addition and scalar multiplication, not about the shape of a graph."
+  },
+  {
+    "id": "1.8-lintrans-02",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation",
+    "statement": "The definition of a linear transformation asks only that \\(T(u+v)=T(u)+T(v)\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "hypothesis",
+    "misconception": "The scalar condition follows from the addition condition and can be dropped.",
+    "explanation": "The definition has two requirements. Preserving addition is one of them; preserving scalar multiples is a separate demand, and both are needed before the results of this section apply."
+  },
+  {
+    "id": "1.8-lintrans-03",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation",
+    "statement": "The transformation \\(T(x)=x+b\\), where \\(b\\) is a fixed nonzero vector, is linear.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Anything built from addition is linear.",
+    "explanation": "A linear transformation must send \\(\\mathbf{0}\\) to \\(\\mathbf{0}\\), but here \\(T(\\mathbf{0})=b\\ne\\mathbf{0}\\). Checking directly, \\(T(u+v)=u+v+b\\) while \\(T(u)+T(v)=u+v+2b\\).",
+    "counterexample": "With \\(u=v=\\mathbf{0}\\): \\(T(u+v)=b\\) but \\(T(u)+T(v)=2b\\), and these differ because \\(b\\ne\\mathbf{0}\\)."
+  },
+  {
+    "id": "1.8-lintrans-04",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation",
+    "statement": "Every function from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) is a linear transformation.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Transformation and linear transformation mean the same thing.",
+    "explanation": "Linear is an extra condition that most functions fail. Squaring each entry, or adding a fixed nonzero vector, gives perfectly good functions that are not linear."
+  },
+  {
+    "id": "1.8-lintrans-05",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation",
+    "statement": "The transformation sending every vector of \\(\\mathbb{R}^n\\) to \\(\\mathbf{0}\\) is linear.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A transformation has to do something in order to be linear.",
+    "explanation": "Both conditions hold, with each side equal to \\(\\mathbf{0}\\): \\(T(u+v)=\\mathbf{0}=T(u)+T(v)\\) and \\(T(cu)=\\mathbf{0}=cT(u)\\). This is the zero transformation."
+  },
+  {
+    "id": "1.8-lintrans-06",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation",
+    "statement": "The transformation \\(T(x)=x\\) on \\(\\mathbb{R}^n\\) is linear.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A transformation that changes nothing is too trivial to count.",
+    "explanation": "Both conditions read the same on each side. This is the identity transformation, and it is linear."
+  },
+  {
+    "id": "1.8-props-01",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation-properties",
+    "statement": "If \\(T\\) is a linear transformation, then \\(T(\\mathbf{0})=\\mathbf{0}\\).",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Where the zero vector goes is a separate piece of information.",
+    "explanation": "Take \\(c=0\\) in the scalar rule: \\(T(\\mathbf{0})=T(0\\cdot\\mathbf{0})=0\\cdot T(\\mathbf{0})=\\mathbf{0}\\). It is forced, not assumed."
+  },
+  {
+    "id": "1.8-props-02",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation-properties",
+    "statement": "If \\(T(\\mathbf{0})=\\mathbf{0}\\), then \\(T\\) is linear.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The test for linearity is where the zero vector goes.",
+    "explanation": "Sending \\(\\mathbf{0}\\) to \\(\\mathbf{0}\\) is necessary but nowhere near sufficient. It is useful mainly in the other direction: if \\(T(\\mathbf{0})\\ne\\mathbf{0}\\) you can stop, because \\(T\\) is not linear.",
+    "counterexample": "On \\(\\mathbb{R}^1\\), \\(T(x)=x^2\\) satisfies \\(T(0)=0\\), yet \\(T(1+1)=4\\) while \\(T(1)+T(1)=2\\)."
+  },
+  {
+    "id": "1.8-props-03",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation-properties",
+    "statement": "If \\(T\\) is linear, then \\(T(cu+dv)=cT(u)+dT(v)\\) for all scalars \\(c,d\\) and all \\(u,v\\) in the domain.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The two defining conditions cannot be used together.",
+    "explanation": "Apply the addition rule to split \\(cu+dv\\), then the scalar rule to each piece. Combining them like this is the form used in practice."
+  },
+  {
+    "id": "1.8-props-04",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation-properties",
+    "statement": "If \\(T\\) is linear, then \\(T(u-v)=T(u)+T(v)\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Linearity turns every combination into a sum.",
+    "explanation": "Linearity preserves the combination as written. Since \\(u-v=u+(-1)v\\), the correct conclusion is \\(T(u-v)=T(u)-T(v)\\)."
+  },
+  {
+    "id": "1.8-props-05",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation-properties",
+    "statement": "If \\(T\\) is linear and \\(T(u)=T(v)\\), then \\(u=v\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Linear transformations cannot collapse different inputs together.",
+    "explanation": "Many linear transformations send different vectors to the same output. That they do not is a separate property, called one-to-one.",
+    "counterexample": "The zero transformation sends every vector to \\(\\mathbf{0}\\), so \\(T(u)=T(v)\\) for all \\(u\\) and \\(v\\)."
+  },
+  {
+    "id": "1.8-props-06",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linear-transformation-properties",
+    "statement": "If \\(T\\) is linear and \\(v\\) lies in \\(\\operatorname{Span}\\{u_1,u_2\\}\\), then \\(T(v)\\) lies in \\(\\operatorname{Span}\\{T(u_1),T(u_2)\\}\\).",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "Linearity says nothing about how spans are carried along.",
+    "explanation": "Write \\(v=c_1u_1+c_2u_2\\). Then \\(T(v)=c_1T(u_1)+c_2T(u_2)\\), which is a linear combination of the two images and so lies in their span.",
+    "why": {
+      "prompt": "Which step does the work?",
+      "choices": [
+        "Linearity turns \\(T(c_1u_1+c_2u_2)\\) into \\(c_1T(u_1)+c_2T(u_2)\\), which is by definition in the span of the images.",
+        "\\(T\\) sends every vector to \\(\\mathbf{0}\\), which lies in every span.",
+        "Spans are always all of \\(\\mathbb{R}^n\\).",
+        "\\(u_1\\) and \\(u_2\\) have to be linearly independent for the span to exist."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.8-crit-01",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linearity-criterion",
+    "statement": "A transformation \\(T\\) is linear if and only if \\(T(cu+dv)=cT(u)+dT(v)\\) for all \\(u,v\\) in the domain and all scalars \\(c,d\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The combined identity is weaker than the two separate conditions.",
+    "explanation": "Taking \\(c=d=1\\) recovers the addition rule, and taking \\(d=0\\) recovers the scalar rule, so the single identity carries both.",
+    "why": {
+      "prompt": "Which substitutions recover the two original conditions?",
+      "choices": [
+        "\\(c=d=1\\) gives the addition rule, and \\(d=0\\) gives the scalar rule.",
+        "\\(c=d=0\\) gives both rules at once.",
+        "\\(c=d=1\\) gives the scalar rule, and \\(c=0\\) gives the addition rule.",
+        "No substitution recovers them; the identity has to be assumed separately."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.8-crit-02",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linearity-criterion",
+    "statement": "Checking that \\(T(cu+dv)=cT(u)+dT(v)\\) holds when \\(c=d=1\\) is enough to prove that \\(T\\) is linear.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "One instance of an identity establishes it for all values.",
+    "explanation": "That single case is the addition rule alone. The criterion has to hold for every choice of scalars before it delivers linearity."
+  },
+  {
+    "id": "1.8-crit-03",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "linearity-criterion",
+    "statement": "If \\(T(cu+dv)=cT(u)+dT(v)\\) holds for all \\(u,v\\) and all scalars \\(c,d\\), then \\(T(\\mathbf{0})=\\mathbf{0}\\) follows without any further assumption.",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "Sending zero to zero has to be checked on its own.",
+    "explanation": "Choose \\(c=d=0\\) and any \\(u,v\\). The left side is \\(T(\\mathbf{0})\\) and the right side is \\(\\mathbf{0}\\), so the two agree.",
+    "why": {
+      "prompt": "Which choice of scalars produces the conclusion?",
+      "choices": [
+        "\\(c=d=0\\), which collapses both sides to the zero vector.",
+        "\\(c=d=1\\), which gives the addition rule.",
+        "\\(c=1\\) and \\(d=0\\), which gives the scalar rule.",
+        "No choice works; \\(T(\\mathbf{0})=\\mathbf{0}\\) has to be assumed separately."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.8-combo-01",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "preserves-combinations",
+    "statement": "If \\(T\\) is linear and \\(y=c_1v_1+\\cdots+c_pv_p\\), then \\(T(y)=c_1T(v_1)+\\cdots+c_pT(v_p)\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Linearity handles two terms at a time and no more.",
+    "explanation": "Applying the two-term rule repeatedly extends it to any number of terms. This is what it means to say that linear transformations preserve linear combinations.",
+    "why": {
+      "prompt": "What does this let you do in practice?",
+      "choices": [
+        "Work out \\(T\\) on a whole span once you know it on the spanning vectors.",
+        "Conclude that \\(T\\) is one-to-one.",
+        "Conclude that the weights \\(c_1,\\dots,c_p\\) are unique.",
+        "Replace \\(T\\) by the identity transformation."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.8-combo-02",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "preserves-combinations",
+    "statement": "If \\(T\\) is linear and \\(v_1,\\dots,v_p\\) are linearly independent, then \\(T(v_1),\\dots,T(v_p)\\) are linearly independent.",
+    "answer": false,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "Linearity carries independence forward.",
+    "explanation": "A linear transformation may collapse independent vectors onto dependent ones, and nothing in the definition prevents it.",
+    "counterexample": "Let \\(T\\) send every vector of \\(\\mathbb{R}^2\\) to \\(\\mathbf{0}\\). Then \\(e_1,e_2\\) are independent, but their images are both \\(\\mathbf{0}\\) and so are dependent.",
+    "why": {
+      "prompt": "Which direction does hold?",
+      "choices": [
+        "If the images are independent, then the original vectors are independent.",
+        "If the images are dependent, then the original vectors are dependent.",
+        "Neither direction holds.",
+        "Both directions hold for every linear transformation."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.8-combo-03",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "preserves-combinations",
+    "statement": "If \\(T\\) is linear and \\(T(v_1),\\dots,T(v_p)\\) are linearly independent, then \\(v_1,\\dots,v_p\\) are linearly dependent.",
+    "answer": false,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "Independence of the images tells you nothing, or tells you the opposite.",
+    "explanation": "This direction does hold, but with the opposite conclusion: the originals must be independent. If \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\), applying \\(T\\) gives \\(c_1T(v_1)+\\cdots+c_pT(v_p)=\\mathbf{0}\\), and independence of the images forces every \\(c_i\\) to be \\(0\\).",
+    "why": {
+      "prompt": "What is the correct conclusion?",
+      "choices": [
+        "The original vectors must be linearly independent.",
+        "Nothing follows; the originals may be independent or dependent.",
+        "\\(T\\) must be the zero transformation.",
+        "The original vectors must be dependent, exactly as the statement says."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.8-combo-04",
+    "section": "1.8",
+    "topic": "Linearity",
+    "concept": "preserves-combinations",
+    "statement": "If \\(T\\) is linear and \\(T(u)=T(v)\\), then \\(T(u-v)=\\mathbf{0}\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Nothing useful follows from two inputs sharing an output.",
+    "explanation": "By linearity \\(T(u-v)=T(u)-T(v)\\), and the two terms are equal, so the difference is \\(\\mathbf{0}\\). This observation is what connects being one-to-one to the equation \\(T(x)=\\mathbf{0}\\)."
+  },
+  {
+    "id": "1.8-scale-01",
+    "section": "1.8",
+    "topic": "Scaling transformations",
+    "concept": "contraction-dilation",
+    "statement": "The transformation \\(T(x)=3x\\) on \\(\\mathbb{R}^n\\) is linear.",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Stretching distorts vectors and so cannot be linear.",
+    "explanation": "Both conditions hold: \\(3(u+v)=3u+3v\\) and \\(3(cu)=c(3u)\\). Scaling by a fixed factor is one of the simplest linear transformations."
+  },
+  {
+    "id": "1.8-scale-02",
+    "section": "1.8",
+    "topic": "Scaling transformations",
+    "concept": "contraction-dilation",
+    "statement": "For \\(T(x)=rx\\), the transformation is called a contraction when \\(0\\le r\\le 1\\) and a dilation when \\(r>1\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The two words describe different kinds of operation.",
+    "explanation": "Both are the same rule with different scaling factors. The names record whether vectors are shortened or lengthened."
+  },
+  {
+    "id": "1.8-scale-03",
+    "section": "1.8",
+    "topic": "Scaling transformations",
+    "concept": "contraction-dilation",
+    "statement": "The transformation of \\(\\mathbb{R}^2\\) that squares each entry of \\(x\\) is linear.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Applying one rule to every entry makes a transformation linear.",
+    "explanation": "Squaring fails both conditions. Doubling the input multiplies the output by four rather than by two, so \\(T(2u)=4T(u)\\), which differs from \\(2T(u)\\) unless \\(T(u)=\\mathbf{0}\\)."
+  },
+  {
+    "id": "1.8-scale-04",
+    "section": "1.8",
+    "topic": "Scaling transformations",
+    "concept": "contraction-dilation",
+    "statement": "The transformation \\(T(x)=rx\\) is linear only when \\(r>0\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A negative or zero scaling factor breaks linearity.",
+    "explanation": "Every real \\(r\\) gives a linear transformation. Taking \\(r=0\\) gives the zero transformation and \\(r=-1\\) gives reflection through the origin, both of which are linear."
+  },
+  {
+    "id": "1.9-stdmat-01",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "If \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is linear, then there is a matrix \\(A\\) with \\(T(x)=Ax\\) for every \\(x\\) in \\(\\mathbb{R}^n\\).",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Only transformations that were defined by a matrix have one.",
+    "explanation": "Every linear transformation from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) is a matrix transformation. The matrix is built from the images of \\(e_1,\\dots,e_n\\), and it is the only one that works."
+  },
+  {
+    "id": "1.9-stdmat-02",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "The standard matrix of a linear \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) has \\(T(e_j)\\) as its \\(j\\)th column.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Building the matrix requires solving a system.",
+    "explanation": "Writing \\(x=x_1e_1+\\cdots+x_ne_n\\) and applying linearity gives \\(T(x)=x_1T(e_1)+\\cdots+x_nT(e_n)\\), which is exactly the product of \\(\\begin{bmatrix}T(e_1)&\\cdots&T(e_n)\\end{bmatrix}\\) with \\(x\\).",
+    "why": {
+      "prompt": "Why do the images of \\(e_1,\\dots,e_n\\) suffice?",
+      "choices": [
+        "Every \\(x\\) is a linear combination of \\(e_1,\\dots,e_n\\), and linearity carries that combination through \\(T\\).",
+        "Because \\(T\\) is one-to-one.",
+        "Because \\(e_1,\\dots,e_n\\) span the codomain.",
+        "Because \\(T(e_j)=e_j\\) for every \\(j\\)."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-stdmat-03",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "A linear transformation can have several different standard matrices.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The matrix depends on how you go about finding it.",
+    "explanation": "The matrix is unique. Its \\(j\\)th column has to be \\(T(e_j)\\), and those images are determined by \\(T\\) itself, so there is no freedom left."
+  },
+  {
+    "id": "1.9-stdmat-04",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "If \\(T:\\mathbb{R}^3\\to\\mathbb{R}^2\\) is linear, its standard matrix is \\(3\\times2\\).",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "The size of the matrix reads in the same order as the arrow.",
+    "explanation": "It is \\(2\\times3\\). There is one column for each of the three inputs \\(e_1,e_2,e_3\\), and each column is a vector in \\(\\mathbb{R}^2\\), so the matrix has two rows."
+  },
+  {
+    "id": "1.9-stdmat-05",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "To find the standard matrix of a linear \\(T\\), you need to know \\(T(x)\\) for every \\(x\\) in the domain.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A matrix can only be recovered from complete information about \\(T\\).",
+    "explanation": "Only the \\(n\\) images \\(T(e_1),\\dots,T(e_n)\\) are needed. Linearity then determines \\(T\\) everywhere else."
+  },
+  {
+    "id": "1.9-stdmat-06",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "If \\(T:\\mathbb{R}^2\\to\\mathbb{R}^4\\) is linear, its standard matrix has four columns.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "The columns are counted from the codomain.",
+    "explanation": "It has two columns, one for each of \\(e_1,e_2\\) in the domain, and four rows, since each image lies in \\(\\mathbb{R}^4\\)."
+  },
+  {
+    "id": "1.9-determined-01",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "determined-by-basis-images",
+    "statement": "A linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is completely determined by the vectors \\(T(e_1),\\dots,T(e_n)\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Knowing a transformation on finitely many vectors cannot pin it down everywhere.",
+    "explanation": "Any \\(x\\) is the combination \\(x_1e_1+\\cdots+x_ne_n\\), and linearity turns that into \\(x_1T(e_1)+\\cdots+x_nT(e_n)\\). So the \\(n\\) images decide every value of \\(T\\)."
+  },
+  {
+    "id": "1.9-determined-02",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "determined-by-basis-images",
+    "statement": "Two linear transformations from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) that agree on \\(e_1,\\dots,e_n\\) can still differ at some other vector.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Agreement on a few vectors leaves room for disagreement elsewhere.",
+    "explanation": "Agreeing on \\(e_1,\\dots,e_n\\) means having the same standard matrix, and the standard matrix determines the transformation. So they agree everywhere."
+  },
+  {
+    "id": "1.9-determined-03",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "determined-by-basis-images",
+    "statement": "If \\(T:\\mathbb{R}^2\\to\\mathbb{R}^2\\) is linear with \\(T(e_1)=e_1\\) and \\(T(e_2)=e_2\\), then \\(T(x)=x\\) for every \\(x\\) in \\(\\mathbb{R}^2\\).",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "Fixing two vectors leaves the rest of the plane free to move.",
+    "explanation": "The standard matrix has columns \\(T(e_1)=e_1\\) and \\(T(e_2)=e_2\\), so it is the identity matrix and \\(T(x)=Ix=x\\). Fixing \\(e_1\\) and \\(e_2\\) forces \\(T\\) to be the identity.",
+    "why": {
+      "prompt": "Why is \\(T\\) forced to be the identity rather than merely agreeing at two vectors?",
+      "choices": [
+        "Those two images are the columns of the standard matrix, and the standard matrix determines \\(T\\) everywhere.",
+        "Because every linear transformation of \\(\\mathbb{R}^2\\) is the identity.",
+        "Because \\(T(\\mathbf{0})=\\mathbf{0}\\) for every linear transformation.",
+        "Because \\(e_1\\) and \\(e_2\\) are linearly independent."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-onto-01",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto",
+    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is onto \\(\\mathbb{R}^m\\) when every \\(b\\) in \\(\\mathbb{R}^m\\) is the image of at least one \\(x\\) in \\(\\mathbb{R}^n\\).",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Onto is about how many inputs produce each output.",
+    "explanation": "Onto asks only that nothing in the codomain is missed. It says nothing about how many inputs land on a given output."
+  },
+  {
+    "id": "1.9-onto-02",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto",
+    "statement": "\\(T\\) is onto \\(\\mathbb{R}^m\\) when every \\(b\\) in \\(\\mathbb{R}^m\\) is the image of exactly one \\(x\\).",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Onto includes a uniqueness requirement.",
+    "explanation": "Exactly one would combine onto with one-to-one. Onto by itself asks for at least one, and an onto transformation may send many inputs to the same output."
+  },
+  {
+    "id": "1.9-onto-03",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto",
+    "statement": "Every linear transformation is onto its codomain.",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Being defined into \\(\\mathbb{R}^m\\) means reaching all of \\(\\mathbb{R}^m\\).",
+    "explanation": "The codomain is announced, not achieved. The zero transformation on \\(\\mathbb{R}^2\\) reaches only \\(\\mathbf{0}\\), and is about as far from onto as possible."
+  },
+  {
+    "id": "1.9-onto-04",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto",
+    "statement": "\\(T\\) is onto exactly when its range equals its codomain.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Onto is unrelated to the range.",
+    "explanation": "The range is always contained in the codomain. Onto is precisely the statement that nothing is left over, so the two sets coincide."
+  },
+  {
+    "id": "1.9-onto-05",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto",
+    "statement": "If \\(T:\\mathbb{R}^5\\to\\mathbb{R}^2\\) is linear, then \\(T\\) cannot be onto \\(\\mathbb{R}^2\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A large drop in dimension rules out being onto.",
+    "explanation": "Going down in dimension is no obstacle. The standard matrix is \\(2\\times5\\), and it only needs a pivot in each of its two rows.",
+    "counterexample": "The transformation sending \\(x\\) to its first two entries has standard matrix \\(\\begin{bmatrix}1&0&0&0&0\\\\0&1&0&0&0\\end{bmatrix}\\), which has a pivot in every row, so it is onto."
+  },
+  {
+    "id": "1.9-oto-01",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one",
+    "statement": "A transformation \\(T\\) is one-to-one when every \\(b\\) in the codomain is the image of at most one \\(x\\).",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "One-to-one requires every output to be reached.",
+    "explanation": "At most one allows an output to be missed entirely. One-to-one forbids collisions; it does not demand coverage."
+  },
+  {
+    "id": "1.9-oto-02",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one",
+    "statement": "\\(T\\) is one-to-one when every \\(b\\) in the codomain is the image of at least one \\(x\\).",
+    "answer": false,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "The two definitions are interchangeable.",
+    "explanation": "At least one is the definition of onto. One-to-one is at most one, and the two conditions are independent of each other."
+  },
+  {
+    "id": "1.9-oto-03",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one",
+    "statement": "A one-to-one linear transformation must also be onto.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The two properties come as a package.",
+    "explanation": "They are separate conditions, and either can hold without the other when the domain and codomain have different dimensions.",
+    "counterexample": "The transformation of \\(\\mathbb{R}^2\\) into \\(\\mathbb{R}^3\\) sending \\(\\begin{bmatrix}x_1\\\\x_2\\end{bmatrix}\\) to \\(\\begin{bmatrix}x_1\\\\x_2\\\\0\\end{bmatrix}\\) is one-to-one, but nothing with a nonzero third entry is in its range."
+  },
+  {
+    "id": "1.9-oto-04",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one",
+    "statement": "\\(T\\) is one-to-one exactly when \\(T(u)=T(v)\\) forces \\(u=v\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "One-to-one is only a statement about counting preimages.",
+    "explanation": "Saying no output is hit twice is the same as saying two inputs with the same image must have been the same input all along."
+  },
+  {
+    "id": "1.9-oto-05",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one",
+    "statement": "A linear transformation can be one-to-one without being onto.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Any transformation that separates points must also cover the codomain.",
+    "explanation": "This happens whenever the domain has smaller dimension than the codomain, for instance embedding \\(\\mathbb{R}^2\\) into \\(\\mathbb{R}^3\\) as the plane \\(x_3=0\\)."
+  },
+  {
+    "id": "1.9-otok-01",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-trivial-kernel",
+    "statement": "A linear transformation \\(T\\) is one-to-one if and only if \\(T(x)=\\mathbf{0}\\) has only the trivial solution.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Checking one-to-one means comparing all pairs of inputs.",
+    "explanation": "If \\(T(u)=T(v)\\) then \\(T(u-v)=\\mathbf{0}\\), so a collision produces a nonzero solution of \\(T(x)=\\mathbf{0}\\), and conversely. Only one equation has to be solved.",
+    "why": {
+      "prompt": "Why does one equation settle a question about all pairs?",
+      "choices": [
+        "Because \\(T(u)=T(v)\\) is equivalent to \\(T(u-v)=\\mathbf{0}\\), so every collision shows up as a nonzero solution.",
+        "Because \\(T(\\mathbf{0})=\\mathbf{0}\\) for every linear transformation.",
+        "Because the trivial solution always exists.",
+        "Because one-to-one transformations have square standard matrices."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-otok-02",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-trivial-kernel",
+    "statement": "If \\(T(x)=\\mathbf{0}\\) has a nontrivial solution, then \\(T\\) is one-to-one.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The criterion is read with its conclusion reversed.",
+    "explanation": "A nontrivial solution \\(v\\) gives \\(T(v)=\\mathbf{0}=T(\\mathbf{0})\\) with \\(v\\ne\\mathbf{0}\\), which is exactly a collision. So \\(T\\) is not one-to-one."
+  },
+  {
+    "id": "1.9-otok-03",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-trivial-kernel",
+    "statement": "If \\(T:\\mathbb{R}^4\\to\\mathbb{R}^3\\) is linear, then \\(T\\) cannot be one-to-one.",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "One-to-one is possible for any pair of dimensions.",
+    "explanation": "The standard matrix is \\(3\\times4\\), with more columns than rows, so its columns are linearly dependent and \\(T(x)=\\mathbf{0}\\) has a nontrivial solution. Two different inputs therefore share an image.",
+    "why": {
+      "prompt": "Which counting fact drives this?",
+      "choices": [
+        "Four columns cannot all be pivot columns when there are only three rows.",
+        "Three rows cannot all contain pivots when there are four columns.",
+        "A \\(3\\times4\\) matrix has no pivot positions.",
+        "Every transformation from a larger space to a smaller one is onto."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-ontospan-01",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto-columns-span",
+    "statement": "A linear \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is onto \\(\\mathbb{R}^m\\) if and only if the columns of its standard matrix span \\(\\mathbb{R}^m\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Onto is a property of \\(T\\) that the matrix cannot detect.",
+    "explanation": "Onto says every \\(b\\) is \\(T(x)=Ax\\) for some \\(x\\), which is exactly saying every \\(b\\) is a linear combination of the columns of \\(A\\).",
+    "why": {
+      "prompt": "Which pivot condition matches this?",
+      "choices": [
+        "A pivot in every row of the standard matrix.",
+        "A pivot in every column of the standard matrix.",
+        "A pivot in the rightmost column.",
+        "No pivots at all."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-ontospan-02",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto-columns-span",
+    "statement": "A linear \\(T\\) is onto \\(\\mathbb{R}^m\\) if and only if the columns of its standard matrix are linearly independent.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The two column conditions attach to whichever property comes to mind first.",
+    "explanation": "Independent columns characterise one-to-one, not onto. Onto corresponds to the columns spanning \\(\\mathbb{R}^m\\), which is a pivot in every row rather than in every column.",
+    "why": {
+      "prompt": "Which pairing is correct?",
+      "choices": [
+        "Columns span means onto; columns independent means one-to-one.",
+        "Columns span means one-to-one; columns independent means onto.",
+        "Both column conditions mean onto.",
+        "Neither column condition relates to onto or one-to-one."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-ontospan-03",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto-columns-span",
+    "statement": "There is a linear transformation \\(T:\\mathbb{R}^2\\to\\mathbb{R}^3\\) that is onto \\(\\mathbb{R}^3\\).",
+    "answer": false,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "A transformation can reach a larger space if it is chosen cleverly enough.",
+    "explanation": "The standard matrix would be \\(3\\times2\\). Each pivot occupies its own column, so there are at most two pivots and some row has none. The columns cannot span \\(\\mathbb{R}^3\\), so no such transformation exists.",
+    "why": {
+      "prompt": "What is the obstruction?",
+      "choices": [
+        "A \\(3\\times2\\) matrix has at most two pivots, so one of its three rows has none.",
+        "A \\(3\\times2\\) matrix has at most three pivots, which is too few.",
+        "Such a transformation would fail to be one-to-one.",
+        "\\(\\mathbb{R}^2\\) and \\(\\mathbb{R}^3\\) have no vectors in common."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-otoind-01",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-columns-independent",
+    "statement": "A linear \\(T\\) is one-to-one if and only if the columns of its standard matrix are linearly independent.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Independence of columns is about spanning rather than about collisions.",
+    "explanation": "One-to-one is equivalent to \\(Ax=\\mathbf{0}\\) having only the trivial solution, and that is exactly what independence of the columns of \\(A\\) means."
+  },
+  {
+    "id": "1.9-otoind-02",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-columns-independent",
+    "statement": "If the columns of the standard matrix of \\(T\\) span \\(\\mathbb{R}^m\\), then \\(T\\) is one-to-one.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Spanning is the stronger condition and so implies the other.",
+    "explanation": "Spanning gives onto, which settles existence. One-to-one is about uniqueness and needs independent columns instead.",
+    "counterexample": "The transformation \\(\\mathbb{R}^3\\to\\mathbb{R}^2\\) with standard matrix \\(\\begin{bmatrix}1&0&0\\\\0&1&0\\end{bmatrix}\\) is onto \\(\\mathbb{R}^2\\), but \\(e_3\\) and \\(\\mathbf{0}\\) have the same image."
+  },
+  {
+    "id": "1.9-otoind-03",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-columns-independent",
+    "statement": "If \\(T:\\mathbb{R}^n\\to\\mathbb{R}^n\\) is linear and one-to-one, then \\(T\\) is onto \\(\\mathbb{R}^n\\).",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "hypothesis",
+    "misconception": "The two properties stay independent even when the dimensions match.",
+    "explanation": "One-to-one gives \\(n\\) independent columns, so the \\(n\\times n\\) standard matrix has a pivot in every column. With \\(n\\) pivots spread over \\(n\\) rows there is also a pivot in every row, so the columns span \\(\\mathbb{R}^n\\) and \\(T\\) is onto. The equal dimensions are what make this work.",
+    "why": {
+      "prompt": "Where is the hypothesis that domain and codomain match actually used?",
+      "choices": [
+        "It forces the \\(n\\) pivots to fill every row as well as every column.",
+        "It guarantees the standard matrix has independent columns.",
+        "It guarantees \\(T(\\mathbf{0})=\\mathbf{0}\\).",
+        "It is not needed; the implication holds for every linear transformation."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-otoind-04",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-columns-independent",
+    "statement": "There is a linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^n\\) that is onto \\(\\mathbb{R}^n\\) but not one-to-one.",
+    "answer": false,
+    "difficulty": 3,
+    "variant": "hypothesis",
+    "misconception": "Onto and one-to-one remain independent in the square case.",
+    "explanation": "Onto gives a pivot in each of the \\(n\\) rows, hence \\(n\\) pivots. Since each occupies its own column and there are exactly \\(n\\) columns, every column is a pivot column, the columns are independent, and \\(T\\) is one-to-one after all.",
+    "why": {
+      "prompt": "Why does onto force one-to-one when the two spaces have the same dimension?",
+      "choices": [
+        "\\(n\\) pivots spread over \\(n\\) rows must also fill all \\(n\\) columns, leaving no free variables.",
+        "Onto and one-to-one are two names for the same definition.",
+        "Because \\(T(\\mathbf{0})=\\mathbf{0}\\) for every linear transformation.",
+        "Because a square standard matrix has more columns than rows."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.9-geom-01",
+    "section": "1.9",
+    "topic": "Geometric transformations",
+    "concept": "geometric-transformations",
+    "statement": "Reflection of \\(\\mathbb{R}^2\\) through the \\(x_1\\)-axis is a linear transformation.",
+    "answer": true,
+    "difficulty": 1,
+    "variant": "core",
+    "misconception": "Geometric operations are a different kind of thing from linear transformations.",
+    "explanation": "It sends \\(\\begin{bmatrix}x_1\\\\x_2\\end{bmatrix}\\) to \\(\\begin{bmatrix}x_1\\\\-x_2\\end{bmatrix}\\), which is multiplication by a fixed matrix, so it is linear."
+  },
+  {
+    "id": "1.9-geom-02",
+    "section": "1.9",
+    "topic": "Geometric transformations",
+    "concept": "geometric-transformations",
+    "statement": "Projection of \\(\\mathbb{R}^2\\) onto the \\(x_1\\)-axis is a linear transformation.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Throwing information away cannot be linear.",
+    "explanation": "It sends \\(\\begin{bmatrix}x_1\\\\x_2\\end{bmatrix}\\) to \\(\\begin{bmatrix}x_1\\\\0\\end{bmatrix}\\), which is multiplication by a fixed matrix. Losing information is allowed; it just means the transformation is not one-to-one."
+  },
+  {
+    "id": "1.9-geom-03",
+    "section": "1.9",
+    "topic": "Geometric transformations",
+    "concept": "geometric-transformations",
+    "statement": "A horizontal shear of \\(\\mathbb{R}^2\\) is not a linear transformation.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A transformation that slants the plane must fail linearity.",
+    "explanation": "A shear sends \\(\\begin{bmatrix}x_1\\\\x_2\\end{bmatrix}\\) to \\(\\begin{bmatrix}x_1+kx_2\\\\x_2\\end{bmatrix}\\), which is multiplication by a fixed matrix. Shears, reflections, projections, and expansions are all linear."
+  },
+  {
+    "id": "1.9-geom-04",
+    "section": "1.9",
+    "topic": "Geometric transformations",
+    "concept": "geometric-transformations",
+    "statement": "Projection of \\(\\mathbb{R}^2\\) onto the \\(x_1\\)-axis is one-to-one.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Being linear and easy to describe makes a transformation one-to-one.",
+    "explanation": "Every vector on a given vertical line has the same image, so inputs collide. Equivalently the standard matrix \\(\\begin{bmatrix}1&0\\\\0&0\\end{bmatrix}\\) has a column without a pivot.",
+    "counterexample": "\\(\\begin{bmatrix}1\\\\5\\end{bmatrix}\\) and \\(\\begin{bmatrix}1\\\\-3\\end{bmatrix}\\) both map to \\(\\begin{bmatrix}1\\\\0\\end{bmatrix}\\)."
+  },
+  {
+    "id": "1.9-geom-05",
+    "section": "1.9",
+    "topic": "Geometric transformations",
+    "concept": "geometric-transformations",
+    "statement": "Reflection of \\(\\mathbb{R}^2\\) through the origin is linear, and it is both one-to-one and onto.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Reflections lose information the way projections do.",
+    "explanation": "The transformation is \\(x\\mapsto-x\\), with standard matrix \\(\\begin{bmatrix}-1&0\\\\0&-1\\end{bmatrix}\\). Its columns are independent and span \\(\\mathbb{R}^2\\), so it is one-to-one and onto; reflecting twice returns every vector to where it started."
+  },
+  {
+    "id": "1.9-geom-06",
+    "section": "1.9",
+    "topic": "Geometric transformations",
+    "concept": "geometric-transformations",
+    "statement": "Rotating \\(\\mathbb{R}^2\\) about a point other than the origin is a linear transformation.",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "Every rotation of the plane is linear.",
+    "explanation": "A linear transformation must fix \\(\\mathbf{0}\\), and a rotation about some other point moves the origin. Rotations about the origin are linear; rotations about any other centre are not."
   }
 ];
