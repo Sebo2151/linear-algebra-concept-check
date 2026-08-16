@@ -271,7 +271,7 @@ This distinction prevents training an inaccurate theorem.
 - homogeneous systems, and why they are always consistent;
 - trivial and nontrivial solutions;
 - a nontrivial solution exists exactly when there is a free variable;
-- the solution set of \(Ax=0\) as a span, including the \(\operatorname{Span}\{0\}\) case;
+- the solution set of \(Ax=\mathbf{0}\) as a span, including the \(\operatorname{Span}\{\mathbf{0}\}\) case;
 - parametric vector form;
 - the \(p+v_h\) description of the solutions of a consistent \(Ax=b\);
 - the consistency hypothesis that description requires;
@@ -280,7 +280,7 @@ This distinction prevents training an inaccurate theorem.
 ### §1.7
 - the definitions of linear independence and dependence;
 - linear dependence relations, and the force of "not all zero";
-- independence of the columns of \(A\) versus \(Ax=0\) having only the trivial solution;
+- independence of the columns of \(A\) versus \(Ax=\mathbf{0}\) having only the trivial solution;
 - one-vector and two-vector cases;
 - dependence as some vector being a linear combination of the others, including the indexed form;
 - more than \(n\) vectors in \(\mathbb{R}^n\) are dependent;
@@ -337,6 +337,14 @@ it as a newline, and MathJax then silently renders `be0` where `b \ne 0` was int
 Unrecognized escapes such as `\c` are worse — the backslash is simply dropped, leaving
 no trace at all. `npm test` catches the control-character half of this; the rest is
 caught only by reading the rendered page.
+
+### Zero-vector notation
+
+Use `\(\mathbf{0}\)` for zero vectors. Keep ordinary `\(0\)` for scalar zero,
+zero entries inside concrete vectors or matrices, and scalar equations such as
+`\(0=5\)`. This distinction is pedagogically load-bearing because students often
+confuse the scalar \(0\) with the zero vector \(\mathbf{0}\), especially around
+homogeneous equations and trivial solutions.
 
 ### Concept tags are load-bearing
 

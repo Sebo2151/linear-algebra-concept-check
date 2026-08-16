@@ -117,11 +117,11 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Linear systems can have any finite number of solutions.",
-    "explanation": "If \\(u\\) and \\(v\\) are two distinct solutions of \\(Ax=b\\), then \\(tu+(1-t)v\\) is also a solution for every scalar \\(t\\). Thus two distinct solutions force infinitely many.",
+    "explanation": "Suppose two different assignments both solve every equation in the system. For each real number \\(t\\), form a new assignment coordinate by coordinate by taking \\(t\\) times the first solution plus \\((1-t)\\) times the second. Because each equation is linear, every one of those new assignments still satisfies every equation. Varying \\(t\\) gives infinitely many solutions.",
     "why": {
       "prompt": "Which idea best explains why?",
       "choices": [
-        "Two distinct solutions generate infinitely many solutions along the affine line joining them.",
+        "Two distinct solutions can be combined coordinate by coordinate in infinitely many ways that still satisfy every linear equation.",
         "Every consistent system has a pivot in every column.",
         "Every linear system has at least three equations.",
         "A system with two solutions must have two free variables."
@@ -384,13 +384,13 @@ window.QUESTION_BANK = [
     "section": "1.1",
     "topic": "Elementary row operations",
     "concept": "equivalent-systems",
-    "statement": "If two systems are equivalent, then their augmented matrices must be row equivalent.",
+    "statement": "If two systems have the same number of equations in the same variables and are equivalent, then their augmented matrices must be row equivalent.",
     "answer": false,
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "The implication between row equivalence and equivalent systems automatically works both ways.",
-    "explanation": "Row-equivalent augmented matrices always give equivalent systems, but the converse can fail. In particular, all inconsistent systems have the same empty solution set, while their augmented matrices need not have the same RREF.",
-    "counterexample": "The systems \\(x=0,\\;0=1\\) and \\(y=0,\\;0=1\\) (in variables \\(x,y\\)) are both inconsistent, hence equivalent as systems, but their augmented matrices have different RREFs.",
+    "explanation": "Row-equivalent augmented matrices always give equivalent systems, but the converse can fail. In particular, all inconsistent systems have the same empty solution set, while their augmented matrices may still have different structural features that row operations cannot change.",
+    "counterexample": "The systems \\(x=0,\\;0=1\\) and \\(y=0,\\;0=1\\) (in variables \\(x,y\\)) are both inconsistent, hence equivalent as systems. In the first augmented matrix the \\(y\\)-column is all zero, while in the second the \\(x\\)-column is all zero. Row operations cannot turn an all-zero column into a nonzero column.",
     "why": {
       "prompt": "Why does the converse fail?",
       "choices": [
@@ -398,28 +398,6 @@ window.QUESTION_BANK = [
         "Elementary row operations can change a system's solution set.",
         "Equivalent systems must have different numbers of equations.",
         "The augmented matrices of equivalent systems always have different sizes."
-      ],
-      "correct": 0
-    }
-  },
-  {
-    "id": "1.1-rowops-08",
-    "section": "1.1",
-    "topic": "Elementary row operations",
-    "concept": "equivalent-systems",
-    "statement": "Suppose two systems, each consisting of \\(m\\) equations in the variables \\(x_1,\\dots,x_n\\), are both consistent and have the same solution set. Then their augmented matrices are row equivalent.",
-    "answer": true,
-    "difficulty": 3,
-    "variant": "hypothesis",
-    "misconception": "Because the converse fails in general, it must fail for consistent systems too.",
-    "explanation": "For a consistent system, the solution set determines the reduced row echelon form of the augmented matrix. Two such systems of the same size therefore share an RREF, which makes their augmented matrices row equivalent. Consistency is exactly the hypothesis that was missing when the converse failed.",
-    "why": {
-      "prompt": "Why does assuming consistency repair the converse?",
-      "choices": [
-        "All inconsistent systems share the empty solution set, so that solution set carries no information about the augmented matrix.",
-        "Consistent systems always have exactly one solution.",
-        "Consistent systems always have square augmented matrices.",
-        "Row operations behave differently on consistent systems."
       ],
       "correct": 0
     }
@@ -434,7 +412,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Row operations are powerful enough to turn any matrix into any other matrix of the same size.",
-    "explanation": "Row operations preserve the reduced row echelon form, so two matrices with different reduced row echelon forms are never row equivalent.",
+    "explanation": "Row operations cannot create information from nothing. Starting with an all-zero matrix, every elementary row operation still leaves every row all zero, so it cannot become a matrix with a nonzero entry.",
     "counterexample": "\\(\\begin{bmatrix}0&0\\\\0&0\\end{bmatrix}\\) and \\(\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\) are both \\(2\\times2\\), but no row operation can produce a nonzero entry from an all-zero matrix."
   },
   {
@@ -592,7 +570,7 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "The uniqueness theorem applies to REF rather than RREF.",
     "explanation": "A matrix can have many echelon forms. What is unique is its reduced row echelon form.",
-    "counterexample": "Both \\(\\begin{bmatrix}1&2\\\\0&1\\end{bmatrix}\\) and \\(\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\) are echelon matrices and are row equivalent."
+    "counterexample": "For example, \\(I_2\\) is row equivalent to both \\(I_2\\) and \\(\\begin{bmatrix}1&2\\\\0&1\\end{bmatrix}\\), and both are in echelon form."
   },
   {
     "id": "1.2-rref-04",
@@ -664,7 +642,7 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "A nonzero column automatically contains a pivot position.",
-    "explanation": "A nonzero column may fail to contain a pivot position. Pivot columns are determined by the locations of leading \\(1\\)s in the RREF."
+    "explanation": "A nonzero column may fail to contain a pivot position. Pivot columns are determined by the locations of leading \\(1\\)s in the RREF. For example, \\(\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}\\) has a nonzero second column, but the second column is not a pivot column."
   },
   {
     "id": "1.2-pivot-03",
@@ -997,7 +975,7 @@ window.QUESTION_BANK = [
     "section": "1.2",
     "topic": "Parametric solution sets",
     "concept": "ref-suffices",
-    "statement": "Echelon form is enough to decide whether a system is consistent, but you cannot tell from echelon form whether the solution is unique.",
+    "statement": "Echelon form is enough to decide whether a system is consistent, but you cannot tell from echelon form whether a consistent system has a unique solution.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -1094,7 +1072,7 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Vectors",
     "concept": "scalar-multiple",
-    "statement": "If \\(c\\) is a nonzero scalar and \\(v\\) is a nonzero vector, then \\(cv\\) can still be the zero vector.",
+    "statement": "If \\(c\\) is a nonzero scalar and \\(v\\) is a nonzero vector, then \\(cv\\) can still be the zero vector \\(\\mathbf{0}\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
@@ -1106,24 +1084,24 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Vectors",
     "concept": "zero-vector",
-    "statement": "The zero vector in \\(\\mathbb{R}^n\\) is the vector whose entries are all \\(0\\), and \\(v+0=v\\) holds for every \\(v\\) in \\(\\mathbb{R}^n\\).",
+    "statement": "The zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^n\\) is the vector whose entries are all \\(0\\), and \\(v+\\mathbf{0}=v\\) holds for every \\(v\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "The zero vector is a special symbol rather than an actual vector with entries.",
-    "explanation": "The zero vector is an ordinary vector, and adding it entry by entry changes nothing. That is what makes it the additive identity."
+    "misconception": "The zero vector \\(\\mathbf{0}\\) is a special symbol rather than an actual vector with entries.",
+    "explanation": "The zero vector \\(\\mathbf{0}\\) is an ordinary vector, and adding it entry by entry changes nothing. That is what makes it the additive identity."
   },
   {
     "id": "1.3-vector-10",
     "section": "1.3",
     "topic": "Vectors",
     "concept": "zero-vector",
-    "statement": "The scalar \\(0\\) and the zero vector in \\(\\mathbb{R}^n\\) are the same object.",
+    "statement": "The scalar \\(0\\) and the zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^n\\) are the same object.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Anything written as \\(0\\) denotes the same thing.",
-    "explanation": "A scalar is a single number; the zero vector is an element of \\(\\mathbb{R}^n\\) with \\(n\\) entries. They are used differently: \\(0v\\) multiplies by a scalar, while \\(v+0\\) adds a vector."
+    "explanation": "A scalar is a single number; the zero vector \\(\\mathbf{0}\\) is an element of \\(\\mathbb{R}^n\\) with \\(n\\) entries. They are used differently: \\(0v\\) multiplies by a scalar, while \\(v+\\mathbf{0}\\) adds a vector."
   },
   {
     "id": "1.3-geom-01",
@@ -1142,12 +1120,12 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Geometry of vectors",
     "concept": "vector-geometry",
-    "statement": "If neither of \\(u\\) and \\(v\\) is a scalar multiple of the other, then \\(u+v\\) is the fourth vertex of the parallelogram whose other three vertices are \\(0\\), \\(u\\), and \\(v\\).",
+    "statement": "If neither of \\(u\\) and \\(v\\) is a scalar multiple of the other, then \\(u+v\\) is the fourth vertex of the parallelogram whose other three vertices are \\(\\mathbf{0}\\), \\(u\\), and \\(v\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The parallelogram rule is a separate operation from entrywise addition.",
-    "explanation": "This is the parallelogram rule, and it is a picture of the same entrywise sum. The hypothesis rules out the degenerate case in which the three points are collinear and no parallelogram is formed."
+    "explanation": "This is the parallelogram rule, and it is a picture of the same entrywise sum. The hypothesis rules out the degenerate case and gives the usual nondegenerate parallelogram picture."
   },
   {
     "id": "1.3-geom-03",
@@ -1222,7 +1200,7 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "A linear combination requires some special choice of weights.",
-    "explanation": "The weights may be any scalars at all. Different choices of weights produce different linear combinations of the same list of vectors."
+    "explanation": "This is the definition of linear combination. In particular, any choice of scalars \\(c_1,\\dots,c_p\\) is permitted. Different choices of weights may or may not produce different linear combinations of the same list of vectors."
   },
   {
     "id": "1.3-lincomb-02",
@@ -1241,12 +1219,12 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Linear combinations",
     "concept": "linear-combination",
-    "statement": "The zero vector is a linear combination of any nonempty list of vectors \\(v_1,\\dots,v_p\\) in \\(\\mathbb{R}^n\\).",
+    "statement": "The zero vector \\(\\mathbf{0}\\) is a linear combination of any nonempty list of vectors \\(v_1,\\dots,v_p\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "Producing the zero vector requires the vectors themselves to be special.",
-    "explanation": "Choosing every weight to be \\(0\\) gives \\(0v_1+\\cdots+0v_p=0\\). No assumption about the vectors is needed."
+    "misconception": "Producing the zero vector \\(\\mathbf{0}\\) requires the vectors themselves to be special.",
+    "explanation": "Choosing every weight to be \\(0\\) gives \\(0v_1+\\cdots+0v_p=\\mathbf{0}\\). No assumption about the vectors is needed."
   },
   {
     "id": "1.3-lincomb-04",
@@ -1373,7 +1351,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "The span is a short list built from the obvious combinations.",
-    "explanation": "Every choice of weights is allowed, so the span also contains \\(2u\\), \\(-v\\), \\(3u-7v\\), the zero vector, and infinitely many others whenever \\(u\\) or \\(v\\) is nonzero."
+    "explanation": "Every choice of weights is allowed, so the span also contains \\(2u\\), \\(-v\\), \\(3u-7v\\), the zero vector \\(\\mathbf{0}\\), and infinitely many others whenever \\(u\\) or \\(v\\) is nonzero. If \\(u=v=\\mathbf{0}\\), then the span has only one vector, not three."
   },
   {
     "id": "1.3-span-04",
@@ -1391,7 +1369,7 @@ window.QUESTION_BANK = [
       "choices": [
         "\\(v\\) is already a multiple of \\(u\\), so any combination of \\(u\\) and \\(v\\) collapses to a multiple of \\(u\\).",
         "A span can never contain more than one vector.",
-        "\\(v\\) must be the zero vector.",
+        "\\(v\\) must be the zero vector \\(\\mathbf{0}\\).",
         "Spans are unchanged by adding any vector whatsoever."
       ],
       "correct": 0
@@ -1402,12 +1380,12 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Span",
     "concept": "span",
-    "statement": "\\(\\operatorname{Span}\\{v_1,\\dots,v_p\\}\\) always contains the zero vector.",
+    "statement": "\\(\\operatorname{Span}\\{v_1,\\dots,v_p\\}\\) always contains the zero vector \\(\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "The span contains the zero vector only when one of the \\(v_i\\) is zero.",
-    "explanation": "Taking all weights equal to \\(0\\) produces the zero vector, whatever the vectors \\(v_1,\\dots,v_p\\) happen to be."
+    "misconception": "The span contains the zero vector \\(\\mathbf{0}\\) only when one of the \\(v_i\\) is zero.",
+    "explanation": "Taking all weights equal to \\(0\\) produces the zero vector \\(\\mathbf{0}\\), whatever the vectors \\(v_1,\\dots,v_p\\) happen to be."
   },
   {
     "id": "1.3-spangeom-01",
@@ -1461,12 +1439,12 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Span",
     "concept": "span-geometry",
-    "statement": "\\(\\operatorname{Span}\\{0\\}\\) is a line through the origin.",
+    "statement": "\\(\\operatorname{Span}\\{\\mathbf{0}\\}\\) is a line through the origin.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The span of a single vector is always a line.",
-    "explanation": "Every multiple of the zero vector is again the zero vector, so this span is the single point \\(\\{0\\}\\). A line requires the vector being spanned to be nonzero."
+    "explanation": "Every multiple of the zero vector \\(\\mathbf{0}\\) is again \\(\\mathbf{0}\\), so this span is the single point \\(\\{\\mathbf{0}\\}\\). A line requires the vector being spanned to be nonzero."
   },
   {
     "id": "1.3-vector-11",
@@ -1497,12 +1475,12 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Vector algebra",
     "concept": "vector-algebra",
-    "statement": "For every vector \\(v\\) in \\(\\mathbb{R}^n\\), \\(1v=0\\).",
+    "statement": "For every vector \\(v\\) in \\(\\mathbb{R}^n\\), \\(1v=\\mathbf{0}\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Confusing the scalar that acts as an identity with the one that annihilates.",
-    "explanation": "Multiplying by the scalar \\(1\\) leaves a vector unchanged: \\(1v=v\\). It is the scalar \\(0\\) that produces the zero vector."
+    "explanation": "Multiplying by the scalar \\(1\\) leaves a vector unchanged: \\(1v=v\\). It is the scalar \\(0\\) that produces the zero vector \\(\\mathbf{0}\\)."
   },
   {
     "id": "1.3-algebra-06",
@@ -1539,6 +1517,73 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "Span is a geometric notion that has to be investigated separately from row reduction.",
     "explanation": "\\(b\\) is in the span exactly when weights exist with \\(x_1a_1+\\cdots+x_na_n=b\\), and that vector equation has the same solution set as the system with that augmented matrix. So consistency answers the span question."
+  },
+  {
+    "id": "1.3-lincomb-07",
+    "section": "1.3",
+    "topic": "Linear combinations",
+    "concept": "linear-combination",
+    "statement": "If \\(y\\) is a linear combination of \\(v_1,\\dots,v_p\\), then \\(cy\\) is also a linear combination of \\(v_1,\\dots,v_p\\) for every scalar \\(c\\).",
+    "answer": true,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "A linear combination is not closed under further scalar multiplication.",
+    "explanation": "If \\(y=c_1v_1+\\cdots+c_pv_p\\), then \\(cy=(cc_1)v_1+\\cdots+(cc_p)v_p\\). The new weights are still scalars, so \\(cy\\) is another linear combination of the same vectors.",
+    "why": {
+      "prompt": "What happens to the weights?",
+      "choices": [
+        "They are all multiplied by \\(c\\), producing another permitted choice of scalar weights.",
+        "They must stay fixed, so only \\(y\\) itself is allowed.",
+        "They become vectors, so the expression is no longer a linear combination.",
+        "They must all become positive."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.3-span-06",
+    "section": "1.3",
+    "topic": "Span",
+    "concept": "span",
+    "statement": "If \\(b\\) is not in \\(\\operatorname{Span}\\{u,v\\}\\), then \\(\\operatorname{Span}\\{u,v,b\\}=\\operatorname{Span}\\{u,v\\}\\).",
+    "answer": false,
+    "difficulty": 3,
+    "variant": "hypothesis",
+    "misconception": "Adding a vector outside a span leaves the span unchanged.",
+    "explanation": "The vector \\(b\\) belongs to \\(\\operatorname{Span}\\{u,v,b\\}\\), because it is \\(0u+0v+1b\\). If \\(b\\) is not in \\(\\operatorname{Span}\\{u,v\\}\\), the two spans cannot be equal.",
+    "why": {
+      "prompt": "Why must the span get larger?",
+      "choices": [
+        "The new span contains \\(b\\), while the old span does not.",
+        "Every time a vector is added to a list, the span becomes all of \\(\\mathbb{R}^n\\).",
+        "The old span contained no vectors at all.",
+        "The equality fails only because \\(b\\) is nonzero."
+      ],
+      "correct": 0
+    }
+  },
+  {
+    "id": "1.3-veceq-05",
+    "section": "1.3",
+    "topic": "Vector equations",
+    "concept": "vector-equation",
+    "statement": "If the system with augmented matrix \\(\\begin{bmatrix}a_1&a_2&b\\end{bmatrix}\\) is consistent, then \\(b\\) must be a scalar multiple of either \\(a_1\\) or \\(a_2\\).",
+    "answer": false,
+    "difficulty": 3,
+    "variant": "core",
+    "misconception": "A linear combination of two vectors has to use only one of them.",
+    "explanation": "Consistency says \\(b\\) is a linear combination of \\(a_1\\) and \\(a_2\\), but that combination may genuinely use both vectors.",
+    "counterexample": "With \\(a_1=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\), \\(a_2=\\begin{bmatrix}0\\\\1\\end{bmatrix}\\), and \\(b=\\begin{bmatrix}1\\\\1\\end{bmatrix}\\), the system is consistent because \\(b=a_1+a_2\\), but \\(b\\) is not a scalar multiple of either column.",
+    "why": {
+      "prompt": "What does consistency actually say?",
+      "choices": [
+        "\\(b\\) is some linear combination of the columns, possibly using both.",
+        "\\(b\\) is equal to one of the columns.",
+        "\\(b\\) is a scalar multiple of every column.",
+        "\\(b\\) must be the zero vector \\(\\mathbf{0}\\)."
+      ],
+      "correct": 0
+    }
   },
   {
     "id": "1.4-prod-01",
@@ -1586,7 +1631,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Rows and columns play interchangeable roles in \\(Ax\\).",
-    "explanation": "\\(Ax\\) combines the columns of \\(A\\). Rows enter only through the row-vector rule, which is a computational shortcut for the individual entries of the answer.",
+    "explanation": "\\(Ax\\) is defined as a linear combination of the columns of \\(A\\). Rows are used to compute the individual entries of \\(Ax\\) if computing the product using the row-vector rule.",
     "why": {
       "prompt": "Why must it be the columns?",
       "choices": [
@@ -1709,7 +1754,7 @@ window.QUESTION_BANK = [
         "\\(Ax=b\\) is consistent exactly when \\(b\\) is in \\(\\operatorname{Span}\\{a_1,\\dots,a_n\\}\\).",
         "\\(Ax=b\\) is consistent exactly when \\(b\\) is one of the columns of \\(A\\).",
         "\\(Ax=b\\) is consistent exactly when \\(A\\) has no zero columns.",
-        "\\(Ax=b\\) is consistent exactly when \\(b\\) is the zero vector."
+        "\\(Ax=b\\) is consistent exactly when \\(b\\) is the zero vector \\(\\mathbf{0}\\)."
       ],
       "correct": 0
     }
@@ -1756,7 +1801,7 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Spanning sets",
     "concept": "spans-rm",
-    "statement": "Any three vectors in \\(\\mathbb{R}^3\\) span \\(\\mathbb{R}^3\\).",
+    "statement": "Every set of three vectors in \\(\\mathbb{R}^3\\) spans \\(\\mathbb{R}^3\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -1944,11 +1989,11 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "matrix-vector-product",
-    "statement": "If \\(e_1\\) in \\(\\mathbb{R}^n\\) has first entry \\(1\\) and all other entries \\(0\\), then \\(Ae_1\\) is the first column of \\(A\\).",
+    "statement": "If \\(A\\) has \\(n\\) columns and \\(e_1\\) in \\(\\mathbb{R}^n\\) has first entry \\(1\\) and all other entries \\(0\\), then \\(Ae_1\\) is the first column of \\(A\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "Multiplying by a vector of mostly zeros produces the zero vector.",
+    "misconception": "Multiplying by a vector of mostly zeros produces the zero vector \\(\\mathbf{0}\\).",
     "explanation": "The weights are \\(1,0,\\dots,0\\), so the combination is \\(1a_1+0a_2+\\cdots+0a_n=a_1\\). Multiplying by \\(e_i\\) selects the \\(i\\)th column."
   },
   {
@@ -1980,12 +2025,12 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Existence of solutions",
     "concept": "solvability-columns",
-    "statement": "For every matrix \\(A\\), the equation \\(Ax=0\\), where \\(0\\) is the zero vector, has at least one solution.",
+    "statement": "If \\(A\\) is \\(m\\times n\\), then \\(Ax=\\mathbf{0}\\), where \\(\\mathbf{0}\\) is the zero vector in \\(\\mathbb{R}^m\\), has at least one solution, namely \\(x=\\mathbf{0}\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Solvability of \\(Ax=b\\) always depends on the particular \\(A\\).",
-    "explanation": "Taking \\(x\\) to be the zero vector gives a combination of the columns with all weights \\(0\\), which is the zero vector. So this equation is consistent no matter what \\(A\\) is."
+    "explanation": "Taking \\(x\\) to be the zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^n\\) gives a combination of the columns with all weights \\(0\\), which is the zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^m\\). So this equation is consistent no matter what \\(A\\) is."
   },
   {
     "id": "1.4-spansrm-05",
@@ -2016,7 +2061,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "homogeneous-system",
-    "statement": "A system of linear equations is homogeneous when it can be written in the form \\(Ax=0\\).",
+    "statement": "A system of linear equations is homogeneous when it can be written in the form \\(Ax=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2033,7 +2078,7 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "Consistency has to be checked separately for homogeneous systems too.",
-    "explanation": "Taking \\(x=0\\) gives \\(A0=0\\), so the zero vector is always a solution. A homogeneous system is therefore consistent no matter what \\(A\\) is."
+    "explanation": "Taking \\(x=\\mathbf{0}\\) gives \\(A\\mathbf{0}=\\mathbf{0}\\), so the zero vector \\(\\mathbf{0}\\) is always a solution. A homogeneous system is therefore consistent no matter what \\(A\\) is."
   },
   {
     "id": "1.5-homog-03",
@@ -2045,7 +2090,7 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "Mostly zero is close enough to homogeneous.",
-    "explanation": "Homogeneous requires \\(b\\) to be the zero vector. A single nonzero entry is enough to make the system nonhomogeneous, and this one may well be inconsistent."
+    "explanation": "Homogeneous requires \\(b\\) to be the zero vector \\(\\mathbf{0}\\). A single nonzero entry is enough to make the system nonhomogeneous."
   },
   {
     "id": "1.5-homog-04",
@@ -2074,65 +2119,65 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "The zero vector is a solution of every homogeneous equation \\(Ax=0\\).",
+    "statement": "The zero vector \\(\\mathbf{0}\\) is a solution of every homogeneous equation \\(Ax=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "Whether the zero vector solves the equation depends on \\(A\\).",
-    "explanation": "\\(A0\\) is the combination of the columns of \\(A\\) with all weights \\(0\\), which is the zero vector. This holds for every \\(A\\)."
+    "misconception": "Whether the zero vector \\(\\mathbf{0}\\) solves the equation depends on \\(A\\).",
+    "explanation": "\\(A\\mathbf{0}\\) is the combination of the columns of \\(A\\) with all weights \\(0\\), which is the zero vector \\(\\mathbf{0}\\). This holds for every \\(A\\)."
   },
   {
     "id": "1.5-trivial-02",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "A nontrivial solution of \\(Ax=0\\) is a solution in which every entry is nonzero.",
+    "statement": "A nontrivial solution of \\(Ax=\\mathbf{0}\\) is a solution in which every entry is nonzero.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Nontrivial is read as no entry is trivial.",
-    "explanation": "A nontrivial solution is any solution other than the zero vector. It needs at least one nonzero entry, and the remaining entries are free to be \\(0\\).",
-    "counterexample": "\\(\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}\\) is nontrivial even though two of its entries are \\(0\\)."
+    "explanation": "A nontrivial solution is any solution other than the zero vector \\(\\mathbf{0}\\). It needs at least one nonzero entry, and the remaining entries are free to be \\(0\\).",
+    "counterexample": "For \\(A=\\begin{bmatrix}0&0&0\\end{bmatrix}\\), the vector \\(\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}\\) solves \\(Ax=\\mathbf{0}\\) and is nontrivial even though two of its entries are \\(0\\)."
   },
   {
     "id": "1.5-trivial-03",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "If \\(Ax=0\\) has a nontrivial solution, then it no longer has the trivial solution.",
+    "statement": "If \\(Ax=\\mathbf{0}\\) has a nontrivial solution, then it no longer has the trivial solution.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Trivial and nontrivial solutions are alternatives that exclude one another.",
-    "explanation": "The zero vector solves \\(Ax=0\\) always. Having a nontrivial solution means there is at least one more solution besides that one, not that the trivial solution has gone away."
+    "explanation": "The zero vector \\(\\mathbf{0}\\) solves \\(Ax=\\mathbf{0}\\) always. Having a nontrivial solution means there is at least one more solution besides that one, not that the trivial solution has gone away."
   },
   {
     "id": "1.5-trivial-04",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "The trivial solution of \\(Ax=0\\) is the solution \\(x=0\\).",
+    "statement": "The trivial solution of \\(Ax=\\mathbf{0}\\) is the solution \\(x=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Trivial describes a system that is easy rather than a specific solution.",
-    "explanation": "The word names one particular solution, the zero vector. It is called trivial because it requires no work to find."
+    "explanation": "The word names one particular solution, the zero vector \\(\\mathbf{0}\\). It is called trivial because it requires no work to find."
   },
   {
     "id": "1.5-nontriv-01",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "\\(Ax=0\\) has a nontrivial solution if and only if the equation has at least one free variable.",
+    "statement": "\\(Ax=\\mathbf{0}\\) has a nontrivial solution if and only if the equation has at least one free variable.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Nontrivial solutions depend on the size of \\(A\\) rather than on free variables.",
-    "explanation": "A free variable can be set to any nonzero value, producing a solution other than the zero vector. With no free variables, every variable is basic and determined, so the zero vector is the only solution.",
+    "explanation": "A free variable can be set to any nonzero value, producing a solution other than the zero vector \\(\\mathbf{0}\\). With no free variables, every variable is basic and determined, so \\(\\mathbf{0}\\) is the only solution.",
     "why": {
       "prompt": "Why does one free variable already guarantee a nontrivial solution?",
       "choices": [
-        "Setting that free variable to \\(1\\) produces a solution that is not the zero vector.",
+        "Setting that free variable to \\(1\\) produces a solution that is not the zero vector \\(\\mathbf{0}\\).",
         "Free variables must be nonzero.",
         "A free variable makes the system inconsistent.",
         "Free variables force the augmented column to be a pivot column."
@@ -2145,7 +2190,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If \\(Ax=0\\) has only the trivial solution, then \\(A\\) has at least one free variable.",
+    "statement": "If \\(Ax=\\mathbf{0}\\) has only the trivial solution, then \\(A\\) has at least one free variable.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2157,7 +2202,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If \\(A\\) is a \\(3\\times5\\) matrix, then \\(Ax=0\\) must have a nontrivial solution.",
+    "statement": "If \\(A\\) is a \\(3\\times5\\) matrix, then \\(Ax=\\mathbf{0}\\) must have a nontrivial solution.",
     "answer": true,
     "difficulty": 3,
     "variant": "core",
@@ -2179,41 +2224,41 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If \\(A\\) has more rows than columns, then \\(Ax=0\\) has a nontrivial solution.",
+    "statement": "If \\(A\\) has more rows than columns, then \\(Ax=\\mathbf{0}\\) has a nontrivial solution.",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Any mismatch between the number of rows and columns produces free variables.",
     "explanation": "The useful comparison is more columns than rows, which forces a column without a pivot. More rows than columns leaves room for every column to be a pivot column.",
-    "counterexample": "\\(A=\\begin{bmatrix}1&0\\\\0&1\\\\0&0\\end{bmatrix}\\) has three rows and two columns, and \\(Ax=0\\) has only the trivial solution."
+    "counterexample": "\\(A=\\begin{bmatrix}1&0\\\\0&1\\\\0&0\\end{bmatrix}\\) has three rows and two columns, and \\(Ax=\\mathbf{0}\\) has only the trivial solution."
   },
   {
     "id": "1.5-nontriv-05",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If some column of \\(A\\) is not a pivot column, then \\(Ax=0\\) has a nontrivial solution.",
+    "statement": "If some column of \\(A\\) is not a pivot column, then \\(Ax=\\mathbf{0}\\) has a nontrivial solution.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Nonpivot columns say nothing about the homogeneous equation.",
-    "explanation": "A column that is not a pivot column corresponds to a free variable, and one free variable is enough to produce a solution other than the zero vector."
+    "explanation": "A column that is not a pivot column corresponds to a free variable, and one free variable is enough to produce a solution other than the zero vector \\(\\mathbf{0}\\)."
   },
   {
     "id": "1.5-span-01",
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "The solution set of a homogeneous equation \\(Ax=0\\) can always be written as the span of some list of vectors.",
+    "statement": "The solution set of a homogeneous equation \\(Ax=\\mathbf{0}\\) can always be written as the span of some list of vectors.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Only some homogeneous systems have solution sets describable as a span.",
-    "explanation": "Row reduce, solve for the basic variables, and collect one vector for each free variable. The solution set is exactly the span of those vectors.",
+    "explanation": "Row reduce, solve for the basic variables, and collect one vector for each free variable. The solution set is exactly the span of those vectors. If there are no free variables, the solution set is \\(\\{\\mathbf{0}\\}\\), which can be written as \\(\\operatorname{Span}\\{\\mathbf{0}\\}\\).",
     "why": {
       "prompt": "Where do the spanning vectors come from?",
       "choices": [
-        "One vector for each free variable, read off the parametric description.",
+        "One vector for each free variable; if there are none, use \\(\\operatorname{Span}\\{\\mathbf{0}\\}\\).",
         "One vector for each pivot column of \\(A\\).",
         "The columns of \\(A\\) themselves.",
         "The rows of the reduced echelon form."
@@ -2226,17 +2271,17 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "If \\(Ax=0\\) has only the trivial solution, its solution set can still be described as a span.",
+    "statement": "If \\(Ax=\\mathbf{0}\\) has only the trivial solution, its solution set can still be described as a span.",
     "answer": true,
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "Describing a solution set as a span requires at least one free variable.",
-    "explanation": "The solution set is \\(\\{0\\}\\), which is \\(\\operatorname{Span}\\{0\\}\\). So the description as a span covers this case too, with no exception needed.",
+    "explanation": "The solution set is \\(\\{\\mathbf{0}\\}\\), which is \\(\\operatorname{Span}\\{\\mathbf{0}\\}\\). So the description as a span covers this case too, with no exception needed.",
     "why": {
       "prompt": "Why is the claim worth stating separately?",
       "choices": [
         "It shows the span description needs no special case when there are no free variables.",
-        "It shows that \\(\\{0\\}\\) is a line through the origin.",
+        "It shows that \\(\\{\\mathbf{0}\\}\\) is a line through the origin.",
         "It shows every homogeneous system has a free variable.",
         "It shows the trivial solution can be omitted from the solution set."
       ],
@@ -2248,7 +2293,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "The number of vectors needed to span the solution set of \\(Ax=0\\) equals the number of pivot columns of \\(A\\).",
+    "statement": "The number of vectors needed to span the solution set of \\(Ax=\\mathbf{0}\\) equals the number of pivot columns of \\(A\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2260,31 +2305,31 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "If \\(Ax=0\\) has a nontrivial solution, then it has infinitely many solutions.",
+    "statement": "If \\(Ax=\\mathbf{0}\\) has a nontrivial solution, then it has infinitely many solutions.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "A homogeneous system might have exactly two solutions: the trivial one and one other.",
-    "explanation": "If \\(v\\ne0\\) solves \\(Ax=0\\), then \\(A(cv)=c(Av)=0\\) for every scalar \\(c\\), and distinct scalars give distinct vectors. So the solutions form a whole line at least."
+    "explanation": "If \\(v\\ne\\mathbf{0}\\) solves \\(Ax=\\mathbf{0}\\), then \\(A(cv)=c(Av)=\\mathbf{0}\\) for every scalar \\(c\\), and distinct scalars give distinct vectors. So the solutions form a whole line at least."
   },
   {
     "id": "1.5-span-05",
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "The solution set of \\(Ax=0\\) is the span of the pivot columns of \\(A\\).",
+    "statement": "The solution set of \\(Ax=\\mathbf{0}\\) is the span of the pivot columns of \\(A\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Any span attached to \\(A\\) must be the span of some of its columns.",
-    "explanation": "The columns of \\(A\\) live in \\(\\mathbb{R}^m\\), while solutions of \\(Ax=0\\) live in \\(\\mathbb{R}^n\\). The spanning vectors for the solution set are produced from the free variables, and are generally not columns of \\(A\\) at all."
+    "explanation": "The columns of \\(A\\) live in \\(\\mathbb{R}^m\\), while solutions of \\(Ax=\\mathbf{0}\\) live in \\(\\mathbb{R}^n\\). The spanning vectors for the solution set are produced from the free variables, and are generally not columns of \\(A\\) at all."
   },
   {
     "id": "1.5-pvf-01",
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "parametric-vector-form",
-    "statement": "Writing the solution set of \\(Ax=0\\) as \\(x=t_1u_1+\\cdots+t_ku_k\\), with the free variables serving as the parameters \\(t_1,\\dots,t_k\\), is a parametric vector form of that solution set.",
+    "statement": "Writing the solution set of \\(Ax=\\mathbf{0}\\) as \\(x=t_1u_1+\\cdots+t_ku_k\\), with the free variables serving as the parameters \\(t_1,\\dots,t_k\\), is a parametric vector form of that solution set.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2304,23 +2349,11 @@ window.QUESTION_BANK = [
     "explanation": "The parameters stay as parameters. Letting them range over all real numbers is what makes the expression describe the entire solution set rather than one solution."
   },
   {
-    "id": "1.5-pvf-03",
-    "section": "1.5",
-    "topic": "Parametric vector form",
-    "concept": "parametric-vector-form",
-    "statement": "The same solution set can be described by more than one correct parametric vector form.",
-    "answer": true,
-    "difficulty": 2,
-    "variant": "core",
-    "misconception": "Parametric vector form is a canonical object like the reduced echelon form.",
-    "explanation": "Rescaling a parameter, or choosing different spanning vectors for the same set, gives a different-looking description of the same solution set. For instance \\(x=t u\\) and \\(x=s(2u)\\) describe the same line."
-  },
-  {
     "id": "1.5-pvf-04",
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "parametric-vector-form",
-    "statement": "In a parametric vector form of the solution set of \\(Ax=0\\), the number of vectors equals the number of variables in the system.",
+    "statement": "In a parametric vector form of the solution set of \\(Ax=\\mathbf{0}\\), the number of vectors equals the number of variables in the system.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2332,16 +2365,16 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "If \\(Ax=b\\) is consistent and \\(p\\) is one of its solutions, then the solutions of \\(Ax=b\\) are exactly the vectors \\(p+v_h\\) where \\(v_h\\) ranges over the solutions of \\(Ax=0\\).",
+    "statement": "If \\(Ax=b\\) is consistent and \\(p\\) is one of its solutions, then the solutions of \\(Ax=b\\) are exactly the vectors \\(p+v_h\\) where \\(v_h\\) ranges over the solutions of \\(Ax=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The homogeneous equation has nothing to do with the nonhomogeneous one.",
-    "explanation": "If \\(Av_h=0\\) then \\(A(p+v_h)=b+0=b\\), so every such vector is a solution. Conversely if \\(Aw=b\\) then \\(A(w-p)=0\\), so \\(w=p+(w-p)\\) has the required form.",
+    "explanation": "If \\(Av_h=\\mathbf{0}\\) then \\(A(p+v_h)=b+\\mathbf{0}=b\\), so every such vector is a solution. Conversely if \\(Aw=b\\) then \\(A(w-p)=\\mathbf{0}\\), so \\(w=p+(w-p)\\) has the required form.",
     "why": {
       "prompt": "Which computation gives the converse direction?",
       "choices": [
-        "\\(A(w-p)=Aw-Ap=b-b=0\\), so \\(w-p\\) solves the homogeneous equation.",
+        "\\(A(w-p)=Aw-Ap=b-b=\\mathbf{0}\\), so \\(w-p\\) solves the homogeneous equation.",
         "\\(A(w+p)=2b\\), so \\(w+p\\) solves the homogeneous equation.",
         "\\(Aw=Ap\\) forces \\(w=p\\).",
         "Every solution of \\(Ax=b\\) is a scalar multiple of \\(p\\)."
@@ -2364,9 +2397,9 @@ window.QUESTION_BANK = [
       "prompt": "What goes wrong when \\(Ax=b\\) is inconsistent?",
       "choices": [
         "There is no particular solution \\(p\\) to translate by, and the solution set is empty.",
-        "The homogeneous equation \\(Ax=0\\) also becomes inconsistent.",
+        "The homogeneous equation \\(Ax=\\mathbf{0}\\) also becomes inconsistent.",
         "The solution set becomes all of \\(\\mathbb{R}^n\\).",
-        "The vector \\(p\\) must then be taken to be \\(0\\)."
+        "The vector \\(p\\) must then be taken to be \\(\\mathbf{0}\\)."
       ],
       "correct": 0
     }
@@ -2381,38 +2414,38 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "core",
     "misconception": "The translation vector is canonical rather than an arbitrary choice.",
-    "explanation": "Any solution may be used as \\(p\\). If \\(p\\) and \\(p'\\) both solve \\(Ax=b\\), then \\(p-p'\\) solves \\(Ax=0\\), and translating by either one sweeps out the same set."
+    "explanation": "Any solution may be used as \\(p\\). If \\(p\\) and \\(p'\\) both solve \\(Ax=b\\), then \\(p-p'\\) solves \\(Ax=\\mathbf{0}\\), and translating by either one sweeps out the same set."
   },
   {
     "id": "1.5-particular-04",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "If \\(Ax=b\\) is consistent and \\(Ax=0\\) has only the trivial solution, then \\(Ax=b\\) has exactly one solution.",
+    "statement": "If \\(Ax=b\\) is consistent and \\(Ax=\\mathbf{0}\\) has only the trivial solution, then \\(Ax=b\\) has exactly one solution.",
     "answer": true,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Information about the homogeneous equation cannot settle uniqueness for the nonhomogeneous one.",
-    "explanation": "The solutions are the vectors \\(p+v_h\\). If the only \\(v_h\\) is the zero vector, then \\(p\\) is the only solution. Consistency supplies the existence half."
+    "explanation": "The solutions are the vectors \\(p+v_h\\). If the only \\(v_h\\) is the zero vector \\(\\mathbf{0}\\), then \\(p\\) is the only solution. Consistency supplies the existence half."
   },
   {
     "id": "1.5-particular-05",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "If \\(p\\) and \\(q\\) are both solutions of \\(Ax=b\\), then \\(p-q\\) is a solution of \\(Ax=0\\).",
+    "statement": "If \\(p\\) and \\(q\\) are both solutions of \\(Ax=b\\), then \\(p-q\\) is a solution of \\(Ax=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Combining two solutions of \\(Ax=b\\) gives another solution of \\(Ax=b\\).",
-    "explanation": "\\(A(p-q)=Ap-Aq=b-b=0\\). Note that \\(p+q\\) is generally not a solution of \\(Ax=b\\), since \\(A(p+q)=2b\\)."
+    "explanation": "\\(A(p-q)=Ap-Aq=b-b=\\mathbf{0}\\). Note that \\(p+q\\) is generally not a solution of \\(Ax=b\\), since \\(A(p+q)=2b\\)."
   },
   {
     "id": "1.5-geom-01",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "The solution set of a consistent equation \\(Ax=b\\) can be pictured as the solution set of \\(Ax=0\\) shifted by a particular solution \\(p\\).",
+    "statement": "The solution set of a consistent equation \\(Ax=b\\) can be pictured as the solution set of \\(Ax=\\mathbf{0}\\) shifted by a particular solution \\(p\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -2424,16 +2457,16 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "If \\(b\\ne0\\) and \\(Ax=b\\) is consistent, then its solution set is a span.",
+    "statement": "If \\(b\\ne\\mathbf{0}\\) and \\(Ax=b\\) is consistent, then its solution set is a span.",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "Any solution set that looks like a line or a plane is a span.",
-    "explanation": "Every span contains the zero vector. Here \\(A0=0\\ne b\\), so the zero vector is not a solution and the solution set cannot be a span. It is a translate of one.",
+    "explanation": "Every span contains the zero vector \\(\\mathbf{0}\\). Here \\(A\\mathbf{0}=\\mathbf{0}\\ne b\\), so \\(\\mathbf{0}\\) is not a solution and the solution set cannot be a span. It is a translate of one.",
     "why": {
       "prompt": "What rules it out?",
       "choices": [
-        "A span always contains the zero vector, and this solution set does not.",
+        "A span always contains the zero vector \\(\\mathbf{0}\\), and this solution set does not.",
         "Spans are always infinite, and this set may be finite.",
         "A span must be a line, and this set is a plane.",
         "Spans exist only for homogeneous equations by definition."
@@ -2451,38 +2484,38 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "Solution sets of linear equations are always lines or planes through the origin.",
-    "explanation": "The zero vector solves \\(Ax=b\\) only when \\(b=0\\). For a nonzero \\(b\\) the solution set misses the origin entirely, and it may also be empty."
+    "explanation": "The zero vector \\(\\mathbf{0}\\) solves \\(Ax=b\\) only when \\(b=\\mathbf{0}\\). For a nonzero \\(b\\), the solution set misses the origin entirely, and it may also be empty."
   },
   {
     "id": "1.5-geom-04",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "The solution set of a homogeneous equation \\(Ax=0\\) always contains the origin.",
+    "statement": "The solution set of a homogeneous equation \\(Ax=\\mathbf{0}\\) always contains the origin.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Whether the origin belongs depends on the particular matrix.",
-    "explanation": "The zero vector is always the trivial solution, so the origin lies in the solution set of every homogeneous equation."
+    "explanation": "The zero vector \\(\\mathbf{0}\\) is always the trivial solution, so the origin lies in the solution set of every homogeneous equation."
   },
   {
     "id": "1.5-geom-05",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "If the solution set of \\(Ax=b\\) is a line that does not pass through the origin, then \\(Ax=0\\) has only the trivial solution.",
+    "statement": "If the solution set of \\(Ax=b\\) is a line that does not pass through the origin, then \\(Ax=\\mathbf{0}\\) has only the trivial solution.",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "A solution set that misses the origin means the homogeneous equation is as small as possible.",
-    "explanation": "The solution set of \\(Ax=b\\) is a translate of the solution set of \\(Ax=0\\), so the two have the same shape. A line of solutions for \\(Ax=b\\) means \\(Ax=0\\) is also a line, namely the parallel one through the origin, which contains nontrivial solutions."
+    "explanation": "The solution set of \\(Ax=b\\) is a translate of the solution set of \\(Ax=\\mathbf{0}\\), so the two have the same shape. A line of solutions for \\(Ax=b\\) means \\(Ax=\\mathbf{0}\\) is also a line, namely the parallel one through the origin, which contains nontrivial solutions."
   },
   {
     "id": "1.7-indep-01",
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly independent when \\(x_1v_1+\\cdots+x_pv_p=0\\) has only the trivial solution.",
+    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly independent when \\(x_1v_1+\\cdots+x_pv_p=\\mathbf{0}\\) has only the trivial solution.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2494,7 +2527,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly independent when \\(x_1v_1+\\cdots+x_pv_p=0\\) has no solution.",
+    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly independent when \\(x_1v_1+\\cdots+x_pv_p=\\mathbf{0}\\) has no solution.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
@@ -2506,24 +2539,24 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "If \\(v_1,\\dots,v_p\\) are linearly independent, then none of them is the zero vector.",
+    "statement": "If \\(v_1,\\dots,v_p\\) are linearly independent, then none of them is the zero vector \\(\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "The zero vector is harmless inside an independent list.",
-    "explanation": "If some \\(v_i\\) were the zero vector, then putting weight \\(1\\) on it and \\(0\\) everywhere else gives a nontrivial solution, contradicting independence."
+    "misconception": "The zero vector \\(\\mathbf{0}\\) is harmless inside an independent list.",
+    "explanation": "If some \\(v_i\\) were the zero vector \\(\\mathbf{0}\\), then putting weight \\(1\\) on it and \\(0\\) everywhere else gives a nontrivial solution, contradicting independence."
   },
   {
     "id": "1.7-indep-04",
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "If \\(v_1,\\dots,v_p\\) are linearly independent, then no linear combination of them equals the zero vector.",
+    "statement": "If \\(v_1,\\dots,v_p\\) are linearly independent, then no linear combination of them equals the zero vector \\(\\mathbf{0}\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "Independence forbids the zero vector from arising at all.",
-    "explanation": "The combination with all weights \\(0\\) always gives the zero vector, for any vectors whatsoever. Independence says that is the only combination that does."
+    "misconception": "Independence forbids the zero vector \\(\\mathbf{0}\\) from arising at all.",
+    "explanation": "The combination with all weights \\(0\\) always gives the zero vector \\(\\mathbf{0}\\), for any vectors whatsoever. Independence says that is the only combination that does."
   },
   {
     "id": "1.7-indep-05",
@@ -2543,7 +2576,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-dependence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly dependent when there exist weights \\(c_1,\\dots,c_p\\), not all zero, with \\(c_1v_1+\\cdots+c_pv_p=0\\).",
+    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly dependent when there exist weights \\(c_1,\\dots,c_p\\), not all zero, with \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2555,7 +2588,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-dependence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly dependent when \\(c_1v_1+\\cdots+c_pv_p=0\\) holds for some scalars \\(c_1,\\dots,c_p\\).",
+    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly dependent when \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\) holds for some scalars \\(c_1,\\dots,c_p\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
@@ -2566,7 +2599,7 @@ window.QUESTION_BANK = [
       "choices": [
         "The all-zero choice of weights, which works for any vectors at all.",
         "Negative weights, which are not permitted in a dependence relation.",
-        "Lists containing the zero vector.",
+        "Lists containing the zero vector \\(\\mathbf{0}\\).",
         "Lists with more than \\(n\\) vectors in \\(\\mathbb{R}^n\\)."
       ],
       "correct": 0
@@ -2602,7 +2635,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-dependence",
-    "statement": "If \\(v_1,\\dots,v_p\\) are linearly dependent, then \\(v_1\\) must be a linear combination of \\(v_2,\\dots,v_p\\).",
+    "statement": "If \\(v_1,v_2,v_3\\) are linearly dependent, then \\(v_1\\) must be a linear combination of \\(v_2\\) and \\(v_3\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2615,7 +2648,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-relation",
-    "statement": "An equation \\(c_1v_1+\\cdots+c_pv_p=0\\) in which the weights are not all zero is called a linear dependence relation among \\(v_1,\\dots,v_p\\).",
+    "statement": "An equation \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\) in which the weights are not all zero is called a linear dependence relation among \\(v_1,\\dots,v_p\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2627,7 +2660,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-relation",
-    "statement": "The equation \\(0v_1+0v_2+0v_3=0\\) is a linear dependence relation among \\(v_1,v_2,v_3\\).",
+    "statement": "The equation \\(0v_1+0v_2+0v_3=\\mathbf{0}\\) is a linear dependence relation among \\(v_1,v_2,v_3\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2639,7 +2672,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-relation",
-    "statement": "If \\(2v_1-v_2+0v_3=0\\), then \\(v_1,v_2,v_3\\) are linearly dependent.",
+    "statement": "If \\(2v_1-v_2+0v_3=\\mathbf{0}\\), then \\(v_1,v_2,v_3\\) are linearly dependent.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -2656,24 +2689,24 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "The certificate of dependence is a canonical object.",
-    "explanation": "Multiplying a dependence relation through by any nonzero scalar gives another one. If \\(2v_1-v_2=0\\), then \\(4v_1-2v_2=0\\) as well, so there are infinitely many."
+    "explanation": "Multiplying a dependence relation through by any nonzero scalar gives another one. If \\(2v_1-v_2=\\mathbf{0}\\), then \\(4v_1-2v_2=\\mathbf{0}\\) as well, so there are infinitely many."
   },
   {
     "id": "1.7-columns-01",
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "independence-columns",
-    "statement": "The columns of \\(A\\) are linearly independent if and only if \\(Ax=0\\) has only the trivial solution.",
+    "statement": "The columns of \\(A\\) are linearly independent if and only if \\(Ax=\\mathbf{0}\\) has only the trivial solution.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Independence of the columns is unrelated to the homogeneous equation.",
-    "explanation": "\\(Ax\\) is the combination of the columns with weights from \\(x\\), so \\(Ax=0\\) is precisely the vector equation in the definition of independence.",
+    "explanation": "\\(Ax\\) is the combination of the columns with weights from \\(x\\), so \\(Ax=\\mathbf{0}\\) is precisely the vector equation in the definition of independence.",
     "why": {
       "prompt": "Why are the two conditions the same?",
       "choices": [
-        "\\(Ax=0\\) is exactly the equation \\(x_1a_1+\\cdots+x_na_n=0\\) from the definition.",
-        "\\(Ax=0\\) is always inconsistent when the columns are independent.",
+        "\\(Ax=\\mathbf{0}\\) is exactly the equation \\(x_1a_1+\\cdots+x_na_n=\\mathbf{0}\\) from the definition.",
+        "\\(Ax=\\mathbf{0}\\) is always inconsistent when the columns are independent.",
         "Independence requires \\(A\\) to be square.",
         "The trivial solution exists only when the columns are independent."
       ],
@@ -2690,7 +2723,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Pivot positions describe spanning rather than independence.",
-    "explanation": "A column that is not a pivot column gives a free variable, and a free variable gives a nontrivial solution of \\(Ax=0\\). So independence is exactly the absence of free variables."
+    "explanation": "A column that is not a pivot column gives a free variable, and a free variable gives a nontrivial solution of \\(Ax=\\mathbf{0}\\). So independence is exactly the absence of free variables."
   },
   {
     "id": "1.7-columns-03",
@@ -2747,7 +2780,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Independence alone cannot deliver uniqueness without further assumptions.",
-    "explanation": "Independence means \\(Ax=0\\) has only the trivial solution, so the solution set of \\(Ax=b\\) is \\(p+\\{0\\}=\\{p\\}\\). The consistency hypothesis supplies the particular solution \\(p\\)."
+    "explanation": "Independence means \\(Ax=\\mathbf{0}\\) has only the trivial solution, so the solution set of \\(Ax=b\\) is \\(p+\\{\\mathbf{0}\\}=\\{p\\}\\). The consistency hypothesis supplies the particular solution \\(p\\)."
   },
   {
     "id": "1.7-one-01",
@@ -2759,31 +2792,31 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "Independence needs at least two vectors to compare.",
-    "explanation": "The equation \\(x_1v=0\\) with \\(v\\ne0\\) forces \\(x_1=0\\), so only the trivial solution occurs."
+    "explanation": "The equation \\(x_1v=\\mathbf{0}\\) with \\(v\\ne\\mathbf{0}\\) forces \\(x_1=0\\), so only the trivial solution occurs."
   },
   {
     "id": "1.7-one-02",
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "one-vector-independence",
-    "statement": "The list consisting of the single vector \\(0\\) is linearly independent.",
+    "statement": "The list consisting of the single vector \\(\\mathbf{0}\\) is linearly independent.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "A one-element list is too small to be dependent.",
-    "explanation": "The relation \\(1\\cdot0=0\\) uses the nonzero weight \\(1\\), so it is a genuine dependence relation. The list is dependent."
+    "explanation": "The relation \\(1\\cdot\\mathbf{0}=\\mathbf{0}\\) uses the nonzero weight \\(1\\), so it is a genuine dependence relation. The list is dependent."
   },
   {
     "id": "1.7-one-03",
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "one-vector-independence",
-    "statement": "A list consisting of a single vector \\(v\\) is linearly independent exactly when \\(v\\ne0\\).",
+    "statement": "A list consisting of a single vector \\(v\\) is linearly independent exactly when \\(v\\ne\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Single-vector lists are always independent, or always dependent.",
-    "explanation": "If \\(v\\ne0\\) then \\(x_1v=0\\) forces \\(x_1=0\\). If \\(v=0\\) then \\(1\\cdot v=0\\) is a nontrivial relation. So the two cases split exactly on whether \\(v\\) is the zero vector."
+    "explanation": "If \\(v\\ne\\mathbf{0}\\) then \\(x_1v=\\mathbf{0}\\) forces \\(x_1=0\\). If \\(v=\\mathbf{0}\\) then \\(1\\cdot v=\\mathbf{0}\\) is a nontrivial relation. So the two cases split exactly on whether \\(v\\) is the zero vector \\(\\mathbf{0}\\)."
   },
   {
     "id": "1.7-two-01",
@@ -2795,7 +2828,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "This test is only a rough guide even in the two-vector case.",
-    "explanation": "A relation \\(c_1u+c_2v=0\\) with, say, \\(c_1\\ne0\\) gives \\(u=(-c_2/c_1)v\\). Conversely \\(u=cv\\) gives the relation \\(u-cv=0\\). The case where one vector is \\(0\\) is covered, since \\(0=0\\cdot v\\).",
+    "explanation": "A relation \\(c_1u+c_2v=\\mathbf{0}\\) with, say, \\(c_1\\ne0\\) gives \\(u=(-c_2/c_1)v\\). Conversely \\(u=cv\\) gives the relation \\(u-cv=\\mathbf{0}\\). The case where one vector is \\(\\mathbf{0}\\) is covered, since \\(\\mathbf{0}=0\\cdot v\\).",
     "why": {
       "prompt": "Why does this test not extend to three vectors?",
       "choices": [
@@ -2829,7 +2862,7 @@ window.QUESTION_BANK = [
     "answer": false,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "Only the zero vector can create dependence between two vectors.",
+    "misconception": "Only the zero vector \\(\\mathbf{0}\\) can create dependence between two vectors.",
     "explanation": "Two nonzero vectors are dependent whenever one is a multiple of the other.",
     "counterexample": "\\(\\begin{bmatrix}1\\\\2\\end{bmatrix}\\) and \\(\\begin{bmatrix}3\\\\6\\end{bmatrix}\\) are both nonzero, but the second is three times the first."
   },
@@ -2883,12 +2916,12 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-characterization",
-    "statement": "A list \\(v_1,\\dots,v_p\\) with \\(p\\ge2\\) is linearly dependent if and only if \\(v_1=0\\) or some \\(v_j\\) is a linear combination of the preceding vectors \\(v_1,\\dots,v_{j-1}\\).",
+    "statement": "A list \\(v_1,\\dots,v_p\\) with \\(p\\ge2\\) is linearly dependent if and only if \\(v_1=\\mathbf{0}\\) or some \\(v_j\\) is a linear combination of the preceding vectors \\(v_1,\\dots,v_{j-1}\\).",
     "answer": true,
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "Restricting attention to preceding vectors weakens the characterization.",
-    "explanation": "Take a dependence relation and let \\(j\\) be the largest index with \\(c_j\\ne0\\). If \\(j=1\\) the relation reads \\(c_1v_1=0\\) with \\(c_1\\ne0\\), forcing \\(v_1=0\\). Otherwise solve for \\(v_j\\) in terms of \\(v_1,\\dots,v_{j-1}\\)."
+    "explanation": "Take a dependence relation and let \\(j\\) be the largest index with \\(c_j\\ne0\\). If \\(j=1\\) the relation reads \\(c_1v_1=\\mathbf{0}\\) with \\(c_1\\ne0\\), forcing \\(v_1=\\mathbf{0}\\). Otherwise solve for \\(v_j\\) in terms of \\(v_1,\\dots,v_{j-1}\\)."
   },
   {
     "id": "1.7-many-01",
@@ -2900,7 +2933,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Carefully chosen vectors can stay independent however many there are.",
-    "explanation": "Put the vectors in the columns of an \\(n\\times p\\) matrix with \\(p>n\\). Pivots occupy distinct rows, so there are at most \\(n\\) of them and some column has no pivot. That free variable gives a nontrivial solution of \\(Ax=0\\).",
+    "explanation": "Put the vectors in the columns of an \\(n\\times p\\) matrix with \\(p>n\\). Pivots occupy distinct rows, so there are at most \\(n\\) of them and some column has no pivot. That free variable gives a nontrivial solution of \\(Ax=\\mathbf{0}\\).",
     "why": {
       "prompt": "Which counting step drives the argument?",
       "choices": [
@@ -2917,7 +2950,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "too-many-vectors",
-    "statement": "Any list of \\(n\\) or fewer vectors in \\(\\mathbb{R}^n\\) is linearly independent.",
+    "statement": "Every list of \\(n\\) or fewer vectors in \\(\\mathbb{R}^n\\) is linearly independent.",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
@@ -2979,19 +3012,19 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "zero-vector-dependence",
-    "statement": "If a list of vectors contains the zero vector, then the list is linearly dependent.",
+    "statement": "If a list of vectors contains the zero vector \\(\\mathbf{0}\\), then the list is linearly dependent.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "The zero vector contributes nothing and so cannot cause dependence.",
-    "explanation": "Put weight \\(1\\) on the zero vector and weight \\(0\\) on everything else. The combination is the zero vector and the weights are not all zero, so this is a dependence relation.",
+    "misconception": "The zero vector \\(\\mathbf{0}\\) contributes nothing and so cannot cause dependence.",
+    "explanation": "Put weight \\(1\\) on that zero vector \\(\\mathbf{0}\\) and weight \\(0\\) on everything else. The combination is \\(\\mathbf{0}\\) and the weights are not all zero, so this is a dependence relation.",
     "why": {
       "prompt": "Which relation certifies it?",
       "choices": [
-        "\\(1\\cdot0+0v_2+\\cdots+0v_p=0\\), whose weights are not all zero.",
-        "\\(0\\cdot0+0v_2+\\cdots+0v_p=0\\).",
-        "\\(1\\cdot0+1v_2+\\cdots+1v_p=0\\).",
-        "No relation is needed; the zero vector is dependent by definition."
+        "Put weight \\(1\\) on that zero vector \\(\\mathbf{0}\\) and \\(0\\) on all other vectors.",
+        "Put weight \\(0\\) on every vector in the list.",
+        "Put weight \\(1\\) on every vector in the list.",
+        "No relation is needed; the zero vector \\(\\mathbf{0}\\) is dependent by definition."
       ],
       "correct": 0
     }
@@ -3001,11 +3034,11 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "zero-vector-dependence",
-    "statement": "If a list of vectors does not contain the zero vector, then the list is linearly independent.",
+    "statement": "If a list of vectors does not contain the zero vector \\(\\mathbf{0}\\), then the list is linearly independent.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "The zero vector is the only possible source of dependence.",
+    "misconception": "The zero vector \\(\\mathbf{0}\\) is the only possible source of dependence.",
     "explanation": "Avoiding the zero vector removes one easy source of dependence but not the others. Dependence among nonzero vectors is extremely common.",
     "counterexample": "\\(\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) and \\(\\begin{bmatrix}2\\\\0\\end{bmatrix}\\) are nonzero and dependent."
   },
@@ -3019,6 +3052,6 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "A zero column is merely wasted space in the matrix.",
-    "explanation": "The columns then form a list containing the zero vector, which is always dependent. Equivalently, that column is not a pivot column, so \\(Ax=0\\) has a free variable."
+    "explanation": "The columns then form a list containing the zero vector \\(\\mathbf{0}\\), which is always dependent. Equivalently, that column is not a pivot column, so \\(Ax=\\mathbf{0}\\) has a free variable."
   }
 ];
