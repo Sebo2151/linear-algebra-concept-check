@@ -408,15 +408,29 @@ implication should share a concept, or the engine cannot connect them.
 
 This is intentionally simple and interpretable.
 
-**A non-finite weight is silently catastrophic.** `weightedPick` walks a running
-total and returns the first item where the remainder drops to zero. If any weight
-is `NaN`, every comparison is false, the loop falls through, and the sampler
-returns the *last question in the bank* on every call. That happened once, from a
+**A non-finite weight is silently catastrophic.** The picker walks a running total
+and returns the first item where the remainder drops to zero. If any weight is
+`NaN`, every comparison is false, the loop falls through, and the sampler returns
+the *last question in the bank* on every call. That happened once, from a
 `whyMissed` field that is only written on a wrong answer and so read as
 `undefined` for a concept whose reasons had all been right: 300 consecutive
-sessions opened with the same §1.9 question. Weights are now clamped, but the
-lesson generalises — the failure produces plausible-looking questions rather than
-an error, so it is invisible without checking the distribution.
+sessions opened with the same §1.9 question.
+
+The sampler now lives in `sampling.js` rather than inside `app.js`, and
+`tests/sampling.test.mjs` covers it. Two rules govern those tests:
+
+- **Exercise the shipped code.** The bug initially escaped a hand-check because
+  that check reimplemented the weight formula, found it uniform, and cleared the
+  sampler — while the real sampler was broken. A test that copies the logic tests
+  the copy. `app.js` therefore calls exactly what the tests call.
+- **Assert on distributions.** Every individual return value was a legitimate
+  question. Only the aggregate was wrong, so single-call assertions cannot see it.
+
+The suite is written to fail if any of four defences is removed: the absent-count
+guard in `conceptWeakness`, its range clamp, the finiteness clamp in `weightFor`,
+and the bad-weight guards inside `pick`. Each was verified by reintroducing that
+specific defect and confirming a red run. If you change this code, do that again —
+a sampler test that has never been seen to fail is not evidence of anything.
 
 Potential next improvement:
 - separate T/F correctness from “Why?” correctness at the concept level;

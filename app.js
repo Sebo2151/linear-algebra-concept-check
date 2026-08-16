@@ -52,17 +52,13 @@
   }
 
   const PRESETS = window.COURSE_PRESETS || [];
-
-  // A Material choice is either a preset id or a bare section label.
-  function sectionsFor(choice) {
-    const preset = PRESETS.find(p => p.id === choice);
-    if (preset) return preset.sections;   // null means every section
-    return [choice];
-  }
+  // Sampling logic lives in sampling.js so tests can drive the same code the app
+  // runs. Do not inline a copy of any of it here.
+  const SAMPLING = window.SAMPLING;
 
   function eligibleQuestions() {
     const { section, mix } = state.settings;
-    const allowed = sectionsFor(section);
+    const allowed = SAMPLING.sectionsFor(section, PRESETS);
     return BANK.filter(q => {
       if (allowed && !allowed.includes(q.section)) return false;
       if (mix === "core" && q.variant !== "core") return false;
@@ -70,54 +66,14 @@
     });
   }
 
-  function conceptWeakness(concept) {
-    const c = progress.concepts[concept];
-    if (!c || c.seen === 0) return 0.35;
-    const tfRate = c.missed / c.seen;
-    if (!c.whySeen) return tfRate;
-    // Knowing the truth value while choosing the wrong reason is not mastery, so
-    // reasoning failures raise the weight. They never lower it below what the
-    // true/false record alone would give.
-    // whyMissed is only written on a wrong answer, so it is absent for a concept
-    // whose reasons have all been right; read it as 0 rather than dividing by
-    // undefined.
-    const whyRate = (c.whyMissed || 0) / c.whySeen;
-    return Math.max(tfRate, (tfRate + whyRate) / 2);
-  }
-
   function weightedPick(items) {
-    const scored = items.map(q => {
-      const qStats = progress.questions[q.id] || { seen: 0, missed: 0 };
-      let weight = 1;
-      weight += conceptWeakness(q.concept) * 2.4;
-      if (!qStats.seen) weight += 1.1;
-      if (qStats.missed) weight += Math.min(2, qStats.missed * 0.45);
-
-      if (state.settings.mix === "standard" && q.variant === "hypothesis") weight *= 0.45;
-      if (state.settings.mix === "challenge" && q.variant === "hypothesis") weight *= 1.7;
-
-      // Keep the session from drifting too heavily toward one truth value.
-      const seenTrue = state._seenTrue || 0;
-      const seenFalse = state._seenFalse || 0;
-      if (q.answer && seenTrue > seenFalse + 1) weight *= 0.45;
-      if (!q.answer && seenFalse > seenTrue + 1) weight *= 0.45;
-
-      // A non-finite weight is silently catastrophic here: every `r <= 0` test
-      // below becomes false, the loop falls through, and the sampler returns the
-      // last question in the bank on every single call. A stray NaN from stored
-      // progress once made 300 consecutive sessions open with the same section,
-      // so clamp rather than trusting the arithmetic upstream.
-      if (!Number.isFinite(weight) || weight <= 0) weight = 1;
-      return { q, weight };
-    });
-
-    const total = scored.reduce((sum, x) => sum + x.weight, 0);
-    let r = Math.random() * total;
-    for (const item of scored) {
-      r -= item.weight;
-      if (r <= 0) return item.q;
-    }
-    return scored.at(-1)?.q;
+    const session = {
+      mix: state.settings.mix,
+      seenTrue: state._seenTrue || 0,
+      seenFalse: state._seenFalse || 0
+    };
+    const weights = items.map(q => SAMPLING.weightFor(q, progress, session));
+    return SAMPLING.pick(items, weights);
   }
 
   function nextQuestion() {
@@ -268,11 +224,7 @@
     // everywhere, which would otherwise be learnable in a couple of sessions, and
     // reshuffling per view also stops a student memorising the position of a
     // question they have seen before.
-    const order = q.why.choices.map((_, i) => i);
-    for (let i = order.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [order[i], order[j]] = [order[j], order[i]];
-    }
+    const order = SAMPLING.shuffledOrder(q.why.choices.length);
     state.whyOrder = order;
 
     order.forEach((original, position) => {

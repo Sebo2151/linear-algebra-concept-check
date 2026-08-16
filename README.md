@@ -46,6 +46,8 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
   by the app and the viewer so the two cannot drift apart.
 - `course-presets.js` — the groupings in the Material menu. Edit this when a new
   exam's coverage is settled; the per-section entries are generated from the bank.
+- `sampling.js` — question weighting, selection, and choice shuffling, kept out of
+  `app.js` so `tests/sampling.test.mjs` can drive the same code the app runs.
 - `report-config.js` — where question reports are sent.
 - `tools/` — reserved-homework cross-check and assignment builder.
 - `styles.css` — layout and visual design.
@@ -145,6 +147,15 @@ If Node is installed:
 ```bash
 npm test
 ```
+
+`npm test` runs three things: the question-bank validator, the sampler tests, and
+the reserved-homework cross-check.
+
+The sampler tests exist because that code fails silently — a bad weight makes the
+picker return the same question forever while every individual result still looks
+legitimate. They assert on distributions over many draws rather than on single
+calls, and they exercise `sampling.js` directly rather than reimplementing its
+formulas, since a test that copies the logic would only be testing the copy.
 
 The validator checks required fields, IDs, answer types, `why` answer keys, section labels, and duplicate statements. It also reports on content health: stray control characters (the signature of a TeX macro that lost a backslash), truth-value balance overall and within each section, variant, and difficulty, and concepts that are carried by a single question or whose questions all share one answer.
 

@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "Static conceptual practice app for introductory linear algebra",
   "scripts": {
-    "test": "node tests/validate-questions.mjs && node tools/check-homework.mjs",
+    "test": "node tests/validate-questions.mjs && node tests/sampling.test.mjs && node tools/check-homework.mjs",
     "check:homework": "node tools/check-homework.mjs",
     "build:assignment": "node tools/build-assignment.mjs"
   }
