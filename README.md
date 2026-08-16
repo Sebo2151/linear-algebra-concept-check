@@ -1,4 +1,4 @@
-# Linear Algebra Concept Check
+# Linear Algebra True/False Practice
 
 A lightweight, static practice app for introductory linear algebra. It is intended for low-stakes, no-credit conceptual practice alongside a course using Lay-style organization.
 
@@ -8,7 +8,8 @@ A lightweight, static practice app for introductory linear algebra. It is intend
 - Some questions add a second-stage **Why?** prompt before revealing the explanation.
 - Explanations and counterexamples are treated as part of the practice.
 - Filters for all sections together or any single section.
-- Mostly-core / core-only / more-hypothesis-check question mixes.
+- Question mixes: standard, main ideas only, or more hypothesis-awareness items.
+  The student-facing labels avoid the internal `core` / `hypothesis` vocabulary.
 - Lightweight weakness-aware sampling using browser-local history.
 - Approximate balancing of true and false statements within a session.
 - No accounts, gradebook, analytics server, or backend.

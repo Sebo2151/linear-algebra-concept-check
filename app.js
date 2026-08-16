@@ -110,8 +110,10 @@
     el("topicBadge").textContent = q.topic;
     el("progressText").textContent = `${state.questionNumber} of ${state.targetLength}`;
     el("progressFill").style.width = `${((state.questionNumber - 1) / state.targetLength) * 100}%`;
-    el("questionKind").textContent = q.variant === "hypothesis" ? "Hypothesis awareness" : "Core concept";
-    el("difficultyText").textContent = `Difficulty ${q.difficulty}/3`;
+    // Difficulty and variant are deliberately not shown. They read as internal
+    // jargon to a student, and because easy items skew true and hypothesis items
+    // skew false, displaying them let a reader beat questions without reading
+    // them. Both fields remain in the data and in the instructor viewer.
     el("statement").innerHTML = q.statement;
 
     document.querySelectorAll(".answer-button").forEach(btn => {
@@ -270,8 +272,44 @@
     updateWeaknessNote();
   }
 
+  // Concept slugs are internal tags, and title-casing them leaks that fact to the
+  // student: "Unique Rref", "Spans Rm", "Matrix Vs System". Anything that does not
+  // survive title-casing as ordinary English gets a written-out label here; the
+  // rest fall through. Plain text only, since the results view is not typeset.
+  const CONCEPT_LABELS = {
+    "consistency-test": "Testing for consistency",
+    "dependence-characterization": "When a list is dependent",
+    "homogeneous-span": "Solution set of Ax = 0",
+    "independence-columns": "Independence of the columns",
+    "infinite-solutions": "Infinitely many solutions",
+    "matrix-equation-equivalence": "Ax = b, vectors, and systems",
+    "matrix-vector-linearity": "Algebra of Ax",
+    "matrix-vector-product": "The product Ax",
+    "matrix-vs-system": "Matrix versus system language",
+    "nontrivial-solution": "Nontrivial solutions",
+    "one-vector-independence": "Independence of a single vector",
+    "parametric-form": "Parametric descriptions",
+    "pivot-in-every-row": "A pivot in every row",
+    "ref": "Echelon form",
+    "ref-suffices": "When echelon form is enough",
+    "ref-vs-rref": "Echelon versus reduced echelon form",
+    "row-vector-rule": "The row rule for Ax",
+    "rref": "Reduced echelon form",
+    "solution-count": "How many solutions a system has",
+    "solution-set-geometry": "Picturing a solution set",
+    "solvability-columns": "When Ax = b has a solution",
+    "span-geometry": "Picturing a span",
+    "spans-rm": "Spanning the whole space",
+    "too-many-vectors": "Having more vectors than dimensions",
+    "trivial-solution": "The trivial solution",
+    "two-vector-independence": "Independence of two vectors",
+    "unique-rref": "Uniqueness of reduced echelon form",
+    "unique-solution": "Having exactly one solution",
+    "zero-vector-dependence": "Lists containing the zero vector"
+  };
+
   function friendlyConcept(slug) {
-    return slug
+    return CONCEPT_LABELS[slug] || slug
       .split("-")
       .map(w => w.charAt(0).toUpperCase() + w.slice(1))
       .join(" ");
@@ -290,7 +328,7 @@
       note.classList.add("hidden");
       return;
     }
-    note.textContent = `This browser has seen more difficulty with: ${ranked.map(x => friendlyConcept(x.concept)).join(", ")}. Future sessions will gently favor those ideas.`;
+    note.textContent = `You've been missing more questions about: ${ranked.map(x => friendlyConcept(x.concept)).join(", ")}. Later sessions will show you more of these.`;
     note.classList.remove("hidden");
   }
 

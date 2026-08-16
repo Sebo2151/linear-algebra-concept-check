@@ -147,15 +147,21 @@ Do not force exact alternation; that would itself become predictable.
 
 ### Balance within anything the student can see before answering
 
-The quiz card displays the variant ("Core concept" / "Hypothesis awareness") and the
-difficulty before the student commits to True or False. Any truth-value skew inside
-one of those visible groups is worse than overall skew, because it converts an
-on-screen label into a partial answer key.
+The quiz card **used to** display the variant ("Core concept" / "Hypothesis
+awareness") and the difficulty before the student committed to True or False. Any
+truth-value skew inside such a visible group is worse than overall skew, because it
+converts an on-screen label into a partial answer key.
 
 This was a real defect in the first version of the bank: every difficulty-3 item was
 false, and hypothesis items were 4/5 false. A student could clear the hardest
 questions by reading the badge instead of the statement — precisely the meta-strategy
 section 5 warns about, reinforced by the interface rather than merely tolerated by it.
+
+Both badges have since been removed from the quiz card. They read as internal jargon
+to a student, and removing them closed the leak permanently. Difficulty and variant
+remain in the data, in the validator's checks, and in the instructor viewer. **Do not
+put them back on the card**; if some future design needs them there, the balance
+requirements below become binding again rather than merely advisory.
 
 `npm test` now warns on skew within each variant and each difficulty. Keep those
 groups mixed, or remove the badge. The tolerance tightens as a group grows, since
@@ -440,6 +446,24 @@ has been accepted. Revisit it if later sections inherit the same shape without
 the same excuse.
 
 A developer question browser would be especially useful: show every item with filters for section, concept, truth value, difficulty, and variant, plus counts. This would make editorial review much easier.
+
+### Student-facing text is not developer-facing text
+
+The app's copy was originally written in the register of this document, which made
+it read as a pitch to a colleague rather than instructions to a student. The tell is
+grammatical: the student was never the subject of a sentence. "These questions are
+designed to…", "The app deliberately uses…", "It remembers…". Rewriting so the
+student is the subject — "You'll see a statement and decide…" — fixes most of it.
+
+Two related rules:
+
+- Internal vocabulary must not reach the interface. `core`, `hypothesis`,
+  `difficulty 2/3`, and raw `concept` slugs are our categories, not a student's.
+  Concept slugs get written-out labels in `CONCEPT_LABELS` in `app.js`; anything new
+  that does not read as ordinary English after title-casing needs an entry there.
+- The title says "True/False Practice" on purpose. It names the format and bounds
+  the claim, so that doing well here is not mistaken for being finished. The results
+  screen repeats the point, since that is where overconfidence actually forms.
 
 ## 14. Things to avoid
 

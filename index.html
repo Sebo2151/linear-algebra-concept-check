@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Low-stakes true/false conceptual practice for introductory linear algebra.">
-  <title>Linear Algebra Concept Check</title>
+  <meta name="description" content="True/false practice on the definitions and theorems of introductory linear algebra.">
+  <title>Linear Algebra True/False Practice</title>
   <link rel="stylesheet" href="styles.css">
   <script>
     window.MathJax = {
@@ -21,21 +21,23 @@
   <header class="site-header">
     <div class="header-inner">
       <div>
-        <p class="eyebrow">Low-stakes conceptual practice</p>
-        <h1>Linear Algebra Concept Check</h1>
+        <h1>Linear Algebra True/False Practice</h1>
       </div>
-      <button id="aboutButton" class="text-button" type="button">About this tool</button>
+      <button id="aboutButton" class="text-button" type="button">Help</button>
     </div>
   </header>
 
   <main>
     <section id="setupView" class="panel setup-panel">
       <div class="intro">
-        <h2>Practice the ideas, not just the algorithms.</h2>
+        <h2>How this works</h2>
         <p>
-          These questions are designed to make you decide what definitions and theorems actually say:
-          what the hypotheses are, what conclusions follow, and where common look-alike statements fail.
-          There is no grade attached.
+          You'll see a statement about linear algebra and decide whether it's true or false.
+          Some questions then ask which reason is the right one. Either way you'll get an
+          explanation — worth reading even when you answered correctly.
+        </p>
+        <p>
+          This is meant to be low-stakes practice. There is no grade attached.
         </p>
       </div>
 
@@ -65,9 +67,9 @@
         <label>
           <span>Question mix</span>
           <select id="mixSelect">
-            <option value="standard" selected>Mostly core</option>
-            <option value="core">Core only</option>
-            <option value="challenge">More hypothesis checks</option>
+            <option value="standard" selected>Standard mix</option>
+            <option value="core">Main ideas only</option>
+            <option value="challenge">More questions on hypotheses</option>
           </select>
         </label>
       </div>
@@ -76,11 +78,12 @@
 
       <div class="setup-actions">
         <button id="startButton" class="primary-button" type="button">Start practice</button>
-        <button id="resetProgressButton" class="secondary-button" type="button">Reset local progress</button>
+        <button id="resetProgressButton" class="secondary-button" type="button">Reset my progress</button>
       </div>
 
       <p class="privacy-note">
-        Practice history stays in this browser. There is no account, grade, or server-side tracking.
+        Your practice history stays in this browser. There's no account and no grade,
+        and your answers are never sent anywhere.
       </p>
     </section>
 
@@ -98,10 +101,6 @@
       </div>
 
       <article class="question-card">
-        <div class="question-meta">
-          <span id="questionKind"></span>
-          <span id="difficultyText"></span>
-        </div>
         <h2 id="statement"></h2>
 
         <div id="tfControls" class="tf-controls">
@@ -137,6 +136,10 @@
       <h2>What to revisit</h2>
       <div id="scoreSummary" class="score-summary"></div>
       <div id="conceptSummary" class="concept-summary"></div>
+      <p class="scope-note">
+        Doing well here is a good sign, but true/false practice won't replace working
+        problems by hand.
+      </p>
       <div class="setup-actions">
         <button id="practiceAgainButton" class="primary-button" type="button">Practice again</button>
       </div>
@@ -176,21 +179,40 @@
   <dialog id="aboutDialog">
     <form method="dialog">
       <button class="dialog-close" aria-label="Close" value="close">×</button>
-      <p class="eyebrow">Design intent</p>
-      <h2>What this tool is for</h2>
+      <p class="eyebrow">Common questions</p>
+      <h2>Help</h2>
+
+      <h3>Does this count for a grade?</h3>
       <p>
-        Introductory linear algebra can feel like a collection of computational procedures. This tool
-        emphasizes a different habit: read a mathematical claim carefully, identify the relevant
-        definition or theorem, and decide whether the claim really follows.
+        No. Nothing you do here is recorded anywhere except your own browser, and
+        no one else sees it.
       </p>
+
+      <h3>What am I supposed to do?</h3>
       <p>
-        The app deliberately uses mostly straightforward conceptual questions, with a smaller number
-        of questions that test awareness of missing hypotheses. Explanations and counterexamples are
-        part of the practice, not just answer keys.
+        Read each statement and decide whether it is true or false. Sometimes you'll
+        then be asked which reason is the right one. Either way, read the explanation
+        afterwards — including when you answered correctly, since that's where most
+        of the point is.
       </p>
+
+      <h3>Why are some questions so picky?</h3>
       <p>
-        It remembers broad areas of difficulty in your browser and gently favors those ideas in later
-        practice. It is not intended to replace a full spaced-repetition system.
+        Because the picky part is usually the point. A theorem can stop being true
+        when one hypothesis is dropped, and two statements that look nearly identical
+        can differ in the single word that decides them.
+      </p>
+
+      <h3>I think a question is wrong.</h3>
+      <p>
+        Please say so. Underneath any explanation there's a <strong>Report a
+        problem</strong> link. Reports get read, and questions do get corrected.
+      </p>
+
+      <h3>Will this get me ready for the exam?</h3>
+      <p>
+        It helps with definitions, theorems, and telling apart statements that look
+        alike. It won't replace working problems by hand.
       </p>
     </form>
   </dialog>
