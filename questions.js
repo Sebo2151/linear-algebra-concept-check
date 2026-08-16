@@ -1077,7 +1077,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "A product can vanish without either factor vanishing.",
-    "explanation": "Each entry of \\(cv\\) is \\(cv_i\\). If \\(cv_i=0\\) and \\(c\\ne0\\), then \\(v_i=0\\). If every entry of \\(cv\\) were zero, every entry of \\(v\\) would be zero, contradicting \\(v\\ne0\\)."
+    "explanation": "Each entry of \\(cv\\) is \\(cv_i\\). If \\(cv_i=0\\) and \\(c\\ne0\\), then \\(v_i=0\\). If every entry of \\(cv\\) were zero, every entry of \\(v\\) would be zero, contradicting \\(v\\ne\\mathbf{0}\\)."
   },
   {
     "id": "1.3-vector-09",
