@@ -48,10 +48,12 @@ here we you they i he she`.split(/\s+/));
 // "a 4x3 matrix ... span R^4" at 1.00, because both collapsed to
 // {matrix, columns, span}. Dimensions, indices, and macro names are exactly what
 // distinguishes two questions built on the same sentence frame, so keep them:
-// strip the delimiters and braces but retain macro names and single characters.
+// strip the delimiters and braces but retain semantic macro names and single
+// characters. Formatting macros such as \mathbf carry no mathematical content.
 function tokens(text) {
   return String(text)
     .replace(/\\[()[\]]/g, " ")          // the \( \) \[ \] delimiters only
+    .replace(/\\mathbf\b/g, " ")          // ignore vector font styling
     .replace(/\\([a-zA-Z]+)/g, " $1 ")   // keep macro names: \times -> times
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
@@ -65,6 +67,12 @@ function jaccard(a, b) {
   let shared = 0;
   for (const w of A) if (B.has(w)) shared++;
   return shared / (A.size + B.size - shared);
+}
+
+function orderedChunks(items) {
+  const size = items.length >= 5 ? 3 : 2;
+  return items.slice(size - 1).map((item, i) =>
+    items.slice(i, i + size - 1).concat(item).join("\u0000"));
 }
 
 // ------------------------------------------------------------------ id/schema
@@ -91,10 +99,11 @@ const report = [];
 
 for (const h of hw) {
   const ht = tokens(h.statement);
-  let best = { score: 0, q: null };
+  let best = { score: 0, orderScore: 0, q: null };
   for (const a of appTokens) {
     const s = jaccard(ht, a.t);
-    if (s > best.score) best = { score: s, q: a.q };
+    const orderScore = jaccard(orderedChunks(ht), orderedChunks(a.t));
+    if (s > best.score) best = { score: s, orderScore, q: a.q };
   }
   report.push({ h, best });
 
@@ -103,7 +112,14 @@ for (const h of hw) {
   // still teach opposite lessons. So only near-verbatim overlap fails the build;
   // the middle band is surfaced for a human to judge, and the full ranked report
   // prints either way.
-  if (best.score >= 0.85) {
+  // High token overlap can still arise from two mathematically different claims
+  // built from the same vocabulary. Require substantial overlap in token order
+  // as well before declaring the wording near-verbatim.
+  // best.q stays null when a statement shares no content word with any public
+  // question, which leaves nothing to compare against; short-circuit rather than
+  // dereferencing it. The score is 0 in that case, so no branch below fires.
+  const shortStatement = best.q && Math.min(ht.length, tokens(best.q.statement).length) < 4;
+  if (best.score >= 0.85 && (shortStatement || best.orderScore >= 0.55)) {
     errors.push(`${h.id}: nearly verbatim against public question ${best.q.id} (overlap ${best.score.toFixed(2)})`);
   } else if (best.score >= 0.55) {
     warnings.push(`${h.id}: shares wording with public question ${best.q.id} (overlap ${best.score.toFixed(2)}) — check that it makes a different point`);

@@ -99,7 +99,7 @@ Standard 1 is the one most often broken by accident, and usually by a single wor
 rather than by the mathematics.
 
 **“means”** slides between *is defined as* and *implies*, and the two readings can
-disagree. “Linear independence of \(v_1,\dots,v_p\) means that no two of the vectors
+disagree. “Linear independence of \(\mathbf{v}_1,\dots,\mathbf{v}_p\) means that no two of the vectors
 are equal” is false as a definition and true as an implication, so the item had no
 single answer. It was rewritten as “If no two of the vectors are equal, then the
 list is linearly independent,” which is unambiguously false. Prefer **“if … then”**
@@ -257,57 +257,59 @@ This distinction prevents training an inaccurate theorem.
 - equality, addition, scalar multiplication;
 - the zero vector, and the scalar/vector distinction;
 - geometric picture in the plane and space, parallelogram rule;
-- algebraic properties of \(\mathbb{R}^n\), and the \(-v\) / \(v-w\) notation;
+- algebraic properties of \(\mathbb{R}^n\), and the \(-\mathbf{v}\) / \(\mathbf{v}-\mathbf{w}\) notation;
 - linear combinations and weights;
 - the vector equation and its equivalence with an augmented-matrix system;
 - span;
 - span of one nonzero vector as a line, of two non-parallel vectors as a plane.
 
 ### §1.4
-- the product \(Ax\) as a linear combination of the columns of \(A\);
+- the product \(A\mathbf{x}\) as a linear combination of the columns of \(A\);
 - matrix equations;
-- the equivalence of \(Ax=b\), the vector equation, and the augmented-matrix system;
-- solvability of \(Ax=b\) as membership of \(b\) in the span of the columns;
+- the equivalence of \(A\mathbf{x}=\mathbf{b}\), the vector equation, and the augmented-matrix system;
+- solvability of \(A\mathbf{x}=\mathbf{b}\) as membership of \(\mathbf{b}\) in the span of the columns;
 - what it means for a set of vectors to span \(\mathbb{R}^m\);
 - the four equivalent conditions, including a pivot position in every row;
 - the row-vector rule;
-- distributivity of \(Ax\) over addition and scalar multiplication.
+- distributivity of \(A\mathbf{x}\) over addition and scalar multiplication.
 
 ### §1.5
 - homogeneous systems, and why they are always consistent;
 - trivial and nontrivial solutions;
 - a nontrivial solution exists exactly when there is a free variable;
-- the solution set of \(Ax=\mathbf{0}\) as a span, including the \(\operatorname{Span}\{\mathbf{0}\}\) case;
+- the solution set of \(A\mathbf{x}=\mathbf{0}\) as a span, including the \(\operatorname{Span}\{\mathbf{0}\}\) case;
 - parametric vector form;
-- the \(p+v_h\) description of the solutions of a consistent \(Ax=b\);
+- the \(\mathbf{p}+\mathbf{v}_h\) description of the solutions of a consistent \(A\mathbf{x}=\mathbf{b}\);
 - the consistency hypothesis that description requires;
-- translation as the geometric picture, and why a solution set with \(b\ne0\) is not a span.
+- translation as the geometric picture, and why a solution set with \(\mathbf{b}\ne\mathbf{0}\) is not a span.
 
 ### §1.7
 - the definitions of linear independence and dependence;
 - linear dependence relations, and the force of "not all zero";
-- independence of the columns of \(A\) versus \(Ax=\mathbf{0}\) having only the trivial solution;
+- independence of the columns of \(A\) versus \(A\mathbf{x}=\mathbf{0}\) having only the trivial solution;
 - one-vector and two-vector cases;
 - dependence as some vector being a linear combination of the others, including the indexed form;
 - more than \(n\) vectors in \(\mathbb{R}^n\) are dependent;
 - a list containing the zero vector is dependent.
 
 ### §1.8
-- matrix transformations \(x\mapsto Ax\), and which space is the domain;
+- matrix transformations \(\mathbf{x}\mapsto A\mathbf{x}\), and which space is the domain;
 - domain, codomain, image, range, and why range is not codomain;
 - the definition of a linear transformation, and that it has two requirements;
 - every matrix transformation is linear;
 - \(T(\mathbf{0})=\mathbf{0}\), and that its converse fails;
-- the single criterion \(T(cu+dv)=cT(u)+dT(v)\);
+- the single criterion \(T(c\mathbf{u}+d\mathbf{v})=cT(\mathbf{u})+dT(\mathbf{v})\);
 - linear transformations preserve linear combinations, but not independence;
 - contractions and dilations.
 
 ### §1.9
-- the standard matrix, its columns \(T(e_j)\), and its uniqueness;
-- a linear transformation is determined by the images of \(e_1,\dots,e_n\);
+- the standard matrix, its columns \(T(\mathbf{e}_j)\), and its uniqueness;
+- constructing a standard matrix from given values of \(T(\mathbf{e}_j)\);
+- a linear transformation is determined by the images of \(\mathbf{e}_1,\dots,\mathbf{e}_n\);
 - onto and one-to-one, kept carefully apart;
-- one-to-one exactly when \(T(x)=\mathbf{0}\) has only the trivial solution;
+- one-to-one exactly when \(T(\mathbf{x})=\mathbf{0}\) has only the trivial solution;
 - onto exactly when the columns span, one-to-one exactly when they are independent;
+- reading those properties from pivot positions in REF or RREF;
 - reflections, shears, projections and expansions as linear transformations;
 - the square case, where onto and one-to-one imply each other.
 
@@ -363,13 +365,19 @@ Unrecognized escapes such as `\c` are worse — the backslash is simply dropped,
 no trace at all. `npm test` catches the control-character half of this; the rest is
 caught only by reading the rendered page.
 
-### Zero-vector notation
+### Vector notation
+
+Bold every named vector: use forms such as `\(\mathbf{x}\)`, `\(\mathbf{b}\)`,
+`\(\mathbf{v}_j\)`, and `\(\mathbf{e}_j\)`. Matrices such as `\(A\)` and scalars
+such as `\(c\)`, `\(x_1\)`, and `\(v_i\)` when \(v_i\) denotes an entry of
+\(\mathbf{v}\) remain italic. A concrete column written with `bmatrix` already
+displays its vector structure and needs no additional bolding.
 
 Use `\(\mathbf{0}\)` for zero vectors. Keep ordinary `\(0\)` for scalar zero,
 zero entries inside concrete vectors or matrices, and scalar equations such as
-`\(0=5\)`. This distinction is pedagogically load-bearing because students often
-confuse the scalar \(0\) with the zero vector \(\mathbf{0}\), especially around
-homogeneous equations and trivial solutions.
+`\(0=5\)`. These distinctions are pedagogically load-bearing because students
+often confuse scalars and vectors, especially around homogeneous equations and
+trivial solutions.
 
 ### Concept tags are load-bearing
 
@@ -454,7 +462,7 @@ Recommended order:
 1. ~~Instructor review of the existing §1.1–1.2 bank.~~ Done; the bank grew from 53 to 74 items in response.
 2. ~~Add or revise questions where coverage is thin.~~ Done for singleton concepts; every concept now has at least two questions.
 3. Add course presets (“Homework 1: §§1.1–1.2”).
-4. Improve second-stage “Why?” coverage. Coverage is 64/289 overall, and **every
+4. Improve second-stage “Why?” coverage. Coverage is 64/292 overall, and **every
    difficulty-3 item has one** — treat that as the standing rule when adding hard
    items. It had quietly lapsed for six items across §§1.4–1.7 before being caught
    and fixed; a claim in this document that it held was wrong at the time.
@@ -462,7 +470,7 @@ Recommended order:
 6. Add lightweight within-session resurfacing of missed concepts.
 7. ~~Only after the pedagogy feels right, expand to §§1.3+.~~ §§1.3–1.5 and §§1.7–1.9 added.
 
-Difficulty is bottom-heavy (116 / 143 / 30 across levels 1–3), though far less so
+Difficulty is bottom-heavy (118 / 145 / 29 across levels 1–3), though far less so
 than it was, and level 2 is now the largest group. This is deliberate for §1.1,
 which is genuinely easy material, and has been accepted. Revisit it if later
 sections inherit the same shape without the same excuse.

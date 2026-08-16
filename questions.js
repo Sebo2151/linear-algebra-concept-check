@@ -1053,7 +1053,7 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "Addition of vectors requires a geometric construction rather than arithmetic.",
-    "explanation": "The \\(i\\)th entry of \\(u+v\\) is the sum of the \\(i\\)th entries of \\(u\\) and \\(v\\). The parallelogram picture describes this same operation geometrically."
+    "explanation": "The \\(i\\)th entry of \\(\\mathbf{u}+\\mathbf{v}\\) is the sum of the \\(i\\)th entries of \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\). The parallelogram picture describes this same operation geometrically."
   },
   {
     "id": "1.3-vector-07",
@@ -1065,26 +1065,26 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "A scalar multiplies only the first entry, or only some entries.",
-    "explanation": "If \\(c\\) is a scalar, then \\(cv\\) is formed by multiplying each entry of \\(v\\) by \\(c\\). The result has the same number of entries as \\(v\\)."
+    "explanation": "If \\(c\\) is a scalar, then \\(c\\mathbf{v}\\) is formed by multiplying each entry of \\(\\mathbf{v}\\) by \\(c\\). The result has the same number of entries as \\(\\mathbf{v}\\)."
   },
   {
     "id": "1.3-vector-08",
     "section": "1.3",
     "topic": "Vectors",
     "concept": "scalar-multiple",
-    "statement": "If \\(c\\) is a nonzero scalar and \\(v\\) is a nonzero vector, then \\(cv\\) can still be the zero vector \\(\\mathbf{0}\\).",
+    "statement": "If \\(c\\) is a nonzero scalar and \\(\\mathbf{v}\\) is a nonzero vector, then \\(c\\mathbf{v}\\) can still be the zero vector \\(\\mathbf{0}\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "A product can vanish without either factor vanishing.",
-    "explanation": "Each entry of \\(cv\\) is \\(cv_i\\). If \\(cv_i=0\\) and \\(c\\ne0\\), then \\(v_i=0\\). If every entry of \\(cv\\) were zero, every entry of \\(v\\) would be zero, contradicting \\(v\\ne\\mathbf{0}\\)."
+    "explanation": "Each entry of \\(c\\mathbf{v}\\) is \\(cv_i\\). If \\(cv_i=0\\) and \\(c\\ne0\\), then \\(v_i=0\\). If every entry of \\(c\\mathbf{v}\\) were zero, every entry of \\(\\mathbf{v}\\) would be zero, contradicting \\(\\mathbf{v}\\ne\\mathbf{0}\\)."
   },
   {
     "id": "1.3-vector-09",
     "section": "1.3",
     "topic": "Vectors",
     "concept": "zero-vector",
-    "statement": "The zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^n\\) is the vector whose entries are all \\(0\\), and \\(v+\\mathbf{0}=v\\) holds for every \\(v\\) in \\(\\mathbb{R}^n\\).",
+    "statement": "The zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^n\\) is the vector whose entries are all \\(0\\), and \\(\\mathbf{v}+\\mathbf{0}=\\mathbf{v}\\) holds for every \\(\\mathbf{v}\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -1101,7 +1101,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Anything written as \\(0\\) denotes the same thing.",
-    "explanation": "A scalar is a single number; the zero vector \\(\\mathbf{0}\\) is an element of \\(\\mathbb{R}^n\\) with \\(n\\) entries. They are used differently: \\(0v\\) multiplies by a scalar, while \\(v+\\mathbf{0}\\) adds a vector."
+    "explanation": "A scalar is a single number; the zero vector \\(\\mathbf{0}\\) is an element of \\(\\mathbb{R}^n\\) with \\(n\\) entries. They are used differently: \\(0\\mathbf{v}\\) multiplies by a scalar, while \\(\\mathbf{v}+\\mathbf{0}\\) adds a vector."
   },
   {
     "id": "1.3-geom-01",
@@ -1120,7 +1120,7 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Geometry of vectors",
     "concept": "vector-geometry",
-    "statement": "If neither of \\(u\\) and \\(v\\) is a scalar multiple of the other, then \\(u+v\\) is the fourth vertex of the parallelogram whose other three vertices are \\(\\mathbf{0}\\), \\(u\\), and \\(v\\).",
+    "statement": "If neither of \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) is a scalar multiple of the other, then \\(\\mathbf{u}+\\mathbf{v}\\) is the fourth vertex of the parallelogram whose other three vertices are \\(\\mathbf{0}\\), \\(\\mathbf{u}\\), and \\(\\mathbf{v}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -1138,64 +1138,64 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "A negative scalar shrinks a vector because negative numbers are small.",
     "explanation": "The direction reverses, but the length is scaled by the size of the scalar, not its sign. A factor larger than \\(1\\) in size makes the vector longer.",
-    "counterexample": "\\(-3v\\) points opposite to \\(v\\) and is three times as long."
+    "counterexample": "\\(-3\\mathbf{v}\\) points opposite to \\(\\mathbf{v}\\) and is three times as long."
   },
   {
     "id": "1.3-algebra-01",
     "section": "1.3",
     "topic": "Vector algebra",
     "concept": "vector-algebra",
-    "statement": "For every vector \\(v\\) in \\(\\mathbb{R}^n\\) and all scalars \\(c\\) and \\(d\\), \\((c+d)v=cv+dv\\).",
+    "statement": "For every vector \\(\\mathbf{v}\\) in \\(\\mathbb{R}^n\\) and all scalars \\(c\\) and \\(d\\), \\((c+d)\\mathbf{v}=c\\mathbf{v}+d\\mathbf{v}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Scalar multiplication distributes only over vector addition, not over addition of scalars.",
-    "explanation": "Both distributive laws hold: \\(c(u+v)=cu+cv\\) and \\((c+d)v=cv+dv\\). Each can be checked one entry at a time."
+    "explanation": "Both distributive laws hold: \\(c(\\mathbf{u}+\\mathbf{v})=c\\mathbf{u}+c\\mathbf{v}\\) and \\((c+d)\\mathbf{v}=c\\mathbf{v}+d\\mathbf{v}\\). Each can be checked one entry at a time."
   },
   {
     "id": "1.3-algebra-02",
     "section": "1.3",
     "topic": "Vector algebra",
     "concept": "vector-algebra",
-    "statement": "For all vectors \\(u,v\\) in \\(\\mathbb{R}^n\\) and every scalar \\(c\\), \\(c(u+v)=cu+v\\).",
+    "statement": "For all vectors \\(\\mathbf{u},\\mathbf{v}\\) in \\(\\mathbb{R}^n\\) and every scalar \\(c\\), \\(c(\\mathbf{u}+\\mathbf{v})=c\\mathbf{u}+\\mathbf{v}\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "A scalar in front of a sum attaches to only the first term.",
-    "explanation": "Distributing \\(c\\) must reach both terms: \\(c(u+v)=cu+cv\\).",
-    "counterexample": "Take \\(c=2\\), \\(u=v=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\). Then \\(c(u+v)=\\begin{bmatrix}4\\\\0\\end{bmatrix}\\) but \\(cu+v=\\begin{bmatrix}3\\\\0\\end{bmatrix}\\)."
+    "explanation": "Distributing \\(c\\) must reach both terms: \\(c(\\mathbf{u}+\\mathbf{v})=c\\mathbf{u}+c\\mathbf{v}\\).",
+    "counterexample": "Take \\(c=2\\), \\(\\mathbf{u}=\\mathbf{v}=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\). Then \\(c(\\mathbf{u}+\\mathbf{v})=\\begin{bmatrix}4\\\\0\\end{bmatrix}\\) but \\(c\\mathbf{u}+\\mathbf{v}=\\begin{bmatrix}3\\\\0\\end{bmatrix}\\)."
   },
   {
     "id": "1.3-algebra-03",
     "section": "1.3",
     "topic": "Vector algebra",
     "concept": "vector-algebra",
-    "statement": "The expression \\(v-w\\) is shorthand for \\(v+(-1)w\\).",
+    "statement": "The expression \\(\\mathbf{v}-\\mathbf{w}\\) is shorthand for \\(\\mathbf{v}+(-1)\\mathbf{w}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Subtraction of vectors is a separate operation with its own definition.",
-    "explanation": "Only addition and scalar multiplication are defined. Subtraction is an abbreviation, and \\(-w\\) means \\((-1)w\\)."
+    "explanation": "Only addition and scalar multiplication are defined. Subtraction is an abbreviation, and \\(-\\mathbf{w}\\) means \\((-1)\\mathbf{w}\\)."
   },
   {
     "id": "1.3-algebra-04",
     "section": "1.3",
     "topic": "Vector algebra",
     "concept": "vector-algebra",
-    "statement": "For vectors \\(u\\) and \\(v\\) in \\(\\mathbb{R}^n\\), the vectors \\(u-v\\) and \\(v-u\\) are equal.",
+    "statement": "For vectors \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) in \\(\\mathbb{R}^n\\), the vectors \\(\\mathbf{u}-\\mathbf{v}\\) and \\(\\mathbf{v}-\\mathbf{u}\\) are equal.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Vector addition is commutative, so vector subtraction must be too.",
-    "explanation": "Addition commutes, but subtraction does not. In fact \\(v-u=-(u-v)\\), and these agree only when \\(u=v\\).",
-    "counterexample": "With \\(u=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) and \\(v=\\begin{bmatrix}0\\\\0\\end{bmatrix}\\), \\(u-v=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) but \\(v-u=\\begin{bmatrix}-1\\\\0\\end{bmatrix}\\)."
+    "explanation": "Addition commutes, but subtraction does not. In fact \\(\\mathbf{v}-\\mathbf{u}=-(\\mathbf{u}-\\mathbf{v})\\), and these agree only when \\(\\mathbf{u}=\\mathbf{v}\\).",
+    "counterexample": "With \\(\\mathbf{u}=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) and \\(\\mathbf{v}=\\begin{bmatrix}0\\\\0\\end{bmatrix}\\), \\(\\mathbf{u}-\\mathbf{v}=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) but \\(\\mathbf{v}-\\mathbf{u}=\\begin{bmatrix}-1\\\\0\\end{bmatrix}\\)."
   },
   {
     "id": "1.3-lincomb-01",
     "section": "1.3",
     "topic": "Linear combinations",
     "concept": "linear-combination",
-    "statement": "A linear combination of \\(v_1,\\dots,v_p\\) is any vector of the form \\(c_1v_1+\\cdots+c_pv_p\\), where \\(c_1,\\dots,c_p\\) are scalars.",
+    "statement": "A linear combination of \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) is any vector of the form \\(c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p\\), where \\(c_1,\\dots,c_p\\) are scalars.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -1212,31 +1212,31 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "Weights behave like proportions and so must be positive.",
-    "explanation": "Weights are arbitrary scalars. They may be negative or zero, which is what allows expressions such as \\(2v_1-3v_2\\)."
+    "explanation": "Weights are arbitrary scalars. They may be negative or zero, which is what allows expressions such as \\(2\\mathbf{v}_1-3\\mathbf{v}_2\\)."
   },
   {
     "id": "1.3-lincomb-03",
     "section": "1.3",
     "topic": "Linear combinations",
     "concept": "linear-combination",
-    "statement": "The zero vector \\(\\mathbf{0}\\) is a linear combination of any nonempty list of vectors \\(v_1,\\dots,v_p\\) in \\(\\mathbb{R}^n\\).",
+    "statement": "The zero vector \\(\\mathbf{0}\\) is a linear combination of any nonempty list of vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Producing the zero vector \\(\\mathbf{0}\\) requires the vectors themselves to be special.",
-    "explanation": "Choosing every weight to be \\(0\\) gives \\(0v_1+\\cdots+0v_p=\\mathbf{0}\\). No assumption about the vectors is needed."
+    "explanation": "Choosing every weight to be \\(0\\) gives \\(0\\mathbf{v}_1+\\cdots+0\\mathbf{v}_p=\\mathbf{0}\\). No assumption about the vectors is needed."
   },
   {
     "id": "1.3-lincomb-04",
     "section": "1.3",
     "topic": "Linear combinations",
     "concept": "linear-combination",
-    "statement": "Each of the vectors \\(v_1,\\dots,v_p\\) is itself a linear combination of \\(v_1,\\dots,v_p\\).",
+    "statement": "Each of the vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) is itself a linear combination of \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "A linear combination must genuinely mix several vectors together.",
-    "explanation": "Put weight \\(1\\) on the vector you want and weight \\(0\\) on all the others. For instance \\(v_2=0v_1+1v_2+0v_3+\\cdots+0v_p\\)."
+    "explanation": "Put weight \\(1\\) on the vector you want and weight \\(0\\) on all the others. For instance \\(\\mathbf{v}_2=0\\mathbf{v}_1+1\\mathbf{v}_2+0\\mathbf{v}_3+\\cdots+0\\mathbf{v}_p\\)."
   },
   {
     "id": "1.3-lincomb-05",
@@ -1255,7 +1255,7 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Vector equations",
     "concept": "vector-equation",
-    "statement": "The vector equation \\(x_1a_1+\\cdots+x_na_n=b\\) has the same solution set as the linear system whose augmented matrix is \\(\\begin{bmatrix}a_1&\\cdots&a_n&b\\end{bmatrix}\\).",
+    "statement": "The vector equation \\(x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n=\\mathbf{b}\\) has the same solution set as the linear system whose augmented matrix is \\(\\begin{bmatrix}\\mathbf{a}_1&\\cdots&\\mathbf{a}_n&\\mathbf{b}\\end{bmatrix}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -1266,7 +1266,7 @@ window.QUESTION_BANK = [
       "choices": [
         "Equality of vectors is equality in every entry, and each entry gives one equation of the system.",
         "Every vector equation has exactly one solution.",
-        "The vectors \\(a_1,\\dots,a_n\\) must be the columns of an identity matrix.",
+        "The vectors \\(\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\) must be the columns of an identity matrix.",
         "Row operations convert vector equations into scalar equations."
       ],
       "correct": 0
@@ -1277,25 +1277,25 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Vector equations",
     "concept": "vector-equation",
-    "statement": "Deciding whether \\(b\\) is a linear combination of \\(a_1,\\dots,a_n\\) requires a technique different from solving a linear system.",
+    "statement": "Deciding whether \\(\\mathbf{b}\\) is a linear combination of \\(\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\) requires a technique different from solving a linear system.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Questions phrased with vectors need vector-specific methods.",
-    "explanation": "Asking whether such weights exist is asking whether the vector equation \\(x_1a_1+\\cdots+x_na_n=b\\) is solvable, which is asking whether the system with augmented matrix \\(\\begin{bmatrix}a_1&\\cdots&a_n&b\\end{bmatrix}\\) is consistent. Row reduction answers it."
+    "explanation": "Asking whether such weights exist is asking whether the vector equation \\(x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n=\\mathbf{b}\\) is solvable, which is asking whether the system with augmented matrix \\(\\begin{bmatrix}\\mathbf{a}_1&\\cdots&\\mathbf{a}_n&\\mathbf{b}\\end{bmatrix}\\) is consistent. Row reduction answers it."
   },
   {
     "id": "1.3-veceq-03",
     "section": "1.3",
     "topic": "Vector equations",
     "concept": "vector-equation",
-    "statement": "If the vector equation \\(x_1a_1+x_2a_2=b\\) has a solution, then the weights \\(x_1,x_2\\) are uniquely determined.",
+    "statement": "If the vector equation \\(x_1\\mathbf{a}_1+x_2\\mathbf{a}_2=\\mathbf{b}\\) has a solution, then the weights \\(x_1,x_2\\) are uniquely determined.",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Existence of a representation as a linear combination forces that representation to be unique.",
     "explanation": "Solvability and uniqueness are separate questions here, exactly as they are for systems. The corresponding system may have a free variable.",
-    "counterexample": "With \\(a_1=a_2=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) and \\(b=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\), every pair with \\(x_1+x_2=1\\) works.",
+    "counterexample": "With \\(\\mathbf{a}_1=\\mathbf{a}_2=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) and \\(\\mathbf{b}=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\), every pair with \\(x_1+x_2=1\\) works.",
     "why": {
       "prompt": "Which feature of the corresponding system causes the weights to be non-unique?",
       "choices": [
@@ -1312,19 +1312,19 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Span",
     "concept": "span",
-    "statement": "\\(\\operatorname{Span}\\{v_1,\\dots,v_p\\}\\) is the set of all linear combinations of \\(v_1,\\dots,v_p\\).",
+    "statement": "\\(\\operatorname{Span}\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\}\\) is the set of all linear combinations of \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "The span is just the list of vectors you started with.",
-    "explanation": "The span collects every vector that can be written as \\(c_1v_1+\\cdots+c_pv_p\\) for some choice of scalars."
+    "explanation": "The span collects every vector that can be written as \\(c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p\\) for some choice of scalars."
   },
   {
     "id": "1.3-span-02",
     "section": "1.3",
     "topic": "Span",
     "concept": "span",
-    "statement": "\\(b\\) belongs to \\(\\operatorname{Span}\\{a_1,\\dots,a_n\\}\\) exactly when the system with augmented matrix \\(\\begin{bmatrix}a_1&\\cdots&a_n&b\\end{bmatrix}\\) is inconsistent.",
+    "statement": "\\(\\mathbf{b}\\) belongs to \\(\\operatorname{Span}\\{\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\}\\) exactly when the system with augmented matrix \\(\\begin{bmatrix}\\mathbf{a}_1&\\cdots&\\mathbf{a}_n&\\mathbf{b}\\end{bmatrix}\\) is inconsistent.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -1333,9 +1333,9 @@ window.QUESTION_BANK = [
     "why": {
       "prompt": "What does consistency of that system mean here?",
       "choices": [
-        "Weights exist that express \\(b\\) as a linear combination of \\(a_1,\\dots,a_n\\).",
-        "The vectors \\(a_1,\\dots,a_n\\) are all nonzero.",
-        "\\(b\\) is one of the vectors \\(a_1,\\dots,a_n\\).",
+        "Weights exist that express \\(\\mathbf{b}\\) as a linear combination of \\(\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\).",
+        "The vectors \\(\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\) are all nonzero.",
+        "\\(\\mathbf{b}\\) is one of the vectors \\(\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\).",
         "The span is all of \\(\\mathbb{R}^n\\)."
       ],
       "correct": 0
@@ -1346,30 +1346,30 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Span",
     "concept": "span",
-    "statement": "\\(\\operatorname{Span}\\{u,v\\}\\) consists of exactly three vectors: \\(u\\), \\(v\\), and \\(u+v\\).",
+    "statement": "\\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v}\\}\\) consists of exactly three vectors: \\(\\mathbf{u}\\), \\(\\mathbf{v}\\), and \\(\\mathbf{u}+\\mathbf{v}\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The span is a short list built from the obvious combinations.",
-    "explanation": "Every choice of weights is allowed, so the span also contains \\(2u\\), \\(-v\\), \\(3u-7v\\), the zero vector \\(\\mathbf{0}\\), and infinitely many others whenever \\(u\\) or \\(v\\) is nonzero. If \\(u=v=\\mathbf{0}\\), then the span has only one vector, not three."
+    "explanation": "Every choice of weights is allowed, so the span also contains \\(2\\mathbf{u}\\), \\(-\\mathbf{v}\\), \\(3\\mathbf{u}-7\\mathbf{v}\\), the zero vector \\(\\mathbf{0}\\), and infinitely many others whenever \\(\\mathbf{u}\\) or \\(\\mathbf{v}\\) is nonzero. If \\(\\mathbf{u}=\\mathbf{v}=\\mathbf{0}\\), then the span has only one vector, not three."
   },
   {
     "id": "1.3-span-04",
     "section": "1.3",
     "topic": "Span",
     "concept": "span",
-    "statement": "If \\(v\\) belongs to \\(\\operatorname{Span}\\{u\\}\\), then \\(\\operatorname{Span}\\{u,v\\}=\\operatorname{Span}\\{u\\}\\).",
+    "statement": "If \\(\\mathbf{v}\\) belongs to \\(\\operatorname{Span}\\{\\mathbf{u}\\}\\), then \\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v}\\}=\\operatorname{Span}\\{\\mathbf{u}\\}\\).",
     "answer": true,
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "Adding another vector to a list always enlarges the span.",
-    "explanation": "Write \\(v=cu\\). Then \\(au+bv=(a+bc)u\\), so every combination of \\(u\\) and \\(v\\) is already a multiple of \\(u\\). The reverse containment holds by taking \\(b=0\\), so the two spans are equal.",
+    "explanation": "Write \\(\\mathbf{v}=c\\mathbf{u}\\). Then \\(a\\mathbf{u}+b\\mathbf{v}=(a+bc)\\mathbf{u}\\), so every combination of \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) is already a multiple of \\(\\mathbf{u}\\). The reverse containment holds by taking \\(b=0\\), so the two spans are equal.",
     "why": {
-      "prompt": "Why does adding \\(v\\) contribute nothing new?",
+      "prompt": "Why does adding \\(\\mathbf{v}\\) contribute nothing new?",
       "choices": [
-        "\\(v\\) is already a multiple of \\(u\\), so any combination of \\(u\\) and \\(v\\) collapses to a multiple of \\(u\\).",
+        "\\(\\mathbf{v}\\) is already a multiple of \\(\\mathbf{u}\\), so any combination of \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) collapses to a multiple of \\(\\mathbf{u}\\).",
         "A span can never contain more than one vector.",
-        "\\(v\\) must be the zero vector \\(\\mathbf{0}\\).",
+        "\\(\\mathbf{v}\\) must be the zero vector \\(\\mathbf{0}\\).",
         "Spans are unchanged by adding any vector whatsoever."
       ],
       "correct": 0
@@ -1380,37 +1380,37 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Span",
     "concept": "span",
-    "statement": "\\(\\operatorname{Span}\\{v_1,\\dots,v_p\\}\\) always contains the zero vector \\(\\mathbf{0}\\).",
+    "statement": "\\(\\operatorname{Span}\\{\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\}\\) always contains the zero vector \\(\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "The span contains the zero vector \\(\\mathbf{0}\\) only when one of the \\(v_i\\) is zero.",
-    "explanation": "Taking all weights equal to \\(0\\) produces the zero vector \\(\\mathbf{0}\\), whatever the vectors \\(v_1,\\dots,v_p\\) happen to be."
+    "misconception": "The span contains the zero vector \\(\\mathbf{0}\\) only when one of the \\(\\mathbf{v}_i\\) is zero.",
+    "explanation": "Taking all weights equal to \\(0\\) produces the zero vector \\(\\mathbf{0}\\), whatever the vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) happen to be."
   },
   {
     "id": "1.3-spangeom-01",
     "section": "1.3",
     "topic": "Span",
     "concept": "span-geometry",
-    "statement": "If \\(v\\) is a nonzero vector in \\(\\mathbb{R}^3\\), then \\(\\operatorname{Span}\\{v\\}\\) is a line through the origin.",
+    "statement": "If \\(\\mathbf{v}\\) is a nonzero vector in \\(\\mathbb{R}^3\\), then \\(\\operatorname{Span}\\{\\mathbf{v}\\}\\) is a line through the origin.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "The span of one vector is just that single arrow.",
-    "explanation": "The span is the set of all multiples \\(cv\\). As \\(c\\) ranges over the real numbers these trace out the whole line through the origin in the direction of \\(v\\)."
+    "explanation": "The span is the set of all multiples \\(c\\mathbf{v}\\). As \\(c\\) ranges over the real numbers these trace out the whole line through the origin in the direction of \\(\\mathbf{v}\\)."
   },
   {
     "id": "1.3-spangeom-02",
     "section": "1.3",
     "topic": "Span",
     "concept": "span-geometry",
-    "statement": "If \\(u\\) and \\(v\\) are nonzero vectors in \\(\\mathbb{R}^3\\), then \\(\\operatorname{Span}\\{u,v\\}\\) is a plane through the origin.",
+    "statement": "If \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are nonzero vectors in \\(\\mathbb{R}^3\\), then \\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v}\\}\\) is a plane through the origin.",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Two nonzero vectors always span a two-dimensional set.",
     "explanation": "Being nonzero is not enough. If one vector is a multiple of the other, the two of them span only a line.",
-    "counterexample": "Take \\(u=v=\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}\\). Both are nonzero, but their span is a line, not a plane.",
+    "counterexample": "Take \\(\\mathbf{u}=\\mathbf{v}=\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}\\). Both are nonzero, but their span is a line, not a plane.",
     "why": {
       "prompt": "Which hypothesis is missing?",
       "choices": [
@@ -1427,12 +1427,12 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Span",
     "concept": "span-geometry",
-    "statement": "If \\(u\\) and \\(v\\) are vectors in \\(\\mathbb{R}^3\\) and neither is a scalar multiple of the other, then \\(\\operatorname{Span}\\{u,v\\}\\) is a plane containing the origin.",
+    "statement": "If \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) are vectors in \\(\\mathbb{R}^3\\) and neither is a scalar multiple of the other, then \\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v}\\}\\) is a plane containing the origin.",
     "answer": true,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Ruling out the degenerate case is not enough to guarantee a plane.",
-    "explanation": "With that hypothesis the two vectors point in genuinely different directions, and the combinations \\(au+bv\\) sweep out a plane. It passes through the origin because \\(a=b=0\\) is allowed."
+    "explanation": "With that hypothesis the two vectors point in genuinely different directions, and the combinations \\(a\\mathbf{u}+b\\mathbf{v}\\) sweep out a plane. It passes through the origin because \\(a=b=0\\) is allowed."
   },
   {
     "id": "1.3-spangeom-04",
@@ -1463,31 +1463,31 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Geometry of vectors",
     "concept": "vector-geometry",
-    "statement": "If \\(v\\) is a nonzero vector, then \\(-v\\) points in the same direction as \\(v\\).",
+    "statement": "If \\(\\mathbf{v}\\) is a nonzero vector, then \\(-\\mathbf{v}\\) points in the same direction as \\(\\mathbf{v}\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Negating a vector changes only its length.",
-    "explanation": "\\(-v\\) is \\((-1)v\\), which reverses direction while keeping the length the same. It points opposite to \\(v\\)."
+    "explanation": "\\(-\\mathbf{v}\\) is \\((-1)\\mathbf{v}\\), which reverses direction while keeping the length the same. It points opposite to \\(\\mathbf{v}\\)."
   },
   {
     "id": "1.3-algebra-05",
     "section": "1.3",
     "topic": "Vector algebra",
     "concept": "vector-algebra",
-    "statement": "For every vector \\(v\\) in \\(\\mathbb{R}^n\\), \\(1v=\\mathbf{0}\\).",
+    "statement": "For every vector \\(\\mathbf{v}\\) in \\(\\mathbb{R}^n\\), \\(1\\mathbf{v}=\\mathbf{0}\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Confusing the scalar that acts as an identity with the one that annihilates.",
-    "explanation": "Multiplying by the scalar \\(1\\) leaves a vector unchanged: \\(1v=v\\). It is the scalar \\(0\\) that produces the zero vector \\(\\mathbf{0}\\)."
+    "explanation": "Multiplying by the scalar \\(1\\) leaves a vector unchanged: \\(1\\mathbf{v}=\\mathbf{v}\\). It is the scalar \\(0\\) that produces the zero vector \\(\\mathbf{0}\\)."
   },
   {
     "id": "1.3-algebra-06",
     "section": "1.3",
     "topic": "Vector algebra",
     "concept": "vector-algebra",
-    "statement": "For all vectors \\(u,v,w\\) in \\(\\mathbb{R}^n\\), \\((u+v)+w=u+(v+w)\\).",
+    "statement": "For all vectors \\(\\mathbf{u},\\mathbf{v},\\mathbf{w}\\) in \\(\\mathbb{R}^n\\), \\((\\mathbf{u}+\\mathbf{v})+\\mathbf{w}=\\mathbf{u}+(\\mathbf{v}+\\mathbf{w})\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -1499,41 +1499,41 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Linear combinations",
     "concept": "linear-combination",
-    "statement": "If \\(y\\) is a linear combination of \\(v_1,v_2\\), then \\(y\\) is also a linear combination of \\(v_1,v_2,v_3\\).",
+    "statement": "If \\(\\mathbf{y}\\) is a linear combination of \\(\\mathbf{v}_1,\\mathbf{v}_2\\), then \\(\\mathbf{y}\\) is also a linear combination of \\(\\mathbf{v}_1,\\mathbf{v}_2,\\mathbf{v}_3\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "A linear combination must use every vector on the list.",
-    "explanation": "Write \\(y=c_1v_1+c_2v_2\\) and then append the term \\(0v_3\\). Enlarging the list can never remove anything from the span."
+    "explanation": "Write \\(\\mathbf{y}=c_1\\mathbf{v}_1+c_2\\mathbf{v}_2\\) and then append the term \\(0\\mathbf{v}_3\\). Enlarging the list can never remove anything from the span."
   },
   {
     "id": "1.3-veceq-04",
     "section": "1.3",
     "topic": "Vector equations",
     "concept": "vector-equation",
-    "statement": "Asking whether \\(b\\) lies in \\(\\operatorname{Span}\\{a_1,\\dots,a_n\\}\\) and asking whether the system with augmented matrix \\(\\begin{bmatrix}a_1&\\cdots&a_n&b\\end{bmatrix}\\) is consistent are the same question.",
+    "statement": "Asking whether \\(\\mathbf{b}\\) lies in \\(\\operatorname{Span}\\{\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\}\\) and asking whether the system with augmented matrix \\(\\begin{bmatrix}\\mathbf{a}_1&\\cdots&\\mathbf{a}_n&\\mathbf{b}\\end{bmatrix}\\) is consistent are the same question.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Span is a geometric notion that has to be investigated separately from row reduction.",
-    "explanation": "\\(b\\) is in the span exactly when weights exist with \\(x_1a_1+\\cdots+x_na_n=b\\), and that vector equation has the same solution set as the system with that augmented matrix. So consistency answers the span question."
+    "explanation": "\\(\\mathbf{b}\\) is in the span exactly when weights exist with \\(x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n=\\mathbf{b}\\), and that vector equation has the same solution set as the system with that augmented matrix. So consistency answers the span question."
   },
   {
     "id": "1.3-lincomb-07",
     "section": "1.3",
     "topic": "Linear combinations",
     "concept": "linear-combination",
-    "statement": "If \\(y\\) is a linear combination of \\(v_1,\\dots,v_p\\), then \\(cy\\) is also a linear combination of \\(v_1,\\dots,v_p\\) for every scalar \\(c\\).",
+    "statement": "If \\(\\mathbf{y}\\) is a linear combination of \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\), then \\(c\\mathbf{y}\\) is also a linear combination of \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) for every scalar \\(c\\).",
     "answer": true,
     "difficulty": 3,
     "variant": "core",
     "misconception": "A linear combination is not closed under further scalar multiplication.",
-    "explanation": "If \\(y=c_1v_1+\\cdots+c_pv_p\\), then \\(cy=(cc_1)v_1+\\cdots+(cc_p)v_p\\). The new weights are still scalars, so \\(cy\\) is another linear combination of the same vectors.",
+    "explanation": "If \\(\\mathbf{y}=c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p\\), then \\(c\\mathbf{y}=(cc_1)\\mathbf{v}_1+\\cdots+(cc_p)\\mathbf{v}_p\\). The new weights are still scalars, so \\(c\\mathbf{y}\\) is another linear combination of the same vectors.",
     "why": {
       "prompt": "What happens to the weights?",
       "choices": [
         "They are all multiplied by \\(c\\), producing another permitted choice of scalar weights.",
-        "They must stay fixed, so only \\(y\\) itself is allowed.",
+        "They must stay fixed, so only \\(\\mathbf{y}\\) itself is allowed.",
         "They become vectors, so the expression is no longer a linear combination.",
         "They must all become positive."
       ],
@@ -1545,19 +1545,19 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Span",
     "concept": "span",
-    "statement": "If \\(b\\) is not in \\(\\operatorname{Span}\\{u,v\\}\\), then \\(\\operatorname{Span}\\{u,v,b\\}=\\operatorname{Span}\\{u,v\\}\\).",
+    "statement": "If \\(\\mathbf{b}\\) is not in \\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v}\\}\\), then \\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v},\\mathbf{b}\\}=\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v}\\}\\).",
     "answer": false,
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "Adding a vector outside a span leaves the span unchanged.",
-    "explanation": "The vector \\(b\\) belongs to \\(\\operatorname{Span}\\{u,v,b\\}\\), because it is \\(0u+0v+1b\\). If \\(b\\) is not in \\(\\operatorname{Span}\\{u,v\\}\\), the two spans cannot be equal.",
+    "explanation": "The vector \\(\\mathbf{b}\\) belongs to \\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v},\\mathbf{b}\\}\\), because it is \\(0\\mathbf{u}+0\\mathbf{v}+1\\mathbf{b}\\). If \\(\\mathbf{b}\\) is not in \\(\\operatorname{Span}\\{\\mathbf{u},\\mathbf{v}\\}\\), the two spans cannot be equal.",
     "why": {
       "prompt": "Why must the span get larger?",
       "choices": [
-        "The new span contains \\(b\\), while the old span does not.",
+        "The new span contains \\(\\mathbf{b}\\), while the old span does not.",
         "Every time a vector is added to a list, the span becomes all of \\(\\mathbb{R}^n\\).",
         "The old span contained no vectors at all.",
-        "The equality fails only because \\(b\\) is nonzero."
+        "The equality fails only because \\(\\mathbf{b}\\) is nonzero."
       ],
       "correct": 0
     }
@@ -1567,20 +1567,20 @@ window.QUESTION_BANK = [
     "section": "1.3",
     "topic": "Vector equations",
     "concept": "vector-equation",
-    "statement": "If the system with augmented matrix \\(\\begin{bmatrix}a_1&a_2&b\\end{bmatrix}\\) is consistent, then \\(b\\) must be a scalar multiple of either \\(a_1\\) or \\(a_2\\).",
+    "statement": "If the system with augmented matrix \\(\\begin{bmatrix}\\mathbf{a}_1&\\mathbf{a}_2&\\mathbf{b}\\end{bmatrix}\\) is consistent, then \\(\\mathbf{b}\\) must be a scalar multiple of either \\(\\mathbf{a}_1\\) or \\(\\mathbf{a}_2\\).",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "A linear combination of two vectors has to use only one of them.",
-    "explanation": "Consistency says \\(b\\) is a linear combination of \\(a_1\\) and \\(a_2\\), but that combination may genuinely use both vectors.",
-    "counterexample": "With \\(a_1=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\), \\(a_2=\\begin{bmatrix}0\\\\1\\end{bmatrix}\\), and \\(b=\\begin{bmatrix}1\\\\1\\end{bmatrix}\\), the system is consistent because \\(b=a_1+a_2\\), but \\(b\\) is not a scalar multiple of either column.",
+    "explanation": "Consistency says \\(\\mathbf{b}\\) is a linear combination of \\(\\mathbf{a}_1\\) and \\(\\mathbf{a}_2\\), but that combination may genuinely use both vectors.",
+    "counterexample": "With \\(\\mathbf{a}_1=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\), \\(\\mathbf{a}_2=\\begin{bmatrix}0\\\\1\\end{bmatrix}\\), and \\(\\mathbf{b}=\\begin{bmatrix}1\\\\1\\end{bmatrix}\\), the system is consistent because \\(\\mathbf{b}=\\mathbf{a}_1+\\mathbf{a}_2\\), but \\(\\mathbf{b}\\) is not a scalar multiple of either column.",
     "why": {
       "prompt": "What does consistency actually say?",
       "choices": [
-        "\\(b\\) is some linear combination of the columns, possibly using both.",
-        "\\(b\\) is equal to one of the columns.",
-        "\\(b\\) is a scalar multiple of every column.",
-        "\\(b\\) must be the zero vector \\(\\mathbf{0}\\)."
+        "\\(\\mathbf{b}\\) is some linear combination of the columns, possibly using both.",
+        "\\(\\mathbf{b}\\) is equal to one of the columns.",
+        "\\(\\mathbf{b}\\) is a scalar multiple of every column.",
+        "\\(\\mathbf{b}\\) must be the zero vector \\(\\mathbf{0}\\)."
       ],
       "correct": 0
     }
@@ -1590,54 +1590,54 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "matrix-vector-product",
-    "statement": "If \\(A\\) has columns \\(a_1,\\dots,a_n\\) and \\(x\\) is in \\(\\mathbb{R}^n\\), then \\(Ax=x_1a_1+\\cdots+x_na_n\\).",
+    "statement": "If \\(A\\) has columns \\(\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\) and \\(\\mathbf{x}\\) is in \\(\\mathbb{R}^n\\), then \\(A\\mathbf{x}=x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "The product \\(Ax\\) is an unrelated bookkeeping operation.",
-    "explanation": "This is the definition of the matrix-vector product: the columns of \\(A\\) are combined using the entries of \\(x\\) as weights."
+    "misconception": "The product \\(A\\mathbf{x}\\) is an unrelated bookkeeping operation.",
+    "explanation": "This is the definition of the matrix-vector product: the columns of \\(A\\) are combined using the entries of \\(\\mathbf{x}\\) as weights."
   },
   {
     "id": "1.4-prod-02",
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "matrix-vector-product",
-    "statement": "The product \\(Ax\\) is defined for every matrix \\(A\\) and every vector \\(x\\).",
+    "statement": "The product \\(A\\mathbf{x}\\) is defined for every matrix \\(A\\) and every vector \\(\\mathbf{x}\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Sizes never obstruct the matrix-vector product.",
-    "explanation": "The weights come from the entries of \\(x\\), one for each column of \\(A\\). So \\(Ax\\) is defined only when the number of entries of \\(x\\) equals the number of columns of \\(A\\)."
+    "explanation": "The weights come from the entries of \\(\\mathbf{x}\\), one for each column of \\(A\\). So \\(A\\mathbf{x}\\) is defined only when the number of entries of \\(\\mathbf{x}\\) equals the number of columns of \\(A\\)."
   },
   {
     "id": "1.4-prod-03",
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "matrix-vector-product",
-    "statement": "If \\(A\\) is \\(m\\times n\\) and \\(x\\) is in \\(\\mathbb{R}^n\\), then \\(Ax\\) is in \\(\\mathbb{R}^m\\).",
+    "statement": "If \\(A\\) is \\(m\\times n\\) and \\(\\mathbf{x}\\) is in \\(\\mathbb{R}^n\\), then \\(A\\mathbf{x}\\) is in \\(\\mathbb{R}^m\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "The output of \\(Ax\\) lives in the same space as \\(x\\).",
-    "explanation": "\\(Ax\\) is a linear combination of the columns of \\(A\\), and each column has \\(m\\) entries. So the result has \\(m\\) entries no matter how large \\(n\\) is."
+    "misconception": "The output of \\(A\\mathbf{x}\\) lives in the same space as \\(\\mathbf{x}\\).",
+    "explanation": "\\(A\\mathbf{x}\\) is a linear combination of the columns of \\(A\\), and each column has \\(m\\) entries. So the result has \\(m\\) entries no matter how large \\(n\\) is."
   },
   {
     "id": "1.4-prod-04",
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "matrix-vector-product",
-    "statement": "\\(Ax\\) is a linear combination of the rows of \\(A\\).",
+    "statement": "\\(A\\mathbf{x}\\) is a linear combination of the rows of \\(A\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "Rows and columns play interchangeable roles in \\(Ax\\).",
-    "explanation": "\\(Ax\\) is defined as a linear combination of the columns of \\(A\\). Rows are used to compute the individual entries of \\(Ax\\) if computing the product using the row-vector rule.",
+    "misconception": "Rows and columns play interchangeable roles in \\(A\\mathbf{x}\\).",
+    "explanation": "\\(A\\mathbf{x}\\) is defined as a linear combination of the columns of \\(A\\). Rows are used to compute the individual entries of \\(A\\mathbf{x}\\) if computing the product using the row-vector rule.",
     "why": {
       "prompt": "Why must it be the columns?",
       "choices": [
-        "There is one weight for each entry of \\(x\\), and \\(x\\) has one entry per column of \\(A\\).",
+        "There is one weight for each entry of \\(\\mathbf{x}\\), and \\(\\mathbf{x}\\) has one entry per column of \\(A\\).",
         "Rows of \\(A\\) are never vectors.",
-        "The rows of \\(A\\) all have the same number of entries as \\(x\\) only when \\(A\\) is square.",
+        "The rows of \\(A\\) all have the same number of entries as \\(\\mathbf{x}\\) only when \\(A\\) is square.",
         "Combining rows would give an answer in \\(\\mathbb{R}^m\\), which is the wrong space."
       ],
       "correct": 0
@@ -1648,19 +1648,19 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "row-vector-rule",
-    "statement": "The \\(i\\)th entry of \\(Ax\\) is obtained by pairing the entries of row \\(i\\) of \\(A\\) with the entries of \\(x\\) and adding the products.",
+    "statement": "The \\(i\\)th entry of \\(A\\mathbf{x}\\) is obtained by pairing the entries of row \\(i\\) of \\(A\\) with the entries of \\(\\mathbf{x}\\) and adding the products.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The row-vector rule is a different definition that might disagree with the column definition.",
-    "explanation": "This is the row-vector rule. It is a consequence of the definition: taking the \\(i\\)th entry of \\(x_1a_1+\\cdots+x_na_n\\) gives exactly that sum of products."
+    "explanation": "This is the row-vector rule. It is a consequence of the definition: taking the \\(i\\)th entry of \\(x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n\\) gives exactly that sum of products."
   },
   {
     "id": "1.4-rowrule-02",
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "row-vector-rule",
-    "statement": "The row-vector rule and the definition of \\(Ax\\) as a linear combination of columns can give different answers.",
+    "statement": "The row-vector rule and the definition of \\(A\\mathbf{x}\\) as a linear combination of columns can give different answers.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -1672,36 +1672,36 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Matrix equations",
     "concept": "matrix-equation",
-    "statement": "An equation of the form \\(Ax=b\\), where \\(A\\) is a matrix and \\(b\\) is a vector, is called a matrix equation.",
+    "statement": "An equation of the form \\(A\\mathbf{x}=\\mathbf{b}\\), where \\(A\\) is a matrix and \\(\\mathbf{b}\\) is a vector, is called a matrix equation.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Matrix equation is a loose phrase rather than a definition.",
-    "explanation": "This is the standard terminology. The unknown \\(x\\) is a vector, and solving the equation means finding every vector \\(x\\) that satisfies it."
+    "explanation": "This is the standard terminology. The unknown \\(\\mathbf{x}\\) is a vector, and solving the equation means finding every vector \\(\\mathbf{x}\\) that satisfies it."
   },
   {
     "id": "1.4-mateq-02",
     "section": "1.4",
     "topic": "Matrix equations",
     "concept": "matrix-equation",
-    "statement": "In the matrix equation \\(Ax=b\\), the unknown \\(x\\) is a scalar.",
+    "statement": "In the matrix equation \\(A\\mathbf{x}=\\mathbf{b}\\), the unknown \\(\\mathbf{x}\\) is a scalar.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "A single letter standing for an unknown must denote a single number.",
-    "explanation": "If \\(A\\) is \\(m\\times n\\), then \\(x\\) is a vector in \\(\\mathbb{R}^n\\). Its entries \\(x_1,\\dots,x_n\\) are the scalars, and they serve as the weights on the columns of \\(A\\)."
+    "explanation": "If \\(A\\) is \\(m\\times n\\), then \\(\\mathbf{x}\\) is a vector in \\(\\mathbb{R}^n\\). Its entries \\(x_1,\\dots,x_n\\) are the scalars, and they serve as the weights on the columns of \\(A\\)."
   },
   {
     "id": "1.4-equiv-01",
     "section": "1.4",
     "topic": "Matrix equations",
     "concept": "matrix-equation-equivalence",
-    "statement": "If \\(A\\) has columns \\(a_1,\\dots,a_n\\), then \\(Ax=b\\), the vector equation \\(x_1a_1+\\cdots+x_na_n=b\\), and the system with augmented matrix \\(\\begin{bmatrix}a_1&\\cdots&a_n&b\\end{bmatrix}\\) all have the same solution set.",
+    "statement": "If \\(A\\) has columns \\(\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\), then \\(A\\mathbf{x}=\\mathbf{b}\\), the vector equation \\(x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n=\\mathbf{b}\\), and the system with augmented matrix \\(\\begin{bmatrix}\\mathbf{a}_1&\\cdots&\\mathbf{a}_n&\\mathbf{b}\\end{bmatrix}\\) all have the same solution set.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "These are three different problems that happen to look similar.",
-    "explanation": "The first two say the same thing by the definition of \\(Ax\\), and the second and third say the same thing because equality of vectors is equality in each entry. So one row reduction settles all three.",
+    "explanation": "The first two say the same thing by the definition of \\(A\\mathbf{x}\\), and the second and third say the same thing because equality of vectors is equality in each entry. So one row reduction settles all three.",
     "why": {
       "prompt": "What is the practical payoff of this theorem?",
       "choices": [
@@ -1723,38 +1723,38 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "The equivalence theorem carries a hidden restriction on the shape of \\(A\\).",
-    "explanation": "No condition on the shape of \\(A\\) is needed. The theorem holds for every \\(m\\times n\\) matrix \\(A\\) and every \\(b\\) in \\(\\mathbb{R}^m\\), since it follows directly from the definition of \\(Ax\\) and from what equality of vectors means."
+    "explanation": "No condition on the shape of \\(A\\) is needed. The theorem holds for every \\(m\\times n\\) matrix \\(A\\) and every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\), since it follows directly from the definition of \\(A\\mathbf{x}\\) and from what equality of vectors means."
   },
   {
     "id": "1.4-equiv-03",
     "section": "1.4",
     "topic": "Matrix equations",
     "concept": "matrix-equation-equivalence",
-    "statement": "Row reducing \\(\\begin{bmatrix}A&b\\end{bmatrix}\\) is a legitimate way to solve the matrix equation \\(Ax=b\\).",
+    "statement": "Row reducing \\(\\begin{bmatrix}A&\\mathbf{b}\\end{bmatrix}\\) is a legitimate way to solve the matrix equation \\(A\\mathbf{x}=\\mathbf{b}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Matrix equations need a method that does not involve augmented matrices.",
-    "explanation": "By the equivalence theorem, the solutions of \\(Ax=b\\) are exactly the solutions of the system with that augmented matrix, so the familiar row reduction applies unchanged."
+    "explanation": "By the equivalence theorem, the solutions of \\(A\\mathbf{x}=\\mathbf{b}\\) are exactly the solutions of the system with that augmented matrix, so the familiar row reduction applies unchanged."
   },
   {
     "id": "1.4-solv-01",
     "section": "1.4",
     "topic": "Existence of solutions",
     "concept": "solvability-columns",
-    "statement": "\\(Ax=b\\) has a solution if and only if \\(b\\) is a linear combination of the columns of \\(A\\).",
+    "statement": "\\(A\\mathbf{x}=\\mathbf{b}\\) has a solution if and only if \\(\\mathbf{b}\\) is a linear combination of the columns of \\(A\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "Solvability of \\(Ax=b\\) is unrelated to the columns of \\(A\\).",
-    "explanation": "A solution \\(x\\) is precisely a list of weights making \\(x_1a_1+\\cdots+x_na_n\\) equal to \\(b\\). So solutions exist exactly when \\(b\\) lies in the span of the columns.",
+    "misconception": "Solvability of \\(A\\mathbf{x}=\\mathbf{b}\\) is unrelated to the columns of \\(A\\).",
+    "explanation": "A solution \\(\\mathbf{x}\\) is precisely a list of weights making \\(x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n\\) equal to \\(\\mathbf{b}\\). So solutions exist exactly when \\(\\mathbf{b}\\) lies in the span of the columns.",
     "why": {
       "prompt": "Restate the condition using span.",
       "choices": [
-        "\\(Ax=b\\) is consistent exactly when \\(b\\) is in \\(\\operatorname{Span}\\{a_1,\\dots,a_n\\}\\).",
-        "\\(Ax=b\\) is consistent exactly when \\(b\\) is one of the columns of \\(A\\).",
-        "\\(Ax=b\\) is consistent exactly when \\(A\\) has no zero columns.",
-        "\\(Ax=b\\) is consistent exactly when \\(b\\) is the zero vector \\(\\mathbf{0}\\)."
+        "\\(A\\mathbf{x}=\\mathbf{b}\\) is consistent exactly when \\(\\mathbf{b}\\) is in \\(\\operatorname{Span}\\{\\mathbf{a}_1,\\dots,\\mathbf{a}_n\\}\\).",
+        "\\(A\\mathbf{x}=\\mathbf{b}\\) is consistent exactly when \\(\\mathbf{b}\\) is one of the columns of \\(A\\).",
+        "\\(A\\mathbf{x}=\\mathbf{b}\\) is consistent exactly when \\(A\\) has no zero columns.",
+        "\\(A\\mathbf{x}=\\mathbf{b}\\) is consistent exactly when \\(\\mathbf{b}\\) is the zero vector \\(\\mathbf{0}\\)."
       ],
       "correct": 0
     }
@@ -1764,25 +1764,25 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Existence of solutions",
     "concept": "solvability-columns",
-    "statement": "If \\(Ax=b\\) has a solution, then \\(b\\) must be one of the columns of \\(A\\).",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{b}\\) has a solution, then \\(\\mathbf{b}\\) must be one of the columns of \\(A\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Being in the span of the columns means being among the columns.",
     "explanation": "Being in the span is far weaker than being one of the columns. Any weighted combination counts.",
-    "counterexample": "With \\(A=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\) and \\(b=\\begin{bmatrix}5\\\\7\\end{bmatrix}\\), the equation is solvable but \\(b\\) is not a column of \\(A\\)."
+    "counterexample": "With \\(A=\\begin{bmatrix}1&0\\\\0&1\\end{bmatrix}\\) and \\(\\mathbf{b}=\\begin{bmatrix}5\\\\7\\end{bmatrix}\\), the equation is solvable but \\(\\mathbf{b}\\) is not a column of \\(A\\)."
   },
   {
     "id": "1.4-solv-03",
     "section": "1.4",
     "topic": "Existence of solutions",
     "concept": "solvability-columns",
-    "statement": "If \\(b\\) is not in the span of the columns of \\(A\\), then \\(Ax=b\\) has infinitely many solutions.",
+    "statement": "If \\(\\mathbf{b}\\) is not in the span of the columns of \\(A\\), then \\(A\\mathbf{x}=\\mathbf{b}\\) has infinitely many solutions.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Failure of a condition produces many solutions rather than none.",
-    "explanation": "If \\(b\\) is outside the span of the columns, then no choice of weights produces \\(b\\), so the equation has no solution at all."
+    "explanation": "If \\(\\mathbf{b}\\) is outside the span of the columns, then no choice of weights produces \\(\\mathbf{b}\\), so the equation has no solution at all."
   },
   {
     "id": "1.4-spansrm-01",
@@ -1849,7 +1849,7 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Spanning sets",
     "concept": "pivot-in-every-row",
-    "statement": "If \\(A\\) is \\(m\\times n\\) and has a pivot position in every row, then \\(Ax=b\\) has a solution for every \\(b\\) in \\(\\mathbb{R}^m\\).",
+    "statement": "If \\(A\\) is \\(m\\times n\\) and has a pivot position in every row, then \\(A\\mathbf{x}=\\mathbf{b}\\) has a solution for every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -1860,7 +1860,7 @@ window.QUESTION_BANK = [
       "choices": [
         "The columns of \\(A\\) span \\(\\mathbb{R}^m\\).",
         "The columns of \\(A\\) span \\(\\mathbb{R}^n\\).",
-        "\\(Ax=b\\) has a unique solution for each \\(b\\).",
+        "\\(A\\mathbf{x}=\\mathbf{b}\\) has a unique solution for each \\(\\mathbf{b}\\).",
         "\\(A\\) has no free variables."
       ],
       "correct": 0
@@ -1881,7 +1881,7 @@ window.QUESTION_BANK = [
     "why": {
       "prompt": "Which quantity does a pivot in every row control?",
       "choices": [
-        "Existence: whether \\(Ax=b\\) is solvable for every \\(b\\).",
+        "Existence: whether \\(A\\mathbf{x}=\\mathbf{b}\\) is solvable for every \\(\\mathbf{b}\\).",
         "Uniqueness: whether a solution is the only one.",
         "Whether \\(A\\) is square.",
         "Whether the columns of \\(A\\) are nonzero."
@@ -1894,19 +1894,19 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Spanning sets",
     "concept": "pivot-in-every-row",
-    "statement": "If \\(Ax=b\\) is consistent for some particular \\(b\\) in \\(\\mathbb{R}^m\\), then the columns of \\(A\\) span \\(\\mathbb{R}^m\\).",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent for some particular \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\), then the columns of \\(A\\) span \\(\\mathbb{R}^m\\).",
     "answer": false,
     "difficulty": 3,
     "variant": "hypothesis",
-    "misconception": "One solvable case is enough to establish the theorem's for every \\(b\\) condition.",
-    "explanation": "The theorem requires solvability for every \\(b\\) in \\(\\mathbb{R}^m\\). A single \\(b\\) that happens to lie in the span of the columns says nothing about the rest of \\(\\mathbb{R}^m\\).",
-    "counterexample": "\\(A=\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}\\) with \\(b=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) is consistent, but the columns of \\(A\\) span only a line in \\(\\mathbb{R}^2\\).",
+    "misconception": "One solvable case is enough to establish the theorem's for every \\(\\mathbf{b}\\) condition.",
+    "explanation": "The theorem requires solvability for every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\). A single \\(\\mathbf{b}\\) that happens to lie in the span of the columns says nothing about the rest of \\(\\mathbb{R}^m\\).",
+    "counterexample": "\\(A=\\begin{bmatrix}1&1\\\\0&0\\end{bmatrix}\\) with \\(\\mathbf{b}=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) is consistent, but the columns of \\(A\\) span only a line in \\(\\mathbb{R}^2\\).",
     "why": {
       "prompt": "What kind of error is this?",
       "choices": [
-        "A quantifier error: the theorem needs solvability for every \\(b\\), not for some \\(b\\).",
+        "A quantifier error: the theorem needs solvability for every \\(\\mathbf{b}\\), not for some \\(\\mathbf{b}\\).",
         "A hypothesis error: \\(A\\) must also be square.",
-        "An arithmetic error in computing \\(Ax\\).",
+        "An arithmetic error in computing \\(A\\mathbf{x}\\).",
         "A terminology error: consistent should read inconsistent."
       ],
       "correct": 0
@@ -1951,11 +1951,11 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Properties of Ax",
     "concept": "matrix-vector-linearity",
-    "statement": "If \\(A\\) is \\(m\\times n\\) and \\(u,v\\) are in \\(\\mathbb{R}^n\\), then \\(A(u+v)=Au+Av\\).",
+    "statement": "If \\(A\\) is \\(m\\times n\\) and \\(\\mathbf{u},\\mathbf{v}\\) are in \\(\\mathbb{R}^n\\), then \\(A(\\mathbf{u}+\\mathbf{v})=A\\mathbf{u}+A\\mathbf{v}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "The product \\(Ax\\) has no useful algebraic rules.",
+    "misconception": "The product \\(A\\mathbf{x}\\) has no useful algebraic rules.",
     "explanation": "The matrix-vector product distributes over vector addition. This follows from the definition together with the algebraic properties of vectors in \\(\\mathbb{R}^n\\)."
   },
   {
@@ -1963,84 +1963,84 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Properties of Ax",
     "concept": "matrix-vector-linearity",
-    "statement": "The identity \\(A(u+v)=Au+Av\\) requires \\(A\\) to be square.",
+    "statement": "The identity \\(A(\\mathbf{u}+\\mathbf{v})=A\\mathbf{u}+A\\mathbf{v}\\) requires \\(A\\) to be square.",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
-    "misconception": "Algebraic identities for \\(Ax\\) carry a hidden squareness assumption.",
-    "explanation": "The identity holds for every \\(m\\times n\\) matrix \\(A\\). The only requirement is that \\(u\\) and \\(v\\) lie in \\(\\mathbb{R}^n\\), so that both products are defined."
+    "misconception": "Algebraic identities for \\(A\\mathbf{x}\\) carry a hidden squareness assumption.",
+    "explanation": "The identity holds for every \\(m\\times n\\) matrix \\(A\\). The only requirement is that \\(\\mathbf{u}\\) and \\(\\mathbf{v}\\) lie in \\(\\mathbb{R}^n\\), so that both products are defined."
   },
   {
     "id": "1.4-linear-03",
     "section": "1.4",
     "topic": "Properties of Ax",
     "concept": "matrix-vector-linearity",
-    "statement": "If \\(A\\) is \\(m\\times n\\) and \\(u,v\\) are in \\(\\mathbb{R}^n\\), then \\(A(3u-2v)=3Au-2Av\\).",
+    "statement": "If \\(A\\) is \\(m\\times n\\) and \\(\\mathbf{u},\\mathbf{v}\\) are in \\(\\mathbb{R}^n\\), then \\(A(3\\mathbf{u}-2\\mathbf{v})=3A\\mathbf{u}-2A\\mathbf{v}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "The two properties of \\(Ax\\) cannot be combined in one computation.",
-    "explanation": "Distributing over the sum gives \\(A(3u)+A(-2v)\\), and pulling out the scalars gives \\(3Au-2Av\\). The two properties are normally used together like this."
+    "misconception": "The two properties of \\(A\\mathbf{x}\\) cannot be combined in one computation.",
+    "explanation": "Distributing over the sum gives \\(A(3\\mathbf{u})+A(-2\\mathbf{v})\\), and pulling out the scalars gives \\(3A\\mathbf{u}-2A\\mathbf{v}\\). The two properties are normally used together like this."
   },
   {
     "id": "1.4-prod-05",
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "matrix-vector-product",
-    "statement": "If \\(A\\) is \\(3\\times5\\), then \\(Ax\\) is defined for \\(x\\) in \\(\\mathbb{R}^3\\).",
+    "statement": "If \\(A\\) is \\(3\\times5\\), then \\(A\\mathbf{x}\\) is defined for \\(\\mathbf{x}\\) in \\(\\mathbb{R}^3\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "The number of entries of \\(x\\) should match the number of rows of \\(A\\).",
-    "explanation": "The entries of \\(x\\) are the weights on the columns of \\(A\\), and \\(A\\) has five columns. So \\(Ax\\) is defined for \\(x\\) in \\(\\mathbb{R}^5\\), and the result lies in \\(\\mathbb{R}^3\\)."
+    "misconception": "The number of entries of \\(\\mathbf{x}\\) should match the number of rows of \\(A\\).",
+    "explanation": "The entries of \\(\\mathbf{x}\\) are the weights on the columns of \\(A\\), and \\(A\\) has five columns. So \\(A\\mathbf{x}\\) is defined for \\(\\mathbf{x}\\) in \\(\\mathbb{R}^5\\), and the result lies in \\(\\mathbb{R}^3\\)."
   },
   {
     "id": "1.4-prod-06",
     "section": "1.4",
     "topic": "The product Ax",
     "concept": "matrix-vector-product",
-    "statement": "If \\(A\\) has \\(n\\) columns and \\(e_1\\) in \\(\\mathbb{R}^n\\) has first entry \\(1\\) and all other entries \\(0\\), then \\(Ae_1\\) is the first column of \\(A\\).",
+    "statement": "If \\(A\\) has \\(n\\) columns and \\(\\mathbf{e}_1\\) in \\(\\mathbb{R}^n\\) has first entry \\(1\\) and all other entries \\(0\\), then \\(A\\mathbf{e}_1\\) is the first column of \\(A\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Multiplying by a vector of mostly zeros produces the zero vector \\(\\mathbf{0}\\).",
-    "explanation": "The weights are \\(1,0,\\dots,0\\), so the combination is \\(1a_1+0a_2+\\cdots+0a_n=a_1\\). Multiplying by \\(e_i\\) selects the \\(i\\)th column."
+    "explanation": "The weights are \\(1,0,\\dots,0\\), so the combination is \\(1\\mathbf{a}_1+0\\mathbf{a}_2+\\cdots+0\\mathbf{a}_n=\\mathbf{a}_1\\). Multiplying by \\(\\mathbf{e}_i\\) selects the \\(i\\)th column."
   },
   {
     "id": "1.4-mateq-03",
     "section": "1.4",
     "topic": "Matrix equations",
     "concept": "matrix-equation",
-    "statement": "In the equation \\(Ax=b\\), the vectors \\(x\\) and \\(b\\) always have the same number of entries.",
+    "statement": "In the equation \\(A\\mathbf{x}=\\mathbf{b}\\), the vectors \\(\\mathbf{x}\\) and \\(\\mathbf{b}\\) always have the same number of entries.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
-    "misconception": "Both sides of an equation must live in the same space, so \\(x\\) and \\(b\\) must match.",
-    "explanation": "If \\(A\\) is \\(m\\times n\\), then \\(x\\) is in \\(\\mathbb{R}^n\\) while \\(b\\) is in \\(\\mathbb{R}^m\\). The two sides that must match are \\(Ax\\) and \\(b\\), both of which lie in \\(\\mathbb{R}^m\\). The sizes agree only when \\(m=n\\)."
+    "misconception": "Both sides of an equation must live in the same space, so \\(\\mathbf{x}\\) and \\(\\mathbf{b}\\) must match.",
+    "explanation": "If \\(A\\) is \\(m\\times n\\), then \\(\\mathbf{x}\\) is in \\(\\mathbb{R}^n\\) while \\(\\mathbf{b}\\) is in \\(\\mathbb{R}^m\\). The two sides that must match are \\(A\\mathbf{x}\\) and \\(\\mathbf{b}\\), both of which lie in \\(\\mathbb{R}^m\\). The sizes agree only when \\(m=n\\)."
   },
   {
     "id": "1.4-solv-04",
     "section": "1.4",
     "topic": "Existence of solutions",
     "concept": "solvability-columns",
-    "statement": "If \\(Ax=b\\) has no solution, then \\(b\\) is a linear combination of the columns of \\(A\\).",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{b}\\) has no solution, then \\(\\mathbf{b}\\) is a linear combination of the columns of \\(A\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Reversing a criterion without reversing its conclusion.",
-    "explanation": "It is the other way around. Having no solution means precisely that no choice of weights produces \\(b\\), so \\(b\\) is not a linear combination of the columns."
+    "explanation": "It is the other way around. Having no solution means precisely that no choice of weights produces \\(\\mathbf{b}\\), so \\(\\mathbf{b}\\) is not a linear combination of the columns."
   },
   {
     "id": "1.4-solv-05",
     "section": "1.4",
     "topic": "Existence of solutions",
     "concept": "solvability-columns",
-    "statement": "If \\(A\\) is \\(m\\times n\\), then \\(Ax=\\mathbf{0}\\), where \\(\\mathbf{0}\\) is the zero vector in \\(\\mathbb{R}^m\\), has at least one solution, namely \\(x=\\mathbf{0}\\) in \\(\\mathbb{R}^n\\).",
+    "statement": "If \\(A\\) is \\(m\\times n\\), then \\(A\\mathbf{x}=\\mathbf{0}\\), where \\(\\mathbf{0}\\) is the zero vector in \\(\\mathbb{R}^m\\), has at least one solution, namely \\(\\mathbf{x}=\\mathbf{0}\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "Solvability of \\(Ax=b\\) always depends on the particular \\(A\\).",
-    "explanation": "Taking \\(x\\) to be the zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^n\\) gives a combination of the columns with all weights \\(0\\), which is the zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^m\\). So this equation is consistent no matter what \\(A\\) is."
+    "misconception": "Solvability of \\(A\\mathbf{x}=\\mathbf{b}\\) always depends on the particular \\(A\\).",
+    "explanation": "Taking \\(\\mathbf{x}\\) to be the zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^n\\) gives a combination of the columns with all weights \\(0\\), which is the zero vector \\(\\mathbf{0}\\) in \\(\\mathbb{R}^m\\). So this equation is consistent no matter what \\(A\\) is."
   },
   {
     "id": "1.4-spansrm-05",
@@ -2059,19 +2059,19 @@ window.QUESTION_BANK = [
     "section": "1.4",
     "topic": "Spanning sets",
     "concept": "pivot-in-every-row",
-    "statement": "If the columns of \\(A\\) span \\(\\mathbb{R}^m\\), then \\(Ax=b\\) is consistent for every \\(b\\) in \\(\\mathbb{R}^m\\).",
+    "statement": "If the columns of \\(A\\) span \\(\\mathbb{R}^m\\), then \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent for every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Spanning is about the columns only and says nothing about solving equations.",
-    "explanation": "Spanning means every \\(b\\) in \\(\\mathbb{R}^m\\) is a linear combination of the columns, and such a combination is exactly a solution of \\(Ax=b\\). These are two of the equivalent conditions in the theorem."
+    "explanation": "Spanning means every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\) is a linear combination of the columns, and such a combination is exactly a solution of \\(A\\mathbf{x}=\\mathbf{b}\\). These are two of the equivalent conditions in the theorem."
   },
   {
     "id": "1.5-homog-01",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "homogeneous-system",
-    "statement": "A system of linear equations is homogeneous when it can be written in the form \\(Ax=\\mathbf{0}\\).",
+    "statement": "A system of linear equations is homogeneous when it can be written in the form \\(A\\mathbf{x}=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2088,19 +2088,19 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "Consistency has to be checked separately for homogeneous systems too.",
-    "explanation": "Taking \\(x=\\mathbf{0}\\) gives \\(A\\mathbf{0}=\\mathbf{0}\\), so the zero vector \\(\\mathbf{0}\\) is always a solution. A homogeneous system is therefore consistent no matter what \\(A\\) is."
+    "explanation": "Taking \\(\\mathbf{x}=\\mathbf{0}\\) gives \\(A\\mathbf{0}=\\mathbf{0}\\), so the zero vector \\(\\mathbf{0}\\) is always a solution. A homogeneous system is therefore consistent no matter what \\(A\\) is."
   },
   {
     "id": "1.5-homog-03",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "homogeneous-system",
-    "statement": "The equation \\(Ax=b\\) with \\(b=\\begin{bmatrix}0\\\\0\\\\1\\end{bmatrix}\\) is homogeneous, because most of the entries of \\(b\\) are \\(0\\).",
+    "statement": "The equation \\(A\\mathbf{x}=\\mathbf{b}\\) with \\(\\mathbf{b}=\\begin{bmatrix}0\\\\0\\\\1\\end{bmatrix}\\) is homogeneous, because most of the entries of \\(\\mathbf{b}\\) are \\(0\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Mostly zero is close enough to homogeneous.",
-    "explanation": "Homogeneous requires \\(b\\) to be the zero vector \\(\\mathbf{0}\\). A single nonzero entry is enough to make the system nonhomogeneous."
+    "explanation": "Homogeneous requires \\(\\mathbf{b}\\) to be the zero vector \\(\\mathbf{0}\\). A single nonzero entry is enough to make the system nonhomogeneous."
   },
   {
     "id": "1.5-homog-04",
@@ -2129,7 +2129,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "The zero vector \\(\\mathbf{0}\\) is a solution of every homogeneous equation \\(Ax=\\mathbf{0}\\).",
+    "statement": "The zero vector \\(\\mathbf{0}\\) is a solution of every homogeneous equation \\(A\\mathbf{x}=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2141,32 +2141,32 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "A nontrivial solution of \\(Ax=\\mathbf{0}\\) is a solution in which every entry is nonzero.",
+    "statement": "A nontrivial solution of \\(A\\mathbf{x}=\\mathbf{0}\\) is a solution in which every entry is nonzero.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Nontrivial is read as no entry is trivial.",
     "explanation": "A nontrivial solution is any solution other than the zero vector \\(\\mathbf{0}\\). It needs at least one nonzero entry, and the remaining entries are free to be \\(0\\).",
-    "counterexample": "For \\(A=\\begin{bmatrix}0&0&0\\end{bmatrix}\\), the vector \\(\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}\\) solves \\(Ax=\\mathbf{0}\\) and is nontrivial even though two of its entries are \\(0\\)."
+    "counterexample": "For \\(A=\\begin{bmatrix}0&0&0\\end{bmatrix}\\), the vector \\(\\begin{bmatrix}1\\\\0\\\\0\\end{bmatrix}\\) solves \\(A\\mathbf{x}=\\mathbf{0}\\) and is nontrivial even though two of its entries are \\(0\\)."
   },
   {
     "id": "1.5-trivial-03",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "If \\(Ax=\\mathbf{0}\\) has a nontrivial solution, then it no longer has the trivial solution.",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{0}\\) has a nontrivial solution, then it no longer has the trivial solution.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Trivial and nontrivial solutions are alternatives that exclude one another.",
-    "explanation": "The zero vector \\(\\mathbf{0}\\) solves \\(Ax=\\mathbf{0}\\) always. Having a nontrivial solution means there is at least one more solution besides that one, not that the trivial solution has gone away."
+    "explanation": "The zero vector \\(\\mathbf{0}\\) solves \\(A\\mathbf{x}=\\mathbf{0}\\) always. Having a nontrivial solution means there is at least one more solution besides that one, not that the trivial solution has gone away."
   },
   {
     "id": "1.5-trivial-04",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "trivial-solution",
-    "statement": "The trivial solution of \\(Ax=\\mathbf{0}\\) is the solution \\(x=\\mathbf{0}\\).",
+    "statement": "The trivial solution of \\(A\\mathbf{x}=\\mathbf{0}\\) is the solution \\(\\mathbf{x}=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2178,7 +2178,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "\\(Ax=\\mathbf{0}\\) has a nontrivial solution if and only if the equation has at least one free variable.",
+    "statement": "\\(A\\mathbf{x}=\\mathbf{0}\\) has a nontrivial solution if and only if the equation has at least one free variable.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -2200,7 +2200,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If \\(Ax=\\mathbf{0}\\) has only the trivial solution, then \\(A\\) has at least one free variable.",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{0}\\) has only the trivial solution, then \\(A\\) has at least one free variable.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2212,7 +2212,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If \\(A\\) is a \\(3\\times5\\) matrix, then \\(Ax=\\mathbf{0}\\) must have a nontrivial solution.",
+    "statement": "If \\(A\\) is a \\(3\\times5\\) matrix, then \\(A\\mathbf{x}=\\mathbf{0}\\) must have a nontrivial solution.",
     "answer": true,
     "difficulty": 3,
     "variant": "core",
@@ -2234,20 +2234,20 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If \\(A\\) has more rows than columns, then \\(Ax=\\mathbf{0}\\) has a nontrivial solution.",
+    "statement": "If \\(A\\) has more rows than columns, then \\(A\\mathbf{x}=\\mathbf{0}\\) has a nontrivial solution.",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Any mismatch between the number of rows and columns produces free variables.",
     "explanation": "The useful comparison is more columns than rows, which forces a column without a pivot. More rows than columns leaves room for every column to be a pivot column.",
-    "counterexample": "\\(A=\\begin{bmatrix}1&0\\\\0&1\\\\0&0\\end{bmatrix}\\) has three rows and two columns, and \\(Ax=\\mathbf{0}\\) has only the trivial solution."
+    "counterexample": "\\(A=\\begin{bmatrix}1&0\\\\0&1\\\\0&0\\end{bmatrix}\\) has three rows and two columns, and \\(A\\mathbf{x}=\\mathbf{0}\\) has only the trivial solution."
   },
   {
     "id": "1.5-nontriv-05",
     "section": "1.5",
     "topic": "Homogeneous systems",
     "concept": "nontrivial-solution",
-    "statement": "If some column of \\(A\\) is not a pivot column, then \\(Ax=\\mathbf{0}\\) has a nontrivial solution.",
+    "statement": "If some column of \\(A\\) is not a pivot column, then \\(A\\mathbf{x}=\\mathbf{0}\\) has a nontrivial solution.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -2259,7 +2259,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "The solution set of a homogeneous equation \\(Ax=\\mathbf{0}\\) can always be written as the span of some list of vectors.",
+    "statement": "The solution set of a homogeneous equation \\(A\\mathbf{x}=\\mathbf{0}\\) can always be written as the span of some list of vectors.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -2281,7 +2281,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "If \\(Ax=\\mathbf{0}\\) has only the trivial solution, its solution set can still be described as a span.",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{0}\\) has only the trivial solution, its solution set can still be described as a span.",
     "answer": true,
     "difficulty": 3,
     "variant": "hypothesis",
@@ -2303,7 +2303,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "The number of vectors needed to span the solution set of \\(Ax=\\mathbf{0}\\) equals the number of pivot columns of \\(A\\).",
+    "statement": "The number of vectors needed to span the solution set of \\(A\\mathbf{x}=\\mathbf{0}\\) equals the number of pivot columns of \\(A\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2315,31 +2315,31 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "If \\(Ax=\\mathbf{0}\\) has a nontrivial solution, then it has infinitely many solutions.",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{0}\\) has a nontrivial solution, then it has infinitely many solutions.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "A homogeneous system might have exactly two solutions: the trivial one and one other.",
-    "explanation": "If \\(v\\ne\\mathbf{0}\\) solves \\(Ax=\\mathbf{0}\\), then \\(A(cv)=c(Av)=\\mathbf{0}\\) for every scalar \\(c\\), and distinct scalars give distinct vectors. So the solutions form a whole line at least."
+    "explanation": "If \\(\\mathbf{v}\\ne\\mathbf{0}\\) solves \\(A\\mathbf{x}=\\mathbf{0}\\), then \\(A(c\\mathbf{v})=c(A\\mathbf{v})=\\mathbf{0}\\) for every scalar \\(c\\), and distinct scalars give distinct vectors. So the solutions form a whole line at least."
   },
   {
     "id": "1.5-span-05",
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "homogeneous-span",
-    "statement": "The solution set of \\(Ax=\\mathbf{0}\\) is the span of the pivot columns of \\(A\\).",
+    "statement": "The solution set of \\(A\\mathbf{x}=\\mathbf{0}\\) is the span of the pivot columns of \\(A\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Any span attached to \\(A\\) must be the span of some of its columns.",
-    "explanation": "The columns of \\(A\\) live in \\(\\mathbb{R}^m\\), while solutions of \\(Ax=\\mathbf{0}\\) live in \\(\\mathbb{R}^n\\). The spanning vectors for the solution set are produced from the free variables, and are generally not columns of \\(A\\) at all."
+    "explanation": "The columns of \\(A\\) live in \\(\\mathbb{R}^m\\), while solutions of \\(A\\mathbf{x}=\\mathbf{0}\\) live in \\(\\mathbb{R}^n\\). The spanning vectors for the solution set are produced from the free variables, and are generally not columns of \\(A\\) at all."
   },
   {
     "id": "1.5-pvf-01",
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "parametric-vector-form",
-    "statement": "Writing the solution set of \\(Ax=\\mathbf{0}\\) as \\(x=t_1u_1+\\cdots+t_ku_k\\), with the free variables serving as the parameters \\(t_1,\\dots,t_k\\), is a parametric vector form of that solution set.",
+    "statement": "Writing the solution set of \\(A\\mathbf{x}=\\mathbf{0}\\) as \\(\\mathbf{x}=t_1\\mathbf{u}_1+\\cdots+t_k\\mathbf{u}_k\\), with the free variables serving as the parameters \\(t_1,\\dots,t_k\\), is a parametric vector form of that solution set.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2363,7 +2363,7 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Parametric vector form",
     "concept": "parametric-vector-form",
-    "statement": "In a parametric vector form of the solution set of \\(Ax=\\mathbf{0}\\), the number of vectors equals the number of variables in the system.",
+    "statement": "In a parametric vector form of the solution set of \\(A\\mathbf{x}=\\mathbf{0}\\), the number of vectors equals the number of variables in the system.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2375,19 +2375,19 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "If \\(Ax=b\\) is consistent and \\(p\\) is one of its solutions, then the solutions of \\(Ax=b\\) are exactly the vectors \\(p+v_h\\) where \\(v_h\\) ranges over the solutions of \\(Ax=\\mathbf{0}\\).",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent and \\(\\mathbf{p}\\) is one of its solutions, then the solutions of \\(A\\mathbf{x}=\\mathbf{b}\\) are exactly the vectors \\(\\mathbf{p}+\\mathbf{v}_h\\) where \\(\\mathbf{v}_h\\) ranges over the solutions of \\(A\\mathbf{x}=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The homogeneous equation has nothing to do with the nonhomogeneous one.",
-    "explanation": "If \\(Av_h=\\mathbf{0}\\) then \\(A(p+v_h)=b+\\mathbf{0}=b\\), so every such vector is a solution. Conversely if \\(Aw=b\\) then \\(A(w-p)=\\mathbf{0}\\), so \\(w=p+(w-p)\\) has the required form.",
+    "explanation": "If \\(A\\mathbf{v}_h=\\mathbf{0}\\) then \\(A(\\mathbf{p}+\\mathbf{v}_h)=\\mathbf{b}+\\mathbf{0}=\\mathbf{b}\\), so every such vector is a solution. Conversely if \\(A\\mathbf{w}=\\mathbf{b}\\) then \\(A(\\mathbf{w}-\\mathbf{p})=\\mathbf{0}\\), so \\(\\mathbf{w}=\\mathbf{p}+(\\mathbf{w}-\\mathbf{p})\\) has the required form.",
     "why": {
       "prompt": "Which computation gives the converse direction?",
       "choices": [
-        "\\(A(w-p)=Aw-Ap=b-b=\\mathbf{0}\\), so \\(w-p\\) solves the homogeneous equation.",
-        "\\(A(w+p)=2b\\), so \\(w+p\\) solves the homogeneous equation.",
-        "\\(Aw=Ap\\) forces \\(w=p\\).",
-        "Every solution of \\(Ax=b\\) is a scalar multiple of \\(p\\)."
+        "\\(A(\\mathbf{w}-\\mathbf{p})=A\\mathbf{w}-A\\mathbf{p}=\\mathbf{b}-\\mathbf{b}=\\mathbf{0}\\), so \\(\\mathbf{w}-\\mathbf{p}\\) solves the homogeneous equation.",
+        "\\(A(\\mathbf{w}+\\mathbf{p})=2\\mathbf{b}\\), so \\(\\mathbf{w}+\\mathbf{p}\\) solves the homogeneous equation.",
+        "\\(A\\mathbf{w}=A\\mathbf{p}\\) forces \\(\\mathbf{w}=\\mathbf{p}\\).",
+        "Every solution of \\(A\\mathbf{x}=\\mathbf{b}\\) is a scalar multiple of \\(\\mathbf{p}\\)."
       ],
       "correct": 0
     }
@@ -2397,19 +2397,19 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "The description of the solution set of \\(Ax=b\\) as all vectors \\(p+v_h\\) is valid whether or not \\(Ax=b\\) is consistent.",
+    "statement": "The description of the solution set of \\(A\\mathbf{x}=\\mathbf{b}\\) as all vectors \\(\\mathbf{p}+\\mathbf{v}_h\\) is valid whether or not \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent.",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "The consistency hypothesis in the theorem is a formality.",
-    "explanation": "The description starts from a particular solution \\(p\\). If the equation is inconsistent there is no such \\(p\\), and the solution set is empty rather than a translate of anything.",
+    "explanation": "The description starts from a particular solution \\(\\mathbf{p}\\). If the equation is inconsistent there is no such \\(\\mathbf{p}\\), and the solution set is empty rather than a translate of anything.",
     "why": {
-      "prompt": "What goes wrong when \\(Ax=b\\) is inconsistent?",
+      "prompt": "What goes wrong when \\(A\\mathbf{x}=\\mathbf{b}\\) is inconsistent?",
       "choices": [
-        "There is no particular solution \\(p\\) to translate by, and the solution set is empty.",
-        "The homogeneous equation \\(Ax=\\mathbf{0}\\) also becomes inconsistent.",
+        "There is no particular solution \\(\\mathbf{p}\\) to translate by, and the solution set is empty.",
+        "The homogeneous equation \\(A\\mathbf{x}=\\mathbf{0}\\) also becomes inconsistent.",
         "The solution set becomes all of \\(\\mathbb{R}^n\\).",
-        "The vector \\(p\\) must then be taken to be \\(\\mathbf{0}\\)."
+        "The vector \\(\\mathbf{p}\\) must then be taken to be \\(\\mathbf{0}\\)."
       ],
       "correct": 0
     }
@@ -2419,18 +2419,18 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "In the description \\(w=p+v_h\\), the vector \\(p\\) must be the particular solution produced by row reduction; a different solution would describe a different set.",
+    "statement": "In the description \\(\\mathbf{w}=\\mathbf{p}+\\mathbf{v}_h\\), the vector \\(\\mathbf{p}\\) must be the particular solution produced by row reduction; a different solution would describe a different set.",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "The translation vector is canonical rather than an arbitrary choice.",
-    "explanation": "Any solution may be used as \\(p\\). If \\(p\\) and \\(p'\\) both solve \\(Ax=b\\), then \\(p-p'\\) solves \\(Ax=\\mathbf{0}\\), and translating by either one sweeps out the same set.",
+    "explanation": "Any solution may be used as \\(\\mathbf{p}\\). If \\(\\mathbf{p}\\) and \\(\\mathbf{p}'\\) both solve \\(A\\mathbf{x}=\\mathbf{b}\\), then \\(\\mathbf{p}-\\mathbf{p}'\\) solves \\(A\\mathbf{x}=\\mathbf{0}\\), and translating by either one sweeps out the same set.",
     "why": {
       "prompt": "Why does any particular solution serve equally well?",
       "choices": [
-        "Two particular solutions differ by a solution of \\(Ax=\\mathbf{0}\\), so the two translates cover the same set.",
+        "Two particular solutions differ by a solution of \\(A\\mathbf{x}=\\mathbf{0}\\), so the two translates cover the same set.",
         "Because row reduction always produces the same particular solution.",
-        "Because the solution set of \\(Ax=b\\) is a span.",
+        "Because the solution set of \\(A\\mathbf{x}=\\mathbf{b}\\) is a span.",
         "Because a consistent equation has only one solution."
       ],
       "correct": 0
@@ -2441,48 +2441,48 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "If \\(Ax=b\\) is consistent and \\(Ax=\\mathbf{0}\\) has only the trivial solution, then \\(Ax=b\\) has exactly one solution.",
+    "statement": "If \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent and \\(A\\mathbf{x}=\\mathbf{0}\\) has only the trivial solution, then \\(A\\mathbf{x}=\\mathbf{b}\\) has exactly one solution.",
     "answer": true,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Information about the homogeneous equation cannot settle uniqueness for the nonhomogeneous one.",
-    "explanation": "The solutions are the vectors \\(p+v_h\\). If the only \\(v_h\\) is the zero vector \\(\\mathbf{0}\\), then \\(p\\) is the only solution. Consistency supplies the existence half."
+    "explanation": "The solutions are the vectors \\(\\mathbf{p}+\\mathbf{v}_h\\). If the only \\(\\mathbf{v}_h\\) is the zero vector \\(\\mathbf{0}\\), then \\(\\mathbf{p}\\) is the only solution. Consistency supplies the existence half."
   },
   {
     "id": "1.5-particular-05",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "particular-solution",
-    "statement": "If \\(p\\) and \\(q\\) are both solutions of \\(Ax=b\\), then \\(p-q\\) is a solution of \\(Ax=\\mathbf{0}\\).",
+    "statement": "If \\(\\mathbf{p}\\) and \\(\\mathbf{q}\\) are both solutions of \\(A\\mathbf{x}=\\mathbf{b}\\), then \\(\\mathbf{p}-\\mathbf{q}\\) is a solution of \\(A\\mathbf{x}=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
-    "misconception": "Combining two solutions of \\(Ax=b\\) gives another solution of \\(Ax=b\\).",
-    "explanation": "\\(A(p-q)=Ap-Aq=b-b=\\mathbf{0}\\). Note that \\(p+q\\) is generally not a solution of \\(Ax=b\\), since \\(A(p+q)=2b\\)."
+    "misconception": "Combining two solutions of \\(A\\mathbf{x}=\\mathbf{b}\\) gives another solution of \\(A\\mathbf{x}=\\mathbf{b}\\).",
+    "explanation": "\\(A(\\mathbf{p}-\\mathbf{q})=A\\mathbf{p}-A\\mathbf{q}=\\mathbf{b}-\\mathbf{b}=\\mathbf{0}\\). Note that \\(\\mathbf{p}+\\mathbf{q}\\) is generally not a solution of \\(A\\mathbf{x}=\\mathbf{b}\\), since \\(A(\\mathbf{p}+\\mathbf{q})=2\\mathbf{b}\\)."
   },
   {
     "id": "1.5-geom-01",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "The solution set of a consistent equation \\(Ax=b\\) can be pictured as the solution set of \\(Ax=\\mathbf{0}\\) shifted by a particular solution \\(p\\).",
+    "statement": "The solution set of a consistent equation \\(A\\mathbf{x}=\\mathbf{b}\\) can be pictured as the solution set of \\(A\\mathbf{x}=\\mathbf{0}\\) shifted by a particular solution \\(\\mathbf{p}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The two solution sets have unrelated shapes.",
-    "explanation": "Adding the fixed vector \\(p\\) to every element of the homogeneous solution set translates it without changing its shape. A line through the origin becomes a parallel line, a plane through the origin a parallel plane."
+    "explanation": "Adding the fixed vector \\(\\mathbf{p}\\) to every element of the homogeneous solution set translates it without changing its shape. A line through the origin becomes a parallel line, a plane through the origin a parallel plane."
   },
   {
     "id": "1.5-geom-02",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "If \\(b\\ne\\mathbf{0}\\) and \\(Ax=b\\) is consistent, then its solution set is a span.",
+    "statement": "If \\(\\mathbf{b}\\ne\\mathbf{0}\\) and \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent, then its solution set is a span.",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "Any solution set that looks like a line or a plane is a span.",
-    "explanation": "Every span contains the zero vector \\(\\mathbf{0}\\). Here \\(A\\mathbf{0}=\\mathbf{0}\\ne b\\), so \\(\\mathbf{0}\\) is not a solution and the solution set cannot be a span. It is a translate of one.",
+    "explanation": "Every span contains the zero vector \\(\\mathbf{0}\\). Here \\(A\\mathbf{0}=\\mathbf{0}\\ne \\mathbf{b}\\), so \\(\\mathbf{0}\\) is not a solution and the solution set cannot be a span. It is a translate of one.",
     "why": {
       "prompt": "What rules it out?",
       "choices": [
@@ -2499,19 +2499,19 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "The solution set of \\(Ax=b\\) always passes through the origin.",
+    "statement": "The solution set of \\(A\\mathbf{x}=\\mathbf{b}\\) always passes through the origin.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Solution sets of linear equations are always lines or planes through the origin.",
-    "explanation": "The zero vector \\(\\mathbf{0}\\) solves \\(Ax=b\\) only when \\(b=\\mathbf{0}\\). For a nonzero \\(b\\), the solution set misses the origin entirely, and it may also be empty."
+    "explanation": "The zero vector \\(\\mathbf{0}\\) solves \\(A\\mathbf{x}=\\mathbf{b}\\) only when \\(\\mathbf{b}=\\mathbf{0}\\). For a nonzero \\(\\mathbf{b}\\), the solution set misses the origin entirely, and it may also be empty."
   },
   {
     "id": "1.5-geom-04",
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "The solution set of a homogeneous equation \\(Ax=\\mathbf{0}\\) always contains the origin.",
+    "statement": "The solution set of a homogeneous equation \\(A\\mathbf{x}=\\mathbf{0}\\) always contains the origin.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2523,19 +2523,19 @@ window.QUESTION_BANK = [
     "section": "1.5",
     "topic": "Solutions of Ax = b",
     "concept": "solution-set-geometry",
-    "statement": "If the solution set of \\(Ax=b\\) is a line that does not pass through the origin, then \\(Ax=\\mathbf{0}\\) has only the trivial solution.",
+    "statement": "If the solution set of \\(A\\mathbf{x}=\\mathbf{b}\\) is a line that does not pass through the origin, then \\(A\\mathbf{x}=\\mathbf{0}\\) has only the trivial solution.",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "A solution set that misses the origin means the homogeneous equation is as small as possible.",
-    "explanation": "The solution set of \\(Ax=b\\) is a translate of the solution set of \\(Ax=\\mathbf{0}\\), so the two have the same shape. A line of solutions for \\(Ax=b\\) means \\(Ax=\\mathbf{0}\\) is also a line, namely the parallel one through the origin, which contains nontrivial solutions.",
+    "explanation": "The solution set of \\(A\\mathbf{x}=\\mathbf{b}\\) is a translate of the solution set of \\(A\\mathbf{x}=\\mathbf{0}\\), so the two have the same shape. A line of solutions for \\(A\\mathbf{x}=\\mathbf{b}\\) means \\(A\\mathbf{x}=\\mathbf{0}\\) is also a line, namely the parallel one through the origin, which contains nontrivial solutions.",
     "why": {
-      "prompt": "What does the shape of the solution set of \\(Ax=b\\) tell you?",
+      "prompt": "What does the shape of the solution set of \\(A\\mathbf{x}=\\mathbf{b}\\) tell you?",
       "choices": [
-        "It is a translate of the solution set of \\(Ax=\\mathbf{0}\\), so that set is a line through the origin.",
+        "It is a translate of the solution set of \\(A\\mathbf{x}=\\mathbf{0}\\), so that set is a line through the origin.",
         "Nothing at all, since the two equations are unrelated.",
-        "That \\(Ax=\\mathbf{0}\\) is inconsistent.",
-        "That \\(Ax=b\\) has exactly one solution."
+        "That \\(A\\mathbf{x}=\\mathbf{0}\\) is inconsistent.",
+        "That \\(A\\mathbf{x}=\\mathbf{b}\\) has exactly one solution."
       ],
       "correct": 0
     }
@@ -2545,7 +2545,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly independent when \\(x_1v_1+\\cdots+x_pv_p=\\mathbf{0}\\) has only the trivial solution.",
+    "statement": "The vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly independent when \\(x_1\\mathbf{v}_1+\\cdots+x_p\\mathbf{v}_p=\\mathbf{0}\\) has only the trivial solution.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2557,7 +2557,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly independent when \\(x_1v_1+\\cdots+x_pv_p=\\mathbf{0}\\) has no solution.",
+    "statement": "The vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly independent when \\(x_1\\mathbf{v}_1+\\cdots+x_p\\mathbf{v}_p=\\mathbf{0}\\) has no solution.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
@@ -2569,19 +2569,19 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "If \\(v_1,\\dots,v_p\\) are linearly independent, then none of them is the zero vector \\(\\mathbf{0}\\).",
+    "statement": "If \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly independent, then none of them is the zero vector \\(\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The zero vector \\(\\mathbf{0}\\) is harmless inside an independent list.",
-    "explanation": "If some \\(v_i\\) were the zero vector \\(\\mathbf{0}\\), then putting weight \\(1\\) on it and \\(0\\) everywhere else gives a nontrivial solution, contradicting independence."
+    "explanation": "If some \\(\\mathbf{v}_i\\) were the zero vector \\(\\mathbf{0}\\), then putting weight \\(1\\) on it and \\(0\\) everywhere else gives a nontrivial solution, contradicting independence."
   },
   {
     "id": "1.7-indep-04",
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "If \\(v_1,\\dots,v_p\\) are linearly independent, then no linear combination of them equals the zero vector \\(\\mathbf{0}\\).",
+    "statement": "If \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly independent, then no linear combination of them equals the zero vector \\(\\mathbf{0}\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2593,7 +2593,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-independence",
-    "statement": "If no two of the vectors \\(v_1,\\dots,v_p\\) are equal to each other, then the list is linearly independent.",
+    "statement": "If no two of the vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are equal to each other, then the list is linearly independent.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
@@ -2606,7 +2606,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-dependence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly dependent when there exist weights \\(c_1,\\dots,c_p\\), not all zero, with \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\).",
+    "statement": "The vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly dependent when there exist weights \\(c_1,\\dots,c_p\\), not all zero, with \\(c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2618,7 +2618,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-dependence",
-    "statement": "The vectors \\(v_1,\\dots,v_p\\) are linearly dependent when \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\) holds for some scalars \\(c_1,\\dots,c_p\\).",
+    "statement": "The vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly dependent when \\(c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p=\\mathbf{0}\\) holds for some scalars \\(c_1,\\dots,c_p\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
@@ -2640,13 +2640,13 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-dependence",
-    "statement": "If \\(v_1,\\dots,v_p\\) are linearly dependent, then in some dependence relation among them all of the weights are nonzero.",
+    "statement": "If \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly dependent, then in some dependence relation among them all of the weights are nonzero.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Not all zero is read as none of them zero.",
     "explanation": "Dependence requires only that at least one weight is nonzero. Some of the weights may well be forced to be \\(0\\).",
-    "counterexample": "For \\(v_1=\\begin{bmatrix}1\\\\0\\end{bmatrix},v_2=\\begin{bmatrix}2\\\\0\\end{bmatrix},v_3=\\begin{bmatrix}0\\\\1\\end{bmatrix}\\), every dependence relation has weight \\(0\\) on \\(v_3\\)."
+    "counterexample": "For \\(\\mathbf{v}_1=\\begin{bmatrix}1\\\\0\\end{bmatrix},\\mathbf{v}_2=\\begin{bmatrix}2\\\\0\\end{bmatrix},\\mathbf{v}_3=\\begin{bmatrix}0\\\\1\\end{bmatrix}\\), every dependence relation has weight \\(0\\) on \\(\\mathbf{v}_3\\)."
   },
   {
     "id": "1.7-dep-04",
@@ -2658,27 +2658,27 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "A repeated vector is merely redundant rather than a source of dependence.",
-    "explanation": "If \\(v_i=v_j\\) with \\(i\\ne j\\), then weight \\(1\\) on \\(v_i\\), weight \\(-1\\) on \\(v_j\\), and \\(0\\) elsewhere gives a dependence relation."
+    "explanation": "If \\(\\mathbf{v}_i=\\mathbf{v}_j\\) with \\(i\\ne j\\), then weight \\(1\\) on \\(\\mathbf{v}_i\\), weight \\(-1\\) on \\(\\mathbf{v}_j\\), and \\(0\\) elsewhere gives a dependence relation."
   },
   {
     "id": "1.7-dep-05",
     "section": "1.7",
     "topic": "Linear independence",
     "concept": "linear-dependence",
-    "statement": "If \\(v_1,v_2,v_3\\) are linearly dependent, then \\(v_1\\) must be a linear combination of \\(v_2\\) and \\(v_3\\).",
+    "statement": "If \\(\\mathbf{v}_1,\\mathbf{v}_2,\\mathbf{v}_3\\) are linearly dependent, then \\(\\mathbf{v}_1\\) must be a linear combination of \\(\\mathbf{v}_2\\) and \\(\\mathbf{v}_3\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The vector that can be eliminated is always the first one.",
     "explanation": "Dependence guarantees that at least one vector is a combination of the others, but not which one. Any vector whose weight is forced to be \\(0\\) in every dependence relation cannot be the one.",
-    "counterexample": "With \\(v_1=\\begin{bmatrix}1\\\\0\\end{bmatrix},v_2=\\begin{bmatrix}0\\\\1\\end{bmatrix},v_3=\\begin{bmatrix}0\\\\2\\end{bmatrix}\\) the list is dependent, but \\(v_1\\) is not a combination of \\(v_2,v_3\\), which span only the vertical axis."
+    "counterexample": "With \\(\\mathbf{v}_1=\\begin{bmatrix}1\\\\0\\end{bmatrix},\\mathbf{v}_2=\\begin{bmatrix}0\\\\1\\end{bmatrix},\\mathbf{v}_3=\\begin{bmatrix}0\\\\2\\end{bmatrix}\\) the list is dependent, but \\(\\mathbf{v}_1\\) is not a combination of \\(\\mathbf{v}_2,\\mathbf{v}_3\\), which span only the vertical axis."
   },
   {
     "id": "1.7-relation-01",
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-relation",
-    "statement": "An equation \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\) in which the weights are not all zero is called a linear dependence relation among \\(v_1,\\dots,v_p\\).",
+    "statement": "An equation \\(c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p=\\mathbf{0}\\) in which the weights are not all zero is called a linear dependence relation among \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -2690,7 +2690,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-relation",
-    "statement": "The equation \\(0v_1+0v_2+0v_3=\\mathbf{0}\\) is a linear dependence relation among \\(v_1,v_2,v_3\\).",
+    "statement": "The equation \\(0\\mathbf{v}_1+0\\mathbf{v}_2+0\\mathbf{v}_3=\\mathbf{0}\\) is a linear dependence relation among \\(\\mathbf{v}_1,\\mathbf{v}_2,\\mathbf{v}_3\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -2702,7 +2702,7 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-relation",
-    "statement": "If \\(2v_1-v_2+0v_3=\\mathbf{0}\\), then \\(v_1,v_2,v_3\\) are linearly dependent.",
+    "statement": "If \\(2\\mathbf{v}_1-\\mathbf{v}_2+0\\mathbf{v}_3=\\mathbf{0}\\), then \\(\\mathbf{v}_1,\\mathbf{v}_2,\\mathbf{v}_3\\) are linearly dependent.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -2714,29 +2714,29 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-relation",
-    "statement": "When a linear dependence relation among \\(v_1,\\dots,v_p\\) exists, it is unique.",
+    "statement": "When a linear dependence relation among \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) exists, it is unique.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The certificate of dependence is a canonical object.",
-    "explanation": "Multiplying a dependence relation through by any nonzero scalar gives another one. If \\(2v_1-v_2=\\mathbf{0}\\), then \\(4v_1-2v_2=\\mathbf{0}\\) as well, so there are infinitely many."
+    "explanation": "Multiplying a dependence relation through by any nonzero scalar gives another one. If \\(2\\mathbf{v}_1-\\mathbf{v}_2=\\mathbf{0}\\), then \\(4\\mathbf{v}_1-2\\mathbf{v}_2=\\mathbf{0}\\) as well, so there are infinitely many."
   },
   {
     "id": "1.7-columns-01",
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "independence-columns",
-    "statement": "The columns of \\(A\\) are linearly independent if and only if \\(Ax=\\mathbf{0}\\) has only the trivial solution.",
+    "statement": "The columns of \\(A\\) are linearly independent if and only if \\(A\\mathbf{x}=\\mathbf{0}\\) has only the trivial solution.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Independence of the columns is unrelated to the homogeneous equation.",
-    "explanation": "\\(Ax\\) is the combination of the columns with weights from \\(x\\), so \\(Ax=\\mathbf{0}\\) is precisely the vector equation in the definition of independence.",
+    "explanation": "\\(A\\mathbf{x}\\) is the combination of the columns with weights from \\(\\mathbf{x}\\), so \\(A\\mathbf{x}=\\mathbf{0}\\) is precisely the vector equation in the definition of independence.",
     "why": {
       "prompt": "Why are the two conditions the same?",
       "choices": [
-        "\\(Ax=\\mathbf{0}\\) is exactly the equation \\(x_1a_1+\\cdots+x_na_n=\\mathbf{0}\\) from the definition.",
-        "\\(Ax=\\mathbf{0}\\) is always inconsistent when the columns are independent.",
+        "\\(A\\mathbf{x}=\\mathbf{0}\\) is exactly the equation \\(x_1\\mathbf{a}_1+\\cdots+x_n\\mathbf{a}_n=\\mathbf{0}\\) from the definition.",
+        "\\(A\\mathbf{x}=\\mathbf{0}\\) is always inconsistent when the columns are independent.",
         "Independence requires \\(A\\) to be square.",
         "The trivial solution exists only when the columns are independent."
       ],
@@ -2753,7 +2753,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Pivot positions describe spanning rather than independence.",
-    "explanation": "A column that is not a pivot column gives a free variable, and a free variable gives a nontrivial solution of \\(Ax=\\mathbf{0}\\). So independence is exactly the absence of free variables."
+    "explanation": "A column that is not a pivot column gives a free variable, and a free variable gives a nontrivial solution of \\(A\\mathbf{x}=\\mathbf{0}\\). So independence is exactly the absence of free variables."
   },
   {
     "id": "1.7-columns-03",
@@ -2782,19 +2782,19 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "independence-columns",
-    "statement": "If the columns of \\(A\\) are linearly independent, then \\(Ax=b\\) is consistent for every \\(b\\).",
+    "statement": "If the columns of \\(A\\) are linearly independent, then \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent for every \\(\\mathbf{b}\\).",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "Independence of the columns settles existence as well as uniqueness.",
-    "explanation": "Independence says a solution, if one exists, is unique. It says nothing about whether one exists. Existence for every \\(b\\) requires the columns to span, which is a pivot in every row.",
-    "counterexample": "\\(A=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) has a linearly independent single column, but \\(Ax=\\begin{bmatrix}0\\\\1\\end{bmatrix}\\) has no solution.",
+    "explanation": "Independence says a solution, if one exists, is unique. It says nothing about whether one exists. Existence for every \\(\\mathbf{b}\\) requires the columns to span, which is a pivot in every row.",
+    "counterexample": "\\(A=\\begin{bmatrix}1\\\\0\\end{bmatrix}\\) has a linearly independent single column, but \\(A\\mathbf{x}=\\begin{bmatrix}0\\\\1\\end{bmatrix}\\) has no solution.",
     "why": {
       "prompt": "What does independence of the columns actually give you?",
       "choices": [
-        "Uniqueness: at most one solution for each \\(b\\).",
-        "Existence: at least one solution for each \\(b\\).",
-        "Both existence and uniqueness for each \\(b\\).",
+        "Uniqueness: at most one solution for each \\(\\mathbf{b}\\).",
+        "Existence: at least one solution for each \\(\\mathbf{b}\\).",
+        "Both existence and uniqueness for each \\(\\mathbf{b}\\).",
         "That \\(A\\) is square."
       ],
       "correct": 0
@@ -2805,24 +2805,24 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "independence-columns",
-    "statement": "If the columns of \\(A\\) are linearly independent and \\(Ax=b\\) is consistent, then that solution is unique.",
+    "statement": "If the columns of \\(A\\) are linearly independent and \\(A\\mathbf{x}=\\mathbf{b}\\) is consistent, then that solution is unique.",
     "answer": true,
     "difficulty": 2,
     "variant": "hypothesis",
     "misconception": "Independence alone cannot deliver uniqueness without further assumptions.",
-    "explanation": "Independence means \\(Ax=\\mathbf{0}\\) has only the trivial solution, so the solution set of \\(Ax=b\\) is \\(p+\\{\\mathbf{0}\\}=\\{p\\}\\). The consistency hypothesis supplies the particular solution \\(p\\)."
+    "explanation": "Independence means \\(A\\mathbf{x}=\\mathbf{0}\\) has only the trivial solution, so the solution set of \\(A\\mathbf{x}=\\mathbf{b}\\) is \\(\\mathbf{p}+\\{\\mathbf{0}\\}=\\{\\mathbf{p}\\}\\). The consistency hypothesis supplies the particular solution \\(\\mathbf{p}\\)."
   },
   {
     "id": "1.7-one-01",
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "one-vector-independence",
-    "statement": "A list consisting of a single nonzero vector \\(v\\) is linearly independent.",
+    "statement": "A list consisting of a single nonzero vector \\(\\mathbf{v}\\) is linearly independent.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Independence needs at least two vectors to compare.",
-    "explanation": "The equation \\(x_1v=\\mathbf{0}\\) with \\(v\\ne\\mathbf{0}\\) forces \\(x_1=0\\), so only the trivial solution occurs."
+    "explanation": "The equation \\(x_1\\mathbf{v}=\\mathbf{0}\\) with \\(\\mathbf{v}\\ne\\mathbf{0}\\) forces \\(x_1=0\\), so only the trivial solution occurs."
   },
   {
     "id": "1.7-one-02",
@@ -2841,12 +2841,12 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Independence tests",
     "concept": "one-vector-independence",
-    "statement": "A list consisting of a single vector \\(v\\) is linearly independent exactly when \\(v\\ne\\mathbf{0}\\).",
+    "statement": "A list consisting of a single vector \\(\\mathbf{v}\\) is linearly independent exactly when \\(\\mathbf{v}\\ne\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Single-vector lists are always independent, or always dependent.",
-    "explanation": "If \\(v\\ne\\mathbf{0}\\) then \\(x_1v=\\mathbf{0}\\) forces \\(x_1=0\\). If \\(v=\\mathbf{0}\\) then \\(1\\cdot v=\\mathbf{0}\\) is a nontrivial relation. So the two cases split exactly on whether \\(v\\) is the zero vector \\(\\mathbf{0}\\)."
+    "explanation": "If \\(\\mathbf{v}\\ne\\mathbf{0}\\) then \\(x_1\\mathbf{v}=\\mathbf{0}\\) forces \\(x_1=0\\). If \\(\\mathbf{v}=\\mathbf{0}\\) then \\(1\\cdot \\mathbf{v}=\\mathbf{0}\\) is a nontrivial relation. So the two cases split exactly on whether \\(\\mathbf{v}\\) is the zero vector \\(\\mathbf{0}\\)."
   },
   {
     "id": "1.7-two-01",
@@ -2858,7 +2858,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "This test is only a rough guide even in the two-vector case.",
-    "explanation": "A relation \\(c_1u+c_2v=\\mathbf{0}\\) with, say, \\(c_1\\ne0\\) gives \\(u=(-c_2/c_1)v\\). Conversely \\(u=cv\\) gives the relation \\(u-cv=\\mathbf{0}\\). The case where one vector is \\(\\mathbf{0}\\) is covered, since \\(\\mathbf{0}=0\\cdot v\\).",
+    "explanation": "A relation \\(c_1\\mathbf{u}+c_2\\mathbf{v}=\\mathbf{0}\\) with, say, \\(c_1\\ne0\\) gives \\(\\mathbf{u}=(-c_2/c_1)\\mathbf{v}\\). Conversely \\(\\mathbf{u}=c\\mathbf{v}\\) gives the relation \\(\\mathbf{u}-c\\mathbf{v}=\\mathbf{0}\\). The case where one vector is \\(\\mathbf{0}\\) is covered, since \\(\\mathbf{0}=0\\cdot \\mathbf{v}\\).",
     "why": {
       "prompt": "Why does this test not extend to three vectors?",
       "choices": [
@@ -2916,7 +2916,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Dependence is only about scalar multiples.",
-    "explanation": "From a relation with \\(c_j\\ne0\\), solve for \\(v_j\\) in terms of the rest. Conversely, if \\(v_j\\) is a combination of the others, moving it across gives a relation with weight \\(-1\\) on \\(v_j\\), which is nonzero.",
+    "explanation": "From a relation with \\(c_j\\ne0\\), solve for \\(\\mathbf{v}_j\\) in terms of the rest. Conversely, if \\(\\mathbf{v}_j\\) is a combination of the others, moving it across gives a relation with weight \\(-1\\) on \\(\\mathbf{v}_j\\), which is nonzero.",
     "why": {
       "prompt": "Which weight lets you solve for one of the vectors?",
       "choices": [
@@ -2956,12 +2956,12 @@ window.QUESTION_BANK = [
     "section": "1.7",
     "topic": "Dependence relations",
     "concept": "dependence-characterization",
-    "statement": "A list \\(v_1,\\dots,v_p\\) with \\(p\\ge2\\) is linearly dependent if and only if \\(v_1=\\mathbf{0}\\) or some \\(v_j\\) is a linear combination of the preceding vectors \\(v_1,\\dots,v_{j-1}\\).",
+    "statement": "A list \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) with \\(p\\ge2\\) is linearly dependent if and only if \\(\\mathbf{v}_1=\\mathbf{0}\\) or some \\(\\mathbf{v}_j\\) is a linear combination of the preceding vectors \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_{j-1}\\).",
     "answer": true,
     "difficulty": 3,
     "variant": "hypothesis",
     "misconception": "Restricting attention to preceding vectors weakens the characterization.",
-    "explanation": "Take a dependence relation and let \\(j\\) be the largest index with \\(c_j\\ne0\\). If \\(j=1\\) the relation reads \\(c_1v_1=\\mathbf{0}\\) with \\(c_1\\ne0\\), forcing \\(v_1=\\mathbf{0}\\). Otherwise solve for \\(v_j\\) in terms of \\(v_1,\\dots,v_{j-1}\\).",
+    "explanation": "Take a dependence relation and let \\(j\\) be the largest index with \\(c_j\\ne0\\). If \\(j=1\\) the relation reads \\(c_1\\mathbf{v}_1=\\mathbf{0}\\) with \\(c_1\\ne0\\), forcing \\(\\mathbf{v}_1=\\mathbf{0}\\). Otherwise solve for \\(\\mathbf{v}_j\\) in terms of \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_{j-1}\\).",
     "why": {
       "prompt": "Which index \\(j\\) makes the argument work?",
       "choices": [
@@ -2983,7 +2983,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Carefully chosen vectors can stay independent however many there are.",
-    "explanation": "Put the vectors in the columns of an \\(n\\times p\\) matrix with \\(p>n\\). Pivots occupy distinct rows, so there are at most \\(n\\) of them and some column has no pivot. That free variable gives a nontrivial solution of \\(Ax=\\mathbf{0}\\).",
+    "explanation": "Put the vectors in the columns of an \\(n\\times p\\) matrix with \\(p>n\\). Pivots occupy distinct rows, so there are at most \\(n\\) of them and some column has no pivot. That free variable gives a nontrivial solution of \\(A\\mathbf{x}=\\mathbf{0}\\).",
     "why": {
       "prompt": "Which counting step drives the argument?",
       "choices": [
@@ -3112,40 +3112,40 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "A zero column is merely wasted space in the matrix.",
-    "explanation": "The columns then form a list containing the zero vector \\(\\mathbf{0}\\), which is always dependent. Equivalently, that column is not a pivot column, so \\(Ax=\\mathbf{0}\\) has a free variable."
+    "explanation": "The columns then form a list containing the zero vector \\(\\mathbf{0}\\), which is always dependent. Equivalently, that column is not a pivot column, so \\(A\\mathbf{x}=\\mathbf{0}\\) has a free variable."
   },
   {
     "id": "1.8-mattrans-01",
     "section": "1.8",
     "topic": "Transformations",
     "concept": "matrix-transformation",
-    "statement": "If \\(A\\) is an \\(m\\times n\\) matrix, then the rule \\(x\\mapsto Ax\\) defines a function from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\).",
+    "statement": "If \\(A\\) is an \\(m\\times n\\) matrix, then the rule \\(\\mathbf{x}\\mapsto A\\mathbf{x}\\) defines a function from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Matrix multiplication is a computation rather than a function.",
-    "explanation": "The product \\(Ax\\) is defined for \\(x\\) in \\(\\mathbb{R}^n\\) and produces a vector in \\(\\mathbb{R}^m\\). Assigning each input its output is exactly what a function does, and this one is called a matrix transformation."
+    "explanation": "The product \\(A\\mathbf{x}\\) is defined for \\(\\mathbf{x}\\) in \\(\\mathbb{R}^n\\) and produces a vector in \\(\\mathbb{R}^m\\). Assigning each input its output is exactly what a function does, and this one is called a matrix transformation."
   },
   {
     "id": "1.8-mattrans-02",
     "section": "1.8",
     "topic": "Transformations",
     "concept": "matrix-transformation",
-    "statement": "If \\(A\\) is \\(m\\times n\\), the matrix transformation \\(x\\mapsto Ax\\) takes vectors in \\(\\mathbb{R}^m\\) and produces vectors in \\(\\mathbb{R}^n\\).",
+    "statement": "If \\(A\\) is \\(m\\times n\\), the matrix transformation \\(\\mathbf{x}\\mapsto A\\mathbf{x}\\) takes vectors in \\(\\mathbb{R}^m\\) and produces vectors in \\(\\mathbb{R}^n\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "The first number in the size of \\(A\\) tells you the input space.",
-    "explanation": "It is the other way around. The entries of \\(x\\) weight the \\(n\\) columns, so inputs come from \\(\\mathbb{R}^n\\); each column has \\(m\\) entries, so outputs land in \\(\\mathbb{R}^m\\)."
+    "explanation": "It is the other way around. The entries of \\(\\mathbf{x}\\) weight the \\(n\\) columns, so inputs come from \\(\\mathbb{R}^n\\); each column has \\(m\\) entries, so outputs land in \\(\\mathbb{R}^m\\)."
   },
   {
     "id": "1.8-mattrans-03",
     "section": "1.8",
     "topic": "Transformations",
     "concept": "matrix-transformation",
-    "statement": "For the matrix transformation \\(x\\mapsto Ax\\) with \\(A\\) of size \\(2\\times3\\), the domain is \\(\\mathbb{R}^2\\).",
+    "statement": "For the matrix transformation \\(\\mathbf{x}\\mapsto A\\mathbf{x}\\) with \\(A\\) of size \\(2\\times3\\), the domain is \\(\\mathbb{R}^2\\).",
     "answer": false,
-    "difficulty": 2,
+    "difficulty": 1,
     "variant": "core",
     "misconception": "The domain is read off the number of rows.",
     "explanation": "The domain is \\(\\mathbb{R}^3\\), one entry for each of the three columns. The codomain is \\(\\mathbb{R}^2\\), one entry for each of the two rows."
@@ -3155,24 +3155,24 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Transformations",
     "concept": "matrix-transformation",
-    "statement": "Computing \\(T(u)\\) for the matrix transformation \\(T(x)=Ax\\) means forming the linear combination of the columns of \\(A\\) whose weights are the entries of \\(u\\).",
+    "statement": "Computing \\(T(\\mathbf{u})\\) for the matrix transformation \\(T(\\mathbf{x})=A\\mathbf{x}\\) means forming the linear combination of the columns of \\(A\\) whose weights are the entries of \\(\\mathbf{u}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Transformations require a new rule of computation.",
-    "explanation": "Nothing new is happening. \\(T(u)\\) is just the product \\(Au\\) from section 1.4, viewed as the output of a function."
+    "explanation": "Nothing new is happening. \\(T(\\mathbf{u})\\) is just the product \\(A\\mathbf{u}\\) from section 1.4, viewed as the output of a function."
   },
   {
     "id": "1.8-mattrans-05",
     "section": "1.8",
     "topic": "Transformations",
     "concept": "matrix-transformation",
-    "statement": "The transformation \\(x\\mapsto Ax\\) is defined for every vector \\(x\\), whatever the size of \\(A\\).",
+    "statement": "Given an \\(m\\times n\\) matrix \\(A\\), the transformation \\(\\mathbf{x}\\mapsto A\\mathbf{x}\\) is defined for a vector \\(\\mathbf{x}\\) of any size.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Turning a product into a function removes the size requirement.",
-    "explanation": "The product is defined only when \\(x\\) has one entry for each column of \\(A\\). That requirement is what fixes the domain of the transformation."
+    "explanation": "The product is defined only when \\(\\mathbf{x}\\) has one entry for each column of \\(A\\). That requirement is what fixes the domain of the transformation."
   },
   {
     "id": "1.8-vocab-01",
@@ -3204,7 +3204,7 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Function vocabulary",
     "concept": "function-vocabulary",
-    "statement": "The range of \\(T\\) is the collection of all images \\(T(x)\\) as \\(x\\) runs over the domain.",
+    "statement": "The range of \\(T\\) is the collection of all images \\(T(\\mathbf{x})\\) as \\(\\mathbf{x}\\) runs over the domain.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3216,12 +3216,12 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Function vocabulary",
     "concept": "function-vocabulary",
-    "statement": "If \\(T(u)=b\\), then \\(u\\) is called the image of \\(b\\) under \\(T\\).",
+    "statement": "If \\(T(\\mathbf{u})=\\mathbf{b}\\), then \\(\\mathbf{u}\\) is called the image of \\(\\mathbf{b}\\) under \\(T\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Image can be read in either direction.",
-    "explanation": "The image is the output: \\(b\\) is the image of \\(u\\). Going the other way, \\(u\\) would be called a preimage of \\(b\\)."
+    "explanation": "The image is the output: \\(\\mathbf{b}\\) is the image of \\(\\mathbf{u}\\). Going the other way, \\(\\mathbf{u}\\) would be called a preimage of \\(\\mathbf{b}\\)."
   },
   {
     "id": "1.8-vocab-05",
@@ -3233,19 +3233,19 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Range and codomain are unrelated sets.",
-    "explanation": "Every output lies in the codomain by definition, so the range sits inside it. The two are equal exactly when \\(T\\) is onto."
+    "explanation": "Every output lies in the codomain by definition, so the range sits inside it."
   },
   {
     "id": "1.8-vocab-06",
     "section": "1.8",
     "topic": "Function vocabulary",
     "concept": "function-vocabulary",
-    "statement": "If \\(T:\\mathbb{R}^3\\to\\mathbb{R}^2\\), then \\(T(x)\\) has three entries.",
+    "statement": "If \\(T:\\mathbb{R}^3\\to\\mathbb{R}^2\\), then \\(T(\\mathbf{x})\\) has three entries.",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
     "misconception": "The output has as many entries as the input.",
-    "explanation": "\\(T(x)\\) lies in the codomain \\(\\mathbb{R}^2\\), so it has two entries. It is the input \\(x\\) that has three."
+    "explanation": "\\(T(\\mathbf{x})\\) lies in the codomain \\(\\mathbb{R}^2\\), so it has two entries. It is the input \\(\\mathbf{x}\\) that has three."
   },
   {
     "id": "1.8-vocab-07",
@@ -3269,14 +3269,14 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Linearity has to be rechecked for each matrix.",
-    "explanation": "It follows from the two algebraic properties of the matrix-vector product: \\(A(u+v)=Au+Av\\) and \\(A(cu)=c(Au)\\). Those are exactly the two requirements in the definition of linear."
+    "explanation": "It follows from the two algebraic properties of the matrix-vector product: \\(A(\\mathbf{u}+\\mathbf{v})=A\\mathbf{u}+A\\mathbf{v}\\) and \\(A(c\\mathbf{u})=c(A\\mathbf{u})\\). Those are exactly the two requirements in the definition of linear."
   },
   {
     "id": "1.8-mtl-02",
     "section": "1.8",
     "topic": "Linearity",
     "concept": "matrix-transformations-are-linear",
-    "statement": "To know that \\(x\\mapsto Ax\\) is linear, you must verify the two linearity conditions separately for each particular matrix \\(A\\).",
+    "statement": "To know that \\(\\mathbf{x}\\mapsto A\\mathbf{x}\\) is linear, you must verify the two linearity conditions separately for each particular matrix \\(A\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -3288,7 +3288,7 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "matrix-transformations-are-linear",
-    "statement": "Because \\(x\\mapsto Ax\\) is linear, \\(A(3u-2v)=3Au-2Av\\) holds whenever the products are defined.",
+    "statement": "Because \\(\\mathbf{x}\\mapsto A\\mathbf{x}\\) is linear, \\(A(3\\mathbf{u}-2\\mathbf{v})=3A\\mathbf{u}-2A\\mathbf{v}\\) holds whenever the products are defined.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3300,7 +3300,7 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linear-transformation",
-    "statement": "A transformation \\(T\\) is linear when \\(T(u+v)=T(u)+T(v)\\) for all \\(u,v\\) in the domain and \\(T(cu)=cT(u)\\) for every scalar \\(c\\) and every \\(u\\) in the domain.",
+    "statement": "A transformation \\(T\\) is linear when \\(T(\\mathbf{u}+\\mathbf{v})=T(\\mathbf{u})+T(\\mathbf{v})\\) for all \\(\\mathbf{u},\\mathbf{v}\\) in the domain and \\(T(c\\mathbf{u})=cT(\\mathbf{u})\\) for every scalar \\(c\\) and every \\(\\mathbf{u}\\) in the domain.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3312,7 +3312,7 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linear-transformation",
-    "statement": "The definition of a linear transformation asks only that \\(T(u+v)=T(u)+T(v)\\).",
+    "statement": "The definition of a linear transformation asks only that \\(T(\\mathbf{u}+\\mathbf{v})=T(\\mathbf{u})+T(\\mathbf{v})\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "hypothesis",
@@ -3324,13 +3324,13 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linear-transformation",
-    "statement": "The transformation \\(T(x)=x+b\\), where \\(b\\) is a fixed nonzero vector, is linear.",
+    "statement": "The transformation \\(T(\\mathbf{x})=\\mathbf{x}+\\mathbf{b}\\), where \\(\\mathbf{b}\\) is a fixed nonzero vector, is linear.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Anything built from addition is linear.",
-    "explanation": "A linear transformation must send \\(\\mathbf{0}\\) to \\(\\mathbf{0}\\), but here \\(T(\\mathbf{0})=b\\ne\\mathbf{0}\\). Checking directly, \\(T(u+v)=u+v+b\\) while \\(T(u)+T(v)=u+v+2b\\).",
-    "counterexample": "With \\(u=v=\\mathbf{0}\\): \\(T(u+v)=b\\) but \\(T(u)+T(v)=2b\\), and these differ because \\(b\\ne\\mathbf{0}\\)."
+    "explanation": "A linear transformation must send \\(\\mathbf{0}\\) to \\(\\mathbf{0}\\), but here \\(T(\\mathbf{0})=\\mathbf{b}\\ne\\mathbf{0}\\). Checking directly, \\(T(\\mathbf{u}+\\mathbf{v})=\\mathbf{u}+\\mathbf{v}+\\mathbf{b}\\) while \\(T(\\mathbf{u})+T(\\mathbf{v})=\\mathbf{u}+\\mathbf{v}+2\\mathbf{b}\\).",
+    "counterexample": "With \\(\\mathbf{u}=\\mathbf{v}=\\mathbf{0}\\): \\(T(\\mathbf{u}+\\mathbf{v})=\\mathbf{b}\\) but \\(T(\\mathbf{u})+T(\\mathbf{v})=2\\mathbf{b}\\), and these differ because \\(\\mathbf{b}\\ne\\mathbf{0}\\)."
   },
   {
     "id": "1.8-lintrans-04",
@@ -3354,16 +3354,16 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "A transformation has to do something in order to be linear.",
-    "explanation": "Both conditions hold, with each side equal to \\(\\mathbf{0}\\): \\(T(u+v)=\\mathbf{0}=T(u)+T(v)\\) and \\(T(cu)=\\mathbf{0}=cT(u)\\). This is the zero transformation."
+    "explanation": "Both conditions hold, with each side equal to \\(\\mathbf{0}\\): \\(T(\\mathbf{u}+\\mathbf{v})=\\mathbf{0}=T(\\mathbf{u})+T(\\mathbf{v})\\) and \\(T(c\\mathbf{u})=\\mathbf{0}=cT(\\mathbf{u})\\). This is the zero transformation."
   },
   {
     "id": "1.8-lintrans-06",
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linear-transformation",
-    "statement": "The transformation \\(T(x)=x\\) on \\(\\mathbb{R}^n\\) is linear.",
+    "statement": "The transformation \\(T(\\mathbf{x})=\\mathbf{x}\\) on \\(\\mathbb{R}^n\\) is linear.",
     "answer": true,
-    "difficulty": 2,
+    "difficulty": 1,
     "variant": "core",
     "misconception": "A transformation that changes nothing is too trivial to count.",
     "explanation": "Both conditions read the same on each side. This is the identity transformation, and it is linear."
@@ -3391,63 +3391,51 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "The test for linearity is where the zero vector goes.",
     "explanation": "Sending \\(\\mathbf{0}\\) to \\(\\mathbf{0}\\) is necessary but nowhere near sufficient. It is useful mainly in the other direction: if \\(T(\\mathbf{0})\\ne\\mathbf{0}\\) you can stop, because \\(T\\) is not linear.",
-    "counterexample": "On \\(\\mathbb{R}^1\\), \\(T(x)=x^2\\) satisfies \\(T(0)=0\\), yet \\(T(1+1)=4\\) while \\(T(1)+T(1)=2\\)."
-  },
-  {
-    "id": "1.8-props-03",
-    "section": "1.8",
-    "topic": "Linearity",
-    "concept": "linear-transformation-properties",
-    "statement": "If \\(T\\) is linear, then \\(T(cu+dv)=cT(u)+dT(v)\\) for all scalars \\(c,d\\) and all \\(u,v\\) in the domain.",
-    "answer": true,
-    "difficulty": 2,
-    "variant": "core",
-    "misconception": "The two defining conditions cannot be used together.",
-    "explanation": "Apply the addition rule to split \\(cu+dv\\), then the scalar rule to each piece. Combining them like this is the form used in practice."
+    "counterexample": "On \\(\\mathbb{R}\\), \\(T(x)=x^2\\) satisfies \\(T(0)=0\\), yet \\(T(1+1)=4\\) while \\(T(1)+T(1)=2\\)."
   },
   {
     "id": "1.8-props-04",
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linear-transformation-properties",
-    "statement": "If \\(T\\) is linear, then \\(T(u-v)=T(u)+T(v)\\).",
+    "statement": "If \\(T\\) is linear, then \\(T(\\mathbf{u}-\\mathbf{v})=T(\\mathbf{u})+T(\\mathbf{v})\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Linearity turns every combination into a sum.",
-    "explanation": "Linearity preserves the combination as written. Since \\(u-v=u+(-1)v\\), the correct conclusion is \\(T(u-v)=T(u)-T(v)\\)."
+    "explanation": "Linearity preserves the combination as written. Since \\(\\mathbf{u}-\\mathbf{v}=\\mathbf{u}+(-1)\\mathbf{v}\\), the correct conclusion is \\(T(\\mathbf{u}-\\mathbf{v})=T(\\mathbf{u})-T(\\mathbf{v})\\)."
   },
   {
     "id": "1.8-props-05",
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linear-transformation-properties",
-    "statement": "If \\(T\\) is linear and \\(T(u)=T(v)\\), then \\(u=v\\).",
+    "statement": "If \\(T\\) is linear and \\(T(\\mathbf{u})=T(\\mathbf{v})\\), then \\(\\mathbf{u}=\\mathbf{v}\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Linear transformations cannot collapse different inputs together.",
     "explanation": "Many linear transformations send different vectors to the same output. That they do not is a separate property, called one-to-one.",
-    "counterexample": "The zero transformation sends every vector to \\(\\mathbf{0}\\), so \\(T(u)=T(v)\\) for all \\(u\\) and \\(v\\)."
+    "counterexample": "For the zero transformation on \\(\\mathbb{R}^n\\) with \\(n\\ge1\\), \\(T(\\mathbf{e}_1)=\\mathbf{0}=T(\\mathbf{0})\\) even though \\(\\mathbf{e}_1\\ne\\mathbf{0}\\)."
   },
   {
     "id": "1.8-props-06",
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linear-transformation-properties",
-    "statement": "If \\(T\\) is linear and \\(v\\) lies in \\(\\operatorname{Span}\\{u_1,u_2\\}\\), then \\(T(v)\\) lies in \\(\\operatorname{Span}\\{T(u_1),T(u_2)\\}\\).",
+    "statement": "If \\(T\\) is linear and \\(\\mathbf{v}\\) lies in \\(\\operatorname{Span}\\{\\mathbf{u}_1,\\mathbf{u}_2\\}\\), then \\(T(\\mathbf{v})\\) lies in \\(\\operatorname{Span}\\{T(\\mathbf{u}_1),T(\\mathbf{u}_2)\\}\\).",
     "answer": true,
     "difficulty": 3,
     "variant": "core",
     "misconception": "Linearity says nothing about how spans are carried along.",
-    "explanation": "Write \\(v=c_1u_1+c_2u_2\\). Then \\(T(v)=c_1T(u_1)+c_2T(u_2)\\), which is a linear combination of the two images and so lies in their span.",
+    "explanation": "Write \\(\\mathbf{v}=c_1\\mathbf{u}_1+c_2\\mathbf{u}_2\\). Then \\(T(\\mathbf{v})=c_1T(\\mathbf{u}_1)+c_2T(\\mathbf{u}_2)\\), which is a linear combination of the two images and so lies in their span.",
     "why": {
       "prompt": "Which step does the work?",
       "choices": [
-        "Linearity turns \\(T(c_1u_1+c_2u_2)\\) into \\(c_1T(u_1)+c_2T(u_2)\\), which is by definition in the span of the images.",
+        "Linearity turns \\(T(c_1\\mathbf{u}_1+c_2\\mathbf{u}_2)\\) into \\(c_1T(\\mathbf{u}_1)+c_2T(\\mathbf{u}_2)\\), which is by definition in the span of the images.",
         "\\(T\\) sends every vector to \\(\\mathbf{0}\\), which lies in every span.",
         "Spans are always all of \\(\\mathbb{R}^n\\).",
-        "\\(u_1\\) and \\(u_2\\) have to be linearly independent for the span to exist."
+        "\\(\\mathbf{u}_1\\) and \\(\\mathbf{u}_2\\) have to be linearly independent for the span to exist."
       ],
       "correct": 0
     }
@@ -3457,7 +3445,7 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linearity-criterion",
-    "statement": "A transformation \\(T\\) is linear if and only if \\(T(cu+dv)=cT(u)+dT(v)\\) for all \\(u,v\\) in the domain and all scalars \\(c,d\\).",
+    "statement": "A transformation \\(T\\) is linear if and only if \\(T(c\\mathbf{u}+d\\mathbf{v})=cT(\\mathbf{u})+dT(\\mathbf{v})\\) for all \\(\\mathbf{u},\\mathbf{v}\\) in the domain and all scalars \\(c,d\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3479,7 +3467,7 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linearity-criterion",
-    "statement": "Checking that \\(T(cu+dv)=cT(u)+dT(v)\\) holds when \\(c=d=1\\) is enough to prove that \\(T\\) is linear.",
+    "statement": "If \\(T(c\\mathbf{u}+d\\mathbf{v})=cT(\\mathbf{u})+dT(\\mathbf{v})\\) holds for all \\(\\mathbf{u},\\mathbf{v}\\) when \\(c=d=1\\), then \\(T\\) is linear.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -3491,16 +3479,16 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "linearity-criterion",
-    "statement": "If \\(T(cu+dv)=cT(u)+dT(v)\\) holds for all \\(u,v\\) and all scalars \\(c,d\\), then \\(T(\\mathbf{0})=\\mathbf{0}\\) follows without any further assumption.",
+    "statement": "If \\(T(c\\mathbf{u}+d\\mathbf{v})=cT(\\mathbf{u})+dT(\\mathbf{v})\\) holds for all \\(\\mathbf{u},\\mathbf{v}\\) and all scalars \\(c,d\\), then \\(T(\\mathbf{0})=\\mathbf{0}\\) follows without any further assumption.",
     "answer": true,
     "difficulty": 3,
     "variant": "core",
     "misconception": "Sending zero to zero has to be checked on its own.",
-    "explanation": "Choose \\(c=d=0\\) and any \\(u,v\\). The left side is \\(T(\\mathbf{0})\\) and the right side is \\(\\mathbf{0}\\), so the two agree.",
+    "explanation": "Choose \\(c=d=0\\) and any \\(\\mathbf{u},\\mathbf{v}\\). The left side is \\(T(\\mathbf{0})\\) and the right side is \\(\\mathbf{0}\\), so the two agree.",
     "why": {
       "prompt": "Which choice of scalars produces the conclusion?",
       "choices": [
-        "\\(c=d=0\\), which collapses both sides to the zero vector.",
+        "\\(c=d=0\\), which makes the left side \\(T(\\mathbf{0})\\) and the right side \\(\\mathbf{0}\\).",
         "\\(c=d=1\\), which gives the addition rule.",
         "\\(c=1\\) and \\(d=0\\), which gives the scalar rule.",
         "No choice works; \\(T(\\mathbf{0})=\\mathbf{0}\\) has to be assumed separately."
@@ -3513,7 +3501,7 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "preserves-combinations",
-    "statement": "If \\(T\\) is linear and \\(y=c_1v_1+\\cdots+c_pv_p\\), then \\(T(y)=c_1T(v_1)+\\cdots+c_pT(v_p)\\).",
+    "statement": "If \\(T\\) is linear and \\(\\mathbf{y}=c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p\\), then \\(T(\\mathbf{y})=c_1T(\\mathbf{v}_1)+\\cdots+c_pT(\\mathbf{v}_p)\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3523,7 +3511,7 @@ window.QUESTION_BANK = [
       "prompt": "What does this let you do in practice?",
       "choices": [
         "Work out \\(T\\) on a whole span once you know it on the spanning vectors.",
-        "Conclude that \\(T\\) is one-to-one.",
+        "Conclude that \\(T(\\mathbf{v}_1),\\dots,T(\\mathbf{v}_p)\\) are linearly independent.",
         "Conclude that the weights \\(c_1,\\dots,c_p\\) are unique.",
         "Replace \\(T\\) by the identity transformation."
       ],
@@ -3535,13 +3523,13 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "preserves-combinations",
-    "statement": "If \\(T\\) is linear and \\(v_1,\\dots,v_p\\) are linearly independent, then \\(T(v_1),\\dots,T(v_p)\\) are linearly independent.",
+    "statement": "If \\(T\\) is linear and \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly independent, then \\(T(\\mathbf{v}_1),\\dots,T(\\mathbf{v}_p)\\) are linearly independent.",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "Linearity carries independence forward.",
     "explanation": "A linear transformation may collapse independent vectors onto dependent ones, and nothing in the definition prevents it.",
-    "counterexample": "Let \\(T\\) send every vector of \\(\\mathbb{R}^2\\) to \\(\\mathbf{0}\\). Then \\(e_1,e_2\\) are independent, but their images are both \\(\\mathbf{0}\\) and so are dependent.",
+    "counterexample": "Let \\(T\\) send every vector of \\(\\mathbb{R}^2\\) to \\(\\mathbf{0}\\). Then \\(\\mathbf{e}_1,\\mathbf{e}_2\\) are independent, but their images are both \\(\\mathbf{0}\\) and so are dependent.",
     "why": {
       "prompt": "Which direction does hold?",
       "choices": [
@@ -3558,12 +3546,12 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "preserves-combinations",
-    "statement": "If \\(T\\) is linear and \\(T(v_1),\\dots,T(v_p)\\) are linearly independent, then \\(v_1,\\dots,v_p\\) are linearly dependent.",
+    "statement": "If \\(T\\) is linear and \\(T(\\mathbf{v}_1),\\dots,T(\\mathbf{v}_p)\\) are linearly independent, then \\(\\mathbf{v}_1,\\dots,\\mathbf{v}_p\\) are linearly dependent.",
     "answer": false,
     "difficulty": 3,
     "variant": "core",
     "misconception": "Independence of the images tells you nothing, or tells you the opposite.",
-    "explanation": "This direction does hold, but with the opposite conclusion: the originals must be independent. If \\(c_1v_1+\\cdots+c_pv_p=\\mathbf{0}\\), applying \\(T\\) gives \\(c_1T(v_1)+\\cdots+c_pT(v_p)=\\mathbf{0}\\), and independence of the images forces every \\(c_i\\) to be \\(0\\).",
+    "explanation": "This direction does hold, but with the opposite conclusion: the originals must be independent. If \\(c_1\\mathbf{v}_1+\\cdots+c_p\\mathbf{v}_p=\\mathbf{0}\\), applying \\(T\\) gives \\(c_1T(\\mathbf{v}_1)+\\cdots+c_pT(\\mathbf{v}_p)=\\mathbf{0}\\), and independence of the images forces every \\(c_i\\) to be \\(0\\).",
     "why": {
       "prompt": "What is the correct conclusion?",
       "choices": [
@@ -3580,31 +3568,31 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Linearity",
     "concept": "preserves-combinations",
-    "statement": "If \\(T\\) is linear and \\(T(u)=T(v)\\), then \\(T(u-v)=\\mathbf{0}\\).",
+    "statement": "If \\(T\\) is linear and \\(T(\\mathbf{u})=T(\\mathbf{v})\\), then \\(T(\\mathbf{u}-\\mathbf{v})=\\mathbf{0}\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Nothing useful follows from two inputs sharing an output.",
-    "explanation": "By linearity \\(T(u-v)=T(u)-T(v)\\), and the two terms are equal, so the difference is \\(\\mathbf{0}\\). This observation is what connects being one-to-one to the equation \\(T(x)=\\mathbf{0}\\)."
+    "explanation": "By linearity \\(T(\\mathbf{u}-\\mathbf{v})=T(\\mathbf{u})-T(\\mathbf{v})\\), and the two terms are equal, so the difference is \\(\\mathbf{0}\\)."
   },
   {
     "id": "1.8-scale-01",
     "section": "1.8",
     "topic": "Scaling transformations",
     "concept": "contraction-dilation",
-    "statement": "The transformation \\(T(x)=3x\\) on \\(\\mathbb{R}^n\\) is linear.",
+    "statement": "The transformation \\(T(\\mathbf{x})=3\\mathbf{x}\\) on \\(\\mathbb{R}^n\\) is linear.",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Stretching distorts vectors and so cannot be linear.",
-    "explanation": "Both conditions hold: \\(3(u+v)=3u+3v\\) and \\(3(cu)=c(3u)\\). Scaling by a fixed factor is one of the simplest linear transformations."
+    "explanation": "Both conditions hold: \\(3(\\mathbf{u}+\\mathbf{v})=3\\mathbf{u}+3\\mathbf{v}\\) and \\(3(c\\mathbf{u})=c(3\\mathbf{u})\\). Scaling by a fixed factor is one of the simplest linear transformations."
   },
   {
     "id": "1.8-scale-02",
     "section": "1.8",
     "topic": "Scaling transformations",
     "concept": "contraction-dilation",
-    "statement": "For \\(T(x)=rx\\), the transformation is called a contraction when \\(0\\le r\\le 1\\) and a dilation when \\(r>1\\).",
+    "statement": "For \\(T(\\mathbf{x})=r\\mathbf{x}\\), the transformation is called a contraction when \\(0\\le r\\le 1\\) and a dilation when \\(r>1\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3616,19 +3604,19 @@ window.QUESTION_BANK = [
     "section": "1.8",
     "topic": "Scaling transformations",
     "concept": "contraction-dilation",
-    "statement": "The transformation of \\(\\mathbb{R}^2\\) that squares each entry of \\(x\\) is linear.",
+    "statement": "The transformation of \\(\\mathbb{R}^2\\) that squares each entry of \\(\\mathbf{x}\\) is linear.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Applying one rule to every entry makes a transformation linear.",
-    "explanation": "Squaring fails both conditions. Doubling the input multiplies the output by four rather than by two, so \\(T(2u)=4T(u)\\), which differs from \\(2T(u)\\) unless \\(T(u)=\\mathbf{0}\\)."
+    "explanation": "Squaring fails both conditions. Doubling the input multiplies the output by four rather than by two, so \\(T(2\\mathbf{u})=4T(\\mathbf{u})\\), which differs from \\(2T(\\mathbf{u})\\) unless \\(T(\\mathbf{u})=\\mathbf{0}\\)."
   },
   {
     "id": "1.8-scale-04",
     "section": "1.8",
     "topic": "Scaling transformations",
     "concept": "contraction-dilation",
-    "statement": "The transformation \\(T(x)=rx\\) is linear only when \\(r>0\\).",
+    "statement": "The transformation \\(T(\\mathbf{x})=r\\mathbf{x}\\) is linear only when \\(r>0\\).",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
@@ -3640,31 +3628,31 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Standard matrix",
     "concept": "standard-matrix",
-    "statement": "If \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is linear, then there is a matrix \\(A\\) with \\(T(x)=Ax\\) for every \\(x\\) in \\(\\mathbb{R}^n\\).",
+    "statement": "If \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is linear, then there is a matrix \\(A\\) with \\(T(\\mathbf{x})=A\\mathbf{x}\\) for every \\(\\mathbf{x}\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
     "misconception": "Only transformations that were defined by a matrix have one.",
-    "explanation": "Every linear transformation from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) is a matrix transformation. The matrix is built from the images of \\(e_1,\\dots,e_n\\), and it is the only one that works."
+    "explanation": "Every linear transformation from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) is a matrix transformation. The matrix is built from the images of \\(\\mathbf{e}_1,\\dots,\\mathbf{e}_n\\), and it is the only one that works."
   },
   {
     "id": "1.9-stdmat-02",
     "section": "1.9",
     "topic": "Standard matrix",
     "concept": "standard-matrix",
-    "statement": "The standard matrix of a linear \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) has \\(T(e_j)\\) as its \\(j\\)th column.",
+    "statement": "The standard matrix of a linear \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) has \\(T(\\mathbf{e}_j)\\) as its \\(j\\)th column.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Building the matrix requires solving a system.",
-    "explanation": "Writing \\(x=x_1e_1+\\cdots+x_ne_n\\) and applying linearity gives \\(T(x)=x_1T(e_1)+\\cdots+x_nT(e_n)\\), which is exactly the product of \\(\\begin{bmatrix}T(e_1)&\\cdots&T(e_n)\\end{bmatrix}\\) with \\(x\\).",
+    "explanation": "Writing \\(\\mathbf{x}=x_1\\mathbf{e}_1+\\cdots+x_n\\mathbf{e}_n\\) and applying linearity gives \\(T(\\mathbf{x})=x_1T(\\mathbf{e}_1)+\\cdots+x_nT(\\mathbf{e}_n)\\), which is exactly the product of \\(\\begin{bmatrix}T(\\mathbf{e}_1)&\\cdots&T(\\mathbf{e}_n)\\end{bmatrix}\\) with \\(\\mathbf{x}\\).",
     "why": {
-      "prompt": "Why do the images of \\(e_1,\\dots,e_n\\) suffice?",
+      "prompt": "Why do the images of \\(\\mathbf{e}_1,\\dots,\\mathbf{e}_n\\) suffice?",
       "choices": [
-        "Every \\(x\\) is a linear combination of \\(e_1,\\dots,e_n\\), and linearity carries that combination through \\(T\\).",
+        "Every \\(\\mathbf{x}\\) is a linear combination of \\(\\mathbf{e}_1,\\dots,\\mathbf{e}_n\\), and linearity carries that combination through \\(T\\).",
         "Because \\(T\\) is one-to-one.",
-        "Because \\(e_1,\\dots,e_n\\) span the codomain.",
-        "Because \\(T(e_j)=e_j\\) for every \\(j\\)."
+        "Because \\(\\mathbf{e}_1,\\dots,\\mathbf{e}_n\\) span the codomain.",
+        "Because \\(T(\\mathbf{e}_j)=\\mathbf{e}_j\\) for every \\(j\\)."
       ],
       "correct": 0
     }
@@ -3679,7 +3667,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "The matrix depends on how you go about finding it.",
-    "explanation": "The matrix is unique. Its \\(j\\)th column has to be \\(T(e_j)\\), and those images are determined by \\(T\\) itself, so there is no freedom left."
+    "explanation": "The matrix is unique. Its \\(j\\)th column has to be \\(T(\\mathbf{e}_j)\\), and those images are determined by \\(T\\) itself, so there is no freedom left."
   },
   {
     "id": "1.9-stdmat-04",
@@ -3691,19 +3679,19 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "The size of the matrix reads in the same order as the arrow.",
-    "explanation": "It is \\(2\\times3\\). There is one column for each of the three inputs \\(e_1,e_2,e_3\\), and each column is a vector in \\(\\mathbb{R}^2\\), so the matrix has two rows."
+    "explanation": "It is \\(2\\times3\\). There is one column for each of the three inputs \\(\\mathbf{e}_1,\\mathbf{e}_2,\\mathbf{e}_3\\), and each column is a vector in \\(\\mathbb{R}^2\\), so the matrix has two rows."
   },
   {
     "id": "1.9-stdmat-05",
     "section": "1.9",
     "topic": "Standard matrix",
     "concept": "standard-matrix",
-    "statement": "To find the standard matrix of a linear \\(T\\), you need to know \\(T(x)\\) for every \\(x\\) in the domain.",
+    "statement": "To find the standard matrix of a linear \\(T\\), you need to know \\(T(\\mathbf{x})\\) for every \\(\\mathbf{x}\\) in the domain.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "A matrix can only be recovered from complete information about \\(T\\).",
-    "explanation": "Only the \\(n\\) images \\(T(e_1),\\dots,T(e_n)\\) are needed. Linearity then determines \\(T\\) everywhere else."
+    "explanation": "Only the \\(n\\) images \\(T(\\mathbf{e}_1),\\dots,T(\\mathbf{e}_n)\\) are needed. Linearity then determines \\(T\\) everywhere else."
   },
   {
     "id": "1.9-stdmat-06",
@@ -3715,50 +3703,74 @@ window.QUESTION_BANK = [
     "difficulty": 1,
     "variant": "core",
     "misconception": "The columns are counted from the codomain.",
-    "explanation": "It has two columns, one for each of \\(e_1,e_2\\) in the domain, and four rows, since each image lies in \\(\\mathbb{R}^4\\)."
+    "explanation": "It has two columns, one for each of \\(\\mathbf{e}_1,\\mathbf{e}_2\\) in the domain, and four rows, since each image lies in \\(\\mathbb{R}^4\\)."
+  },
+  {
+    "id": "1.9-stdmat-07",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "Suppose \\(T:\\mathbb{R}^2\\to\\mathbb{R}^3\\) is linear, \\(T(\\mathbf{e}_1)=\\begin{bmatrix}1\\\\-2\\\\0\\end{bmatrix}\\), and \\(T(\\mathbf{e}_2)=\\begin{bmatrix}3\\\\4\\\\5\\end{bmatrix}\\). Then the standard matrix of \\(T\\) is \\(\\begin{bmatrix}1&3\\\\-2&4\\\\0&5\\end{bmatrix}\\).",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The images of the standard basis vectors are arranged as rows rather than columns.",
+    "explanation": "The first column is \\(T(\\mathbf{e}_1)\\) and the second column is \\(T(\\mathbf{e}_2)\\), so placing the two given images side by side produces the displayed matrix."
+  },
+  {
+    "id": "1.9-stdmat-08",
+    "section": "1.9",
+    "topic": "Standard matrix",
+    "concept": "standard-matrix",
+    "statement": "Suppose \\(T:\\mathbb{R}^2\\to\\mathbb{R}^2\\) is linear, \\(T(\\mathbf{e}_1)=\\begin{bmatrix}1\\\\2\\end{bmatrix}\\), and \\(T(\\mathbf{e}_2)=\\begin{bmatrix}-3\\\\4\\end{bmatrix}\\). Then the standard matrix of \\(T\\) is \\(\\begin{bmatrix}1&2\\\\-3&4\\end{bmatrix}\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "The images of the standard basis vectors are written as rows of the standard matrix.",
+    "explanation": "The images must be columns, not rows. The standard matrix is \\(\\begin{bmatrix}1&-3\\\\2&4\\end{bmatrix}\\)."
   },
   {
     "id": "1.9-determined-01",
     "section": "1.9",
     "topic": "Standard matrix",
     "concept": "determined-by-basis-images",
-    "statement": "A linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is completely determined by the vectors \\(T(e_1),\\dots,T(e_n)\\).",
+    "statement": "A linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is completely determined by the vectors \\(T(\\mathbf{e}_1),\\dots,T(\\mathbf{e}_n)\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Knowing a transformation on finitely many vectors cannot pin it down everywhere.",
-    "explanation": "Any \\(x\\) is the combination \\(x_1e_1+\\cdots+x_ne_n\\), and linearity turns that into \\(x_1T(e_1)+\\cdots+x_nT(e_n)\\). So the \\(n\\) images decide every value of \\(T\\)."
+    "explanation": "Any \\(\\mathbf{x}\\) is the combination \\(x_1\\mathbf{e}_1+\\cdots+x_n\\mathbf{e}_n\\), and linearity turns that into \\(x_1T(\\mathbf{e}_1)+\\cdots+x_nT(\\mathbf{e}_n)\\). So the \\(n\\) images decide every value of \\(T\\)."
   },
   {
     "id": "1.9-determined-02",
     "section": "1.9",
     "topic": "Standard matrix",
     "concept": "determined-by-basis-images",
-    "statement": "Two linear transformations from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) that agree on \\(e_1,\\dots,e_n\\) can still differ at some other vector.",
+    "statement": "Two linear transformations from \\(\\mathbb{R}^n\\) to \\(\\mathbb{R}^m\\) that agree on \\(\\mathbf{e}_1,\\dots,\\mathbf{e}_n\\) can still differ at some other vector.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Agreement on a few vectors leaves room for disagreement elsewhere.",
-    "explanation": "Agreeing on \\(e_1,\\dots,e_n\\) means having the same standard matrix, and the standard matrix determines the transformation. So they agree everywhere."
+    "explanation": "Agreeing on \\(\\mathbf{e}_1,\\dots,\\mathbf{e}_n\\) means having the same standard matrix, and the standard matrix determines the transformation. So they agree everywhere."
   },
   {
     "id": "1.9-determined-03",
     "section": "1.9",
     "topic": "Standard matrix",
     "concept": "determined-by-basis-images",
-    "statement": "If \\(T:\\mathbb{R}^2\\to\\mathbb{R}^2\\) is linear with \\(T(e_1)=e_1\\) and \\(T(e_2)=e_2\\), then \\(T(x)=x\\) for every \\(x\\) in \\(\\mathbb{R}^2\\).",
+    "statement": "If \\(T:\\mathbb{R}^2\\to\\mathbb{R}^2\\) is linear with \\(T(\\mathbf{e}_1)=\\mathbf{e}_1\\) and \\(T(\\mathbf{e}_2)=\\mathbf{e}_2\\), then \\(T(\\mathbf{x})=\\mathbf{x}\\) for every \\(\\mathbf{x}\\) in \\(\\mathbb{R}^2\\).",
     "answer": true,
-    "difficulty": 3,
+    "difficulty": 2,
     "variant": "core",
     "misconception": "Fixing two vectors leaves the rest of the plane free to move.",
-    "explanation": "The standard matrix has columns \\(T(e_1)=e_1\\) and \\(T(e_2)=e_2\\), so it is the identity matrix and \\(T(x)=Ix=x\\). Fixing \\(e_1\\) and \\(e_2\\) forces \\(T\\) to be the identity.",
+    "explanation": "The standard matrix has columns \\(T(\\mathbf{e}_1)=\\mathbf{e}_1\\) and \\(T(\\mathbf{e}_2)=\\mathbf{e}_2\\), so it is the identity matrix and \\(T(\\mathbf{x})=I\\mathbf{x}=\\mathbf{x}\\). Fixing \\(\\mathbf{e}_1\\) and \\(\\mathbf{e}_2\\) forces \\(T\\) to be the identity.",
     "why": {
       "prompt": "Why is \\(T\\) forced to be the identity rather than merely agreeing at two vectors?",
       "choices": [
         "Those two images are the columns of the standard matrix, and the standard matrix determines \\(T\\) everywhere.",
         "Because every linear transformation of \\(\\mathbb{R}^2\\) is the identity.",
         "Because \\(T(\\mathbf{0})=\\mathbf{0}\\) for every linear transformation.",
-        "Because \\(e_1\\) and \\(e_2\\) are linearly independent."
+        "Because \\(\\mathbf{e}_1\\) and \\(\\mathbf{e}_2\\) are linearly independent."
       ],
       "correct": 0
     }
@@ -3768,7 +3780,7 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "onto",
-    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is onto \\(\\mathbb{R}^m\\) when every \\(b\\) in \\(\\mathbb{R}^m\\) is the image of at least one \\(x\\) in \\(\\mathbb{R}^n\\).",
+    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is onto \\(\\mathbb{R}^m\\) when every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\) is the image of at least one \\(\\mathbf{x}\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -3780,7 +3792,7 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "onto",
-    "statement": "\\(T\\) is onto \\(\\mathbb{R}^m\\) when every \\(b\\) in \\(\\mathbb{R}^m\\) is the image of exactly one \\(x\\).",
+    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is onto \\(\\mathbb{R}^m\\) when every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\) is the image of exactly one \\(\\mathbf{x}\\) in \\(\\mathbb{R}^n\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
@@ -3804,7 +3816,7 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "onto",
-    "statement": "\\(T\\) is onto exactly when its range equals its codomain.",
+    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is onto exactly when its range equals its codomain.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3822,14 +3834,14 @@ window.QUESTION_BANK = [
     "variant": "core",
     "misconception": "A large drop in dimension rules out being onto.",
     "explanation": "Going down in dimension is no obstacle. The standard matrix is \\(2\\times5\\), and it only needs a pivot in each of its two rows.",
-    "counterexample": "The transformation sending \\(x\\) to its first two entries has standard matrix \\(\\begin{bmatrix}1&0&0&0&0\\\\0&1&0&0&0\\end{bmatrix}\\), which has a pivot in every row, so it is onto."
+    "counterexample": "The transformation sending \\(\\mathbf{x}\\) to its first two entries has standard matrix \\(\\begin{bmatrix}1&0&0&0&0\\\\0&1&0&0&0\\end{bmatrix}\\), which has a pivot in every row, so it is onto."
   },
   {
     "id": "1.9-oto-01",
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "one-to-one",
-    "statement": "A transformation \\(T\\) is one-to-one when every \\(b\\) in the codomain is the image of at most one \\(x\\).",
+    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is one-to-one when every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\) is the image of at most one \\(\\mathbf{x}\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 1,
     "variant": "core",
@@ -3841,7 +3853,7 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "one-to-one",
-    "statement": "\\(T\\) is one-to-one when every \\(b\\) in the codomain is the image of at least one \\(x\\).",
+    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is one-to-one when every \\(\\mathbf{b}\\) in \\(\\mathbb{R}^m\\) is the image of at least one \\(\\mathbf{x}\\) in \\(\\mathbb{R}^n\\).",
     "answer": false,
     "difficulty": 1,
     "variant": "core",
@@ -3866,7 +3878,7 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "one-to-one",
-    "statement": "\\(T\\) is one-to-one exactly when \\(T(u)=T(v)\\) forces \\(u=v\\).",
+    "statement": "A transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is one-to-one exactly when \\(T(\\mathbf{u})=T(\\mathbf{v})\\) forces \\(\\mathbf{u}=\\mathbf{v}\\) for all \\(\\mathbf{u},\\mathbf{v}\\) in \\(\\mathbb{R}^n\\).",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
@@ -3883,23 +3895,23 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Any transformation that separates points must also cover the codomain.",
-    "explanation": "This happens whenever the domain has smaller dimension than the codomain, for instance embedding \\(\\mathbb{R}^2\\) into \\(\\mathbb{R}^3\\) as the plane \\(x_3=0\\)."
+    "explanation": "This can happen when the domain has smaller dimension than the codomain. For instance, embedding \\(\\mathbb{R}^2\\) into \\(\\mathbb{R}^3\\) as the plane \\(x_3=0\\) is one-to-one but not onto."
   },
   {
     "id": "1.9-otok-01",
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "one-to-one-trivial-kernel",
-    "statement": "A linear transformation \\(T\\) is one-to-one if and only if \\(T(x)=\\mathbf{0}\\) has only the trivial solution.",
+    "statement": "A linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is one-to-one if and only if \\(T(\\mathbf{x})=\\mathbf{0}\\) has only the trivial solution.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Checking one-to-one means comparing all pairs of inputs.",
-    "explanation": "If \\(T(u)=T(v)\\) then \\(T(u-v)=\\mathbf{0}\\), so a collision produces a nonzero solution of \\(T(x)=\\mathbf{0}\\), and conversely. Only one equation has to be solved.",
+    "explanation": "If \\(T(\\mathbf{u})=T(\\mathbf{v})\\) then \\(T(\\mathbf{u}-\\mathbf{v})=\\mathbf{0}\\), so a collision produces a nonzero solution of \\(T(\\mathbf{x})=\\mathbf{0}\\), and conversely. Only one equation has to be solved.",
     "why": {
       "prompt": "Why does one equation settle a question about all pairs?",
       "choices": [
-        "Because \\(T(u)=T(v)\\) is equivalent to \\(T(u-v)=\\mathbf{0}\\), so every collision shows up as a nonzero solution.",
+        "Because \\(T(\\mathbf{u})=T(\\mathbf{v})\\) is equivalent to \\(T(\\mathbf{u}-\\mathbf{v})=\\mathbf{0}\\), so every collision shows up as a nonzero solution.",
         "Because \\(T(\\mathbf{0})=\\mathbf{0}\\) for every linear transformation.",
         "Because the trivial solution always exists.",
         "Because one-to-one transformations have square standard matrices."
@@ -3912,12 +3924,12 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "one-to-one-trivial-kernel",
-    "statement": "If \\(T(x)=\\mathbf{0}\\) has a nontrivial solution, then \\(T\\) is one-to-one.",
+    "statement": "If \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is linear and \\(T(\\mathbf{x})=\\mathbf{0}\\) has a nontrivial solution, then \\(T\\) is one-to-one.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The criterion is read with its conclusion reversed.",
-    "explanation": "A nontrivial solution \\(v\\) gives \\(T(v)=\\mathbf{0}=T(\\mathbf{0})\\) with \\(v\\ne\\mathbf{0}\\), which is exactly a collision. So \\(T\\) is not one-to-one."
+    "explanation": "A nontrivial solution \\(\\mathbf{v}\\) gives \\(T(\\mathbf{v})=\\mathbf{0}=T(\\mathbf{0})\\) with \\(\\mathbf{v}\\ne\\mathbf{0}\\), which is exactly a collision. So \\(T\\) is not one-to-one."
   },
   {
     "id": "1.9-otok-03",
@@ -3929,7 +3941,7 @@ window.QUESTION_BANK = [
     "difficulty": 3,
     "variant": "core",
     "misconception": "One-to-one is possible for any pair of dimensions.",
-    "explanation": "The standard matrix is \\(3\\times4\\), with more columns than rows, so its columns are linearly dependent and \\(T(x)=\\mathbf{0}\\) has a nontrivial solution. Two different inputs therefore share an image.",
+    "explanation": "The standard matrix is \\(3\\times4\\), with more columns than rows, so its columns are linearly dependent and \\(T(\\mathbf{x})=\\mathbf{0}\\) has a nontrivial solution. Two different inputs therefore share an image.",
     "why": {
       "prompt": "Which counting fact drives this?",
       "choices": [
@@ -3951,7 +3963,7 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Onto is a property of \\(T\\) that the matrix cannot detect.",
-    "explanation": "Onto says every \\(b\\) is \\(T(x)=Ax\\) for some \\(x\\), which is exactly saying every \\(b\\) is a linear combination of the columns of \\(A\\).",
+    "explanation": "Onto says every \\(\\mathbf{b}\\) is \\(T(\\mathbf{x})=A\\mathbf{x}\\) for some \\(\\mathbf{x}\\), which is exactly saying every \\(\\mathbf{b}\\) is a linear combination of the columns of \\(A\\).",
     "why": {
       "prompt": "Which pivot condition matches this?",
       "choices": [
@@ -3968,12 +3980,12 @@ window.QUESTION_BANK = [
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "onto-columns-span",
-    "statement": "A linear \\(T\\) is onto \\(\\mathbb{R}^m\\) if and only if the columns of its standard matrix are linearly independent.",
+    "statement": "A linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is onto \\(\\mathbb{R}^m\\) if and only if the columns of its standard matrix are linearly independent.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "The two column conditions attach to whichever property comes to mind first.",
-    "explanation": "Independent columns characterise one-to-one, not onto. Onto corresponds to the columns spanning \\(\\mathbb{R}^m\\), which is a pivot in every row rather than in every column.",
+    "explanation": "Independent columns characterize one-to-one, not onto. Onto corresponds to the columns spanning \\(\\mathbb{R}^m\\), which is a pivot in every row rather than in every column.",
     "why": {
       "prompt": "Which pairing is correct?",
       "choices": [
@@ -4008,29 +4020,41 @@ window.QUESTION_BANK = [
     }
   },
   {
+    "id": "1.9-ontospan-04",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "onto-columns-span",
+    "statement": "Suppose the standard matrix of a linear transformation \\(T:\\mathbb{R}^3\\to\\mathbb{R}^2\\) is \\(\\begin{bmatrix}1&0&2\\\\0&1&-1\\end{bmatrix}\\), which is in RREF. Then \\(T\\) is onto \\(\\mathbb{R}^2\\) but is not one-to-one.",
+    "answer": true,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A matrix must be square for its transformation to be onto, or being onto forces it to be one-to-one.",
+    "explanation": "There is a pivot in every row, so the columns span \\(\\mathbb{R}^2\\) and \\(T\\) is onto. The third column is not a pivot column, so the homogeneous equation has a free variable and \\(T\\) is not one-to-one."
+  },
+  {
     "id": "1.9-otoind-01",
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "one-to-one-columns-independent",
-    "statement": "A linear \\(T\\) is one-to-one if and only if the columns of its standard matrix are linearly independent.",
+    "statement": "A linear transformation \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is one-to-one if and only if the columns of its standard matrix are linearly independent.",
     "answer": true,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Independence of columns is about spanning rather than about collisions.",
-    "explanation": "One-to-one is equivalent to \\(Ax=\\mathbf{0}\\) having only the trivial solution, and that is exactly what independence of the columns of \\(A\\) means."
+    "explanation": "One-to-one is equivalent to \\(A\\mathbf{x}=\\mathbf{0}\\) having only the trivial solution, and that is exactly what independence of the columns of \\(A\\) means."
   },
   {
     "id": "1.9-otoind-02",
     "section": "1.9",
     "topic": "Onto and one-to-one",
     "concept": "one-to-one-columns-independent",
-    "statement": "If the columns of the standard matrix of \\(T\\) span \\(\\mathbb{R}^m\\), then \\(T\\) is one-to-one.",
+    "statement": "If \\(T:\\mathbb{R}^n\\to\\mathbb{R}^m\\) is linear and the columns of its standard matrix span \\(\\mathbb{R}^m\\), then \\(T\\) is one-to-one.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Spanning is the stronger condition and so implies the other.",
     "explanation": "Spanning gives onto, which settles existence. One-to-one is about uniqueness and needs independent columns instead.",
-    "counterexample": "The transformation \\(\\mathbb{R}^3\\to\\mathbb{R}^2\\) with standard matrix \\(\\begin{bmatrix}1&0&0\\\\0&1&0\\end{bmatrix}\\) is onto \\(\\mathbb{R}^2\\), but \\(e_3\\) and \\(\\mathbf{0}\\) have the same image."
+    "counterexample": "The transformation \\(\\mathbb{R}^3\\to\\mathbb{R}^2\\) with standard matrix \\(\\begin{bmatrix}1&0&0\\\\0&1&0\\end{bmatrix}\\) is onto \\(\\mathbb{R}^2\\), but \\(\\mathbf{e}_3\\) and \\(\\mathbf{0}\\) have the same image."
   },
   {
     "id": "1.9-otoind-03",
@@ -4075,6 +4099,18 @@ window.QUESTION_BANK = [
       ],
       "correct": 0
     }
+  },
+  {
+    "id": "1.9-otoind-05",
+    "section": "1.9",
+    "topic": "Onto and one-to-one",
+    "concept": "one-to-one-columns-independent",
+    "statement": "Suppose the standard matrix of a linear transformation \\(T:\\mathbb{R}^3\\to\\mathbb{R}^4\\) is \\(\\begin{bmatrix}1&2&0\\\\0&1&3\\\\0&0&1\\\\0&0&0\\end{bmatrix}\\), which is in REF. Then \\(T\\) is both one-to-one and onto \\(\\mathbb{R}^4\\).",
+    "answer": false,
+    "difficulty": 2,
+    "variant": "core",
+    "misconception": "A pivot in every column also guarantees a pivot in every row.",
+    "explanation": "Every column is a pivot column, so \\(T\\) is one-to-one. The last row has no pivot, so the columns do not span \\(\\mathbb{R}^4\\) and \\(T\\) is not onto."
   },
   {
     "id": "1.9-geom-01",
@@ -4135,18 +4171,18 @@ window.QUESTION_BANK = [
     "difficulty": 2,
     "variant": "core",
     "misconception": "Reflections lose information the way projections do.",
-    "explanation": "The transformation is \\(x\\mapsto-x\\), with standard matrix \\(\\begin{bmatrix}-1&0\\\\0&-1\\end{bmatrix}\\). Its columns are independent and span \\(\\mathbb{R}^2\\), so it is one-to-one and onto; reflecting twice returns every vector to where it started."
+    "explanation": "The transformation is \\(\\mathbf{x}\\mapsto-\\mathbf{x}\\), with standard matrix \\(\\begin{bmatrix}-1&0\\\\0&-1\\end{bmatrix}\\). Its columns are independent and span \\(\\mathbb{R}^2\\), so it is one-to-one and onto; reflecting twice returns every vector to where it started."
   },
   {
     "id": "1.9-geom-06",
     "section": "1.9",
     "topic": "Geometric transformations",
     "concept": "geometric-transformations",
-    "statement": "Rotating \\(\\mathbb{R}^2\\) about a point other than the origin is a linear transformation.",
+    "statement": "Rotation of \\(\\mathbb{R}^2\\) by \\(90^\\circ\\) about the point \\((1,0)\\) is a linear transformation.",
     "answer": false,
     "difficulty": 2,
     "variant": "core",
     "misconception": "Every rotation of the plane is linear.",
-    "explanation": "A linear transformation must fix \\(\\mathbf{0}\\), and a rotation about some other point moves the origin. Rotations about the origin are linear; rotations about any other centre are not."
+    "explanation": "A linear transformation must fix \\(\\mathbf{0}\\), but this rotation moves the origin. Rotations through a fixed angle about the origin are linear; this rotation about \\((1,0)\\) is not."
   }
 ];
