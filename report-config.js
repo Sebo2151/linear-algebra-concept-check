@@ -37,11 +37,13 @@
 window.REPORT_CONFIG = {
   formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeOsSUvzic5LgCNOxzXHlTIr4CjUFdr0nMK1GnHTb8EltBFIA/viewform?usp=pp_url",
 
+  // Only what the app already knows gets prefilled. The student picks CATEGORY
+  // (entry.1953111872) and writes DETAIL (entry.277726627) on the form itself,
+  // so nothing is typed twice and only one button in the flow says Submit.
+  // Adding either id back here would prefill it again.
   fields: {
-    questionId: "entry.928385002",    // QID      — which question is being reported
-    answered: "entry.702034733",      // ANSWER   — what the student answered
-    reason: "entry.1953111872",       // CATEGORY — the category they picked
-    detail: "entry.277726627"         // DETAIL   — their free text (paragraph field)
+    questionId: "entry.928385002",    // QID    — which question is being reported
+    answered: "entry.702034733"       // ANSWER — what the student answered
   },
 
   fallbackInstructions:

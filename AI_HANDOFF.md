@@ -401,9 +401,18 @@ Two consequences worth holding on to:
   loaded by the app or the viewer. A public GitHub repository is readable even
   before Pages publishes it, so "committed but not deployed" is not a safe state.
 
-Reports are sent only when a student presses send, and carry only the question
-id, their answer, the category, and their text. Do not extend them to include
-stored progress: that would quietly turn a no-tracking tool into a tracking one.
+Reports are sent only when a student chooses to, and the app prefills only the
+question id and their answer. The category and the description are typed on the
+form itself. Do not extend the prefill to include stored progress: that would
+quietly turn a no-tracking tool into a tracking one.
+
+The division of labour is deliberate. Prefill can fill a Google form but cannot
+submit it, and a background POST to the form endpoint is ruled out by the
+sign-in requirement below. A second press is therefore unavoidable, so the app
+collects nothing the form already asks for. Otherwise a student types their
+description once and then meets two buttons called Submit, which reads as a bug.
+If you ever add fields back to the app dialog, make sure they are not fields the
+form also asks for.
 
 The destination form restricts responses to signed-in users, so a report also
 carries the student's identity. That was a deliberate choice, and the report

@@ -51,18 +51,24 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
 
 ## Collecting reports about questions
 
-Once the explanation is on screen, each question offers **Report a problem**: a
-category, an optional description, and a send button. The report carries the
-question id, the student's answer, the category, and their text. Practice history
-is never transmitted.
+Once the explanation is on screen, each question offers **Report a problem**. The
+dialog confirms which question is being flagged and opens the Google form with the
+question id and the student's answer already prefilled. The student picks a
+category and describes the problem on the form itself, then presses Submit.
+
+Splitting it this way is deliberate: prefill can fill a Google form but cannot
+submit it, so a second press is unavoidable. Collecting the description in the app
+as well would have meant typing once and pressing Submit twice, which read as a
+mistake. Now nothing is entered twice and exactly one button in the flow says
+Submit. Practice history is never transmitted.
 
 The configured form restricts responses to signed-in users, so a report is also
-tied to the student's school account. The dialog says so before they send. If you
-change that setting in Google Forms, change the dialog's wording to match — it is
-a promise about what leaves the browser, so it has to stay true.
+tied to the student's school account. The dialog says so before they continue. If
+you change that setting in Google Forms, change the dialog's wording to match — it
+is a promise about what leaves the browser, so it has to stay true.
 
-Every report is written to `localStorage` before it is handed off, so a closed tab
-or a broken form cannot silently swallow one.
+The question id and answer are written to `localStorage` before the hand-off, so an
+abandoned or blocked form still leaves a trace that the question drew a complaint.
 
 Reporting is off by default in the sense that no destination is configured yet.
 Open `report-config.js` and paste in a form URL plus the prefill parameter names;

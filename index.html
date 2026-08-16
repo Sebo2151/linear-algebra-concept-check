@@ -153,32 +153,20 @@
         <span id="reportStatement" class="report-statement"></span>
       </p>
 
-      <label class="report-field">
-        <span>What's wrong?</span>
-        <select id="reportReason">
-          <option value="wrong-answer">The marked answer looks wrong</option>
-          <option value="explanation">The explanation is wrong or unconvincing</option>
-          <option value="ambiguous">The statement could be read two ways</option>
-          <option value="counterexample">The example or counterexample doesn't work</option>
-          <option value="rendering">Something didn't display properly</option>
-          <option value="other">Something else</option>
-        </select>
-      </label>
-
-      <label class="report-field">
-        <span>Tell us more (optional, but it helps a lot)</span>
-        <textarea id="reportDetail" rows="4" placeholder="What did you expect, and why?"></textarea>
-      </label>
+      <p class="report-next">
+        This opens a Google form with the question and your answer already filled
+        in. Describe the problem there, then press <strong>Submit</strong> to send
+        it. That one Submit is all it takes.
+      </p>
 
       <p class="privacy-note">
-        Sending opens a Google form that asks you to sign in with your school
-        account, so your report will be identified. Only the question id, your
-        answer, and what you write here are included. Your practice history is
-        never sent, and stays in this browser.
+        The form asks you to sign in with your school account, so your report will
+        be identified. Nothing else about your practice is sent — your history
+        stays in this browser.
       </p>
 
       <div class="setup-actions">
-        <button id="reportSend" class="primary-button" type="button">Send report</button>
+        <button id="reportOpen" class="primary-button" type="button">Open the report form</button>
         <button class="secondary-button" value="cancel">Cancel</button>
       </div>
       <p id="reportStatus" class="report-status hidden" aria-live="polite"></p>

@@ -340,30 +340,23 @@
   function reportText(entry) {
     return [
       `Question: ${entry.questionId}`,
-      `Student answered: ${entry.answered}`,
-      `Problem: ${entry.reason}`,
-      `Details: ${entry.detail || "(none)"}`,
-      `When: ${entry.when}`
+      `My answer: ${entry.answered}`,
+      `When: ${entry.when}`,
+      "",
+      "What seems wrong:"
     ].join("\n");
   }
 
-  // The detail field is a paragraph question, so a student can write at length.
-  // Everything travels in the query string, and long URLs get rejected by some
-  // proxies and servers, so cap what goes into the link. The untruncated text is
-  // already saved locally, and the student is told when this happens.
-  const URL_DETAIL_LIMIT = 1500;
-
+  // Only the facts the app already knows are prefilled. The category and the
+  // description are typed on the form itself, which keeps the student from
+  // entering the same thing twice and leaves exactly one button called Submit in
+  // the whole flow.
   function prefilledFormUrl(entry) {
     const cfg = window.REPORT_CONFIG;
     if (!cfg || !cfg.formUrl) return null;
     const url = new URL(cfg.formUrl);
     for (const [key, param] of Object.entries(cfg.fields || {})) {
-      if (!param || entry[key] == null) continue;
-      let value = String(entry[key]);
-      if (key === "detail" && value.length > URL_DETAIL_LIMIT) {
-        value = value.slice(0, URL_DETAIL_LIMIT) + "… (shortened)";
-      }
-      url.searchParams.set(param, value);
+      if (param && entry[key] != null) url.searchParams.set(param, String(entry[key]));
     }
     return url.toString();
   }
@@ -373,23 +366,21 @@
     if (!q) return;
     el("reportQid").textContent = q.id;
     el("reportStatement").innerHTML = q.statement;
-    el("reportDetail").value = "";
-    el("reportReason").value = "wrong-answer";
     el("reportStatus").classList.add("hidden");
     el("reportDialog").showModal();
     typeset(el("reportStatement"));
   }
 
-  async function sendReport() {
+  async function openReportForm() {
     const q = state.current;
     if (!q) return;
     const entry = {
       questionId: q.id,
       answered: state.lastAnswer == null ? "unanswered" : String(state.lastAnswer),
-      reason: el("reportReason").value,
-      detail: el("reportDetail").value.trim(),
       when: new Date().toISOString()
     };
+    // Recorded before the hand-off, so an abandoned or blocked form still leaves
+    // a trace that this question was worth a second look.
     saveReport(entry);
 
     const status = el("reportStatus");
@@ -397,22 +388,20 @@
     const url = prefilledFormUrl(entry);
     if (url) {
       window.open(url, "_blank", "noopener");
-      status.textContent = entry.detail.length > URL_DETAIL_LIMIT
-        ? "Thank you. The report form should have opened in a new tab. Sign in if it asks, then press submit there to finish. Your description was long, so check it came through in full and paste any missing part."
-        : "Thank you. The report form should have opened in a new tab. Sign in if it asks, then press submit there to finish.";
+      status.textContent = "The form should have opened in a new tab. Describe the problem there and press Submit to send it.";
       return;
     }
     const body = `${window.REPORT_CONFIG?.fallbackInstructions || ""}\n\n${reportText(entry)}`;
     try {
       await navigator.clipboard.writeText(body);
-      status.textContent = "Report copied to your clipboard. Paste it into an email to your instructor.";
+      status.textContent = "Details copied to your clipboard. Paste them into an email to your instructor and describe the problem.";
     } catch {
       status.textContent = reportText(entry);
     }
   }
 
   el("reportButton").addEventListener("click", openReportDialog);
-  el("reportSend").addEventListener("click", sendReport);
+  el("reportOpen").addEventListener("click", openReportForm);
 
   el("nextButton").addEventListener("click", goNext);
   el("startButton").addEventListener("click", startSession);
