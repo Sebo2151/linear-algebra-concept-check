@@ -53,8 +53,13 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
 
 Once the explanation is on screen, each question offers **Report a problem**: a
 category, an optional description, and a send button. The report carries the
-question id, the student's answer, the category, and their text — nothing else.
-Practice history is never transmitted.
+question id, the student's answer, the category, and their text. Practice history
+is never transmitted.
+
+The configured form restricts responses to signed-in users, so a report is also
+tied to the student's school account. The dialog says so before they send. If you
+change that setting in Google Forms, change the dialog's wording to match — it is
+a promise about what leaves the browser, so it has to stay true.
 
 Every report is written to `localStorage` before it is handed off, so a closed tab
 or a broken form cannot silently swallow one.

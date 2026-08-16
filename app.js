@@ -386,7 +386,7 @@
     const url = prefilledFormUrl(entry);
     if (url) {
       window.open(url, "_blank", "noopener");
-      status.textContent = "Thank you. The report form should have opened in a new tab — press submit there to finish.";
+      status.textContent = "Thank you. The report form should have opened in a new tab. Sign in if it asks, then press submit there to finish.";
       return;
     }
     const body = `${window.REPORT_CONFIG?.fallbackInstructions || ""}\n\n${reportText(entry)}`;

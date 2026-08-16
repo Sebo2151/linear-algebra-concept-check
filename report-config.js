@@ -17,8 +17,13 @@
 //        https://docs.google.com/forms/d/e/FORM_ID/viewform?usp=pp_url&entry.111=...
 //      Paste everything up to and including ?usp=pp_url into formUrl, and each
 //      entry.NNN name into the matching field below.
-//   4. In the form's response settings, do NOT restrict responses to signed-in
-//      users, or students meet a sign-in wall mid-session and give up.
+//   4. Decide, deliberately, whether responses are restricted to signed-in users.
+//      Restricting deters spam and lets you follow up on a vague report, at the
+//      cost of a sign-in step mid-session and of attaching an identity to every
+//      report. This form IS restricted, and the report dialog says so in plain
+//      words. If you ever lift the restriction, soften that wording to match, and
+//      if you tighten it further, say so there first. The dialog's promise about
+//      what leaves the browser has to keep describing what actually happens.
 //
 // Microsoft Forms works the same way: Collect responses -> "Get pre-filled URL".
 // Its parameter names are opaque keys such as r8a1c... rather than entry.NNN.

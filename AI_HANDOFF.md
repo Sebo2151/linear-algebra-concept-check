@@ -405,6 +405,12 @@ Reports are sent only when a student presses send, and carry only the question
 id, their answer, the category, and their text. Do not extend them to include
 stored progress: that would quietly turn a no-tracking tool into a tracking one.
 
+The destination form restricts responses to signed-in users, so a report also
+carries the student's identity. That was a deliberate choice, and the report
+dialog states it plainly before they send. Treat the dialog's wording as a
+promise that must keep matching the form's settings: if the restriction is ever
+lifted or tightened, update the wording in the same change.
+
 If the storage schema changes incompatibly, migrate it or deliberately increment the versioned key.
 
 ## 13. Likely next steps
