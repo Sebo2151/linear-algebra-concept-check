@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Question Browser — Linear Algebra Concept Check</title>
+  <title>Question Browser — Linear Algebra True/False Practice</title>
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
@@ -13,6 +13,7 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <script defer src="questions.js"></script>
+  <script defer src="concept-labels.js"></script>
   <style>
     :root {
       --ink: #1d2330;
@@ -91,6 +92,7 @@
     .tag.ans { font-weight: 700; }
     .tag.ans.t { background: var(--true-soft); color: var(--true); border-color: #b8e0cc; }
     .tag.ans.f { background: var(--false-soft); color: #a12c44; border-color: #f3c2cd; }
+    .tag.missing { background: var(--warn-soft); border-color: #e6d08a; color: #6b5310; font-weight: 600; }
     .stmt { font-size: 1.02rem; margin: 6px 0 10px; }
     .row { margin: 6px 0; font-size: .9rem; }
     .row .k { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; display: block; }
@@ -197,8 +199,16 @@
   // script is being parsed. Deferred scripts all execute before DOMContentLoaded.
   document.addEventListener("DOMContentLoaded", () => {
     const BANK = window.QUESTION_BANK || [];
+    // Same map the student app uses, so this page shows the label a student
+    // actually sees and can flag tags that still have none.
+    const LABELS = window.CONCEPT_LABELS || {};
     const el = id => document.getElementById(id);
     const uniq = arr => [...new Set(arr)].sort();
+
+    const titleCase = s => s.split("-").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+    // What a student actually sees on the results screen, whether that comes from
+    // an explicit label or from falling through to the title-cased slug.
+    const conceptLabel = slug => LABELS[slug] || titleCase(slug);
 
     // ---- populate the dynamic filter options from the bank itself, so new
     // sections and concepts appear here without editing this file.
@@ -267,9 +277,10 @@
             <span class="tag ans ${q.answer ? "t" : "f"}">${q.answer ? "TRUE" : "FALSE"}</span>
             <span class="tag">§${q.section}</span>
             <span class="tag">${q.topic}</span>
-            <span class="tag">${q.concept}</span>
+            <span class="tag" title="Students see: ${conceptLabel(q.concept)}">${q.concept}</span>
             <span class="tag">d${q.difficulty}</span>
             <span class="tag">${q.variant}</span>
+            ${q.difficulty === 3 && !q.why ? '<span class="tag missing">no Why? prompt</span>' : ""}
           </div>
           <div class="stmt">${raw(q.statement)}</div>
           <div class="row"><span class="k">Explanation</span>${raw(q.explanation)}</div>
@@ -306,10 +317,14 @@
         const t = qs.filter(q => q.answer).length;
         return { t, n: qs.length, r: qs.length ? t / qs.length : 0 };
       };
+      // Mirrors checkGroupBalance in tests/validate-questions.mjs, including the
+      // tighter band for large groups and the all-one-answer rule, so this panel
+      // and `npm test` never disagree about what counts as a problem.
       const rows = (label, groups) => groups.map(([name, qs]) => {
         const { t, n, r } = pct(qs);
+        const allSame = n >= 3 && qs.every(q => q.answer === qs[0].answer);
         const lo = n >= 40 ? 0.4 : 0.25, hi = n >= 40 ? 0.6 : 0.75;
-        const bad = n >= 5 && (r < lo || r > hi);
+        const bad = allSame || (n >= 5 && (r < lo || r > hi));
         return `<tr><td>${name}</td><td>${n}</td>
                 <td class="${bad ? "flag" : ""}">${t} true (${Math.round(r * 100)}%)${bad ? " ⚠" : ""}</td></tr>`;
       }).join("");
@@ -327,6 +342,16 @@
       const skewed = [...conceptMap]
         .filter(([, v]) => v.length >= 3 && v.every(q => q.answer === v[0].answer))
         .map(([k, v]) => `${k} (all ${v[0].answer})`);
+      // concept-labels.js is a deliberate partial override: most slugs title-case
+      // into perfectly good English and need no entry. Whether "Solvability
+      // Columns" reads worse than "Linear Equation" is a judgement no rule here
+      // can make, so list the fall-throughs for a human to skim rather than
+      // flagging them as errors.
+      const unlabelled = [...conceptMap.keys()].filter(c => !LABELS[c]).sort()
+        .map(c => titleCase(c));
+      // Every difficulty-3 item is supposed to carry a second stage; see the
+      // roadmap note in AI_HANDOFF.md.
+      const hardNoWhy = BANK.filter(q => q.difficulty === 3 && !q.why).map(q => q.id);
 
       el("healthBody").innerHTML = `
         <table>
@@ -346,6 +371,13 @@
         </p>
         <p style="font-size:.85rem;margin:6px 0 0" class="${skewed.length ? "flag" : ""}">
           Concepts with one truth value only: ${skewed.length ? skewed.join(", ") : "none"}
+        </p>
+        <details style="font-size:.85rem;margin:6px 0 0">
+          <summary>Concepts shown as the title-cased slug (${unlabelled.length}) — skim for any that read as a tag</summary>
+          <div style="margin-top:4px;color:var(--muted)">${unlabelled.join(" · ")}</div>
+        </details>
+        <p style="font-size:.85rem;margin:6px 0 0" class="${hardNoWhy.length ? "flag" : ""}">
+          Difficulty-3 items with no Why? prompt: ${hardNoWhy.length ? hardNoWhy.join(", ") : "none"}
         </p>`;
     }
 

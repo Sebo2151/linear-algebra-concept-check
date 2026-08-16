@@ -454,7 +454,7 @@ Recommended order:
 1. ~~Instructor review of the existing §1.1–1.2 bank.~~ Done; the bank grew from 53 to 74 items in response.
 2. ~~Add or revise questions where coverage is thin.~~ Done for singleton concepts; every concept now has at least two questions.
 3. Add course presets (“Homework 1: §§1.1–1.2”).
-4. Improve second-stage “Why?” coverage. Coverage is 58/289 overall, and **every
+4. Improve second-stage “Why?” coverage. Coverage is 64/289 overall, and **every
    difficulty-3 item has one** — treat that as the standing rule when adding hard
    items. It had quietly lapsed for six items across §§1.4–1.7 before being caught
    and fixed; a claim in this document that it held was wrong at the time.
@@ -481,8 +481,11 @@ Two related rules:
 
 - Internal vocabulary must not reach the interface. `core`, `hypothesis`,
   `difficulty 2/3`, and raw `concept` slugs are our categories, not a student's.
-  Concept slugs get written-out labels in `CONCEPT_LABELS` in `app.js`; anything new
-  that does not read as ordinary English after title-casing needs an entry there.
+  Concept slugs get written-out labels in `concept-labels.js`, which the app and
+  `viewer.html` both load so they cannot drift apart. The map is a deliberate
+  partial override: most slugs title-case into good English and need no entry.
+  Add one when a new tag would not. The viewer lists the fall-throughs so they can
+  be skimmed, and shows the student-facing label when you hover a concept tag.
 - The title says "True/False Practice" on purpose. It names the format and bounds
   the claim, so that doing well here is not mistaken for being finished. The results
   screen repeats the point, since that is where overconfidence actually forms.

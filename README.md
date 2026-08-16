@@ -41,7 +41,9 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
 
 - `index.html` — application shell.
 - `viewer.html` — instructor question browser (see below).
-- `report-config.js` — where question reports are sent; empty until configured.
+- `concept-labels.js` — student-facing names for the internal concept tags; shared
+  by the app and the viewer so the two cannot drift apart.
+- `report-config.js` — where question reports are sent.
 - `tools/` — reserved-homework cross-check and assignment builder.
 - `styles.css` — layout and visual design.
 - `app.js` — quiz state, local progress, adaptive sampling.
@@ -83,6 +85,13 @@ student to email instead, so nothing is broken in the meantime.
 value, difficulty, variant, presence of a “Why?” prompt, and presence of a
 counterexample, plus a free-text search and a bank-health panel that mirrors the
 warnings `npm test` produces.
+
+Its filter options are built from the bank at load time, so new sections, topics,
+and concepts appear without editing the page. The health panel additionally reports
+any difficulty-3 item missing a “Why?” prompt, and lists the concepts that reach
+students as a title-cased slug rather than through `concept-labels.js` — that list
+is for skimming, not a warning, since most slugs title-case perfectly well.
+Hovering a concept tag shows the label a student would see.
 
 It is **unlisted, not private**. Nothing links to it from the student app, but it
 reads the same `questions.js` the app already downloads to every visitor's browser,
