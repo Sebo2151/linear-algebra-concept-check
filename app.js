@@ -347,12 +347,23 @@
     ].join("\n");
   }
 
+  // The detail field is a paragraph question, so a student can write at length.
+  // Everything travels in the query string, and long URLs get rejected by some
+  // proxies and servers, so cap what goes into the link. The untruncated text is
+  // already saved locally, and the student is told when this happens.
+  const URL_DETAIL_LIMIT = 1500;
+
   function prefilledFormUrl(entry) {
     const cfg = window.REPORT_CONFIG;
     if (!cfg || !cfg.formUrl) return null;
     const url = new URL(cfg.formUrl);
     for (const [key, param] of Object.entries(cfg.fields || {})) {
-      if (param && entry[key] != null) url.searchParams.set(param, entry[key]);
+      if (!param || entry[key] == null) continue;
+      let value = String(entry[key]);
+      if (key === "detail" && value.length > URL_DETAIL_LIMIT) {
+        value = value.slice(0, URL_DETAIL_LIMIT) + "… (shortened)";
+      }
+      url.searchParams.set(param, value);
     }
     return url.toString();
   }
@@ -386,7 +397,9 @@
     const url = prefilledFormUrl(entry);
     if (url) {
       window.open(url, "_blank", "noopener");
-      status.textContent = "Thank you. The report form should have opened in a new tab. Sign in if it asks, then press submit there to finish.";
+      status.textContent = entry.detail.length > URL_DETAIL_LIMIT
+        ? "Thank you. The report form should have opened in a new tab. Sign in if it asks, then press submit there to finish. Your description was long, so check it came through in full and paste any missing part."
+        : "Thank you. The report form should have opened in a new tab. Sign in if it asks, then press submit there to finish.";
       return;
     }
     const body = `${window.REPORT_CONFIG?.fallbackInstructions || ""}\n\n${reportText(entry)}`;

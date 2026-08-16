@@ -35,13 +35,13 @@
 // Send. Practice history stays in the browser and is never included.
 
 window.REPORT_CONFIG = {
-  formUrl: "",
+  formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeOsSUvzic5LgCNOxzXHlTIr4CjUFdr0nMK1GnHTb8EltBFIA/viewform?usp=pp_url",
 
   fields: {
-    questionId: "",   // which question is being reported
-    answered: "",     // what the student answered, so you can reproduce their path
-    reason: "",       // the category they picked
-    detail: ""        // their free-text description
+    questionId: "entry.928385002",    // QID      — which question is being reported
+    answered: "entry.702034733",      // ANSWER   — what the student answered
+    reason: "entry.1953111872",       // CATEGORY — the category they picked
+    detail: "entry.277726627"         // DETAIL   — their free text (paragraph field)
   },
 
   fallbackInstructions:
