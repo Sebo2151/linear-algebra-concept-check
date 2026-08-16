@@ -13,9 +13,9 @@ A lightweight, static practice app for introductory linear algebra. It is intend
   The student-facing labels avoid the internal `core` / `hypothesis` vocabulary.
 - Lightweight weakness-aware sampling using browser-local history.
 - Approximate balancing of true and false statements within a session.
-- No accounts, gradebook, analytics server, or backend.
+- No account needed for practice, no gradebook, no analytics server, and no backend.
 - Responsive layout for desktop and mobile.
-- Math rendering through MathJax.
+- Math rendering through MathJax loaded from jsDelivr.
 
 The bank contains independently written questions covering the main definitions and ideas from §§1.1–1.5 and §§1.7–1.9.
 
@@ -33,6 +33,16 @@ python -m http.server 8000
 Then visit `http://localhost:8000`.
 
 MathJax is loaded from a CDN, so rendered mathematics requires an internet connection unless MathJax is later bundled locally.
+
+## Authorship, attribution, and license
+
+Created and maintained by Sebastian Bozlee, Wake Forest University.
+
+This project was developed with AI-assisted coding and editorial collaboration
+from Claude Code and ChatGPT Codex. The mathematical content, question-bank
+standards, and publication decisions remain human-reviewed.
+
+Released under the MIT License. See `LICENSE`.
 
 ## Publish with GitHub Pages
 
@@ -84,6 +94,19 @@ replace the URL and the prefill parameter names there; the file explains how to
 find them in Google Forms and Microsoft Forms. If the URL is blank, pressing send
 copies a formatted report to the clipboard for the student to email instead, so
 the app still works with no form at all.
+
+## External services and privacy notes
+
+Normal practice has no backend: answers, progress, and concept history are stored
+in browser `localStorage`. The app does not use cookies, analytics, `fetch`, or a
+gradebook.
+
+Two external services are involved in the current public version:
+
+- MathJax loads from jsDelivr, so opening the page makes a request to that CDN.
+- A report is sent to the configured Google Form only when the student chooses
+  **Report a problem** and then opens/submits the form. The prefilled values are
+  the question id and the student's answer, not their practice history.
 
 ## Instructor question browser
 

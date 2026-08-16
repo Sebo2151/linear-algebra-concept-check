@@ -502,8 +502,7 @@ Recommended order:
    items. It had quietly lapsed for six items across §§1.4–1.7 before being caught
    and fixed; a claim in this document that it held was wrong at the time.
 5. ~~Add a developer-only question browser / filter page for reviewing the bank.~~ `viewer.html`.
-6. Add lightweight within-session resurfacing of missed concepts. This is now
-   bundled with the sampler rewrite below, since one change delivers both.
+6. Add lightweight within-session resurfacing of missed concepts.
 
 ### Deferred deliberately, in rough priority order
 
@@ -541,7 +540,8 @@ than it was, and level 2 is now the largest group. This is deliberate for §1.1,
 which is genuinely easy material, and has been accepted. Revisit it if later
 sections inherit the same shape without the same excuse.
 
-A developer question browser would be especially useful: show every item with filters for section, concept, truth value, difficulty, and variant, plus counts. This would make editorial review much easier.
+`viewer.html` is the developer question browser. Keep using it for editorial
+review before and after validator changes.
 
 ### Student-facing text is not developer-facing text
 

@@ -70,6 +70,14 @@ main {
   margin: 36px auto 64px;
 }
 
+.site-footer {
+  width: min(880px, calc(100% - 28px));
+  margin: -36px auto 42px;
+  color: var(--muted);
+  font-size: .82rem;
+  text-align: center;
+}
+
 .panel {
   background: var(--panel);
   border: 1px solid var(--line);
