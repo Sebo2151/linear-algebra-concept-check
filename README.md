@@ -7,7 +7,7 @@ A lightweight, static practice app for introductory linear algebra. It is intend
 - True/false questions with immediate feedback.
 - Some questions add a second-stage **Why?** prompt before revealing the explanation.
 - Explanations and counterexamples are treated as part of the practice.
-- Material presets (“Everything so far”, “Exam 1 review”) plus any single section.
+- Material chosen by checking sections: all of them, one, or any combination.
 - Keyboard control: `T`/`F` to answer, number keys to pick a reason, `Enter` to continue.
 - Question mixes: standard, main ideas only, or more hypothesis-awareness items.
   The student-facing labels avoid the internal `core` / `hypothesis` vocabulary.
@@ -54,10 +54,9 @@ This repository needs no build step. Push it to GitHub and configure Pages to pu
 - `viewer.html` — instructor question browser (see below).
 - `concept-labels.js` — student-facing names for the internal concept tags; shared
   by the app and the viewer so the two cannot drift apart.
-- `course-presets.js` — the groupings in the Material menu. Edit this when a new
-  exam's coverage is settled; the per-section entries are generated from the bank.
-- `sampling.js` — question weighting, selection, and choice shuffling, kept out of
-  `app.js` so `tests/sampling.test.mjs` can drive the same code the app runs.
+- `sampling.js` — question weighting, selection, choice shuffling, and section
+  ordering, kept out of `app.js` so `tests/sampling.test.mjs` can drive the same
+  code the app runs.
 - `report-config.js` — where question reports are sent.
 - `tools/` — reserved-homework cross-check and assignment builder.
 - `styles.css` — layout and visual design.

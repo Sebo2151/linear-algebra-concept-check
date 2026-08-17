@@ -51,16 +51,15 @@
     }
   }
 
-  const PRESETS = window.COURSE_PRESETS || [];
   // Sampling logic lives in sampling.js so tests can drive the same code the app
   // runs. Do not inline a copy of any of it here.
   const SAMPLING = window.SAMPLING;
 
   function eligibleQuestions() {
-    const { section, mix } = state.settings;
-    const allowed = SAMPLING.sectionsFor(section, PRESETS);
+    const { sections, mix } = state.settings;
+    const allowed = new Set(sections);
     return BANK.filter(q => {
-      if (allowed && !allowed.includes(q.section)) return false;
+      if (!allowed.has(q.section)) return false;
       if (mix === "core" && q.variant !== "core") return false;
       return true;
     });
@@ -345,8 +344,13 @@
   }
 
   function startSession() {
+    const sections = selectedSections();
+    // The button is disabled with nothing checked, so this is belt and braces —
+    // but an empty selection would start a session with no questions in it.
+    if (!sections.length) return;
+
     state.settings = {
-      section: el("sectionSelect").value,
+      sections,
       mix: el("mixSelect").value
     };
     state.targetLength = Math.min(Number(el("lengthSelect").value), eligibleQuestions().length);
@@ -376,19 +380,49 @@
     updateWeaknessNote();
   }
 
-  // ------------------------------------------------------- material menu setup
-  // Presets first, then one entry per section actually present in the bank, so a
-  // new section needs no edit here.
+  // ----------------------------------------------------- material picker setup
+  // One checkbox per section actually present in the bank, so new material needs
+  // no edit here and no hand-maintained list can fall out of date with the bank.
+  // Ordering goes through SAMPLING.sortSections because a plain sort is
+  // lexicographic and would file §1.10 between §1.1 and §1.2.
+  function sectionBoxes() {
+    return [...document.querySelectorAll(".section-box")];
+  }
+
+  function selectedSections() {
+    return sectionBoxes().filter(box => box.checked).map(box => box.value);
+  }
+
+  // The "All sections" box reflects the individual boxes rather than being a
+  // state of its own: checked when they all are, indeterminate part-way. Nothing
+  // checked is a real possibility, so it blocks Start with a reason rather than
+  // opening a session with an empty pool.
+  function syncMaterialState() {
+    const boxes = sectionBoxes();
+    const chosen = boxes.filter(box => box.checked).length;
+    const all = el("allSectionsToggle");
+    all.checked = boxes.length > 0 && chosen === boxes.length;
+    all.indeterminate = chosen > 0 && chosen < boxes.length;
+    el("startButton").disabled = chosen === 0;
+    el("sectionEmptyNote").classList.toggle("hidden", chosen > 0);
+  }
+
   function buildSectionMenu() {
-    const select = el("sectionSelect");
-    for (const p of PRESETS) {
-      select.insertAdjacentHTML("beforeend", `<option value="${p.id}">${p.label}</option>`);
-    }
-    const sections = [...new Set(BANK.map(q => q.section))].sort();
+    const list = el("sectionChecklist");
+    const sections = SAMPLING.sortSections([...new Set(BANK.map(q => q.section))]);
     for (const s of sections) {
-      select.insertAdjacentHTML("beforeend", `<option value="${s}">Section ${s} only</option>`);
+      const label = document.createElement("label");
+      label.className = "section-toggle";
+      label.innerHTML = `<input type="checkbox" class="section-box" value="${s}" checked>Section ${s}`;
+      list.appendChild(label);
     }
-    select.selectedIndex = 0;
+
+    list.addEventListener("change", syncMaterialState);
+    el("allSectionsToggle").addEventListener("change", e => {
+      for (const box of sectionBoxes()) box.checked = e.target.checked;
+      syncMaterialState();
+    });
+    syncMaterialState();
   }
 
   // ------------------------------------------------------------------ keyboard
