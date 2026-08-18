@@ -48,6 +48,8 @@ Released under the MIT License. See `LICENSE`.
 
 This repository needs no build step. Push it to GitHub and configure Pages to publish from the repository root (or from `main` / root, depending on the GitHub UI).
 
+Pages serves every file with `max-age=600`, and a reload revalidates the document while reusing subresources that have not expired. A fresh `index.html` could therefore pair with an `app.js` cached from before a deploy, which breaks the app outright. `index.html` attaches its scripts with a `?v=` token taken from `document.lastModified`, which Pages changes on every deploy, so the stale file can never be served. Nothing needs bumping by hand.
+
 ## Files
 
 - `index.html` — application shell.

@@ -13,11 +13,64 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script defer src="questions.js"></script>
-  <script defer src="concept-labels.js"></script>
-  <script defer src="sampling.js"></script>
-  <script defer src="report-config.js"></script>
-  <script defer src="app.js"></script>
+  <script>
+    // Our scripts are attached here rather than written as plain tags, so that
+    // each request carries a token identifying the deploy it belongs to.
+    //
+    // The problem this solves: GitHub Pages serves every file with
+    // max-age=600, and an ordinary reload revalidates the document while
+    // reusing subresources that have not expired yet. A fresh index.html could
+    // therefore pair with an app.js cached from before a deploy — which broke
+    // the app completely and silently, because the two no longer agreed on what
+    // the page contained. A version number would fix it too, but only if
+    // somebody remembers to raise it on every deploy; forgetting would restore
+    // the bug with no sign that the guard had stopped working.
+    //
+    // document.lastModified needs no such upkeep. Pages stamps every file in a
+    // deploy with the same Last-Modified, and the document itself is always
+    // revalidated, so the fresh HTML always knows which deploy it is from. A
+    // new deploy changes the token, which changes the URL, which is a different
+    // cache entry: the browser cannot serve the old file even if it still has
+    // it. Within one deploy the token is constant, so ordinary caching is
+    // unaffected.
+    //
+    // Two details worth keeping:
+    //   - async = false is required. Scripts created this way default to async,
+    //     and app.js reads window.QUESTION_BANK and window.SAMPLING as soon as
+    //     it runs, so it must not run before them.
+    //   - file:// is left alone. Opening index.html straight off disk is a
+    //     documented way to run this, and query strings on file URLs are not
+    //     reliably handled. There is no cache to defeat there anyway.
+    (function () {
+      var files = ["questions.js", "concept-labels.js", "sampling.js", "report-config.js", "app.js"];
+      var stamp = location.protocol === "file:" ? "" : "?v=" + encodeURIComponent(document.lastModified);
+      for (var i = 0; i < files.length; i++) {
+        var tag = document.createElement("script");
+        tag.src = files[i] + stamp;
+        tag.async = false;
+        document.head.appendChild(tag);
+      }
+    })();
+  </script>
+  <script>
+    // Backstop, deliberately inline so that it is never itself the stale file.
+    //
+    // The token above should prevent a mismatched app.js from ever loading, but
+    // this catches the general case: any failure that leaves the picker unbuilt
+    // — a broken questions.js edit, a script that never arrives — rather than
+    // any one cause. Without it such a failure is invisible, since the Start
+    // handler is attached before the picker is built and an empty selection
+    // returns early: a live button that does nothing at all.
+    //
+    // On load rather than DOMContentLoaded: script-inserted scripts do not
+    // delay DOMContentLoaded the way parser-inserted defer ones do, so checking
+    // there would fire before app.js had run and accuse a healthy page.
+    window.addEventListener("load", function () {
+      if (document.querySelector(".section-box")) return;
+      document.getElementById("appWarning").classList.remove("hidden");
+      document.getElementById("startButton").disabled = true;
+    });
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -33,6 +86,13 @@
     The mathematical notation on this page did not load, so statements will appear
     as raw code such as <code>\(Ax=b\)</code>. Reload the page, or try a different
     network if that does not help.
+  </div>
+
+  <div id="appWarning" class="app-warning hidden" role="alert">
+    This page didn't load correctly — most often an out-of-date copy left in the
+    browser's cache. Reload with <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>
+    (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd> on a Mac). If it keeps
+    happening, please tell your instructor.
   </div>
 
   <main>

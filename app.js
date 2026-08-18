@@ -562,7 +562,15 @@
     updateWeaknessNote();
   });
 
-  buildSectionMenu();
-  updateWeaknessNote();
+  // Failing to build the picker must not also take out the rest of start-up.
+  // The banner for it is raised by an inline script in index.html rather than
+  // here: the failure this most needs to catch is *this file* being a stale
+  // cached copy, and a check that ships inside the stale file cannot run.
+  try {
+    buildSectionMenu();
+    updateWeaknessNote();
+  } catch (err) {
+    console.error("Practice setup failed to initialise:", err);
+  }
   setTimeout(checkMathLoaded, 6000);
 })();

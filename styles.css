@@ -286,6 +286,27 @@ select {
   font-size: .92rem;
 }
 
+.app-warning {
+  max-width: 900px;
+  margin: 16px auto 0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: var(--bad-soft);
+  border: 1px solid #e0b4b4;
+  color: #7a2626;
+  font-size: .92rem;
+}
+
+.app-warning kbd {
+  font: inherit;
+  font-weight: 700;
+  padding: 1px 6px;
+  border: 1px solid #e0b4b4;
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: #fff;
+}
+
 .key-hint {
   margin: 10px 0 0;
   color: var(--muted);
