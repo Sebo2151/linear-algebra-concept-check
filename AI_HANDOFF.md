@@ -200,7 +200,12 @@ However:
 
 Do not copy textbook exercises, examples, prose definitions, or theorem statements. Mathematical content should be restated independently.
 
-The app should eventually support course presets such as “Homework 1,” “Quiz 1,” or “Exam 1” without requiring the student to know section numbers.
+Named course presets (“Homework 1,” “Quiz 1,” “Exam 1”) were tried and removed. Two problems, and both are reasons not to reintroduce them:
+
+- Any pinned list of sections is hand-maintained, and drifts as soon as the course does.
+- Coverage is not portable. Different sections of the same course at WFU do not sit at the same place on the same date, so an “Exam 1” preset is wrong for someone.
+
+The Material control is instead a checklist of the sections in the bank, with an **All sections** master toggle. A student picks what they are studying; nothing in the repository has to be updated when the course moves.
 
 ## 8. Important mathematical nuance found during initial development
 
@@ -496,7 +501,7 @@ Recommended order:
 
 1. ~~Instructor review of the existing §1.1–1.2 bank.~~ Done; the bank grew from 53 to 74 items in response.
 2. ~~Add or revise questions where coverage is thin.~~ Done for singleton concepts; every concept now has at least two questions.
-3. Add course presets (“Homework 1: §§1.1–1.2”).
+3. ~~Add course presets (“Homework 1: §§1.1–1.2”).~~ Dropped deliberately — see §7.
 4. Improve second-stage “Why?” coverage. Coverage is 64/292 overall, and **every
    difficulty-3 item has one** — treat that as the standing rule when adding hard
    items. It had quietly lapsed for six items across §§1.4–1.7 before being caught

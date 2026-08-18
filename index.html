@@ -15,7 +15,6 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <script defer src="questions.js"></script>
   <script defer src="concept-labels.js"></script>
-  <script defer src="course-presets.js"></script>
   <script defer src="sampling.js"></script>
   <script defer src="report-config.js"></script>
   <script defer src="app.js"></script>
@@ -50,13 +49,20 @@
         </p>
       </div>
 
-      <div class="setup-grid">
-        <label>
-          <span>Material</span>
-          <!-- Filled from course-presets.js and the sections present in the bank. -->
-          <select id="sectionSelect"></select>
+      <!-- One checkbox per section present in the bank, generated in app.js, so
+           new material needs no edit here. -->
+      <fieldset class="material-picker">
+        <legend>Material</legend>
+        <label class="section-toggle all-toggle">
+          <input type="checkbox" id="allSectionsToggle" checked>All sections
         </label>
+        <div id="sectionChecklist" class="section-checklist"></div>
+        <p id="sectionEmptyNote" class="section-empty-note hidden" aria-live="polite">
+          Choose at least one section to practice.
+        </p>
+      </fieldset>
 
+      <div class="setup-grid">
         <label>
           <span>Session length</span>
           <select id="lengthSelect">

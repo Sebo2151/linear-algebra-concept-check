@@ -100,10 +100,26 @@ window.SAMPLING = {
     return order;
   },
 
-  // Resolve a Material menu choice to a list of sections, or null for all.
-  sectionsFor(choice, presets) {
-    const preset = (presets || []).find(p => p.id === choice);
-    if (preset) return preset.sections;
-    return [choice];
+  // Order section labels the way a syllabus does. This lives here for the same
+  // reason as everything above: a plain `.sort()` is lexicographic, so §1.10
+  // lands between §1.1 and §1.2. The menu still renders, every section is still
+  // there, and nothing looks broken — you have to read the order to notice.
+  compareSections(a, b) {
+    const pa = String(a).split(".").map(Number);
+    const pb = String(b).split(".").map(Number);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+      // A label that is not purely numeric, or that has fewer parts, has no
+      // meaningful numeric order here; fall back to the string so the result is
+      // still a total order rather than an arbitrary one.
+      if (!Number.isFinite(pa[i]) || !Number.isFinite(pb[i])) {
+        return String(a) < String(b) ? -1 : String(a) > String(b) ? 1 : 0;
+      }
+      if (pa[i] !== pb[i]) return pa[i] - pb[i];
+    }
+    return 0;
+  },
+
+  sortSections(sections) {
+    return [...sections].sort((a, b) => this.compareSections(a, b));
   }
 };

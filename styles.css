@@ -97,8 +97,65 @@ main {
 
 .setup-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
+}
+
+.material-picker {
+  margin: 0 0 18px;
+  padding: 6px 16px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.material-picker legend {
+  padding: 0 6px;
+  font-size: .88rem;
+  font-weight: 700;
+}
+
+/* Wide enough for "Section 1.10" without wrapping, and auto-fill rather than a
+   fixed count: the same rule gives five columns on a desktop and two on a phone,
+   which keeps a nine-section bank from becoming a long scroll on mobile. */
+.section-checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  gap: 2px 14px;
+}
+
+.section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 2px;
+  font-size: .95rem;
+  cursor: pointer;
+}
+
+.section-toggle input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.all-toggle {
+  font-weight: 700;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-empty-note {
+  margin: 12px 0 0;
+  color: var(--bad);
+  font-size: .88rem;
+}
+
+.primary-button:disabled {
+  cursor: default;
+  opacity: .5;
 }
 
 label span {

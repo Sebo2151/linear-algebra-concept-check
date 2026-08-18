@@ -19,12 +19,11 @@ import vm from "node:vm";
 
 const sandbox = { window: {} };
 vm.createContext(sandbox);
-for (const file of ["sampling.js", "questions.js", "course-presets.js"]) {
+for (const file of ["sampling.js", "questions.js"]) {
   vm.runInContext(fs.readFileSync(new URL(`../${file}`, import.meta.url), "utf8"), sandbox);
 }
 const SAMPLING = sandbox.window.SAMPLING;
 const BANK = sandbox.window.QUESTION_BANK;
-const PRESETS = sandbox.window.COURSE_PRESETS;
 
 let failures = 0;
 function check(name, ok, detail) {
@@ -234,24 +233,32 @@ for (const [label, progress] of [
 }
 
 // ---------------------------------------------------------------------------
-// Material presets must resolve to sections that exist, or the menu silently
-// offers an empty practice session.
+// The Material picker builds one checkbox per section in the bank, in course
+// order. Both halves of that fail quietly: a lexicographic sort still lists
+// every section, and a malformed section label still renders a checkbox — it
+// just sits in the wrong place, or offers material nobody meant to publish.
 // ---------------------------------------------------------------------------
 {
-  const known = new Set(BANK.map(q => q.section));
-  for (const p of PRESETS) {
-    const sections = SAMPLING.sectionsFor(p.id, PRESETS);
-    if (sections === null) {
-      check(`preset "${p.id}" covering everything is non-empty`, BANK.length > 0);
-      continue;
-    }
-    const missing = sections.filter(s => !known.has(s));
-    check(`preset "${p.id}" names only sections that exist`, missing.length === 0, missing.join(", "));
-    const pool = BANK.filter(q => sections.includes(q.section));
-    check(`preset "${p.id}" selects a non-empty pool`, pool.length > 0);
-  }
-  const bare = SAMPLING.sectionsFor("1.3", PRESETS);
-  check("a bare section label resolves to itself", bare.length === 1 && bare[0] === "1.3");
+  const tricky = ["1.10", "1.2", "2.1", "1.9", "1.1", "10.1", "1.3"];
+  const sorted = SAMPLING.sortSections(tricky);
+  check("sortSections orders by number, not as text",
+    sorted.join(",") === "1.1,1.2,1.3,1.9,1.10,2.1,10.1", sorted.join(","));
+  check("sortSections leaves its input alone", tricky[0] === "1.10", tricky.join(","));
+  check("sortSections keeps every label", sorted.length === tricky.length);
+  check("sortSections handles an empty bank", SAMPLING.sortSections([]).length === 0);
+
+  // Ragged and non-numeric labels must still come out in *some* fixed order.
+  // Without the fallback these compare as NaN, which makes the comparator
+  // inconsistent and the resulting order engine-dependent.
+  const ragged = SAMPLING.sortSections(["1.2", "appendix", "1", "1.2.1"]);
+  check("sortSections is stable under ragged labels",
+    ragged.length === 4 && ragged.join(",") === SAMPLING.sortSections(ragged).join(","),
+    ragged.join(","));
+
+  const sections = SAMPLING.sortSections([...new Set(BANK.map(q => q.section))]);
+  check("the bank offers at least one section", sections.length > 0);
+  const malformed = sections.filter(s => !/^\d+\.\d+$/.test(s));
+  check("every section label is a plain X.Y number", malformed.length === 0, malformed.join(", "));
 }
 
 console.log(`Sampler: ${failures === 0 ? "all checks passed." : `${failures} check(s) failed.`}`);
